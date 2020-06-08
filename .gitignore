@@ -1,6 +1,0 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
-
-/IfcInfraToolkit/IfcInfraToolkit/obj/Debug/IfcInfraToolkit.csproj.FileListAbsolute.txt
-/IfcInfraToolkit/IfcInfraToolkit_Dyn/obj/Debug/IfcInfraToolkit_Dyn.csproj.FileListAbsolute.txt
