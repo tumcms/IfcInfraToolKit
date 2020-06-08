@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace IfcInfraToolkit_Dyn
 {
-    public class IfcInfraToolkit_DynInteraction
+    public static class IfcInfraToolkitDyn
     {
+        public static string getDocumentName(Autodesk.AECC.Interop.UiLand.AeccDocument document)
+        {
+            return document.Name;
+        }
+
+        public static string getAlignmentName(Autodesk.AECC.Interop.UiLand.AeccDocument document)
+        {
+            var alignments = document.AlignmentsSiteless;
+            return "alingmentNames";
+        }
+
     }
 }
