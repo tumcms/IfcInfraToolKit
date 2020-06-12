@@ -1,0 +1,257 @@
+{
+  "Uuid": "d81c8fe4-b668-476b-bbb4-9651db4455dd",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "debug",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.IFC_root.IFC_root@string,string,string",
+      "Id": "41f987bdfaa6451d814a2b6c336c16fd",
+      "Inputs": [
+        {
+          "Id": "d06323d60acd432a9e12df8942b503ed",
+          "Name": "FamilyName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9d0f3c2cc2de4ad9bb81f49c1cbeea71",
+          "Name": "first_name",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "be959f2066d145e3a92839b07b4e2804",
+          "Name": "organzization",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "be45a12ccca7443e91b0f49ec9366502",
+          "Name": "IFC_root",
+          "Description": "IFC_root",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IFC_root.IFC_root (FamilyName: string, first_name: string, organzization: string): IFC_root"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.IFC_root.IFC_export@string",
+      "Id": "607c5b2b181f4df68c484122797347b9",
+      "Inputs": [
+        {
+          "Id": "dd2f06efe0734ab1a29a38e413da0118",
+          "Name": "iFC_root",
+          "Description": "IfcInfraToolkit_Dyn.IFC_root",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2ad1886299e3406e9fd8c0f1286ac928",
+          "Name": "filepath",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a50b42a67d67481280022a890b6c1bfc",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IFC_root.IFC_export (filepath: string): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "D:\\Uni\\Forschungspraktikum_IFC\\dev\\IfcInfraToolkit\\sample_export.ifc",
+      "InputValue": ".\\sample_export.ifc",
+      "NodeType": "ExtensionNode",
+      "Id": "106fb3df47404c97ae1dfc447d35f73a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cdf6f916e3a349c3ae302706ae898e6e",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"Huber\";\n\"Stefan\";\n\"TUMCMS\";",
+      "Id": "3fdac6357e4249938814ec23fb67ee30",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2b6e8a8b94134933b8e3d39c2b80e747",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "33fbac268d8e433fa45d30f04bb29327",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5626198b0baf45938b62b1fa7f1bb207",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "be45a12ccca7443e91b0f49ec9366502",
+      "End": "dd2f06efe0734ab1a29a38e413da0118",
+      "Id": "74fe592b5b0a44239e80d23ce2d00d93"
+    },
+    {
+      "Start": "cdf6f916e3a349c3ae302706ae898e6e",
+      "End": "2ad1886299e3406e9fd8c0f1286ac928",
+      "Id": "f0ea6591dc5c4687863c706568c0ae87"
+    },
+    {
+      "Start": "2b6e8a8b94134933b8e3d39c2b80e747",
+      "End": "d06323d60acd432a9e12df8942b503ed",
+      "Id": "02396715b958474daa8bc41eb981e196"
+    },
+    {
+      "Start": "33fbac268d8e433fa45d30f04bb29327",
+      "End": "9d0f3c2cc2de4ad9bb81f49c1cbeea71",
+      "Id": "657d5dea981f49ce933fbc71f53df6af"
+    },
+    {
+      "Start": "5626198b0baf45938b62b1fa7f1bb207",
+      "End": "be959f2066d145e3a92839b07b4e2804",
+      "Id": "3d2609c8a1e1462eb9f8d25857b85446"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.4.1.6394",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "41f987bdfaa6451d814a2b6c336c16fd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "IFC_root.IFC_root",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 59.741885061419907,
+        "Y": 136.75811493858009
+      },
+      {
+        "Id": "607c5b2b181f4df68c484122797347b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "IFC_root.IFC_export",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 445.87277801867958,
+        "Y": 199.83501550482808
+      },
+      {
+        "Id": "106fb3df47404c97ae1dfc447d35f73a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "File Path",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 256.79526398085056,
+        "Y": 393.56335641265753
+      },
+      {
+        "Id": "3fdac6357e4249938814ec23fb67ee30",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -174.50971922246219,
+        "Y": 128.82937365010798
+      }
+    ],
+    "Annotations": [],
+    "X": 284.00523507604686,
+    "Y": 156.20773902844837,
+    "Zoom": 1.13758205229474
+  }
+}
