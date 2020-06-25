@@ -9,7 +9,17 @@
 using System;
 using GeometryGym.Ifc;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
+using Autodesk.AECC.Interop.Land;
 using Autodesk.DesignScript.Geometry;
+using DatabaseIfc = GeometryGym.Ifc.DatabaseIfc;
+using Autodesk.DesignScript.Runtime;
+
+using Coord3d = System.Tuple<double, double, double>;
+using CoordIndex = System.Tuple<int, int, int>;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -35,8 +45,21 @@ namespace IfcInfraToolkit_Dyn
             author.GivenName = firstName;
             IfcOrganization org = new IfcOrganization(_vb, organization);
 
-        }
+            var site = new IfcSite(_vb, "surface site");
 
+            var project = new IfcProject(site, "test");
+           
+            var location = new IfcCartesianPoint(_vb, 0, 0, 0);
+            var axis2place = new IfcAxis2Placement3D(
+                    location,
+                    new IfcDirection(_vb, 1, 0, 0), 
+                    new IfcDirection(_vb, 0, 0, 1));
+            
+            var geomContext = new IfcGeometricRepresentationContext(3,axis2place );
+            
+            
+        }
+        
         /// <summary>
         /// Finalize the IFC model and export it to the given path
         /// </summary>
@@ -127,7 +150,7 @@ namespace IfcInfraToolkit_Dyn
             // ifc preparation
             List<Coord3d> points = new List<Coord3d>();
             List<CoordIndex> coordIndex = new List<CoordIndex>();
-
+            List<int> flags = new List<int>();
             // mapping Civil data -> IFC
             for (int i = 0; i < pointList.Count; i +=3)
             {
@@ -140,21 +163,19 @@ namespace IfcInfraToolkit_Dyn
                 points.Add(p2);
                 points.Add(p3);
 
-                coordIndex.Add(new CoordIndex(i, i+1, i+2));
+                coordIndex.Add(new CoordIndex(i+1, i+2, i+3));
+                flags.Add(0);
             }
-
-            var flags = new List<int>(coordIndex.Count);
-            for (int i = 0; i < flags.Count; i++)
-            {
-                flags[i] = 0;
-            }
-
-            ;
-
             
             // assign pts to ptList
             IfcCartesianPointList3D cartesianPointList3D = new IfcCartesianPointList3D(_vb, points);
             var triangulatedFaceSet = new IfcTriangulatedIrregularNetwork(cartesianPointList3D, coordIndex, flags);
+
+            var site = _vb.OfType<IfcSite>().First();
+
+            var geographicalElement = new IfcGeographicElement(site, new IfcLocalPlacement(null, new IfcAxis2Placement3D(new IfcCartesianPoint(_vb, 0,0,0))), null );
+            geographicalElement.Representation = new IfcProductDefinitionShape(new IfcShapeRepresentation(triangulatedFaceSet, ShapeRepresentationType.Tessellation));
+
 
             // assign output vals
             return new Dictionary<string, object>
