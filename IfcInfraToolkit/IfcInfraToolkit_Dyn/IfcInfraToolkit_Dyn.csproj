@@ -90,8 +90,9 @@
     <Reference Include="DynamoUtilities, Version=2.6.1.8786, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DynamoVisualProgramming.Core.2.6.1.8786\lib\net47\DynamoUtilities.dll</HintPath>
     </Reference>
-    <Reference Include="GeometryGymIFC">
-      <HintPath>precompiled_dlls\GeometryGymIFC.dll</HintPath>
+    <Reference Include="GeometryGymIFC, Version=0.0.21.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>GeometryGymIFC\DLL Projects\GeometryGymIFC\bin\Debug\GeometryGymIFC.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.4.1.0.0\lib\NET40\Microsoft.Expression.Interactions.dll</HintPath>
