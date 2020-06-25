@@ -7,20 +7,38 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit", "IfcInfra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_Dyn", "IfcInfraToolkit_Dyn\IfcInfraToolkit_Dyn.csproj", "{A17252B7-6231-4BAD-B82F-0D42A9819058}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryGymIFC", "IfcInfraToolkit_Dyn\GeometryGymIFC\DLL Projects\GeometryGymIFC\GeometryGymIFC.csproj", "{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{84741775-5CC9-46EB-A297-EEA4410D0A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{84741775-5CC9-46EB-A297-EEA4410D0A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84741775-5CC9-46EB-A297-EEA4410D0A5B}.Debug|x64.ActiveCfg = Debug|Any CPU
 		{84741775-5CC9-46EB-A297-EEA4410D0A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84741775-5CC9-46EB-A297-EEA4410D0A5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84741775-5CC9-46EB-A297-EEA4410D0A5B}.Release|x64.ActiveCfg = Release|Any CPU
 		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Debug|x64.Build.0 = Debug|Any CPU
 		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Release|x64.ActiveCfg = Release|Any CPU
+		{A17252B7-6231-4BAD-B82F-0D42A9819058}.Release|x64.Build.0 = Release|Any CPU
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|x64.ActiveCfg = Debug|x64
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|x64.Build.0 = Debug|x64
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|x64.ActiveCfg = Release|x64
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
