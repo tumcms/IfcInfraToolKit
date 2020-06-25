@@ -1,16 +1,20 @@
 ﻿// Sebastian Esser20200608
 
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using Autodesk.AECC.Interop.Land;
 using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
+using GeometryGym.Ifc;
 
 namespace IfcInfraToolkit_Dyn
 {
     public class Surface
     {
-        private AeccSurface _surface;
+        public AeccSurface _surface;
+        private AeccSurfaceBoundaries _boundaries;
         public string Name { get; set; }
 
         /// Constructor for a Civil 3D surface
@@ -18,6 +22,7 @@ namespace IfcInfraToolkit_Dyn
         {
             this._surface = surface;
             this.Name = surface.DisplayName;
+            
         }
         
         /// Static Method to extract surface data for analysis
@@ -25,6 +30,7 @@ namespace IfcInfraToolkit_Dyn
         public static Dictionary<string, object> GetTerrainStatistics(Surface Civil3DSurface)
         {
             AeccSurface surf = Civil3DSurface._surface;
+            // derived classes from surface
             AeccTinSurface tinSurf = null;
             AeccGridSurface gridSurf = null;
             AeccTinVolumeSurface tinVolSurf = null;
@@ -85,6 +91,9 @@ namespace IfcInfraToolkit_Dyn
         {
             return string.Format($"Surface (\"{this.Name}\")");
         }
+
+       
+
 
     }
 }

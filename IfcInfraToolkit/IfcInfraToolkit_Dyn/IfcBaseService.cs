@@ -104,7 +104,65 @@ namespace IfcInfraToolkit_Dyn
             return this;
         }
 
+        /// <summary>
+        /// Adds the selected surface to the IFC database container
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="civil3DSurface"></param>
+        /// <returns></returns>
+        [MultiReturn(new[] {"PointList", "DatabaseIfc"})]
+        public Dictionary<string, object> ExportSurfaceToIfc(Surface civil3DSurface)
+        {
+            // data extraction from the civil project
+            var surf = civil3DSurface._surface as AeccTinSurface;
 
+            var triangles = surf.OutputTriangles; // only available in a TIN surface instance. Not in pure surfaces!
+            var numTriangles = triangles.Length / 3;
+            List<Point> pointList = new List<Point>();
+            for (int i = 0; i < triangles.Length; i += 3)
+            {
+                var pt = Point.ByCoordinates(triangles[i], triangles[i + 1], triangles[i + 2]);
+                pointList.Add(pt);
+            }
+            // ifc preparation
+            List<Coord3d> points = new List<Coord3d>();
+            List<CoordIndex> coordIndex = new List<CoordIndex>();
+
+            // mapping Civil data -> IFC
+            for (int i = 0; i < pointList.Count; i +=3)
+            {
+                var p1 = new Coord3d(pointList[i    ].X, pointList[i    ].Y, pointList[i    ].Z) ;
+                var p2 = new Coord3d(pointList[i + 1].X, pointList[i + 1].Y, pointList[i + 1].Z) ;
+                var p3 = new Coord3d(pointList[i + 2].X, pointList[i + 2].Y, pointList[i + 2].Z) ;
+               
+
+                points.Add(p1);
+                points.Add(p2);
+                points.Add(p3);
+
+                coordIndex.Add(new CoordIndex(i, i+1, i+2));
+            }
+
+            var flags = new List<int>(coordIndex.Count);
+            for (int i = 0; i < flags.Count; i++)
+            {
+                flags[i] = 0;
+            }
+
+            ;
+
+            
+            // assign pts to ptList
+            IfcCartesianPointList3D cartesianPointList3D = new IfcCartesianPointList3D(_vb, points);
+            var triangulatedFaceSet = new IfcTriangulatedIrregularNetwork(cartesianPointList3D, coordIndex, flags);
+
+            // assign output vals
+            return new Dictionary<string, object>
+            {
+                { "PointList", pointList },
+                { "DatabaseIfc", _vb }
+            };
+        }
 
     }
 }
