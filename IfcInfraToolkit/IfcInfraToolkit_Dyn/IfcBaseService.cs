@@ -13,12 +13,17 @@ using Autodesk.DesignScript.Geometry;
 
 namespace IfcInfraToolkit_Dyn
 {
-    public class IFC_root
+    public class IfcBaseService
     {
         private DatabaseIfc _vb;
 
-        //Constructor
-        public IFC_root(string familyName, string firstName, string organization)
+        /// <summary>
+        /// Initialize IFC model, set Author
+        /// </summary>
+        /// <param name="familyName"></param>
+        /// <param name="firstName"></param>
+        /// <param name="organization"></param>
+        public IfcBaseService(string familyName, string firstName, string organization)
         {
             // init new Ifc model database
             _vb = new DatabaseIfc(ModelView.Ifc4Reference);
@@ -32,7 +37,11 @@ namespace IfcInfraToolkit_Dyn
 
         }
 
-        //Finalizing 
+        /// <summary>
+        /// Finalize the IFC model and export it to the given path
+        /// </summary>
+        /// <param name="modelName">Desired filename</param>
+        /// <param name="filepath">Desired folder</param>
         public void IFC_export(string modelName, string filepath)
         {
             // build path
@@ -44,7 +53,7 @@ namespace IfcInfraToolkit_Dyn
 
         //add Roadcrosssection 
         //still requires testing
-        public IFC_root IFC_road_add(List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
+        public IfcBaseService IFC_road_add(List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
         {
             //Create dummy curve ONLY FOR TESTING need to be changed later 
             var curve = new IfcAlignmentCurve(_vb);

@@ -136,14 +136,11 @@
     <Compile Include="Alignment.cs" />
     <Compile Include="Civil3DApplication.cs" />
     <Compile Include="Civil3DDocument.cs" />
-    <Compile Include="IFC.cs" />
+    <Compile Include="IfcBaseService.cs" />
     <Compile Include="IfcInfraToolkit_DynInteraction.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Surface.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
