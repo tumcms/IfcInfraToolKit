@@ -133,24 +133,29 @@ namespace IfcInfraToolkit_Dyn
         /// <param name="db"></param>
         /// <param name="civil3DSurface"></param>
         /// <returns></returns>
-        [MultiReturn(new[] {"PointList", "DatabaseIfc"})]
+        [MultiReturn(new[] {"PointList", "CoordIndex", "DatabaseIfc"})]
         public Dictionary<string, object> ExportSurfaceToIfc(Surface civil3DSurface)
         {
             // data extraction from the civil project
             var surf = civil3DSurface._surface as AeccTinSurface;
 
+            // ToDo: Implement georeferencing and translation methods
+
             var triangles = surf.OutputTriangles; // only available in a TIN surface instance. Not in pure surfaces!
-            var numTriangles = triangles.Length / 3;
+            
+            // Dynamo-like representation of points
             List<Point> pointList = new List<Point>();
             for (int i = 0; i < triangles.Length; i += 3)
             {
                 var pt = Point.ByCoordinates(triangles[i], triangles[i + 1], triangles[i + 2]);
                 pointList.Add(pt);
             }
+
             // ifc preparation
             List<Coord3d> points = new List<Coord3d>();
             List<CoordIndex> coordIndex = new List<CoordIndex>();
             List<int> flags = new List<int>();
+
             // mapping Civil data -> IFC
             for (int i = 0; i < pointList.Count; i +=3)
             {
@@ -158,7 +163,6 @@ namespace IfcInfraToolkit_Dyn
                 var p2 = new Coord3d(pointList[i + 1].X, pointList[i + 1].Y, pointList[i + 1].Z) ;
                 var p3 = new Coord3d(pointList[i + 2].X, pointList[i + 2].Y, pointList[i + 2].Z) ;
                
-
                 points.Add(p1);
                 points.Add(p2);
                 points.Add(p3);
@@ -171,6 +175,8 @@ namespace IfcInfraToolkit_Dyn
             IfcCartesianPointList3D cartesianPointList3D = new IfcCartesianPointList3D(_vb, points);
             var triangulatedFaceSet = new IfcTriangulatedIrregularNetwork(cartesianPointList3D, coordIndex, flags);
 
+            // create geographical element and assign TIN geometry
+            // ToDo: Check assignment. Several context representations are mixed
             var site = _vb.OfType<IfcSite>().First();
 
             var geographicalElement = new IfcGeographicElement(site, new IfcLocalPlacement(null, new IfcAxis2Placement3D(new IfcCartesianPoint(_vb, 0,0,0))), null );
@@ -181,6 +187,7 @@ namespace IfcInfraToolkit_Dyn
             return new Dictionary<string, object>
             {
                 { "PointList", pointList },
+                { "IndexList", coordIndex},
                 { "DatabaseIfc", _vb }
             };
         }
