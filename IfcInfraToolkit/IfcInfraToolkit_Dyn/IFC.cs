@@ -10,6 +10,7 @@ using System;
 using GeometryGym.Ifc;
 using System.Collections.Generic;
 using Autodesk.DesignScript.Geometry;
+using NUnit.Framework;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -43,9 +44,24 @@ namespace IfcInfraToolkit_Dyn
         }
 
         //add Roadcrosssection 
-        //still requires testing
+        //TODO: testing
         public IFC_root IFC_road_add(List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
         {
+            //Error Detection
+            //Check for Inputs for null
+            if (width_right == null || width_left == null || slope_right == null || slope_left == null
+                || stations == null)
+            {
+                throw new ArgumentNullException("All Inputs have to be different from NULL");
+            }
+
+            //Check if all Inputs have the same length 
+            if (width_right.Count==width_left.Count && slope_right.Count==slope_left.Count 
+                && width_right.Count==slope_right.Count && stations.Count==width_right.Count)
+            {
+                throw new ArgumentException("All Inputs need to have the same length");
+            }
+
             //Create dummy curve ONLY FOR TESTING need to be changed later 
             var curve = new IfcAlignmentCurve(_vb);
 
@@ -60,7 +76,7 @@ namespace IfcInfraToolkit_Dyn
 
             //Create site for export
             IfcSite site = new IfcSite(_vb, "locel_site");
-            
+
 
             for (int i = 0; i < width_right.Count; i++)
             {
@@ -96,6 +112,16 @@ namespace IfcInfraToolkit_Dyn
         }
 
 
+        //add Alignemnt
+        //TODO: Impliment
+        public IFC_root IFC_Alignment_add(List<double> dummy)
+        {
+
+
+
+
+            return this;
+        }
 
     }
 }
