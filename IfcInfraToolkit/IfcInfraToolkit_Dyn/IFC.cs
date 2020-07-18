@@ -56,14 +56,15 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //Check if all Inputs have the same length 
-            if (width_right.Count==width_left.Count && slope_right.Count==slope_left.Count 
-                && width_right.Count==slope_right.Count && stations.Count==width_right.Count)
+            if (width_right.Count!=width_left.Count && slope_right.Count != slope_left.Count
+                && width_right.Count != slope_right.Count && stations.Count != width_right.Count)
             {
                 throw new ArgumentException("All Inputs need to have the same length");
             }
 
             //Create dummy curve ONLY FOR TESTING need to be changed later 
-            var curve = new IfcAlignmentCurve(_vb);
+            IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
+
 
             //Create lists in which the widths/slopes are sorted in tuple
             //ordered by station
@@ -77,24 +78,28 @@ namespace IfcInfraToolkit_Dyn
             //Create site for export
             IfcSite site = new IfcSite(_vb, "locel_site");
 
-
+            //Convert data in suitable order/format
             for (int i = 0; i < width_right.Count; i++)
             {
                 //Add the widths at each Station to the final list
-                widths[i].Add(width_left[i]);
-                widths[i].Add(width_right[i]);
+                List<double> tmp_w = new List<double>();
+                tmp_w.Add(width_left[i]);
+                tmp_w.Add(width_right[i]);
+                widths.Add(tmp_w);
 
                 //Add the slopes at each Station to the final list
-                slopes[i].Add(width_left[i]);
-                slopes[i].Add(width_right[i]);
+                List<double> tmp_s = new List<double>();
+                tmp_s.Add(slope_left[i]);
+                tmp_s.Add(slope_right[i]);
+                slopes.Add(tmp_s);
 
             }
-
+            
             //Add at each station the Crossprofiledef
             for (int i = 0; i< widths.Count; i++) {
 
                 //Create OpenCrossProfileDef and collect them
-                IfcOpenCrossProfileDef crsec = new IfcOpenCrossProfileDef(_vb, "Road_part " + (i + 1),true, widths[i], slopes[i]);
+                IfcOpenCrossProfileDef crsec = new IfcOpenCrossProfileDef(_vb, "Road_part" + (i + 1),true, widths[i], slopes[i]);
                 ocpd.Add(crsec);
                 //Create DistanceExpression and collect them
                 IfcDistanceExpression distex = new IfcDistanceExpression(_vb, stations[i]);
@@ -104,8 +109,18 @@ namespace IfcInfraToolkit_Dyn
 
             
             //link OpenCrossProfileDef to DistanceExpression
-            IfcSectionedSurface test = new IfcSectionedSurface(curve, de, ocpd, true);
+            IfcSectionedSurface secsurf = new IfcSectionedSurface(curve, de, ocpd, true);
+            IfcShapeRepresentation shaperep = new IfcShapeRepresentation(secsurf);
+            IfcProductDefinitionShape produktdef = new IfcProductDefinitionShape(shaperep);
 
+
+            //Placement ->Testing needed
+            IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0, 0, 0);
+            //IfcObjectPlacement origin = new IfcObjectPlacement(zero); //-> Placemtent
+
+
+            //final assembly
+            var road = new IfcPavement(site, null, produktdef);
             
 
             return this;
@@ -118,6 +133,7 @@ namespace IfcInfraToolkit_Dyn
         {
 
 
+            //IfcAlignment alignment = new IfcAlignment(_vb, curve);
 
 
             return this;
