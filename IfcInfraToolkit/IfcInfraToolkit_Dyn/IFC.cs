@@ -19,17 +19,19 @@ namespace IfcInfraToolkit_Dyn
         private DatabaseIfc _vb;
 
         //Constructor
-        public IFC_root(string familyName, string firstName, string organization)
+        public IFC_root(string familyName, string firstName, string organization="none",string project="project1")
         {
             // init new Ifc model database
             _vb = new DatabaseIfc(ModelView.Ifc4Reference);
             _vb.Release = ReleaseVersion.IFC4X3;
+
 
             // set model author and organization
             IfcPerson author = new IfcPerson(_vb);
             author.FamilyName = familyName;
             author.GivenName = firstName;
             IfcOrganization org = new IfcOrganization(_vb, organization);
+            IfcProject projectname = new IfcProject(_vb, project);
 
         }
 
@@ -56,16 +58,13 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //Check if all Inputs have the same length 
-            if (width_right.Count!=width_left.Count && slope_right.Count != slope_left.Count
-                && width_right.Count != slope_right.Count && stations.Count != width_right.Count)
+            if (width_right.Count!=width_left.Count || slope_right.Count != slope_left.Count
+                || width_right.Count != slope_right.Count || stations.Count != width_right.Count)
             {
                 throw new ArgumentException("All Inputs need to have the same length");
             }
-
-            //Create dummy curve ONLY FOR TESTING need to be changed later 
-            IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
-
-
+            
+          
             //Create lists in which the widths/slopes are sorted in tuple
             //ordered by station
             List<List<double>> widths = new List<List<double>>();
@@ -75,8 +74,14 @@ namespace IfcInfraToolkit_Dyn
             List<IfcOpenCrossProfileDef> ocpd = new List<IfcOpenCrossProfileDef>();
             List<IfcDistanceExpression> de = new List<IfcDistanceExpression>();
 
+
             //Create site for export
             IfcSite site = new IfcSite(_vb, "locel_site");
+
+            //Create dummy alignment/curve ONLY FOR TESTING need to be changed later 
+            IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
+            IfcAlignment alignment = new IfcAlignment(site, curve);
+
 
             //Convert data in suitable order/format
             for (int i = 0; i < width_right.Count; i++)
@@ -114,14 +119,19 @@ namespace IfcInfraToolkit_Dyn
             IfcProductDefinitionShape produktdef = new IfcProductDefinitionShape(shaperep);
 
 
-            //Placement ->Testing needed
-            IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0, 0, 0);
+            //Placement -> TODO: Create Point without site or insert Point to the site + create a Placement to the site
+            //IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0, 0, 0);
             //IfcObjectPlacement origin = new IfcObjectPlacement(zero); //-> Placemtent
 
 
             //final assembly
-            var road = new IfcPavement(site, null, produktdef);
+            IfcPavement pavement = new IfcPavement(site, null, produktdef);
             
+            /* create Road -> TODO: Link Pavement to Road
+            IfcRepresentation rep = new IfcRepresentation();
+            IfcProductRepresentation prorep = new IfcProductRepresentation(rep);
+            IfcRoad road = new IfcRoad(site, "street1", null, prorep);
+            */
 
             return this;
         }
@@ -131,7 +141,6 @@ namespace IfcInfraToolkit_Dyn
         //TODO: Impliment
         public IFC_root IFC_Alignment_add(List<double> dummy)
         {
-
 
             //IfcAlignment alignment = new IfcAlignment(_vb, curve);
 
