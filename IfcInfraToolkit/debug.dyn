@@ -50,12 +50,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"sample_ifcroad\";\n\".\";",
+      "Code": "\"sample_ifc_road\";\n\"D:\\\\Uni\\\\Forschungspraktikum_IFC\\\\\";",
       "Id": "4d42c43e96084eb79d3367b51522af2c",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "a4d9d80859f04cd2a02d8f12b64d91bb",
+          "Id": "6922ac47f73e45bc99d84bdf9da48a77",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -64,7 +64,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "8ebc7454742d42b6b033eb9a35aa3762",
+          "Id": "721bbe57c00f42569b402969cffeade8",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 2",
           "UsingDefaultValue": false,
@@ -79,11 +79,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolkit_Dyn.IfcBaseService.IfcBaseService@string,string,string",
-      "Id": "c1e1e4178014459ab6dbfa679d2dc690",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.IFC_root.IFC_root@string,string,string",
+      "Id": "987adb6780f04d42b2c7b3268fd85ede",
       "Inputs": [
         {
-          "Id": "9932f19e8a77495096c06fbc0ae55ede",
+          "Id": "f2ef5bbf87df4caa8a797b165e648d24",
           "Name": "familyName",
           "Description": "string",
           "UsingDefaultValue": false,
@@ -92,7 +92,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "9425c6a581cd4404a8b4028eb374c4e4",
+          "Id": "028d827873ed4a02a029713025e2a198",
           "Name": "firstName",
           "Description": "string",
           "UsingDefaultValue": false,
@@ -101,7 +101,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "fde07b2a965346e782b41efbe7879388",
+          "Id": "f662834e257e43c99c002c8bc7ccd005",
           "Name": "organization",
           "Description": "string",
           "UsingDefaultValue": false,
@@ -112,9 +112,9 @@
       ],
       "Outputs": [
         {
-          "Id": "b2c9ac7895134ceaae29dac6a00fda1c",
-          "Name": "IfcBaseService",
-          "Description": "IfcBaseService",
+          "Id": "580a6962766d4c0e8c071665bd517dba",
+          "Name": "IFC_root",
+          "Description": "IFC_root",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -122,25 +122,25 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcBaseService.IfcBaseService (familyName: string, firstName: string, organization: string): IfcBaseService"
+      "Description": "IFC_root.IFC_root (familyName: string, firstName: string, organization: string): IFC_root"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolkit_Dyn.IfcBaseService.IFC_export@string,string",
-      "Id": "c4ef561c9d9943a89a0f8593fd4323f4",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.IFC_root.IFC_export@string,string",
+      "Id": "9033d80b167744fda93f7cbfb5434adf",
       "Inputs": [
         {
-          "Id": "3b6146e5aba24091849104f274fb78cf",
-          "Name": "ifcBaseService",
-          "Description": "IfcInfraToolkit_Dyn.IfcBaseService",
+          "Id": "8ac9e1fbf9ae4042b91955c1c67ad75c",
+          "Name": "iFC_root",
+          "Description": "IfcInfraToolkit_Dyn.IFC_root",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         },
         {
-          "Id": "caf169588e9d4e3a84c3c853e2675ddc",
+          "Id": "f6022fa905d14584ade1516675e31a9f",
           "Name": "modelName",
           "Description": "string",
           "UsingDefaultValue": false,
@@ -149,7 +149,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "7bf4f9556e9c45c5ae55d6e82d048eb6",
+          "Id": "5e579f9cbc6e45a9b3c0df1a361cbbc0",
           "Name": "filepath",
           "Description": "string",
           "UsingDefaultValue": false,
@@ -160,7 +160,7 @@
       ],
       "Outputs": [
         {
-          "Id": "548beee1dbb44bc594cb6f22a9d0c147",
+          "Id": "a5e94251f91c4badb1e75a8dcbcfe633",
           "Name": "void",
           "Description": "void",
           "UsingDefaultValue": false,
@@ -170,134 +170,43 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcBaseService.IFC_export (modelName: string, filepath: string): void"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolkit_Dyn.IfcBaseService.IFC_road_add@double[],double[],double[],double[],double[]",
-      "Id": "ad52ab8b1757456d960414d06782c9d3",
-      "Inputs": [
-        {
-          "Id": "c6819258543e436cb5874f7782fcb2fa",
-          "Name": "ifcBaseService",
-          "Description": "IfcInfraToolkit_Dyn.IfcBaseService",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "e167863866a142289e128752d1596e7e",
-          "Name": "stations",
-          "Description": "double[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "376c925c2ca34250bcec1d5edfecdd62",
-          "Name": "width_left",
-          "Description": "double[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "8183ad60c19b4e4f9a608d3bd35191db",
-          "Name": "width_right",
-          "Description": "double[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "4625e80138e641a1a2d508da7299da0f",
-          "Name": "slope_left",
-          "Description": "double[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "03eb3250624a4bc881e1f684afbd305d",
-          "Name": "slope_right",
-          "Description": "double[]",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "978a3af9d2114b6f989853f15c394dac",
-          "Name": "IfcBaseService",
-          "Description": "IfcBaseService",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "IfcBaseService.IFC_road_add (stations: double[], width_left: double[], width_right: double[], slope_left: double[], slope_right: double[]): IfcBaseService"
+      "Description": "IFC_root.IFC_export (modelName: string, filepath: string): void"
     }
   ],
   "Connectors": [
     {
       "Start": "2b6e8a8b94134933b8e3d39c2b80e747",
-      "End": "9932f19e8a77495096c06fbc0ae55ede",
-      "Id": "29c5fd4860e4409c87b180691cba78a0"
+      "End": "f2ef5bbf87df4caa8a797b165e648d24",
+      "Id": "a8c43812d7304ea3a2d9a13a87957996"
     },
     {
       "Start": "33fbac268d8e433fa45d30f04bb29327",
-      "End": "9425c6a581cd4404a8b4028eb374c4e4",
-      "Id": "e2621ae673b04694b973c77516e012f4"
+      "End": "028d827873ed4a02a029713025e2a198",
+      "Id": "64f99ba8679144038233d6e2cc0c26fc"
     },
     {
       "Start": "5626198b0baf45938b62b1fa7f1bb207",
-      "End": "fde07b2a965346e782b41efbe7879388",
-      "Id": "406094de8a4646d8b2ac51eee948a064"
+      "End": "f662834e257e43c99c002c8bc7ccd005",
+      "Id": "4f124dbfd2d6410eab6b03c61ed260fa"
     },
     {
-      "Start": "a4d9d80859f04cd2a02d8f12b64d91bb",
-      "End": "caf169588e9d4e3a84c3c853e2675ddc",
-      "Id": "ca322259791f4a5ca02b2bd9512e11de"
+      "Start": "6922ac47f73e45bc99d84bdf9da48a77",
+      "End": "f6022fa905d14584ade1516675e31a9f",
+      "Id": "020350e513c64f27bc2ca31e0df456a5"
     },
     {
-      "Start": "8ebc7454742d42b6b033eb9a35aa3762",
-      "End": "7bf4f9556e9c45c5ae55d6e82d048eb6",
-      "Id": "73e0b36b00874333ab5606498846bcbc"
+      "Start": "721bbe57c00f42569b402969cffeade8",
+      "End": "5e579f9cbc6e45a9b3c0df1a361cbbc0",
+      "Id": "0e60f055f6d84f9aa3db17319a69cf9b"
     },
     {
-      "Start": "b2c9ac7895134ceaae29dac6a00fda1c",
-      "End": "c6819258543e436cb5874f7782fcb2fa",
-      "Id": "d63fb738f2e44001a40cfb8fcc58a896"
-    },
-    {
-      "Start": "978a3af9d2114b6f989853f15c394dac",
-      "End": "3b6146e5aba24091849104f274fb78cf",
-      "Id": "638e60ef7a904640aeb515b1ce2e90d8"
+      "Start": "580a6962766d4c0e8c071665bd517dba",
+      "End": "8ac9e1fbf9ae4042b91955c1c67ad75c",
+      "Id": "26f0527016894235a1a236a5b360f4e5"
     }
   ],
   "Dependencies": [],
-  "NodeLibraryDependencies": [
-    {
-      "Name": "IfcInfraToolkit_Dyn",
-      "Version": "1.0.0",
-      "ReferenceType": "Package",
-      "Nodes": [
-        "c1e1e4178014459ab6dbfa679d2dc690",
-        "c4ef561c9d9943a89a0f8593fd4323f4",
-        "ad52ab8b1757456d960414d06782c9d3"
-      ]
-    }
-  ],
+  "NodeLibraryDependencies": [],
   "Bindings": [],
   "View": {
     "Dynamo": {
@@ -338,43 +247,33 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 450.98664369834592,
-        "Y": 456.41079795599751
+        "X": 68.955356969815512,
+        "Y": 346.92926213380133
       },
       {
         "ShowGeometry": true,
-        "Name": "IfcBaseService.IfcBaseService",
-        "Id": "c1e1e4178014459ab6dbfa679d2dc690",
+        "Name": "IFC_root.IFC_root",
+        "Id": "987adb6780f04d42b2c7b3268fd85ede",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 7.5924092551937861,
-        "Y": 150.65723748671849
+        "X": 8.2340387902289649,
+        "Y": 113.39090901136512
       },
       {
         "ShowGeometry": true,
-        "Name": "IfcBaseService.IFC_export",
-        "Id": "c4ef561c9d9943a89a0f8593fd4323f4",
+        "Name": "IFC_root.IFC_export",
+        "Id": "9033d80b167744fda93f7cbfb5434adf",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 797.27107079805319,
-        "Y": 253.32638573710398
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "IfcBaseService.IFC_road_add",
-        "Id": "ad52ab8b1757456d960414d06782c9d3",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 406.25452746147806,
-        "Y": 160.48726231920216
+        "X": 353.12063817800504,
+        "Y": 110.12015309891336
       }
     ],
     "Annotations": [],
-    "X": 360.77056216746325,
-    "Y": 132.78580108844238,
-    "Zoom": 0.915562285281226
+    "X": 166.09369514705514,
+    "Y": -41.170189842569982,
+    "Zoom": 0.96556678260774209
   }
 }

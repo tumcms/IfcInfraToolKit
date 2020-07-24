@@ -11,6 +11,7 @@ using GeometryGym.Ifc;
 using System.Collections.Generic;
 using Autodesk.DesignScript.Geometry;
 using NUnit.Framework;
+using System.Linq;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -32,6 +33,7 @@ namespace IfcInfraToolkit_Dyn
             author.GivenName = firstName;
             IfcOrganization org = new IfcOrganization(_vb, organization);
             IfcProject projectname = new IfcProject(_vb, project);
+            IfcSite site = new IfcSite(_vb, "locel_site");
 
         }
 
@@ -74,13 +76,11 @@ namespace IfcInfraToolkit_Dyn
             List<IfcOpenCrossProfileDef> ocpd = new List<IfcOpenCrossProfileDef>();
             List<IfcDistanceExpression> de = new List<IfcDistanceExpression>();
 
+            //var definition
+            IfcSite site = _vb.OfType<IfcSite>().First();
+            IfcAlignmentCurve curve = _vb.OfType<IfcAlignmentCurve>().First();
+           
 
-            //Create site for export
-            IfcSite site = new IfcSite(_vb, "locel_site");
-
-            //Create dummy alignment/curve ONLY FOR TESTING need to be changed later 
-            IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
-            IfcAlignment alignment = new IfcAlignment(site, curve);
 
 
             //Convert data in suitable order/format
@@ -119,14 +119,14 @@ namespace IfcInfraToolkit_Dyn
             IfcProductDefinitionShape produktdef = new IfcProductDefinitionShape(shaperep);
 
 
-            //Placement -> TODO: Create Point without site or insert Point to the site + create a Placement to the site
-            //IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0, 0, 0);
-            //IfcObjectPlacement origin = new IfcObjectPlacement(zero); //-> Placemtent
+            //Placement -> TODO: create a Placement to the site
+            IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0, 0, 0);
+            //IfcObjectPlacement origin = new IfcObjectPlacement(); //-> Placemtent
 
 
             //final assembly
             IfcPavement pavement = new IfcPavement(site, null, produktdef);
-            
+
             /* create Road -> TODO: Link Pavement to Road
             IfcRepresentation rep = new IfcRepresentation();
             IfcProductRepresentation prorep = new IfcProductRepresentation(rep);
@@ -139,14 +139,26 @@ namespace IfcInfraToolkit_Dyn
 
         //add Alignemnt
         //TODO: Impliment
-        public IFC_root IFC_Alignment_add(List<double> dummy)
-        {
+        public IFC_root IFC_Alignment_add()
+        { 
+            IfcSite site = _vb.OfType<IfcSite>().First();
 
-            //IfcAlignment alignment = new IfcAlignment(_vb, curve);
-
+            //dummy curve
+            IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
+            IfcAlignment alignment = new IfcAlignment(site, curve);
 
             return this;
         }
+
+
+
+        //Watch Node
+        //TODO: Impliment
+        public void Watch_IFC()
+        {
+           return;
+        }
+
 
     }
 }
