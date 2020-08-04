@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Autodesk.DesignScript.Geometry;
 using NUnit.Framework;
 using System.Linq;
+using NUnit.Framework.Constraints;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -119,19 +120,17 @@ namespace IfcInfraToolkit_Dyn
             IfcProductDefinitionShape produktdef = new IfcProductDefinitionShape(shaperep);
 
 
-            //Placement -> TODO: create a Placement to the site
-            IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0, 0, 0);
-            //IfcObjectPlacement origin = new IfcObjectPlacement(); //-> Placemtent
+            //Placement TODO: Change 0 to real starting Point
+            IfcDistanceExpression dist = new IfcDistanceExpression(_vb, 0);
+            IfcLinearPlacement origin = new IfcLinearPlacement(curve, dist);  //-> Placemtent
 
 
             //final assembly
-            IfcPavement pavement = new IfcPavement(site, null, produktdef);
+            IfcPavement pavement = new IfcPavement(site, origin, produktdef);
 
-            /* create Road -> TODO: Link Pavement to Road
-            IfcRepresentation rep = new IfcRepresentation();
-            IfcProductRepresentation prorep = new IfcProductRepresentation(rep);
-            IfcRoad road = new IfcRoad(site, "street1", null, prorep);
-            */
+            //create Road -> TODO: Link Pavement to Road
+            IfcRoad road = new IfcRoad(site, "street1", origin, produktdef);
+            
 
             return this;
         }
