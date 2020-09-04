@@ -20,22 +20,26 @@ namespace IfcInfraToolkit_Dyn
     {
         private DatabaseIfc _vb;
 
-        //Constructor
+        /// <summary>
+        /// Initialize IFC model container
+        /// </summary>
+        /// <param name="familyName">Author's given name</param>
+        /// <param name="firstName">Author's first name</param>
+        /// <param name="organization">optional: organization</param>
+        /// <param name="project">optional project name for IFC model</param>
         public IFC_root(string familyName, string firstName, string organization="none",string project="project1")
         {
             // init new Ifc model database
             _vb = new DatabaseIfc(ModelView.Ifc4Reference);
             _vb.Release = ReleaseVersion.IFC4X3;
-
-
+            
             // set model author and organization
             IfcPerson author = new IfcPerson(_vb);
             author.FamilyName = familyName;
             author.GivenName = firstName;
             IfcOrganization org = new IfcOrganization(_vb, organization);
             IfcProject projectname = new IfcProject(_vb, project);
-            IfcSite site = new IfcSite(_vb, "locel_site");
-
+            IfcSite site = new IfcSite(_vb, "local_site");
         }
 
         //Finalizing 
@@ -48,8 +52,17 @@ namespace IfcInfraToolkit_Dyn
             _vb.WriteFile(finalPath);
         }
 
-        //add Roadcrosssection 
+        
         //TODO: testing
+        /// <summary>
+        /// Adds an IfcRoad with IfcOpenProfileDefs to the IFC model
+        /// </summary>
+        /// <param name="stations"></param>
+        /// <param name="width_left"></param>
+        /// <param name="width_right"></param>
+        /// <param name="slope_left"></param>
+        /// <param name="slope_right"></param>
+        /// <returns></returns>
         public IFC_root IFC_road_add(List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
         {
             //Error Detection
@@ -81,9 +94,6 @@ namespace IfcInfraToolkit_Dyn
             IfcSite site = _vb.OfType<IfcSite>().First();
             IfcAlignmentCurve curve = _vb.OfType<IfcAlignmentCurve>().First();
            
-
-
-
             //Convert data in suitable order/format
             for (int i = 0; i < width_right.Count; i++)
             {
@@ -136,8 +146,11 @@ namespace IfcInfraToolkit_Dyn
         }
 
 
-        //add Alignemnt
-        //TODO: Impliment
+        //TODO: Implement
+        /// <summary>
+        /// Adds an alignment curve to the project and links it with the IfcSite entity
+        /// </summary>
+        /// <returns></returns>
         public IFC_root IFC_Alignment_add()
         { 
             IfcSite site = _vb.OfType<IfcSite>().First();
@@ -148,17 +161,15 @@ namespace IfcInfraToolkit_Dyn
 
             return this;
         }
-
-
-
-        //Watch Node
-        //TODO: Impliment
-        public void Watch_IFC()
+        
+        /// <summary>
+        /// Watch node for Ifc content in the database
+        /// </summary>
+        /// <returns></returns>
+        public DatabaseIfc Watch_IFC()
         {
-           return;
+           return _vb;
         }
-
-
     }
 }
 
