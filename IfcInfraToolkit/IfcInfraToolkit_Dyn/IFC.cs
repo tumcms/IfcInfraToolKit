@@ -53,7 +53,7 @@ namespace IfcInfraToolkit_Dyn
         }
 
         
-        //TODO: testing
+        //TODO: change alingment selection
         /// <summary>
         /// Adds an IfcRoad with IfcOpenProfileDefs to the IFC model
         /// </summary>
@@ -63,7 +63,7 @@ namespace IfcInfraToolkit_Dyn
         /// <param name="slope_left"></param>
         /// <param name="slope_right"></param>
         /// <returns></returns>
-        public IFC_root IFC_road_add(List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
+        public IFC_root IFC_road_geometry_add(String roadname, List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
         {
             //Error Detection
             //Check for Inputs for null
@@ -92,8 +92,33 @@ namespace IfcInfraToolkit_Dyn
 
             //var definition
             IfcSite site = _vb.OfType<IfcSite>().First();
-            IfcAlignmentCurve curve = _vb.OfType<IfcAlignmentCurve>().First();
-           
+
+            //Will be changed when add Alignment is Implimented 
+            IfcAlignmentCurve curve = null;
+            curve= _vb.OfType<IfcAlignmentCurve>().First();
+
+            //Select the road for adding the crosssection
+            IfcRoad road = null;
+            IEnumerable<IfcRoad> query1 = _vb.OfType<IfcRoad>();
+            foreach(IfcRoad i in query1)
+            {
+                if (i.Name.Equals(roadname))
+                {
+                    road = i;
+                }
+            }
+
+            //Check if there is a curve and road
+            if (curve == null)
+            {
+                throw new ArgumentNullException("No curve found!\n");
+            }
+            if (road == null)
+            {
+                throw new ArgumentNullException("No road found!\n");
+            }
+
+
             //Convert data in suitable order/format
             for (int i = 0; i < width_right.Count; i++)
             {
@@ -134,19 +159,35 @@ namespace IfcInfraToolkit_Dyn
             IfcDistanceExpression dist = new IfcDistanceExpression(_vb, 0);
             IfcLinearPlacement origin = new IfcLinearPlacement(curve, dist);  //-> Placemtent
 
-
             //final assembly
             IfcPavement pavement = new IfcPavement(site, origin, produktdef);
 
-            //create Road -> TODO: Link Pavement to Road
-            IfcRoad road = new IfcRoad(site, "street1", origin, produktdef);
-            
+            //Link Pavement to Road
+            road.AddElement(pavement);
 
             return this;
         }
 
+        //TODO: Testing, Placement fixing & linking to side
+        /// <summary>
+        /// Adds an road to the project
+        /// </summary>
+        /// <returns></returns>
+        public IFC_root IFC_road_add(String roadname)
+        {
+            //var definition
+            IfcSite site = _vb.OfType<IfcSite>().First();
+            IfcRoad road = new IfcRoad(_vb);
+            road.Name = roadname;
+            IfcLinearPlacement origin = new IfcLinearPlacement();
+            //site.AddAggregated(road); right???
+            // ErrorMember can not be used 
+            //road.ObjectPlacement(origin); 
 
-        //TODO: Implement
+            return this;
+        }
+
+        //TODO: Implement + Add in road_geometry access handling
         /// <summary>
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
