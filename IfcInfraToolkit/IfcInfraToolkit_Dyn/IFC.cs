@@ -40,6 +40,8 @@ namespace IfcInfraToolkit_Dyn
             IfcOrganization org = new IfcOrganization(_vb, organization);
             IfcProject projectname = new IfcProject(_vb, project);
             IfcSite site = new IfcSite(_vb, "local_site");
+            projectname.AddAggregated(site);
+
         }
 
         //Finalizing 
@@ -63,7 +65,7 @@ namespace IfcInfraToolkit_Dyn
         /// <param name="slope_left"></param>
         /// <param name="slope_right"></param>
         /// <returns></returns>
-        public IFC_root IFC_road_geometry_add(String roadname, List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
+        public IFC_root IFC_road_geometry_add(String roadname, string alignmentname, List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
         {
             //Error Detection
             //Check for Inputs for null
@@ -93,9 +95,19 @@ namespace IfcInfraToolkit_Dyn
             //var definition
             IfcSite site = _vb.OfType<IfcSite>().First();
 
-            //Will be changed when add Alignment is Implimented 
-            IfcAlignmentCurve curve = null;
-            curve= _vb.OfType<IfcAlignmentCurve>().First();
+
+            //Select Alignment via Name TODO: Select Axis out of the Alignment
+            /*IfcAlignment alignment = null;
+            IEnumerable<IfcAlignment> query2 = _vb.OfType<IfcAlignment>();
+            foreach (IfcAlignment i in query2)
+            {
+                if (i.Name.Equals(alignmentname))
+                {
+                    alignment = i;
+                }
+            }*/
+            IfcCurve curve = _vb.OfType<IfcAlignmentCurve>().First();
+
 
             //Select the road for adding the crosssection
             IfcRoad road = null;
@@ -109,7 +121,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //Check if there is a curve and road
-            if (curve == null)
+            if (/*alignment*/curve == null)
             {
                 throw new ArgumentNullException("No curve found!\n");
             }
@@ -179,9 +191,9 @@ namespace IfcInfraToolkit_Dyn
             IfcSite site = _vb.OfType<IfcSite>().First();
             IfcRoad road = new IfcRoad(_vb);
             road.Name = roadname;
-            IfcLinearPlacement origin = new IfcLinearPlacement();
-            //site.AddAggregated(road); right???
-            // ErrorMember can not be used 
+            site.AddAggregated(road);
+            // Placement needs to be changed when alingment is implemented
+            //IfcLinearPlacement origin = new IfcLinearPlacement();
             //road.ObjectPlacement(origin); 
 
             return this;
@@ -192,13 +204,18 @@ namespace IfcInfraToolkit_Dyn
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
         /// <returns></returns>
-        public IFC_root IFC_Alignment_add()
+        public IFC_root IFC_Alignment_add(string alignmentname)
         { 
             IfcSite site = _vb.OfType<IfcSite>().First();
 
             //dummy curve
+            IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0.0, 0.0,0.0);
+            IfcCartesianPoint end = new IfcCartesianPoint(_vb, 100.0, 100.0,0.0);
+            IfcPolyline polyline = new IfcPolyline(zero,end);
             IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
-            IfcAlignment alignment = new IfcAlignment(site, curve);
+            IfcAlignment alignment = new IfcAlignment(site, polyline);
+            alignment.Name = alignmentname;
+
 
             return this;
         }
