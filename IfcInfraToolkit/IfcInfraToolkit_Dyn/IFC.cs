@@ -13,6 +13,8 @@ using Autodesk.DesignScript.Geometry;
 using NUnit.Framework;
 using System.Linq;
 using NUnit.Framework.Constraints;
+using Autodesk.AECC.Interop.Land;
+using Dynamo.Utilities;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -106,7 +108,7 @@ namespace IfcInfraToolkit_Dyn
                     alignment = i;
                 }
             }*/
-            IfcCurve curve = _vb.OfType<IfcAlignmentCurve>().First();
+            IfcCurve curve = _vb.OfType<IfcPolyline>().First();
 
 
             //Select the road for adding the crosssection
@@ -180,6 +182,9 @@ namespace IfcInfraToolkit_Dyn
             return this;
         }
 
+
+
+
         //TODO: Testing, Placement fixing & linking to side
         /// <summary>
         /// Adds an road to the project
@@ -199,27 +204,59 @@ namespace IfcInfraToolkit_Dyn
             return this;
         }
 
+
+
         //TODO: Implement + Add in road_geometry access handling
         /// <summary>
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
         /// <returns></returns>
-        public IFC_root IFC_Alignment_add(string alignmentname)
+        public IFC_root IFC_Alignment_add_bycurve(string alignmentname)
         { 
             IfcSite site = _vb.OfType<IfcSite>().First();
 
-            //dummy curve
-            IfcCartesianPoint zero = new IfcCartesianPoint(_vb, 0.0, 0.0,0.0);
-            IfcCartesianPoint end = new IfcCartesianPoint(_vb, 100.0, 100.0,0.0);
-            IfcPolyline polyline = new IfcPolyline(zero,end);
             IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
+            IfcAlignment alignment = new IfcAlignment(site,curve);
+            alignment.Name = alignmentname;
+
+         
+            return this;
+        }
+
+
+
+
+        //TODO: Testing + Add in road_geometry access handling
+        /// <summary>
+        /// Adds an alignment curve by points to the project and links it with the IfcSite entity
+        /// </summary>
+        /// <returns></returns>
+        public IFC_root IFC_Alignment_add_bypoints(string alignmentname, List<double> x, List<double> y, List<double> z)
+        {
+            IfcSite site = _vb.OfType<IfcSite>().First();
+            //Error Handling
+            if (x.Count != y.Count || x.Count != z.Count)
+            {
+                throw new Exception("Pointlist must have the same lenght!\n");
+            }
+
+            List<IfcCartesianPoint> points = null;
+            //Create Points for Polyline
+            for(int i = 0; i < x.Count; i++)
+            {
+                points.Add(new IfcCartesianPoint(_vb, x[i], y[i], z[i]));
+            }
+            //Create Alingment with Polyline
+            IfcPolyline polyline = new IfcPolyline(points);
             IfcAlignment alignment = new IfcAlignment(site, polyline);
             alignment.Name = alignmentname;
 
-
             return this;
         }
-        
+
+
+
+
         /// <summary>
         /// Watch node for Ifc content in the database
         /// </summary>
