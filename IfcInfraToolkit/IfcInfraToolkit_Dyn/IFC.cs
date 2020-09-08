@@ -240,12 +240,14 @@ namespace IfcInfraToolkit_Dyn
                 throw new Exception("Pointlist must have the same lenght!\n");
             }
 
-            List<IfcCartesianPoint> points = null;
+            List<IfcCartesianPoint> points = new List<IfcCartesianPoint>();
+
             //Create Points for Polyline
             for(int i = 0; i < x.Count; i++)
             {
                 points.Add(new IfcCartesianPoint(_vb, x[i], y[i], z[i]));
             }
+
             //Create Alingment with Polyline
             IfcPolyline polyline = new IfcPolyline(points);
             IfcAlignment alignment = new IfcAlignment(site, polyline);
