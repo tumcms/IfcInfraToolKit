@@ -67,7 +67,9 @@ namespace IfcInfraToolkit_Dyn
         /// <param name="slope_left"></param>
         /// <param name="slope_right"></param>
         /// <returns></returns>
-        public IFC_root IFC_road_geometry_add(String roadname, string alignmentname, List<double> stations,List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right)
+        public IFC_root IFC_road_geometry_add(String roadname, string alignmentname, List<double> stations,
+            List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right,
+            double roadstart=0.0)
         {
             //Error Detection
             //Check for Inputs for null
@@ -99,7 +101,7 @@ namespace IfcInfraToolkit_Dyn
 
 
             //Select Alignment via Name TODO: Select Axis out of the Alignment
-            /*IfcAlignment alignment = null;
+            IfcAlignment alignment = null;
             IEnumerable<IfcAlignment> query2 = _vb.OfType<IfcAlignment>();
             foreach (IfcAlignment i in query2)
             {
@@ -107,8 +109,16 @@ namespace IfcInfraToolkit_Dyn
                 {
                     alignment = i;
                 }
-            }*/
-            IfcCurve curve = _vb.OfType<IfcPolyline>().First();
+            }
+            //Check if there is a Alignment
+            if (alignment == null)
+            {
+                throw new ArgumentNullException("No Alignment found!\n");
+            }
+
+            IfcCurve curve = (IfcCurve)alignment.Axis;//Not sure if it is a proper solution
+
+            //IfcCurve curve = _vb.OfType<IfcPolyline>().First();
 
 
             //Select the road for adding the crosssection
@@ -122,11 +132,7 @@ namespace IfcInfraToolkit_Dyn
                 }
             }
 
-            //Check if there is a curve and road
-            if (/*alignment*/curve == null)
-            {
-                throw new ArgumentNullException("No curve found!\n");
-            }
+            //Check if there is a road
             if (road == null)
             {
                 throw new ArgumentNullException("No road found!\n");
@@ -169,12 +175,12 @@ namespace IfcInfraToolkit_Dyn
             IfcProductDefinitionShape produktdef = new IfcProductDefinitionShape(shaperep);
 
 
-            //Placement TODO: Change 0 to real starting Point
-            IfcDistanceExpression dist = new IfcDistanceExpression(_vb, 0);
-            IfcLinearPlacement origin = new IfcLinearPlacement(curve, dist);  //-> Placemtent
+            //Placement
+            IfcDistanceExpression dist = new IfcDistanceExpression(_vb, roadstart);
+            IfcLinearPlacement start = new IfcLinearPlacement(curve, dist);  //-> Placemtent
 
             //final assembly
-            IfcPavement pavement = new IfcPavement(site, origin, produktdef);
+            IfcPavement pavement = new IfcPavement(site, start, produktdef);
 
             //Link Pavement to Road
             road.AddElement(pavement);
