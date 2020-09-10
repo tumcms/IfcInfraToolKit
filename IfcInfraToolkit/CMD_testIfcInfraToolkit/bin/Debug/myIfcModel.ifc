@@ -1,0 +1,27 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION(('ViewDefinition [Ifc2x3NotAssigned]'),'2;1');
+FILE_NAME(
+/* name */ 'myIfcModel.ifc',
+/* time_stamp */ '2020-09-10T14:24:19',
+/* author */ ('Sebastian Esser'),
+/* organization */ ('Unknown'),
+/* preprocessor_version */ 'GeometryGymIFC v0.1.0.0 by Geometry Gym Pty Ltd built 2020-09-10T11:12:12',
+/* originating_system */ 'CMD_testIfcInfraToolkit v1.0.0.0',
+/* authorization */ 'None');
+
+FILE_SCHEMA (('IFC2X3'));
+ENDSEC;
+
+DATA;
+#1= IFCPROJECT('0Akgq6PI97MuA7mEFSuM4A',#7,'UNKNOWN PROJECT',$,$,$,$,$,$);
+#2= IFCPERSON('Sebastian Esser','Sebastian Esser',$,$,$,$,$,$);
+#3= IFCORGANIZATION($,'Unknown',$,$,$);
+#4= IFCPERSONANDORGANIZATION(#2,#3,$);
+#5= IFCAPPLICATION(#6,'0.1.0.0','CMD_testIfcInfraToolkit v1.0.0.0','CMD_testIfcInfraToolkit v1.0.0.0');
+#6= IFCORGANIZATION($,'Geometry Gym Pty Ltd',$,$,$);
+#7= IFCOWNERHISTORY(#4,#5,$,.ADDED.,1599740659,$,$,1599740659);
+ENDSEC;
+
+END-ISO-10303-21;
+
