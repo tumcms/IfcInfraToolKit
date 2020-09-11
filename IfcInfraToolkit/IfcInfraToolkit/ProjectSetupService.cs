@@ -41,21 +41,43 @@ namespace IfcInfraToolkit
             var project = new IfcProject(site, "myProject", IfcUnitAssignment.Length.Metre);
 
             // create an IfcFacility element
-            var facilityA = new IfcFacility(site, "FacilityA")
+            var trafficFacility = new IfcFacility(site, "TrafficWayA")
             {
-                CompositionType = IfcElementCompositionEnum.NOTDEFINED
+                CompositionType = IfcElementCompositionEnum.COMPLEX
             };
-            var facilityB = new IfcFacility(site, "myFacilityB")
+            var River = new IfcFacility(site, "River")
             {
                 CompositionType = IfcElementCompositionEnum.NOTDEFINED
             };
 
             var facilityPart1 = new IfcFacilityPart(
-                facilityA,
-                "Part1",
+                trafficFacility,
+                "myRoadPart01",
                 new IfcFacilityPartTypeSelect(
-                    IfcBridgePartTypeEnum.DECK), 
-                IfcFacilityUsageEnum.LATERAL);
+                    IfcRoadPartTypeEnum.ROADSEGMENT), 
+                IfcFacilityUsageEnum.LONGITUDINAL);
+            facilityPart1.Description = "TrafficWayA -> Segment 1";
+
+            var facilityPart2 = new IfcFacility(trafficFacility, "myBridge");
+            facilityPart2.Description = "TrafficWayA -> Segment 2";
+
+            var facilityPart3 = new IfcFacilityPart(
+                trafficFacility,
+                "myRoadPart02",
+                new IfcFacilityPartTypeSelect(
+                    IfcRoadPartTypeEnum.ROADSEGMENT),
+                IfcFacilityUsageEnum.LONGITUDINAL);
+            facilityPart3.Description = "TrafficWayA -> Segment 3";
+            
+            // River facility
+            var RiverPart = new IfcFacilityPart(
+                River,
+                "myRiver", 
+                new IfcFacilityPartTypeSelect(
+                    IfcMarinePartTypeEnum.WATERFIELD), 
+                IfcFacilityUsageEnum.LONGITUDINAL );
+            RiverPart.Description = "River that passes under the bridge";
+
 
             return database;
 
