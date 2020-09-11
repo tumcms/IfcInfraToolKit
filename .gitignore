@@ -4,3 +4,5 @@ IfcInfraToolkit/packages/
 IfcInfraToolkit/IfcInfraToolkit_Dyn/bin/
 IfcInfraToolkit/IfcInfraToolkit/bin/
 IfcInfraToolkit/.vs/IfcInfraToolkit/v16/.suo
+IfcInfraToolkit/CMD_testIfcInfraToolkit/bin/
+IfcInfraToolkit/CMD_testIfcInfraToolkit/obj/
