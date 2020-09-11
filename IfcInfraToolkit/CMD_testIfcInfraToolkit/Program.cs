@@ -14,7 +14,7 @@ namespace CMD_testIfcInfraToolkit
         {
 
             var myProjectSetupService = new IfcInfraToolkit.ProjectSetupService();
-            var myIfcDatabase = new GeometryGym.Ifc.DatabaseIfc();
+            var myIfcDatabase = myProjectSetupService.CreateDatabase();
 
             myIfcDatabase = myProjectSetupService.AddBaseProjectSetup(myIfcDatabase);
 
