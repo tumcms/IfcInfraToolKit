@@ -184,6 +184,7 @@ namespace IfcInfraToolkit_Dyn
 
             //Link Pavement to Road
             road.AddElement(pavement);
+            road.ObjectPlacement = start; 
 
             return this;
         }
