@@ -170,7 +170,7 @@ namespace IfcInfraToolkit_Dyn
 
             
             //link OpenCrossProfileDef to DistanceExpression
-            IfcSectionedSurface secsurf = new IfcSectionedSurface(curve, de, ocpd, true);
+            IfcSectionedSurface secsurf = new IfcSectionedSurface(curve, de, ocpd, false);
             IfcShapeRepresentation shaperep = new IfcShapeRepresentation(secsurf);
             IfcProductDefinitionShape produktdef = new IfcProductDefinitionShape(shaperep);
 
@@ -181,6 +181,8 @@ namespace IfcInfraToolkit_Dyn
 
             //final assembly
             IfcPavement pavement = new IfcPavement(site, start, produktdef);
+            pavement.Name = "Pavement";
+            pavement.Description = "Pavement Geometry";
 
             //Link Pavement to Road
             road.AddElement(pavement);
