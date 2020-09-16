@@ -1,3 +1,0 @@
-[submodule "IfcInfraToolkit/IfcInfraToolkit_Dyn/GeometryGymIFC"]
-	path = IfcInfraToolkit/IfcInfraToolkit_Dyn/GeometryGymIFC
-	url = https://github.com/GeometryGym/GeometryGymIFC.git
