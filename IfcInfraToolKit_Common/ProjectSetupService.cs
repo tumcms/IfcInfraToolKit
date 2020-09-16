@@ -14,7 +14,7 @@ namespace IfcInfraToolkit
         /// </summary>
         public ProjectSetupService()
         {
-            
+
         }
 
         /// <summary>
@@ -36,51 +36,49 @@ namespace IfcInfraToolkit
         {
             // create IfcSite instance
             var site = new IfcSite(database, "sampleSite");
-            
+
             // create top-most spatial structure element IfcProject, set units and assign facility to project
             var project = new IfcProject(site, "myProject", IfcUnitAssignment.Length.Metre);
+            return database;
+        }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="database"></param>
+        /// <param name="FacilityName"></param>
+        /// <param name="FacilityType"></param>
+        /// <param name="host"></param>
+        /// <returns></returns>
+        public DatabaseIfc AddFacility(DatabaseIfc database, string FacilityName, string FacilityType,
+            IfcSpatialStructureElement host)
+        {
             // create an IfcFacility element
-            var trafficFacility = new IfcFacility(site, "TrafficWayA")
+            var trafficFacility = new IfcFacility(host, FacilityName)
             {
                 CompositionType = IfcElementCompositionEnum.COMPLEX
             };
-            var River = new IfcFacility(site, "River")
-            {
-                CompositionType = IfcElementCompositionEnum.NOTDEFINED
-            };
+            return database;
+        }
 
-            var facilityPart1 = new IfcFacilityPart(
-                trafficFacility,
-                "myRoadPart01",
-                new IfcFacilityPartTypeSelect(
-                    IfcRoadPartTypeEnum.ROADSEGMENT), 
-                IfcFacilityUsageEnum.LONGITUDINAL);
-            facilityPart1.Description = "TrafficWayA -> Segment 1";
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="database"></param>
+        /// <param name="facilityPartName"></param>
+        /// <param name="facilityType"></param>
+        /// <param name="host"></param>
+        /// <returns></returns>
+        public DatabaseIfc AddFacilityPart(DatabaseIfc database, string facilityPartName, string facilityType,
+            IfcFacility host)
+        {
+            // ToDo: parse user input and select corresponding IFC content
+            var partType = new IfcFacilityPartTypeSelect(IfcBridgePartTypeEnum.ABUTMENT);
+            var usage = IfcFacilityUsageEnum.LATERAL;
 
-            var facilityPart2 = new IfcFacility(trafficFacility, "myBridge");
-            facilityPart2.Description = "TrafficWayA -> Segment 2";
-
-            var facilityPart3 = new IfcFacilityPart(
-                trafficFacility,
-                "myRoadPart02",
-                new IfcFacilityPartTypeSelect(
-                    IfcRoadPartTypeEnum.ROADSEGMENT),
-                IfcFacilityUsageEnum.LONGITUDINAL);
-            facilityPart3.Description = "TrafficWayA -> Segment 3";
-            
-            // River facility
-            var RiverPart = new IfcFacilityPart(
-                River,
-                "myRiver", 
-                new IfcFacilityPartTypeSelect(
-                    IfcMarinePartTypeEnum.WATERFIELD), 
-                IfcFacilityUsageEnum.LONGITUDINAL );
-            RiverPart.Description = "River that passes under the bridge";
-
+            var facilityPart = new IfcFacilityPart(host, facilityPartName, partType, usage);
 
             return database;
-
         }
     }
 }
