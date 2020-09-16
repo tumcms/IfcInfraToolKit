@@ -1,6 +1,6 @@
-﻿// Sebastian Esser20200608
+﻿
 
-namespace IfcInfraToolkit
+namespace IfcInfraToolkit_Common
 {
     public class ProductService
     {
