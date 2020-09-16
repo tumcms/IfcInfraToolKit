@@ -4,6 +4,7 @@ using System.Linq;
 using Autodesk.DesignScript.Runtime;
 using GeometryGym.Ifc;
 using IfcInfraToolkit_Common;
+using Microsoft.SqlServer.Server;
 
 
 namespace IfcInfraToolKit_DynamoCore
@@ -20,7 +21,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> init, create, IFC </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
         [MultiReturn(new[] {"DatabaseContainer"})]
-        public static Dictionary<string, object> CreateIfcModel()
+        public static Dictionary<string, object> CreateIfcModel(string projectName = "sampleProject", string siteName = "sampleSite")
         {
             // init container
             var container = new DatabaseContainer();
@@ -28,7 +29,7 @@ namespace IfcInfraToolKit_DynamoCore
             // add content to the database
             ProjectSetupService service = new ProjectSetupService();
             container.Database = service.CreateDatabase();
-            container.Database = service.AddBaseProjectSetup(container.Database);
+            container.Database = service.AddBaseProjectSetup(container.Database, projectName , siteName );
 
             // beautiful return values
             var d = new Dictionary<string, object>
@@ -61,7 +62,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <param name="hostGuid">GlobalId of parent element</param>
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "FacilityGUID" })]
-        public static Dictionary<string, object> AddFacility(DatabaseContainer databaseContainer, string facilityName, string hostGuid = "null")
+        public static Dictionary<string, object> AddFacility(DatabaseContainer databaseContainer, string hostGuid = "null", string facilityName = "DefaultFacility")
         {
             // get current db
             var database = databaseContainer.Database;
@@ -90,17 +91,19 @@ namespace IfcInfraToolKit_DynamoCore
         /// </summary>
         /// <param name="databaseContainer"></param>
         /// <param name="facilityPartName"></param>
-        /// <param name="hostGUID"></param>
+        /// <param name="hostGuid"></param>
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "FacilityPartGUID" })]
-        public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string facilityPartName, string hostGUID)
+        public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string hostGuid, string facilityPartName = "DefaultFacilityPart")
         {
             // get current db
             var database = databaseContainer.Database;
 
             // get host
-            var hostFacility = database.OfType<IfcFacility>().First(a => a.Guid.ToString() == hostGUID);
-            var hostFacilityPart = database.OfType<IfcFacilityPart>().First(a => a.Guid.ToString() == hostGUID);
+            var hostFacility = database.OfType<IfcFacility>()
+                .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
+            var hostFacilityPart = database.OfType<IfcFacilityPart>()
+                .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
 
             ProjectSetupService service = new ProjectSetupService();
 

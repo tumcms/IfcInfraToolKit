@@ -43,6 +43,21 @@ namespace IfcInfraToolkit_Common
         }
 
         /// <summary>
+        /// Set basic things that every ifc model needs -> InfraDEPL UT1
+        /// </summary>
+        /// <param name="database"></param>
+        /// <returns></returns>
+        public DatabaseIfc AddBaseProjectSetup(DatabaseIfc database, string projectName, string siteName)
+        {
+            // create IfcSite instance
+            var site = new IfcSite(database, siteName);
+
+            // create top-most spatial structure element IfcProject, set units and assign facility to project
+            var project = new IfcProject(site, projectName, IfcUnitAssignment.Length.Metre);
+            return database;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="database"></param>
@@ -51,12 +66,12 @@ namespace IfcInfraToolkit_Common
         /// <returns></returns>
         public Guid AddFacility(ref DatabaseIfc database, string FacilityName, IfcSpatialStructureElement host)
         {
+            // if no host was found in the model, add the facility to the IfcSite entity
             if (host == null)
             {
                 var project = database.Project;
                 host = project.Extract<IfcSite>().First();
             }
-
 
             // create an IfcFacility element
             var trafficFacility = new IfcFacility(host, FacilityName)
