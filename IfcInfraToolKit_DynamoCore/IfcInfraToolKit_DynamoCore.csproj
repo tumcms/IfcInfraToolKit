@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DynamoServices, Version=1.2.0.2690, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.DynamoServices.1.2.0\lib\net45\DynamoServices.dll</HintPath>
+    </Reference>
     <Reference Include="GeometryGymIFC">
       <HintPath>..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\bin\Debug\GeometryGymIFC.dll</HintPath>
     </Reference>
@@ -48,8 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseContainer.cs" />
     <Compile Include="IfcModelSetup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IfcInfraToolKit_Common\IfcInfraToolkit_Common.csproj">
+      <Project>{84741775-5CC9-46EB-A297-EEA4410D0A5B}</Project>
+      <Name>IfcInfraToolkit_Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
