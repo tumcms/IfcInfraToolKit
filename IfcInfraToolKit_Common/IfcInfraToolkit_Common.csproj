@@ -7,8 +7,8 @@
     <ProjectGuid>{84741775-5CC9-46EB-A297-EEA4410D0A5B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IfcInfraToolkit</RootNamespace>
-    <AssemblyName>IfcInfraToolkit</AssemblyName>
+    <RootNamespace>IfcInfraToolkit_Common</RootNamespace>
+    <AssemblyName>IfcInfraToolkit_Common</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GeometryGym.Ifc;
 
-namespace IfcInfraToolkit
+namespace IfcInfraToolkit_Common
 {
     public class ProjectSetupService
     {
