@@ -12,6 +12,10 @@ Most of the relevant Civil3D API dlls are shipped within the repository (see fol
 Reinstall all Dynamo-specific dependencies via the Nuget Manager. 
 Integrate the library compiled by the source code by importing the dll into your Dynamo in Civil3D. 
 
+1. Build GeometryGymIfc
+2. Open NugetPackageManager-Console, switch to *IfcInfraToolKit_DynamoC3D* and run the command `update-package -reinstall`. This cmd pulls all required nuget packages into your local environment and lets you build the 
+3. Build all projects
+
 ## Planned Features
 
 - [ ] Export alignments into IFC

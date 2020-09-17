@@ -1,0 +1,210 @@
+{
+  "Uuid": "d99c9deb-741c-4447-8b7f-1b3a46aafdf2",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "CreateAndStoreIFC",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.CreateIfcModel",
+      "Id": "98583dcbc9ed4c99b93834da4bc851fa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8f54edc1cb9049d5a44e83b756cb4e05",
+          "Name": "DatabaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.CreateIfcModel ( ): DatabaseContainer"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.SaveIfcModel@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
+      "Id": "2205cd2e4d38468b90b1e7b5b56b1138",
+      "Inputs": [
+        {
+          "Id": "e0579c4bf9484cada3492eb026e9289e",
+          "Name": "container",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7276f5bd1201450788f97f75a4f1aade",
+          "Name": "path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fcdf360aac5d42ecbae1f633e5246dfe",
+          "Name": "modelName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "53dcc0e602c04402bc8824d26b6a8b94",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\dev",
+      "InputValue": "C:\\dev",
+      "NodeType": "ExtensionNode",
+      "Id": "c28bcfb16b394da285dace8f9a158800",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b40570eb61ee459aa4f6b1df62d36134",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"mySampleModel\";",
+      "Id": "3de8e9bb446046cb8a2ea0a4d8e47879",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ebbb7663d3ea47239ba26db0a4a76b1c",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "8f54edc1cb9049d5a44e83b756cb4e05",
+      "End": "e0579c4bf9484cada3492eb026e9289e",
+      "Id": "9fe8cc13d4d64c1ba2a2373bd01dc556"
+    },
+    {
+      "Start": "b40570eb61ee459aa4f6b1df62d36134",
+      "End": "7276f5bd1201450788f97f75a4f1aade",
+      "Id": "cf302413761c461590f48032a15e8711"
+    },
+    {
+      "Start": "ebbb7663d3ea47239ba26db0a4a76b1c",
+      "End": "fcdf360aac5d42ecbae1f633e5246dfe",
+      "Id": "63c93f4512ee4890be4caa4a38a48d7a"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.CreateIfcModel",
+        "Id": "98583dcbc9ed4c99b93834da4bc851fa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 867.285928524847,
+        "Y": 604.79109174909013
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.SaveIfcModel",
+        "Id": "2205cd2e4d38468b90b1e7b5b56b1138",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1273.777447619666,
+        "Y": 703.10963658624985
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Directory Path",
+        "Id": "c28bcfb16b394da285dace8f9a158800",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 940.78223321551832,
+        "Y": 766.0160223619572
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "3de8e9bb446046cb8a2ea0a4d8e47879",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 907.91829438999594,
+        "Y": 903.2331700141599
+      }
+    ],
+    "Annotations": [],
+    "X": -941.460622197568,
+    "Y": -755.66665674974558,
+    "Zoom": 1.476180239263613
+  }
+}
