@@ -1,9 +1,12 @@
 ﻿// Sebastian Esser20200608
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.AECC.Interop.Land;
 using Autodesk.DesignScript.Runtime;
+using GeometryGym.Ifc;
+using IfcInfraToolKit_DynamoCore;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -86,5 +89,82 @@ namespace IfcInfraToolkit_Dyn
         {
             return string.Format($"Alignment (Name = {this.Name}, Length = {this.Length.ToString("#.###")} )");
         }
+
+        //TODO: Testing + Add in road_geometry access handling
+        /// <summary>
+        /// Adds an alignment curve by points to the project and links it with the IfcSite entity
+        /// </summary>
+        /// <returns></returns>
+        [MultiReturn(new[] { "DatabaseContainer", "AlignmentGUID" })]
+        public static Dictionary<string, object> IfcAddAlignmentByPoints(DatabaseContainer databaseContainer,
+            string Alignmentname,
+            List<double> x,
+            List<double> y,
+            List<double> z) { 
+        
+            var db = databaseContainer.Database;
+            IfcSite site = db.OfType<IfcSite>().First();
+            //Error Handling
+            if (x.Count != y.Count || x.Count != z.Count)
+            {
+                throw new Exception("Pointlist must have the same lenght!\n");
+            }
+
+            List<IfcCartesianPoint> points = new List<IfcCartesianPoint>();
+
+            //Create Points for Polyline
+            for (int i = 0; i < x.Count; i++)
+            {
+                points.Add(new IfcCartesianPoint(db, x[i], y[i], z[i]));
+            }
+
+            //Create Alingment with Polyline
+            IfcPolyline polyline = new IfcPolyline(points);
+            IfcAlignment alignment = new IfcAlignment(site, polyline);
+            alignment.Name = Alignmentname;
+
+            var re = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"AlignmentGUID", alignment.Guid}
+            };
+
+            return re;
+            }
+
+        //TODO: Implement + Add in road_geometry access handling
+        /// <summary>
+        /// Adds an alignment curve to the project and links it with the IfcSite entity
+        /// </summary>
+        /// <returns></returns>
+        [MultiReturn(new[] { "DatabaseContainer", "AlignmentGUID" })]
+        public static Dictionary<string, object> IfcAddAlignmentByCurve(
+            DatabaseContainer databaseContainer,
+            string Alignmentname = "DefaultAlignment")
+        {
+            var db = databaseContainer.Database;
+            IfcSite site = db.OfType<IfcSite>().First();
+
+            IfcAlignmentCurve curve = new IfcAlignmentCurve(db);
+            IfcAlignment alignment = new IfcAlignment(site, curve);
+            alignment.Name = Alignmentname;
+
+
+            var re = new Dictionary<string, object>
+                {
+                    {"DatabaseContainer", databaseContainer},
+                    {"AlignmentGUID", alignment.Guid}
+                };
+
+            return re;
+        }
+
+
     }
+
+
+
+
+
 }
+
