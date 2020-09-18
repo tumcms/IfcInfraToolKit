@@ -14,7 +14,8 @@ using NUnit.Framework;
 using System.Linq;
 using NUnit.Framework.Constraints;
 using Autodesk.AECC.Interop.Land;
-
+using IfcInfraToolKit_DynamoCore;
+using Autodesk.DesignScript.Runtime;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -56,7 +57,7 @@ namespace IfcInfraToolkit_Dyn
             _vb.WriteFile(finalPath);
         }
 
-        
+
         //TODO: change alingment selection
         /// <summary>
         /// Adds an IfcRoad with IfcOpenProfileDefs to the IFC model
@@ -67,10 +68,12 @@ namespace IfcInfraToolkit_Dyn
         /// <param name="slope_left"></param>
         /// <param name="slope_right"></param>
         /// <returns></returns>
-        public IFC_root IFC_road_geometry_add(String roadname, string alignmentname, List<double> stations,
-            List<double> width_left, List<double> width_right, List<double> slope_left,List<double> slope_right,
-            double roadstart=0.0)
+        [MultiReturn(new[] { "DatabaseContainer", "RoadPartGUID" })]
+        public static Dictionary<string, object> IFC_road_geometry_add(DatabaseContainer databaseContainer, string RoadGuid, string AlignmentGuid, List<double> stations,
+            List<double> width_left, List<double> width_right, List<double> slope_left, List<double> slope_right,
+            double roadstart = 0.0)
         {
+            var db = databaseContainer.Database;
             //Error Detection
             //Check for Inputs for null
             if (width_right == null || width_left == null || slope_right == null || slope_left == null
@@ -80,13 +83,13 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //Check if all Inputs have the same length 
-            if (width_right.Count!=width_left.Count || slope_right.Count != slope_left.Count
+            if (width_right.Count != width_left.Count || slope_right.Count != slope_left.Count
                 || width_right.Count != slope_right.Count || stations.Count != width_right.Count)
             {
                 throw new ArgumentException("All Inputs need to have the same length");
             }
-            
-          
+
+
             //Create lists in which the widths/slopes are sorted in tuple
             //ordered by station
             List<List<double>> widths = new List<List<double>>();
@@ -97,15 +100,15 @@ namespace IfcInfraToolkit_Dyn
             List<IfcDistanceExpression> de = new List<IfcDistanceExpression>();
 
             //var definition
-            IfcSite site = _vb.OfType<IfcSite>().First();
+            IfcSite site = db.OfType<IfcSite>().First();
 
 
             //Select Alignment via Name TODO: Select Axis out of the Alignment
             IfcAlignment alignment = null;
-            IEnumerable<IfcAlignment> query2 = _vb.OfType<IfcAlignment>();
+            IEnumerable<IfcAlignment> query2 = db.OfType<IfcAlignment>();
             foreach (IfcAlignment i in query2)
             {
-                if (i.Name.Equals(alignmentname))
+                if (i.Guid.Equals(AlignmentGuid))
                 {
                     alignment = i;
                 }
@@ -123,10 +126,10 @@ namespace IfcInfraToolkit_Dyn
 
             //Select the road for adding the crosssection
             IfcRoad road = null;
-            IEnumerable<IfcRoad> query1 = _vb.OfType<IfcRoad>();
-            foreach(IfcRoad i in query1)
+            IEnumerable<IfcRoad> query1 = db.OfType<IfcRoad>();
+            foreach (IfcRoad i in query1)
             {
-                if (i.Name.Equals(roadname))
+                if (i.Guid.Equals(RoadGuid))
                 {
                     road = i;
                 }
@@ -155,40 +158,44 @@ namespace IfcInfraToolkit_Dyn
                 slopes.Add(tmp_s);
 
             }
-            
+
             //Add at each station the Crossprofiledef
-            for (int i = 0; i< widths.Count; i++) {
+            for (int i = 0; i < widths.Count; i++)
+            {
 
                 //Create OpenCrossProfileDef and collect them
-                IfcOpenCrossProfileDef crsec = new IfcOpenCrossProfileDef(_vb, "Road_part" + (i + 1),true, widths[i], slopes[i]);
+                IfcOpenCrossProfileDef crsec = new IfcOpenCrossProfileDef(db, "Road_part" + (i + 1), true, widths[i], slopes[i]);
                 ocpd.Add(crsec);
                 //Create DistanceExpression and collect them
-                IfcDistanceExpression distex = new IfcDistanceExpression(_vb, stations[i]);
+                IfcDistanceExpression distex = new IfcDistanceExpression(db, stations[i]);
                 de.Add(distex);
 
             }
 
-            
+
             //link OpenCrossProfileDef to DistanceExpression
-            IfcSectionedSurface secsurf = new IfcSectionedSurface(curve, de, ocpd, false);
+            IfcSectionedSurface secsurf = new IfcSectionedSurface(curve, de, ocpd, true);
             IfcShapeRepresentation shaperep = new IfcShapeRepresentation(secsurf);
             IfcProductDefinitionShape produktdef = new IfcProductDefinitionShape(shaperep);
 
 
             //Placement
-            IfcDistanceExpression dist = new IfcDistanceExpression(_vb, roadstart);
+            IfcDistanceExpression dist = new IfcDistanceExpression(db, roadstart);
             IfcLinearPlacement start = new IfcLinearPlacement(curve, dist);  //-> Placemtent
 
             //final assembly
             IfcPavement pavement = new IfcPavement(site, start, produktdef);
-            pavement.Name = "Pavement";
-            pavement.Description = "Pavement Geometry";
 
             //Link Pavement to Road
             road.AddElement(pavement);
-            road.ObjectPlacement = start; 
 
-            return this;
+            var re = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"RoadPartGUID", pavement.Guid}
+            };
+
+            return re;
         }
 
 
@@ -199,20 +206,26 @@ namespace IfcInfraToolkit_Dyn
         /// Adds an road to the project
         /// </summary>
         /// <returns></returns>
-        public IFC_root IFC_road_add(String roadname)
+        [MultiReturn(new[] { "DatabaseContainer", "RoadGUID" })]
+        public static Dictionary<string, object> IFC_road_add(DatabaseContainer databaseContainer, string hostGuid = "null", string roadname = "DefaultRoad")
         {
             //var definition
-            IfcSite site = _vb.OfType<IfcSite>().First();
-            IfcRoad road = new IfcRoad(_vb);
+            IfcSite site = databaseContainer.Database.OfType<IfcSite>().First();
+            IfcRoad road = new IfcRoad(databaseContainer.Database);
             road.Name = roadname;
             site.AddAggregated(road);
             // Placement needs to be changed when alingment is implemented
             //IfcLinearPlacement origin = new IfcLinearPlacement();
             //road.ObjectPlacement(origin); 
 
-            return this;
-        }
+            var re = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"RoadGUID", road.Guid}
+            };
 
+            return re;
+        }
 
 
         //TODO: Implement + Add in road_geometry access handling
@@ -220,16 +233,24 @@ namespace IfcInfraToolkit_Dyn
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
         /// <returns></returns>
-        public IFC_root IFC_Alignment_add_bycurve(string alignmentname)
-        { 
-            IfcSite site = _vb.OfType<IfcSite>().First();
+        [MultiReturn(new[] { "DatabaseContainer", "AlignmentGUID" })]
+        public static Dictionary<string, object> IFC_Alignment_add_bycurve(DatabaseContainer databaseContainer, string Alignmentname = "DefaultAlignment")
+        {
+            var db = databaseContainer.Database;
+            IfcSite site = db.OfType<IfcSite>().First();
 
-            IfcAlignmentCurve curve = new IfcAlignmentCurve(_vb);
-            IfcAlignment alignment = new IfcAlignment(site,curve);
-            alignment.Name = alignmentname;
+            IfcAlignmentCurve curve = new IfcAlignmentCurve(db);
+            IfcAlignment alignment = new IfcAlignment(site, curve);
+            alignment.Name = Alignmentname;
 
-         
-            return this;
+
+            var re = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"AlignmentGUID", alignment.Guid}
+            };
+
+            return re;
         }
 
 
@@ -240,9 +261,11 @@ namespace IfcInfraToolkit_Dyn
         /// Adds an alignment curve by points to the project and links it with the IfcSite entity
         /// </summary>
         /// <returns></returns>
-        public IFC_root IFC_Alignment_add_bypoints(string alignmentname, List<double> x, List<double> y, List<double> z)
+        [MultiReturn(new[] { "DatabaseContainer", "AlignmentGUID" })]
+        public static Dictionary<string, object> IFC_Alignment_add_bypoints(DatabaseContainer databaseContainer, string Alignmentname, List<double> x, List<double> y, List<double> z)
         {
-            IfcSite site = _vb.OfType<IfcSite>().First();
+            var db = databaseContainer.Database;
+            IfcSite site = db.OfType<IfcSite>().First();
             //Error Handling
             if (x.Count != y.Count || x.Count != z.Count)
             {
@@ -252,17 +275,23 @@ namespace IfcInfraToolkit_Dyn
             List<IfcCartesianPoint> points = new List<IfcCartesianPoint>();
 
             //Create Points for Polyline
-            for(int i = 0; i < x.Count; i++)
+            for (int i = 0; i < x.Count; i++)
             {
-                points.Add(new IfcCartesianPoint(_vb, x[i], y[i], z[i]));
+                points.Add(new IfcCartesianPoint(db, x[i], y[i], z[i]));
             }
 
             //Create Alingment with Polyline
             IfcPolyline polyline = new IfcPolyline(points);
             IfcAlignment alignment = new IfcAlignment(site, polyline);
-            alignment.Name = alignmentname;
+            alignment.Name = Alignmentname;
 
-            return this;
+            var re = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"AlignmentGUID", alignment.Guid}
+            };
+
+            return re;
         }
 
 
@@ -272,9 +301,9 @@ namespace IfcInfraToolkit_Dyn
         /// Watch node for Ifc content in the database
         /// </summary>
         /// <returns></returns>
-        public DatabaseIfc Watch_IFC()
+        public static DatabaseIfc Watch_IFC(DatabaseContainer databaseContainer)
         {
-           return _vb;
+            return databaseContainer.Database;
         }
     }
 }
