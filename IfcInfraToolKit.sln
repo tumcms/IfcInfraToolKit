@@ -4,12 +4,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_Common", "IfcInfraToolKit_Common\IfcInfraToolkit_Common.csproj", "{84741775-5CC9-46EB-A297-EEA4410D0A5B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_DynamoC3D", "IfcInfraToolKit_DynamoC3D\IfcInfraToolkit_DynamoC3D.csproj", "{A17252B7-6231-4BAD-B82F-0D42A9819058}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolKit_DynamoRevit", "IfcInfraToolKit_DynamoRevit\IfcInfraToolKit_DynamoRevit.csproj", "{9C1E2113-EAA2-47E6-80ED-3577A2017BE9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
+		{84741775-5CC9-46EB-A297-EEA4410D0A5B} = {84741775-5CC9-46EB-A297-EEA4410D0A5B}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolKit_DynamoCore", "IfcInfraToolKit_DynamoCore\IfcInfraToolKit_DynamoCore.csproj", "{D0F227C9-2437-4CE5-9024-1596A42E34A1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryGymIFC", "submodules\geometrygymifc\DLL Projects\GeometryGymIFC\GeometryGymIFC.csproj", "{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}"
 EndProject
