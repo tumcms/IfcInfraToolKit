@@ -147,7 +147,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// Watch node for Ifc content in the database
         /// </summary>
         /// <returns></returns>
-        public static DatabaseIfc Watch_IFC(DatabaseContainer databaseContainer)
+        public static DatabaseIfc WatchIFC(DatabaseContainer databaseContainer)
         {
             return databaseContainer.Database;
         }

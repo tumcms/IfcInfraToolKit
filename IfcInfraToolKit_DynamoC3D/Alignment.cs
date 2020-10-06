@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.AECC.Interop.Land;
+using Autodesk.AutoCAD.Interop.Common;
 using Autodesk.DesignScript.Runtime;
 using GeometryGym.Ifc;
 using IfcInfraToolKit_DynamoCore;
@@ -90,7 +91,7 @@ namespace IfcInfraToolkit_Dyn
             return string.Format($"Alignment (Name = {this.Name}, Length = {this.Length.ToString("#.###")} )");
         }
 
-        //TODO: Testing + Add in road_geometry access handling
+        //quick solution for Alignment export
         /// <summary>
         /// Adds an alignment curve by points to the project and links it with the IfcSite entity
         /// </summary>
@@ -140,20 +141,57 @@ namespace IfcInfraToolkit_Dyn
         [MultiReturn(new[] { "DatabaseContainer", "AlignmentGUID" })]
         public static Dictionary<string, object> IfcAddAlignmentByCurve(
             DatabaseContainer databaseContainer,
+            Alignment alignment,
             string Alignmentname = "DefaultAlignment")
         {
             var db = databaseContainer.Database;
             IfcSite site = db.OfType<IfcSite>().First();
 
+            //Errorhandling
+            if (alignment == null)
+            {
+                throw new ArgumentNullException("No Alignment found!");
+            }
+
             IfcAlignmentCurve curve = new IfcAlignmentCurve(db);
-            IfcAlignment alignment = new IfcAlignment(site, curve);
-            alignment.Name = Alignmentname;
+            IfcAlignment ifcalignment = new IfcAlignment(site, curve);
+            ifcalignment.Name = Alignmentname;
 
 
+            //experimenting with C3D Alingment
+            var entities = alignment._entities;
+
+            foreach (AeccAlignmentCurve ae in entities)
+            {
+                //curve handling
+                //TODO: Convert data into IFC
+                if (ae.Type == AeccAlignmentEntityType.aeccArc)
+                {
+                    AeccAlignmentArc allvalues = ae as AeccAlignmentArc;
+                    var startx = allvalues.StartEasting;
+                    var starty = allvalues.StartNorthing;
+
+                }
+
+                // strait lines handling
+                //TODO: Convert data into IFC
+                if (ae.Type == AeccAlignmentEntityType.aeccTangent)
+                {
+                    AeccAlignmentTangent allvalues = ae as AeccAlignmentTangent;
+                    var startx = allvalues.StartEasting;
+                    var starty = allvalues.StartNorthing;
+                }
+
+
+            }
+
+            //end testing
+
+            //return values
             var re = new Dictionary<string, object>
                 {
                     {"DatabaseContainer", databaseContainer},
-                    {"AlignmentGUID", alignment.Guid}
+                    {"AlignmentGUID", ifcalignment.Guid}
                 };
 
             return re;
