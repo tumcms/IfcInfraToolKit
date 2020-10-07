@@ -133,7 +133,7 @@ namespace IfcInfraToolkit_Dyn
             return re;
             }
 
-        //TODO: Implement + Add in road_geometry access handling
+        //TODO: Implement Vertical Segemnts / Testing
         /// <summary>
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
@@ -142,6 +142,7 @@ namespace IfcInfraToolkit_Dyn
         public static Dictionary<string, object> IfcAddAlignmentByCurve(
             DatabaseContainer databaseContainer,
             Alignment alignment,
+            bool twoDim= true,
             string Alignmentname = "DefaultAlignment")
         {
             var db = databaseContainer.Database;
@@ -153,9 +154,15 @@ namespace IfcInfraToolkit_Dyn
                 throw new ArgumentNullException("No Alignment found!");
             }
 
+
+
             IfcAlignmentCurve curve = new IfcAlignmentCurve(db);
             IfcAlignment ifcalignment = new IfcAlignment(site, curve);
             ifcalignment.Name = Alignmentname;
+
+            var segmentshoz = new List<IfcAlignment2DHorizontalSegment>();
+
+
 
 
             //experimenting with C3D Alingment
@@ -163,27 +170,56 @@ namespace IfcInfraToolkit_Dyn
 
             foreach (AeccAlignmentCurve ae in entities)
             {
-                //curve handling
-                //TODO: Convert data into IFC
+                //Circular handling
                 if (ae.Type == AeccAlignmentEntityType.aeccArc)
                 {
+                    //Get Values of the Circular element
                     AeccAlignmentArc allvalues = ae as AeccAlignmentArc;
                     var startx = allvalues.StartEasting;
                     var starty = allvalues.StartNorthing;
+                    var lenght = allvalues.Length;
+                    var dircetion = allvalues.StartDirection;
+                    var clockwise = allvalues.Clockwise;
+                    var radius = allvalues.Radius;
+
+
+                    //Convert data into IFC
+                    var start = new IfcCartesianPoint(db, startx, starty);
+                    var seg = new IfcCircularArcSegment2D(start, dircetion, radius, lenght, !clockwise);
+                    var tmp = new IfcAlignment2DHorizontalSegment(seg);
+                    segmentshoz.Add(tmp);
 
                 }
 
                 // strait lines handling
-                //TODO: Convert data into IFC
                 if (ae.Type == AeccAlignmentEntityType.aeccTangent)
                 {
                     AeccAlignmentTangent allvalues = ae as AeccAlignmentTangent;
+                    //Get Values of the line
                     var startx = allvalues.StartEasting;
                     var starty = allvalues.StartNorthing;
+                    var direction = allvalues.Direction;
+                    var length = allvalues.Length;
+
+                    //Convert Values into IFC
+                    var start = new IfcCartesianPoint(db, startx, starty);
+                    var seg = new IfcLineSegment2D(start, direction, length);
+                    var tmp = new IfcAlignment2DHorizontalSegment(seg);
+                    segmentshoz.Add(tmp);
+
                 }
 
-
             }
+
+            //Errorhandling no Segments
+            if (segmentshoz.Count == 0)
+            {
+                throw new Exception("No Horizontale Segemente found!");
+            }
+            //Save Data into Curve
+            IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
+            curve.Horizontal = horizontal;
+
 
             //end testing
 
