@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolKit_DynamoCore"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryGymIFC", "submodules\geometrygymifc\DLL Projects\GeometryGymIFC\GeometryGymIFC.csproj", "{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off_GeomLibrary", "utilServices\Off_GeomLibrary\Off_GeomLibrary.csproj", "{0752CB64-500D-4D1F-B92E-B036157BAB25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,14 @@ Global
 		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|x64.ActiveCfg = Release|x64
 		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|x64.Build.0 = Release|x64
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|x64.Build.0 = Debug|Any CPU
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|x64.ActiveCfg = Release|Any CPU
+		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

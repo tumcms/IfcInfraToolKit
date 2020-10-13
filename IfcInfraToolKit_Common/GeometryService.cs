@@ -2,7 +2,7 @@
 
 namespace IfcInfraToolkit_Common
 {
-    public class GeometryService
+    public abstract class GeometryService
     {
         
     }
