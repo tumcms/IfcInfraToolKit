@@ -34,12 +34,18 @@
     <Reference Include="DynamoServices, Version=1.2.0.2690, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DynamoVisualProgramming.DynamoServices.1.2.0\lib\net45\DynamoServices.dll</HintPath>
     </Reference>
+    <Reference Include="DynamoUnits, Version=1.2.0.2690, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.1.2.0\lib\net45\DynamoUnits.dll</HintPath>
+    </Reference>
     <Reference Include="GeometryGymIFC">
       <HintPath>..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\bin\Debug\GeometryGymIFC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ProtoGeometry, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DynamoVisualProgramming.ZeroTouchLibrary.1.2.0\lib\net45\ProtoGeometry.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,12 +59,17 @@
   <ItemGroup>
     <Compile Include="DatabaseContainer.cs" />
     <Compile Include="IfcModelSetup.cs" />
+    <Compile Include="MeshImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\IfcInfraToolKit_Common\IfcInfraToolkit_Common.csproj">
       <Project>{84741775-5CC9-46EB-A297-EEA4410D0A5B}</Project>
       <Name>IfcInfraToolkit_Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\utilServices\Off_GeomLibrary\Off_GeomLibrary.csproj">
+      <Project>{0752CB64-500D-4D1F-B92E-B036157BAB25}</Project>
+      <Name>Off_GeomLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

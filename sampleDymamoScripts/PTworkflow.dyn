@@ -1,0 +1,167 @@
+{
+  "Uuid": "8ab251ec-4449-448a-ac27-1f1c2f68c0fb",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "PTworkflow",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string",
+      "Id": "ce0b6344c52c419ea82e063158a90fd7",
+      "Inputs": [
+        {
+          "Id": "6c69e10d16004f1d9fd6d3fcbea74ffd",
+          "Name": "offFilePath",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5c67e48ae83e45808b682a7448b3cf03",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\pier_1.off",
+      "InputValue": ".\\pier_1.off",
+      "NodeType": "ExtensionNode",
+      "Id": "9ca04406266240ce9134827990d96ee3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0fc4454a753e480d9f463f52765821f4",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.Visualize@var",
+      "Id": "0f3ecc4b471548f4babf990fc7ee13f9",
+      "Inputs": [
+        {
+          "Id": "430d994df89345c58465b3c57b4b793c",
+          "Name": "geometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6e24c12da6714208b1e7a91163014428",
+          "Name": "ptList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.Visualize (geometry: var): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "5c67e48ae83e45808b682a7448b3cf03",
+      "End": "430d994df89345c58465b3c57b4b793c",
+      "Id": "bc583e6ad99040ab8125467e4f6b101f"
+    },
+    {
+      "Start": "0fc4454a753e480d9f463f52765821f4",
+      "End": "6c69e10d16004f1d9fd6d3fcbea74ffd",
+      "Id": "458bf1547b6f4bb8aa7e62b122deda03"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "ce0b6344c52c419ea82e063158a90fd7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1074.5714285714287,
+        "Y": 573.71428571428567
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "9ca04406266240ce9134827990d96ee3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 718.85714285714289,
+        "Y": 290.85714285714289
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.Visualize",
+        "Id": "0f3ecc4b471548f4babf990fc7ee13f9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1702.8571428571427,
+        "Y": 442.28571428571433
+      }
+    ],
+    "Annotations": [],
+    "X": 1.1372254126729331,
+    "Y": -49.539226814138033,
+    "Zoom": 0.85798632165930477
+  }
+}
