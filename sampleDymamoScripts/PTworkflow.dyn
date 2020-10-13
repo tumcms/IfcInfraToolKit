@@ -12,13 +12,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
       "Id": "ce0b6344c52c419ea82e063158a90fd7",
       "Inputs": [
         {
           "Id": "6c69e10d16004f1d9fd6d3fcbea74ffd",
           "Name": "offFilePath",
-          "Description": "string",
+          "Description": "string[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -37,7 +37,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string): var[]..[]"
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
@@ -63,13 +63,13 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.Visualize@var",
-      "Id": "0f3ecc4b471548f4babf990fc7ee13f9",
+      "FunctionSignature": "Tessellation.Delaunay.ByPoints@Autodesk.DesignScript.Geometry.Point[]",
+      "Id": "072e31880bc34191a8b9fb4215539d96",
       "Inputs": [
         {
-          "Id": "430d994df89345c58465b3c57b4b793c",
-          "Name": "geometry",
-          "Description": "var",
+          "Id": "59d15c17f8974143a12a4ba815040883",
+          "Name": "points",
+          "Description": "Eine Punktmenge.\n\nPoint[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -78,8 +78,77 @@
       ],
       "Outputs": [
         {
-          "Id": "6e24c12da6714208b1e7a91163014428",
-          "Name": "ptList",
+          "Id": "408b92dfa22248eeb7f7d9049ef9d149",
+          "Name": "Curve[]",
+          "Description": "Curve[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Delaunay-Triangulation einer Punktmenge.\n\nDelaunay.ByPoints (points: Point[]): Curve[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "c45b96ae86f843249e12e3b717e827b9",
+      "Inputs": [
+        {
+          "Id": "a05ad7509fa84c8eb365a1af2badcda9",
+          "Name": "list",
+          "Description": "Zu vereinfachende Liste\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d0d1f9b3adbc4d7ba718f3a55a2fe8f4",
+          "Name": "amt",
+          "Description": "Die zu entfernenden Verschachtelungsebenen\n\nint\nVorgabewert : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c4808bccba404cfa9855e2ca6c3f27c4",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPoints@var[]",
+      "Id": "0ace6a5f9f8f4541b62baba3665c9499",
+      "Inputs": [
+        {
+          "Id": "7f92bead8cf340d9bd36b68662f0d6da",
+          "Name": "geometry",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a7916f9493a04919962ce822010140a4",
+          "Name": "DynamoPointList",
           "Description": "var",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -88,19 +157,29 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "MeshImporter.Visualize (geometry: var): var[]..[]"
+      "Description": "MeshImporter.ToDynamoPoints (geometry: var[]): var[]..[]"
     }
   ],
   "Connectors": [
     {
       "Start": "5c67e48ae83e45808b682a7448b3cf03",
-      "End": "430d994df89345c58465b3c57b4b793c",
-      "Id": "bc583e6ad99040ab8125467e4f6b101f"
+      "End": "a05ad7509fa84c8eb365a1af2badcda9",
+      "Id": "7aa0f907208e48549427847895d46ad5"
+    },
+    {
+      "Start": "5c67e48ae83e45808b682a7448b3cf03",
+      "End": "7f92bead8cf340d9bd36b68662f0d6da",
+      "Id": "e1981d8b8b0a4c969670698f00ff5652"
     },
     {
       "Start": "0fc4454a753e480d9f463f52765821f4",
       "End": "6c69e10d16004f1d9fd6d3fcbea74ffd",
       "Id": "458bf1547b6f4bb8aa7e62b122deda03"
+    },
+    {
+      "Start": "a7916f9493a04919962ce822010140a4",
+      "End": "59d15c17f8974143a12a4ba815040883",
+      "Id": "f9b0d30f66ac48d98a0ac7207aa1449c"
     }
   ],
   "Dependencies": [],
@@ -150,13 +229,33 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "MeshImporter.Visualize",
-        "Id": "0f3ecc4b471548f4babf990fc7ee13f9",
+        "Name": "Delaunay.ByPoints",
+        "Id": "072e31880bc34191a8b9fb4215539d96",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1702.8571428571427,
-        "Y": 442.28571428571433
+        "X": 1877.7762243708225,
+        "Y": 761.33071450290913
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "c45b96ae86f843249e12e3b717e827b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1611.7538702865754,
+        "Y": 846.96231817731848
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.ToDynamoPoints",
+        "Id": "0ace6a5f9f8f4541b62baba3665c9499",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1315.6627009838799,
+        "Y": 790.63521098279716
       }
     ],
     "Annotations": [],
