@@ -1,0 +1,458 @@
+{
+  "Uuid": "d40b764c-43ee-4357-b877-7664183157b4",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "simple_alignment_export",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.Civil3DApplication.Civil3DApplication",
+      "Id": "1afbe0a0489742d38c750220f6a5c672",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4fba8d7deedf47179b1c4d31268f52fa",
+          "Name": "Civil3DApplication",
+          "Description": "Civil3DApplication",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Civil3DApplication.Civil3DApplication ( ): Civil3DApplication"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.Civil3DApplication.GetDocuments@IfcInfraToolkit_Dyn.Civil3DApplication",
+      "Id": "65d2f969e69c4b16a70d97bf104da301",
+      "Inputs": [
+        {
+          "Id": "babd8bb4945b4b97a7b52231b2dca8e3",
+          "Name": "Civil3DApplication",
+          "Description": "Civil3DApplication",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "944342f13f064b5391dd424da0d174fd",
+          "Name": "Civil3DDocument[]",
+          "Description": "Civil3DDocument[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Civil3DApplication.GetDocuments (Civil3DApplication: Civil3DApplication): Civil3DDocument[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.Civil3DDocument.GetAlignments@IfcInfraToolkit_Dyn.Civil3DDocument",
+      "Id": "20d1c3d6f95c4b7290e65c53f1e776ba",
+      "Inputs": [
+        {
+          "Id": "2a43c6eb25794b1a8ac251f9fe38cde1",
+          "Name": "Civil3DDocument",
+          "Description": "Civil3DDocument",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1b2ca6aa67874b699098e0c5f37dc169",
+          "Name": "Alignment[]",
+          "Description": "Alignment[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Civil3DDocument.GetAlignments (Civil3DDocument: Civil3DDocument): Alignment[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.Alignment.IfcAddAlignmentByCurve@IfcInfraToolKit_DynamoCore.DatabaseContainer,IfcInfraToolkit_Dyn.Alignment,bool,string",
+      "Id": "8524b9b6a0fe4c6c9eab58e5a4fe1c37",
+      "Inputs": [
+        {
+          "Id": "649e27f4aa464faf9de722dcba35792e",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "33564c902fa4450ea2a2b8457ba4a4d0",
+          "Name": "alignment",
+          "Description": "Alignment",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "76bd5bf9b66547dfa438de77a8a33604",
+          "Name": "twoDim",
+          "Description": "bool\nVorgabewert : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1ad9607b496b4ff9a8a3b1e2923e2564",
+          "Name": "Alignmentname",
+          "Description": "string\nVorgabewert : \"DefaultAlignment\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dbdfdb3bd28a48468374b22f615b5811",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ecd5d4abee684e1b9af353486a0a1aa8",
+          "Name": "AlignmentGUID",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Alignment.IfcAddAlignmentByCurve (databaseContainer: DatabaseContainer, alignment: Alignment, twoDim: bool = true, Alignmentname: string = \"DefaultAlignment\"): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.CreateIfcModel@string,string",
+      "Id": "8ee440ed273d4839a5b32b4cf7adc2d7",
+      "Inputs": [
+        {
+          "Id": "b5de20d95ab5439bb88e0982f03fd02c",
+          "Name": "projectName",
+          "Description": "string\nVorgabewert : \"sampleProject\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1bff049881774ee3ae64507390558bd7",
+          "Name": "siteName",
+          "Description": "string\nVorgabewert : \"sampleSite\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "32bae242d1564281947c8238cd319f04",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.WatchIFC@IfcInfraToolKit_DynamoCore.DatabaseContainer",
+      "Id": "752b57d33b79495e89e052d80ce3376b",
+      "Inputs": [
+        {
+          "Id": "e6d7471ffdbe486a83e02cc5c0079a14",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1ed7aea682a643239685f333704cb824",
+          "Name": "var",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.WatchIFC (databaseContainer: DatabaseContainer): var"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.SaveIfcModel@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
+      "Id": "7b78173a2c6d42d8b351b5c5cebb4dda",
+      "Inputs": [
+        {
+          "Id": "4c5831e1e11045768d3fb3b025b9271a",
+          "Name": "container",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b19f1577e0b3413a9ced101bc28f02d6",
+          "Name": "path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6afbac02d7de4c0cb0d99308655e9bbe",
+          "Name": "modelName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7747ce97e2c74b249d365f118c9316dd",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"export\";\n\"Simple_Alignment\";",
+      "Id": "4ffac6beefbb427a90ebda1cb2b0737b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b39d2ff2c2004739ab6f6387694fa423",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "63535acb3455465083c4188d7ea1e837",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "4fba8d7deedf47179b1c4d31268f52fa",
+      "End": "babd8bb4945b4b97a7b52231b2dca8e3",
+      "Id": "ba8fa3a57c934b9d9c6ab0f72c214b28"
+    },
+    {
+      "Start": "944342f13f064b5391dd424da0d174fd",
+      "End": "2a43c6eb25794b1a8ac251f9fe38cde1",
+      "Id": "839e3158188a4cc998f2b6cd8337fb78"
+    },
+    {
+      "Start": "1b2ca6aa67874b699098e0c5f37dc169",
+      "End": "33564c902fa4450ea2a2b8457ba4a4d0",
+      "Id": "f2f77e7fe8544449b91c82dc7f37825b"
+    },
+    {
+      "Start": "dbdfdb3bd28a48468374b22f615b5811",
+      "End": "e6d7471ffdbe486a83e02cc5c0079a14",
+      "Id": "0a156d4c192e4c2c8512a04130d5c176"
+    },
+    {
+      "Start": "dbdfdb3bd28a48468374b22f615b5811",
+      "End": "4c5831e1e11045768d3fb3b025b9271a",
+      "Id": "2a58b7b8961147349052393d122f4a30"
+    },
+    {
+      "Start": "32bae242d1564281947c8238cd319f04",
+      "End": "649e27f4aa464faf9de722dcba35792e",
+      "Id": "f9cb58de3e5e48fe81d4def270fae348"
+    },
+    {
+      "Start": "b39d2ff2c2004739ab6f6387694fa423",
+      "End": "b19f1577e0b3413a9ced101bc28f02d6",
+      "Id": "92e26a29f95b47f28e91d44af231f819"
+    },
+    {
+      "Start": "63535acb3455465083c4188d7ea1e837",
+      "End": "6afbac02d7de4c0cb0d99308655e9bbe",
+      "Id": "b8105f68e370477cb85870a3f248c702"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.1.7586",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Civil3DApplication.Civil3DApplication",
+        "Id": "1afbe0a0489742d38c750220f6a5c672",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 80.5,
+        "Y": 349.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Civil3DApplication.GetDocuments",
+        "Id": "65d2f969e69c4b16a70d97bf104da301",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 347.5,
+        "Y": 356.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Civil3DDocument.GetAlignments",
+        "Id": "20d1c3d6f95c4b7290e65c53f1e776ba",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 726.0,
+        "Y": 357.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Alignment.IfcAddAlignmentByCurve",
+        "Id": "8524b9b6a0fe4c6c9eab58e5a4fe1c37",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 824.0,
+        "Y": 530.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.CreateIfcModel",
+        "Id": "8ee440ed273d4839a5b32b4cf7adc2d7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 62.0,
+        "Y": 552.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.WatchIFC",
+        "Id": "752b57d33b79495e89e052d80ce3376b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1309.7091988130564,
+        "Y": 435.57566765578622
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.SaveIfcModel",
+        "Id": "7b78173a2c6d42d8b351b5c5cebb4dda",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1302.587537091988,
+        "Y": 681.27299703264089
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "4ffac6beefbb427a90ebda1cb2b0737b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 994.00197318840037,
+        "Y": 792.181997562582
+      }
+    ],
+    "Annotations": [],
+    "X": -739.521470970223,
+    "Y": -470.64634216307337,
+    "Zoom": 1.1917937712929565
+  }
+}

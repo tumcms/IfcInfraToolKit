@@ -209,6 +209,7 @@ namespace IfcInfraToolkit_Dyn
 
                 }
 
+
             }
 
             //Errorhandling no Segments
@@ -219,6 +220,12 @@ namespace IfcInfraToolkit_Dyn
             //Save Data into Curve
             IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
             curve.Horizontal = horizontal;
+            //Placement in 2D or 3D
+            if (twoDim == true)
+            {
+                var placement = new IfcAxis2Placement2D(db);
+                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
+            }
 
 
             //end testing
