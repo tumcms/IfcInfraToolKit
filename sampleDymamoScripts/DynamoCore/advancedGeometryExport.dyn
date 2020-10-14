@@ -1,0 +1,790 @@
+{
+  "Uuid": "8ab251ec-4449-448a-ac27-1f1c2f68c0fb",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "advancedGeometryExport",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"null\";",
+      "Id": "601be8ece69d456babeded815a2753aa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d4f908dee0214c6088169b773401f358",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.SaveIfcModel@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
+      "Id": "21e4370852ec4a1db6bc1546ae54d799",
+      "Inputs": [
+        {
+          "Id": "ea55303b3eaf4c6ab9b3dc9e992f213f",
+          "Name": "container",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "be09ff0c6bed43d3a58a124172cc8006",
+          "Name": "path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7fd3ece9ee6c4c00b1e55077800d558a",
+          "Name": "modelName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5ce533b497444c558bba455159be474e",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"helixGeoemtry\";",
+      "Id": "dcd004450faa4ad09754a2a268001c6e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ce1877df2d7a4c059bdeeb9e74997f16",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\Users\\Sebastian Esser\\Desktop",
+      "InputValue": "C:\\Users\\Sebastian Esser\\Desktop",
+      "NodeType": "ExtensionNode",
+      "Id": "6f2b33ee829c4ee38c4c361dca907a57",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6840c9c6b6914eee81003f78a5b1f2dd",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.BySweep@Autodesk.DesignScript.Geometry.Curve,Autodesk.DesignScript.Geometry.Curve",
+      "Id": "54e2d410bede441899055892f55bdc0f",
+      "Inputs": [
+        {
+          "Id": "18f7cc35369f4c89a6afc0b2a981eee2",
+          "Name": "profile",
+          "Description": "Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f55ce1680b3b4816a1a2571d4a008039",
+          "Name": "path",
+          "Description": "Curve",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3ecedb9c3f854e348247cdbab072bcf7",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sweep einer geschlossenen Kurve an einem Pfad entlang\n\nSolid.BySweep (profile: Curve, path: Curve): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Rectangle.ByWidthLength@double,double",
+      "Id": "0b30051a801a461e8572b8f7baab010a",
+      "Inputs": [
+        {
+          "Id": "0a000360eb6948128bb6e6582a833c42",
+          "Name": "width",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e95e8c2681b3408c8faad57d402f4feb",
+          "Name": "length",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fb3a41074b854c20b266abd416346860",
+          "Name": "Rectangle",
+          "Description": "Rectangle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt ein Rectangle zentriert am Ursprung des WKS in der XY-Ebene des WKS mit der angegebenen Breite (X-Achse) und Länge (Y-Achse).\n\nRectangle.ByWidthLength (width: double = 1, length: double = 1): Rectangle"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "2;",
+      "Id": "df13899db1894398ad720de38ec266d3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bc1667332d7d4102a01c7a5fd47f09a3",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Helix.ByAxis@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Vector,Autodesk.DesignScript.Geometry.Point,double,double",
+      "Id": "e7c7c1271e3e4f67ad46b07c3917d9ff",
+      "Inputs": [
+        {
+          "Id": "7cc2e33a58d1406c93db7d3c34e7704e",
+          "Name": "axisPoint",
+          "Description": "Point\nVorgabewert : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5e8eb1e7ece24308a2f6fd28a483ba94",
+          "Name": "axisDirection",
+          "Description": "Vector\nVorgabewert : Autodesk.DesignScript.Geometry.Vector.ByCoordinates(0, 0, 1)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "270cf51347e04e0cae97bcc754b4b47d",
+          "Name": "startPoint",
+          "Description": "Point\nVorgabewert : Autodesk.DesignScript.Geometry.Point.ByCoordinates(1, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a749c2f4bb024136922ee51a03fc055e",
+          "Name": "pitch",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "44acb6a134734ad78aafbfcc3b1061af",
+          "Name": "angleTurns",
+          "Description": "double\nVorgabewert : 360",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6b93e38ce002497a9d4d0b45d13bab90",
+          "Name": "Helix",
+          "Description": "Helix",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Schraubenform. Die Schraube dreht sich immer im Uhrzeigersinn um die angegebene Achsenrichtung. Bei Betrachtung entlang der Achsenrichtung ist der Punkt zu sehen, der bei der Bewegung entlang der Kurve in Richtung zunehmender Parameterwerte die Achse im Uhrzeigersinn umkreist. Die Steigung ist die auf der Schraube zurückgelegte Entfernung in Achsenrichtung pro Umdrehung. Dieser Wert kann positiv oder negativ sein.\n\nHelix.ByAxis (axisPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), axisDirection: Vector = Autodesk.DesignScript.Geometry.Vector.ByCoordinates(0, 0, 1), startPoint: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(1, 0, 0), pitch: double = 1, angleTurns: double = 360): Helix"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;",
+      "Id": "f24131a3ddb14e92882e7aa74abc9371",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f0d11df3118b43c2bee330beaecea182",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.ByGeometry@Autodesk.DesignScript.Geometry.Geometry,double,int",
+      "Id": "250917c4efa34f35b7479141f04130c4",
+      "Inputs": [
+        {
+          "Id": "fef084df00694bb3b916a1b798680dde",
+          "Name": "inputGeometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7e0674305c034ee7be6153b86b79f8b2",
+          "Name": "tolerance",
+          "Description": "double\nVorgabewert : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8d1f2aa9a5c54defa44f0284b9420bfd",
+          "Name": "maxGridLines",
+          "Description": "int\nVorgabewert : 512",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dd12910936fa4f77a544810275c75f4e",
+          "Name": "Mesh",
+          "Description": "Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Convert a Geometry object such as a Solid or Surface into a Mesh. The resolution of the mesh is determined by the Dynamo render precision\n\nMesh.ByGeometry (inputGeometry: Geometry, tolerance: double = -1, maxGridLines: int = 512): Mesh"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.Triangles",
+      "Id": "d2ede37d0ea94ccea67c630c5ef59663",
+      "Inputs": [
+        {
+          "Id": "bad1fa08b78b4416911e32de79c16366",
+          "Name": "mesh",
+          "Description": "Autodesk.Dynamo.MeshToolkit.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "049b3ee89d7348a88599b4e9ec9ad1bc",
+          "Name": "Surface[]",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Converts the Mesh faces to Surface patches, and returns them. Note: this method can generate A LOT of heavy Surfaces, and may slow down Dynamo with large meshes.\n\nMesh.Triangles ( ): Surface[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "023b35968fbc41f1ba262022d1c45bfb",
+      "Inputs": [
+        {
+          "Id": "60d6f330e9a7447288c20dc29778155e",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b578eaf0810648819425f7425c81ebcf",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.GetGeometryInformation@Autodesk.DesignScript.Geometry.Solid,IfcInfraToolKit_DynamoCore.DatabaseContainer,string",
+      "Id": "6709b84efabc4a67a40680be516dddf3",
+      "Inputs": [
+        {
+          "Id": "100b859d950a44cc834535cb60c98e12",
+          "Name": "solidGeometry",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e4010a1d7f8f4d0eb381cb2d3e9fded3",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bfd03318ca2649eb9c79a7c5b649188a",
+          "Name": "productGuid",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "276bbdac2a564688b106f71a40970135",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dcb75991122b426288f09832b184a18a",
+          "Name": "solidVertices",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3236c4ea47b4414cb5139fb4d1a301a4",
+          "Name": "solidEdges",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "98880825c0344ae98f40e15045c4a3a3",
+          "Name": "solidFaces",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dd9e444ca41a446db85edd5c033f3343",
+          "Name": "centerOfGravity",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "DynamoGeometryExporter.GetGeometryInformation (solidGeometry: Solid, databaseContainer: DatabaseContainer, productGuid: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.CreateIfcModel@string,string",
+      "Id": "2e2ba11cb5994f698c229b331b2e81c2",
+      "Inputs": [
+        {
+          "Id": "11d5129710eb44d9a9e06157c743986e",
+          "Name": "projectName",
+          "Description": "string\nVorgabewert : \"sampleProject\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9a74e254550c4f73b4da89a4907e641a",
+          "Name": "siteName",
+          "Description": "string\nVorgabewert : \"sampleSite\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bdaf11cdb82d46fd9a569ea7dfac9476",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "d4f908dee0214c6088169b773401f358",
+      "End": "bfd03318ca2649eb9c79a7c5b649188a",
+      "Id": "199f153b328f4c1c9da5ae0151a836ba"
+    },
+    {
+      "Start": "ce1877df2d7a4c059bdeeb9e74997f16",
+      "End": "7fd3ece9ee6c4c00b1e55077800d558a",
+      "Id": "19f37a87dc304c1bbbd86eabd7a4d32c"
+    },
+    {
+      "Start": "6840c9c6b6914eee81003f78a5b1f2dd",
+      "End": "be09ff0c6bed43d3a58a124172cc8006",
+      "Id": "6cc4b82441754d3995738af2e62f0ecc"
+    },
+    {
+      "Start": "3ecedb9c3f854e348247cdbab072bcf7",
+      "End": "fef084df00694bb3b916a1b798680dde",
+      "Id": "6cfa50a55a624efba331c796bf18ad57"
+    },
+    {
+      "Start": "fb3a41074b854c20b266abd416346860",
+      "End": "18f7cc35369f4c89a6afc0b2a981eee2",
+      "Id": "e87edd46877e44b18f5599af8e4b978a"
+    },
+    {
+      "Start": "bc1667332d7d4102a01c7a5fd47f09a3",
+      "End": "e95e8c2681b3408c8faad57d402f4feb",
+      "Id": "c13247f105b04774af2ddcafa96b9728"
+    },
+    {
+      "Start": "6b93e38ce002497a9d4d0b45d13bab90",
+      "End": "f55ce1680b3b4816a1a2571d4a008039",
+      "Id": "e0bea97bf2b54932a86675af475446ed"
+    },
+    {
+      "Start": "f0d11df3118b43c2bee330beaecea182",
+      "End": "a749c2f4bb024136922ee51a03fc055e",
+      "Id": "2382bc1e71dc4a4880a882fb8d0b4d5a"
+    },
+    {
+      "Start": "dd12910936fa4f77a544810275c75f4e",
+      "End": "bad1fa08b78b4416911e32de79c16366",
+      "Id": "4adaddc3f6df421c86c3742b82434e75"
+    },
+    {
+      "Start": "049b3ee89d7348a88599b4e9ec9ad1bc",
+      "End": "60d6f330e9a7447288c20dc29778155e",
+      "Id": "0cb66c2ff75c423a89f6acb1aa4004b2"
+    },
+    {
+      "Start": "b578eaf0810648819425f7425c81ebcf",
+      "End": "100b859d950a44cc834535cb60c98e12",
+      "Id": "019996ca0f1241bb8b4c357cb673c0f0"
+    },
+    {
+      "Start": "276bbdac2a564688b106f71a40970135",
+      "End": "ea55303b3eaf4c6ab9b3dc9e992f213f",
+      "Id": "c6243e31fa3d44edb439dd620d83884e"
+    },
+    {
+      "Start": "bdaf11cdb82d46fd9a569ea7dfac9476",
+      "End": "e4010a1d7f8f4d0eb381cb2d3e9fded3",
+      "Id": "46f905cc803645fa96c16bc7e575a907"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "MeshToolkit",
+      "Version": "3.0.0",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "250917c4efa34f35b7479141f04130c4",
+        "d2ede37d0ea94ccea67c630c5ef59663"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.6.1.8786",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -5.7124698358856847,
+      "EyeY": 10.978068638729521,
+      "EyeZ": 6.2176180047772505,
+      "LookX": 11.58274632971615,
+      "LookY": -8.6935036608159777,
+      "LookZ": -9.5322976233929744,
+      "UpX": 0.2349396964433017,
+      "UpY": 0.95258564624314579,
+      "UpZ": -0.19334923223705203
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "601be8ece69d456babeded815a2753aa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 480.63167618555832,
+        "Y": 402.91000000000014
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.SaveIfcModel",
+        "Id": "21e4370852ec4a1db6bc1546ae54d799",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1273.2031047569872,
+        "Y": 428.69666666666672
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "dcd004450faa4ad09754a2a268001c6e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 960.63167618555849,
+        "Y": 524.91000000000008
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Directory Path",
+        "Id": "6f2b33ee829c4ee38c4c361dca907a57",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 960.63167618555849,
+        "Y": 414.69666666666672
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Solid.BySweep",
+        "Id": "54e2d410bede441899055892f55bdc0f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 94.292784105824637,
+        "Y": 173.48585301264629
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rectangle.ByWidthLength",
+        "Id": "0b30051a801a461e8572b8f7baab010a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -229.70721589417536,
+        "Y": 118.48585301264629
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "df13899db1894398ad720de38ec266d3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -415.42150160846109,
+        "Y": 148.69918634597963
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Helix.ByAxis",
+        "Id": "e7c7c1271e3e4f67ad46b07c3917d9ff",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -229.70721589417536,
+        "Y": 254.48585301264626
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "f24131a3ddb14e92882e7aa74abc9371",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -415.42150160846109,
+        "Y": 336.69918634597968
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.ByGeometry",
+        "Id": "250917c4efa34f35b7479141f04130c4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 382.86421267725325,
+        "Y": 173.48585301264632
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.Triangles",
+        "Id": "d2ede37d0ea94ccea67c630c5ef59663",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 851.098154976362,
+        "Y": 196.9252723581632
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "023b35968fbc41f1ba262022d1c45bfb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1123.3290846146356,
+        "Y": 199.88430420205751
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DynamoGeometryExporter.GetGeometryInformation",
+        "Id": "6709b84efabc4a67a40680be516dddf3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1476.6621863668647,
+        "Y": 112.99842330651393
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.CreateIfcModel",
+        "Id": "2e2ba11cb5994f698c229b331b2e81c2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1258.9745428414126,
+        "Y": -92.995255897323034
+      }
+    ],
+    "Annotations": [],
+    "X": 114.76180825621543,
+    "Y": 159.59837924165248,
+    "Zoom": 0.63524834044862044
+  }
+}
