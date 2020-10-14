@@ -31,8 +31,8 @@ namespace IfcInfraToolkit_Dyn
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "RoadPartGUID" })]
         public static Dictionary<string, object> IfcRoadAddGeometry(DatabaseContainer databaseContainer,
-            string RoadGuid,
-            string AlignmentGuid,
+            object RoadGuid,
+            object AlignmentGuid,
             List<double> stations,
             List<double> width_left,
             List<double> width_right,
@@ -88,15 +88,14 @@ namespace IfcInfraToolkit_Dyn
 
             IfcCurve curve = (IfcCurve)alignment.Axis;//Not sure if it is a proper solution
 
-            //IfcCurve curve = _vb.OfType<IfcPolyline>().First();
-
 
             //Select the road for adding the crosssection
             IfcRoad road = null;
             IEnumerable<IfcRoad> query1 = db.OfType<IfcRoad>();
+            string debug = null;
             foreach (IfcRoad i in query1)
             {
-                if (i.Guid.Equals(RoadGuid))
+                if (i.Guid.ToString().Equals(RoadGuid.ToString()))
                 {
                     road = i;
                 }
@@ -105,7 +104,7 @@ namespace IfcInfraToolkit_Dyn
             //Check if there is a road
             if (road == null)
             {
-                throw new ArgumentNullException("No road found!\n");
+                throw new ArgumentNullException(debug+"No road found!\n");
             }
 
 
@@ -176,7 +175,7 @@ namespace IfcInfraToolkit_Dyn
         [MultiReturn(new[] { "DatabaseContainer", "RoadGUID" })]
         public static Dictionary<string, object> IFCAddRoad(
             DatabaseContainer databaseContainer,
-            string hostGuid = "null",
+            object hostGuid = null,
             string roadname = "DefaultRoad")
         {
             //var definition
@@ -191,7 +190,7 @@ namespace IfcInfraToolkit_Dyn
             var re = new Dictionary<string, object>
             {
                 {"DatabaseContainer", databaseContainer},
-                {"RoadGUID", road.Guid}
+                {"RoadGUID", road.Guid.ToString()}
             };
 
             return re;

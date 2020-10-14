@@ -142,7 +142,7 @@ namespace IfcInfraToolkit_Dyn
         public static Dictionary<string, object> IfcAddAlignmentByCurve(
             DatabaseContainer databaseContainer,
             Alignment alignment,
-            bool twoDim= true,
+            bool twoDim = true,
             string Alignmentname = "DefaultAlignment")
         {
             var db = databaseContainer.Database;
