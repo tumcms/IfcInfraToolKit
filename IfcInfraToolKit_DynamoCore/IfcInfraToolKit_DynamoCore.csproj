@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DatabaseContainer.cs" />
+    <Compile Include="DynamoGeometryExporter.cs" />
     <Compile Include="IfcModelSetup.cs" />
     <Compile Include="MeshImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

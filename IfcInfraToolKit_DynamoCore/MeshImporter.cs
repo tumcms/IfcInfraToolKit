@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
 using IfcInfraToolkit_Common;
@@ -63,7 +64,48 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
 
         }
+        /// <summary> visualizing Off Geometry </summary>
+        /// <search> off, pointcloud </search>
+        /// <returns>  </returns>
+        [MultiReturn(new[] { "DynamoPatchList" })]
+        public static Dictionary<string, object> ToDynamoPatches(OffGeometry[] geometry)
+        {
+            var patchList = new List<Surface>();
 
+            // loop over all incoming off geometries
+            foreach (var offGeometry in geometry)
+            {
+                // loop over all faces of the incoming off geometry and build a dynamo-based patch
+                foreach (var face in offGeometry.Faces)
+                {
+                    var vertexIds = face.VertexIds;
+
+                    var dynPts = new List<Point>();
+
+                    foreach (var vertexId in vertexIds)
+                    {
+                        var pt = offGeometry.Vertices[vertexId];
+                        var dynPoint = Point.ByCoordinates(pt.X, pt.Y, pt.Z);
+                        dynPts.Add(dynPoint);
+                    }
+
+                    var curve = PolyCurve.ByPoints(dynPts, true);
+                    var patch = Autodesk.DesignScript.Geometry.Surface.ByPatch(curve);
+                    patchList.Add(patch);
+                }
+
+                
+            }
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DynamoPatchList", patchList}
+            };
+
+            return d;
+
+        }
 
     }
 }

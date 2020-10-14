@@ -41,8 +41,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
-      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\pier_1.off",
-      "InputValue": ".\\pier_1.off",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_1.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_1.off",
       "NodeType": "ExtensionNode",
       "Id": "9ca04406266240ce9134827990d96ee3",
       "Inputs": [],
@@ -61,15 +61,36 @@
       "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
     },
     {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_2.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_2.off",
+      "NodeType": "ExtensionNode",
+      "Id": "c53d964fc579486388a8e222e35cf2b2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "feee309c099a410caedfbc6352bcfca6",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "Tessellation.Delaunay.ByPoints@Autodesk.DesignScript.Geometry.Point[]",
-      "Id": "072e31880bc34191a8b9fb4215539d96",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "3c66a871ac0a48ba9d39706a99b58315",
       "Inputs": [
         {
-          "Id": "59d15c17f8974143a12a4ba815040883",
-          "Name": "points",
-          "Description": "Eine Punktmenge.\n\nPoint[]",
+          "Id": "0e67b60a1d974c5f814deb0de00a013a",
+          "Name": "offFilePath",
+          "Description": "string[]",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -78,9 +99,9 @@
       ],
       "Outputs": [
         {
-          "Id": "408b92dfa22248eeb7f7d9049ef9d149",
-          "Name": "Curve[]",
-          "Description": "Curve[]",
+          "Id": "753e3524227d4cddaeaa42b24ed0c005",
+          "Name": "OffGeometry",
+          "Description": "var",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -88,28 +109,148 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Erstellt eine Delaunay-Triangulation einer Punktmenge.\n\nDelaunay.ByPoints (points: Point[]): Curve[]"
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_3.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_3.off",
+      "NodeType": "ExtensionNode",
+      "Id": "720ca7f36123495da8b44a29034b7b1c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "64350abdc32b4ae79eda180e6f372cbd",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
-      "Id": "c45b96ae86f843249e12e3b717e827b9",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "3114ca89f9294fef8264099f3abd8b2b",
       "Inputs": [
         {
-          "Id": "a05ad7509fa84c8eb365a1af2badcda9",
-          "Name": "list",
-          "Description": "Zu vereinfachende Liste\n\nvar[]..[]",
+          "Id": "c022ea66d33f4aeebda71df5c0387c68",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3c8730b8a44743e1806a7a01a50b5fe1",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_4.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_4.off",
+      "NodeType": "ExtensionNode",
+      "Id": "56fd057c7fa345d2bc17861497767d88",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "11c1d374401b4d0daf8814fe41e99d51",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "f2aa606117e840b684b013259e6c6e56",
+      "Inputs": [
+        {
+          "Id": "cdbf099845c2417ba44f9496156ad742",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "551937f47f9c4aed9e1ca84348c36d0b",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "8a534a66cb6b4cd3b546867c867b3e98",
+      "Inputs": [
+        {
+          "Id": "71b06591a1454de0a30f23aca92ebeb8",
+          "Name": "item0",
+          "Description": "Elementindex #0",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         },
         {
-          "Id": "d0d1f9b3adbc4d7ba718f3a55a2fe8f4",
-          "Name": "amt",
-          "Description": "Die zu entfernenden Verschachtelungsebenen\n\nint\nVorgabewert : -1",
-          "UsingDefaultValue": true,
+          "Id": "49902593852d4bc8bde99af01383aac7",
+          "Name": "item1",
+          "Description": "Elementindex #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1f807e996cca4d41a6df173d9cb3c683",
+          "Name": "item2",
+          "Description": "Elementindex #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1ec5d09a185445549ec7164845a2e000",
+          "Name": "item3",
+          "Description": "Elementindex #3",
+          "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
@@ -117,26 +258,26 @@
       ],
       "Outputs": [
         {
-          "Id": "c4808bccba404cfa9855e2ca6c3f27c4",
-          "Name": "var[]..[]",
-          "Description": "var[]..[]",
+          "Id": "0aaeef590a124629b53e18ded15d5fa3",
+          "Name": "list",
+          "Description": "Eine Liste",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
           "KeepListStructure": false
         }
       ],
-      "Replication": "Auto",
-      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPoints@var[]",
-      "Id": "0ace6a5f9f8f4541b62baba3665c9499",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPatches@var[]",
+      "Id": "6c35956baf8d47d392d7d736855c114c",
       "Inputs": [
         {
-          "Id": "7f92bead8cf340d9bd36b68662f0d6da",
+          "Id": "f9c4028e1bda4f2983b88965d7f57747",
           "Name": "geometry",
           "Description": "var[]",
           "UsingDefaultValue": false,
@@ -147,8 +288,8 @@
       ],
       "Outputs": [
         {
-          "Id": "a7916f9493a04919962ce822010140a4",
-          "Name": "DynamoPointList",
+          "Id": "ef8bfcbaa3244ac09a95624173d18f0a",
+          "Name": "DynamoPatchList",
           "Description": "var",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -157,19 +298,830 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "MeshImporter.ToDynamoPoints (geometry: var[]): var[]..[]"
+      "Description": "MeshImporter.ToDynamoPatches (geometry: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "96971433d2f343f7a9a1e158103e93df",
+      "Inputs": [
+        {
+          "Id": "42066ee493364c5b8514619627674e93",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c3a8d842449c4a35bf1ba51c952b10a5",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.DirectShape.ByGeometry@Autodesk.DesignScript.Geometry.Geometry,Revit.Elements.Category,Revit.Elements.Material,string",
+      "Id": "154272f87fbc4e94b23bcc2d63206474",
+      "Inputs": [
+        {
+          "Id": "ebf2e0e401e34ad2838b27da6e8ae9f4",
+          "Name": "geometry",
+          "Description": "Ein Solid oder eine Surface zur Tessellierung und Platzierung im Revit-Modell als DirectShape\n\nGeometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "29456c9f6ed84b638b0258a3aa3c513a",
+          "Name": "category",
+          "Description": "Muss integrierte Kategorie auf Stammebene sein\n\nCategory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7971cb486b074d7ca057b1ae945e6589",
+          "Name": "material",
+          "Description": "Material zur Anwendung auf die Flächen der DirectShape\n\nMaterial\nVorgabewert : Revit.Elements.DirectShape.DynamoPreviewMaterial",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5c9a64b9af91422cabe48c10abe7f984",
+          "Name": "name",
+          "Description": "Ein Name für die DirectShape als Zeichenfolge\n\nstring\nVorgabewert : \"DirectShape\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d106de875c0244438bebb46f01aec90b",
+          "Name": "DirectShape",
+          "Description": "DirectShape-Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Revit-DirectShape nach Eingabe von Geometrie, eines Namens für die Form, einer Kategorie und eines Materials. Die Geometrie wird vor der Platzierung im Revit-Modell tesselliert. Die Kategorie der DirectShape kann nach der Erstellung nicht mehr geändert werden. Wird die eingegebene Kategorie geändert, wird daher eine neue DirectShape generiert.\n\nDirectShape.ByGeometry (geometry: Geometry, category: Category, material: Material = Revit.Elements.DirectShape.DynamoPreviewMaterial, name: string = \"DirectShape\"): DirectShape"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 11,
+      "SelectedString": "OST_GenericModel",
+      "NodeType": "ExtensionNode",
+      "Id": "0c4f9b9b45ac42b7aef2737f2af587c0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ef5c8c9201ff437c929e70e80427c69f",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "6dbc577e2f0641d0a80e1f5d48c3436c",
+      "Inputs": [
+        {
+          "Id": "2c6dbcb44041438fba2d4cab3b421f4f",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "970dd6b5d1664df586001a8688092046",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\cutwater_1.off",
+      "InputValue": "geometryFiles\\LoD200\\cutwater_1.off",
+      "NodeType": "ExtensionNode",
+      "Id": "b814d12412d243218e5de04a49218295",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c48c8ab37e2f4e928b102126bf2e1ad7",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\cutwater_2.off",
+      "InputValue": "geometryFiles\\LoD200\\cutwater_2.off",
+      "NodeType": "ExtensionNode",
+      "Id": "eeca7faa44ed4dc6892203b632a62bb4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "736f9663533a49f6b33343cf5b6e05d1",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "c7a155eff189432cac29d28c08936c95",
+      "Inputs": [
+        {
+          "Id": "4226394ba9774064a7ee983ded9fd39e",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "01e3af2490284c0a98a88ee21c8ee2e7",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\cutwater_3.off",
+      "InputValue": "geometryFiles\\LoD200\\cutwater_3.off",
+      "NodeType": "ExtensionNode",
+      "Id": "3a4ce22b4fed4ba3beadd4818cb9d3bf",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8f1b59588f2d40a5a7043543d44a911a",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "fb16e3547f064bd99492ec64c5c3f332",
+      "Inputs": [
+        {
+          "Id": "4e6a14dacac04fb8b3513bd4bd8b2948",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7685b05baf5a4e0e9d94d823b823810f",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\handrail_1.off",
+      "InputValue": "geometryFiles\\LoD200\\handrail_1.off",
+      "NodeType": "ExtensionNode",
+      "Id": "2b9fa0e1d91c477cb88dd864987379b0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "845a230b1f4342fca28a54d367a3bb46",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "f00577164f184ebf82ca56fdcc55b9ed",
+      "Inputs": [
+        {
+          "Id": "8ba273ba186b4b56b9303411847fddf4",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c27fd589063c4b5c81d5f150e6eaad7f",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "6ef8d0410cf54a6c95c75e576e79fa16",
+      "Inputs": [
+        {
+          "Id": "3ce89e64e31345dbb035f9dc8bef03ac",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dd5611cc09a64478ab2c32ab7bbfc5e9",
+          "Name": "item1",
+          "Description": "Elementindex #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "110b7f9d3ecf40149d72587cbda044a3",
+          "Name": "item2",
+          "Description": "Elementindex #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6c615657208b432c8003210e6f2cc5fd",
+          "Name": "item3",
+          "Description": "Elementindex #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c4fd0957624b4a6493496bd95ecbded3",
+          "Name": "item4",
+          "Description": "Elementindex #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "745e3147ca7b4264b7dc8720c4f996d0",
+          "Name": "list",
+          "Description": "Eine Liste",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPatches@var[]",
+      "Id": "a5e180ae28124581b03ac21fbd7297f4",
+      "Inputs": [
+        {
+          "Id": "230b5c7799f84326abc585666ba8501e",
+          "Name": "geometry",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "06fdd43cc15f43ad89fbfc005ba9b4d1",
+          "Name": "DynamoPatchList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.ToDynamoPatches (geometry: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "8f43956a89db4a028d5d95a6e566135a",
+      "Inputs": [
+        {
+          "Id": "bc802cea37a444e69b1f9aed9e1a8b29",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d49459d0a0b4431a8bc7cf4053f796a1",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.DirectShape.ByGeometry@Autodesk.DesignScript.Geometry.Geometry,Revit.Elements.Category,Revit.Elements.Material,string",
+      "Id": "f968fb927718426bb4edc48193ca57cd",
+      "Inputs": [
+        {
+          "Id": "d0603ee8c6f64c8bb37057b5cab52c31",
+          "Name": "geometry",
+          "Description": "Ein Solid oder eine Surface zur Tessellierung und Platzierung im Revit-Modell als DirectShape\n\nGeometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "56458cad29dc42e386cb4ff97ead575f",
+          "Name": "category",
+          "Description": "Muss integrierte Kategorie auf Stammebene sein\n\nCategory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bae2dd343c1848d5b523d8a5200bcd34",
+          "Name": "material",
+          "Description": "Material zur Anwendung auf die Flächen der DirectShape\n\nMaterial\nVorgabewert : Revit.Elements.DirectShape.DynamoPreviewMaterial",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "acaa7b7d601143679efbe61a3e552d9b",
+          "Name": "name",
+          "Description": "Ein Name für die DirectShape als Zeichenfolge\n\nstring\nVorgabewert : \"DirectShape\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0f9c77c208f54f2c88b0b4a4a38e4149",
+          "Name": "DirectShape",
+          "Description": "DirectShape-Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Revit-DirectShape nach Eingabe von Geometrie, eines Namens für die Form, einer Kategorie und eines Materials. Die Geometrie wird vor der Platzierung im Revit-Modell tesselliert. Die Kategorie der DirectShape kann nach der Erstellung nicht mehr geändert werden. Wird die eingegebene Kategorie geändert, wird daher eine neue DirectShape generiert.\n\nDirectShape.ByGeometry (geometry: Geometry, category: Category, material: Material = Revit.Elements.DirectShape.DynamoPreviewMaterial, name: string = \"DirectShape\"): DirectShape"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 11,
+      "SelectedString": "OST_GenericModel",
+      "NodeType": "ExtensionNode",
+      "Id": "deb929f184e44bb792968f3177c34161",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5fdb09f23e8e47b08c98b325ac03852e",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "c0b96bf7d72e43389a623877a45c8ad3",
+      "Inputs": [
+        {
+          "Id": "e5d81ca68a2a4a36b0f915f76a414f42",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f69967e6473849dd95986b620dd01db8",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\handrail_2.off",
+      "InputValue": "geometryFiles\\LoD200\\handrail_2.off",
+      "NodeType": "ExtensionNode",
+      "Id": "d69b10c7a8c54ae9ad2c0fe46061ca12",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "acdc05855c944e4cb3575f4d5d87f58d",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pathway.off",
+      "InputValue": "geometryFiles\\LoD200\\pathway.off",
+      "NodeType": "ExtensionNode",
+      "Id": "028d534413594b0ab229d6832c1f7ad8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5684c50761164fb59ccc85aa88bf3527",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "2671427e389d4f8996a54d38568a7be4",
+      "Inputs": [
+        {
+          "Id": "b59ca595e79d40d3af7aef8f4f6c74ae",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff611178ff7e4eed93cac655089fbe08",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "a344106fde5c4bf5bccf4973c892bd95",
+      "Inputs": [
+        {
+          "Id": "740f7256692343d8adb020ef679006aa",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "07153c86e0a04b81a5bb388852d42c2c",
+          "Name": "list",
+          "Description": "Eine Liste",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPatches@var[]",
+      "Id": "112bcef2686648518e20bf773bdc7c89",
+      "Inputs": [
+        {
+          "Id": "41ec34f046024ae1a5de5a65c252f41c",
+          "Name": "geometry",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9eabc30e3fc24889aa70d2af9cd58081",
+          "Name": "DynamoPatchList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.ToDynamoPatches (geometry: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 11,
+      "SelectedString": "OST_GenericModel",
+      "NodeType": "ExtensionNode",
+      "Id": "4aa81f79a8f0461d87cc7b5f61a8a307",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ffdf63030259463c8dde0f979fe61f19",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "0eee479052b44ea490d8f954a5bd39a9",
+      "Inputs": [
+        {
+          "Id": "7698ddeb355a4587b7d660b58162f55e",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5e83d710c580418aaf857eb0aaabdccf",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.DirectShape.ByGeometry@Autodesk.DesignScript.Geometry.Geometry,Revit.Elements.Category,Revit.Elements.Material,string",
+      "Id": "a9cf67400b984691a60c8baf722e2658",
+      "Inputs": [
+        {
+          "Id": "2c1c5020357a4ec2abf0f3d6d75057fe",
+          "Name": "geometry",
+          "Description": "Ein Solid oder eine Surface zur Tessellierung und Platzierung im Revit-Modell als DirectShape\n\nGeometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8326bcb5a22141d48225a1945243fefc",
+          "Name": "category",
+          "Description": "Muss integrierte Kategorie auf Stammebene sein\n\nCategory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5b51f48e128d4849bcab9081a9ce602b",
+          "Name": "material",
+          "Description": "Material zur Anwendung auf die Flächen der DirectShape\n\nMaterial\nVorgabewert : Revit.Elements.DirectShape.DynamoPreviewMaterial",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c98294caf73b41199049706791b4be32",
+          "Name": "name",
+          "Description": "Ein Name für die DirectShape als Zeichenfolge\n\nstring\nVorgabewert : \"DirectShape\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0e626cfbf0ee43c7bfa65fa935ce77a2",
+          "Name": "DirectShape",
+          "Description": "DirectShape-Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Revit-DirectShape nach Eingabe von Geometrie, eines Namens für die Form, einer Kategorie und eines Materials. Die Geometrie wird vor der Platzierung im Revit-Modell tesselliert. Die Kategorie der DirectShape kann nach der Erstellung nicht mehr geändert werden. Wird die eingegebene Kategorie geändert, wird daher eine neue DirectShape generiert.\n\nDirectShape.ByGeometry (geometry: Geometry, category: Category, material: Material = Revit.Elements.DirectShape.DynamoPreviewMaterial, name: string = \"DirectShape\"): DirectShape"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoRevit.DirectShapeExporter.ToDynamoPatches@Autodesk.DesignScript.Geometry.Geometry",
+      "Id": "49766649e4c644c4af386f918f5c7317",
+      "Inputs": [
+        {
+          "Id": "d7be62ca648a40ba906db95d86a2ff89",
+          "Name": "geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "db420864891f4a6e8dbac324ec0e6230",
+          "Name": "bbSurface",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "DirectShapeExporter.ToDynamoPatches (geometry: Geometry): var[]..[]"
     }
   ],
   "Connectors": [
     {
       "Start": "5c67e48ae83e45808b682a7448b3cf03",
-      "End": "a05ad7509fa84c8eb365a1af2badcda9",
-      "Id": "7aa0f907208e48549427847895d46ad5"
-    },
-    {
-      "Start": "5c67e48ae83e45808b682a7448b3cf03",
-      "End": "7f92bead8cf340d9bd36b68662f0d6da",
-      "Id": "e1981d8b8b0a4c969670698f00ff5652"
+      "End": "71b06591a1454de0a30f23aca92ebeb8",
+      "Id": "e29c9cf3d17849048e15f1d8795abfe5"
     },
     {
       "Start": "0fc4454a753e480d9f463f52765821f4",
@@ -177,34 +1129,203 @@
       "Id": "458bf1547b6f4bb8aa7e62b122deda03"
     },
     {
-      "Start": "a7916f9493a04919962ce822010140a4",
-      "End": "59d15c17f8974143a12a4ba815040883",
-      "Id": "f9b0d30f66ac48d98a0ac7207aa1449c"
+      "Start": "feee309c099a410caedfbc6352bcfca6",
+      "End": "0e67b60a1d974c5f814deb0de00a013a",
+      "Id": "3fcc3f921fea45289f44fd690c911e06"
+    },
+    {
+      "Start": "753e3524227d4cddaeaa42b24ed0c005",
+      "End": "49902593852d4bc8bde99af01383aac7",
+      "Id": "88623b9118d2488bbf92b47202093233"
+    },
+    {
+      "Start": "64350abdc32b4ae79eda180e6f372cbd",
+      "End": "c022ea66d33f4aeebda71df5c0387c68",
+      "Id": "7fabfd1f4b5b4aa985b6142d75c3a87c"
+    },
+    {
+      "Start": "3c8730b8a44743e1806a7a01a50b5fe1",
+      "End": "1f807e996cca4d41a6df173d9cb3c683",
+      "Id": "58a3cc4b62ab4959840b3c5a839895c7"
+    },
+    {
+      "Start": "11c1d374401b4d0daf8814fe41e99d51",
+      "End": "cdbf099845c2417ba44f9496156ad742",
+      "Id": "02e472de2e734a699c81894fa96dbd6c"
+    },
+    {
+      "Start": "551937f47f9c4aed9e1ca84348c36d0b",
+      "End": "1ec5d09a185445549ec7164845a2e000",
+      "Id": "c6041b8b632745de94867474e657bd74"
+    },
+    {
+      "Start": "0aaeef590a124629b53e18ded15d5fa3",
+      "End": "f9c4028e1bda4f2983b88965d7f57747",
+      "Id": "f51114f98dad4f8b900e28d5c71c3851"
+    },
+    {
+      "Start": "ef8bfcbaa3244ac09a95624173d18f0a",
+      "End": "42066ee493364c5b8514619627674e93",
+      "Id": "8bf8d7de256e4507937361bf5f4364ee"
+    },
+    {
+      "Start": "c3a8d842449c4a35bf1ba51c952b10a5",
+      "End": "ebf2e0e401e34ad2838b27da6e8ae9f4",
+      "Id": "e876820f7684415dbae5ed38a3f619d3"
+    },
+    {
+      "Start": "ef5c8c9201ff437c929e70e80427c69f",
+      "End": "29456c9f6ed84b638b0258a3aa3c513a",
+      "Id": "0f0bc449f1f54f04a9b3658da19aceec"
+    },
+    {
+      "Start": "970dd6b5d1664df586001a8688092046",
+      "End": "3ce89e64e31345dbb035f9dc8bef03ac",
+      "Id": "1208926415414bb79211568de26a61b5"
+    },
+    {
+      "Start": "c48c8ab37e2f4e928b102126bf2e1ad7",
+      "End": "2c6dbcb44041438fba2d4cab3b421f4f",
+      "Id": "c31b2ffc2db240f9b211c1107ba12ba0"
+    },
+    {
+      "Start": "736f9663533a49f6b33343cf5b6e05d1",
+      "End": "4226394ba9774064a7ee983ded9fd39e",
+      "Id": "968bc86c99a54de39251038ada1520ec"
+    },
+    {
+      "Start": "01e3af2490284c0a98a88ee21c8ee2e7",
+      "End": "dd5611cc09a64478ab2c32ab7bbfc5e9",
+      "Id": "50eedbd781704895b0d7b8b48828ae92"
+    },
+    {
+      "Start": "8f1b59588f2d40a5a7043543d44a911a",
+      "End": "4e6a14dacac04fb8b3513bd4bd8b2948",
+      "Id": "f3d08605747b470e813e129a3277b94a"
+    },
+    {
+      "Start": "7685b05baf5a4e0e9d94d823b823810f",
+      "End": "110b7f9d3ecf40149d72587cbda044a3",
+      "Id": "d7bc00064153410bbefb82f49b9d77da"
+    },
+    {
+      "Start": "845a230b1f4342fca28a54d367a3bb46",
+      "End": "8ba273ba186b4b56b9303411847fddf4",
+      "Id": "733dc57ee8284c98b6757b6317141300"
+    },
+    {
+      "Start": "c27fd589063c4b5c81d5f150e6eaad7f",
+      "End": "6c615657208b432c8003210e6f2cc5fd",
+      "Id": "dd332088b66b401fa026c97603779ca8"
+    },
+    {
+      "Start": "745e3147ca7b4264b7dc8720c4f996d0",
+      "End": "230b5c7799f84326abc585666ba8501e",
+      "Id": "0bb560e5c0a64defa1b725b99ed1f9d1"
+    },
+    {
+      "Start": "06fdd43cc15f43ad89fbfc005ba9b4d1",
+      "End": "bc802cea37a444e69b1f9aed9e1a8b29",
+      "Id": "36b4a80b32a54c1599f3089ef1d05c20"
+    },
+    {
+      "Start": "d49459d0a0b4431a8bc7cf4053f796a1",
+      "End": "d0603ee8c6f64c8bb37057b5cab52c31",
+      "Id": "bc303e9545a74488a7161daaaea7ab2e"
+    },
+    {
+      "Start": "5fdb09f23e8e47b08c98b325ac03852e",
+      "End": "56458cad29dc42e386cb4ff97ead575f",
+      "Id": "8fecdeb677ef4782b7b26b26b17ea319"
+    },
+    {
+      "Start": "f69967e6473849dd95986b620dd01db8",
+      "End": "c4fd0957624b4a6493496bd95ecbded3",
+      "Id": "5f4fa1d152c14199b34a722c95319cd2"
+    },
+    {
+      "Start": "acdc05855c944e4cb3575f4d5d87f58d",
+      "End": "e5d81ca68a2a4a36b0f915f76a414f42",
+      "Id": "788f9e1e15524faaa72b4dd37c2fff36"
+    },
+    {
+      "Start": "5684c50761164fb59ccc85aa88bf3527",
+      "End": "b59ca595e79d40d3af7aef8f4f6c74ae",
+      "Id": "4a72ec6c65f64f8b93cc8d75279075d9"
+    },
+    {
+      "Start": "ff611178ff7e4eed93cac655089fbe08",
+      "End": "740f7256692343d8adb020ef679006aa",
+      "Id": "30b86be705814155afdeaeb14fc8b522"
+    },
+    {
+      "Start": "07153c86e0a04b81a5bb388852d42c2c",
+      "End": "41ec34f046024ae1a5de5a65c252f41c",
+      "Id": "887a3552e73d4bc280d15b0230e16b0c"
+    },
+    {
+      "Start": "9eabc30e3fc24889aa70d2af9cd58081",
+      "End": "7698ddeb355a4587b7d660b58162f55e",
+      "Id": "4e11fe71ca3d4fee957d4b4cb730ee41"
+    },
+    {
+      "Start": "ffdf63030259463c8dde0f979fe61f19",
+      "End": "8326bcb5a22141d48225a1945243fefc",
+      "Id": "ea8e410c523c4e3d9d7fc2ba8a381182"
+    },
+    {
+      "Start": "5e83d710c580418aaf857eb0aaabdccf",
+      "End": "2c1c5020357a4ec2abf0f3d6d75057fe",
+      "Id": "7ad21d229e934f8b924973bc934ef674"
+    },
+    {
+      "Start": "5e83d710c580418aaf857eb0aaabdccf",
+      "End": "d7be62ca648a40ba906db95d86a2ff89",
+      "Id": "cefaed4427094fcc9e2421010ca74835"
     }
   ],
   "Dependencies": [],
   "NodeLibraryDependencies": [],
-  "Bindings": [],
+  "Bindings": [
+    {
+      "NodeId": "154272f8-7fbc-4e94-b23b-cc2d63206474",
+      "Binding": {
+        "ByGeometry_InClassDecl-1_InFunctionScope-1_Instance1_154272f8-7fbc-4e94-b23b-cc2d63206474": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNi4xLjg3ODYlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPmZhbHNlPC9CYXNlLTBfSGFzRGF0YT4NCjxCYXNlLTBfSGFzTmVzdGVkRGF0YT50cnVlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTBfTmVzdGVkRGF0YUNvdW50PjQ8L0Jhc2UtMF9OZXN0ZWREYXRhQ291bnQ+DQo8QmFzZS0wLTBfSGFzRGF0YT50cnVlPC9CYXNlLTAtMF9IYXNEYXRhPg0KPEJhc2UtMC0wX0RhdGEgaWQ9InJlZi0zIj5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBFYVhKbFkzUlRhR0Z3WlZOMFlYUmxJR2xrUFNKeVpXWXRNU0lnZUcxc2JuTTZZVEU5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdlkyeHlMMjV6WVhOelpXMHZVbVYyYVhRdVJXeGxiV1Z1ZEhNdlVtVjJhWFJPYjJSbGN5VXlReVV5TUZabGNuTnBiMjRsTTBReUxqWXVNUzQ0T0RVd0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStaREUwWVdVMk5HSXRZVEZoTVMwMFlqRTNMVGhrTkdNdFkyVmtPR0U1TldVeVlUa3hMVEF3TURBd09XWTVQQzl6ZEhKcGJtZEpSRDROQ2p4cGJuUkpSRDR5TlRVelBDOXBiblJKUkQ0TkNqeHplVzVqU1dRZ2FXUTlJbkpsWmkwMElqNDFaREpqWlRoaE9DMWhNREpoTFRReU5tVXRZVFU0TmkwMk9URTFPRFUzTUdNd016TThMM041Ym1OSlpENE5Danh0WVhSbGNtbGhiRWxrUGpJMU5EVThMMjFoZEdWeWFXRnNTV1ErRFFvOEwyRXhPa1JwY21WamRGTm9ZWEJsVTNSaGRHVStEUW84TDFOUFFWQXRSVTVXT2tKdlpIaytEUW84TDFOUFFWQXRSVTVXT2tWdWRtVnNiM0JsUGcwSzwvQmFzZS0wLTBfRGF0YT4NCjxCYXNlLTAtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMF9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0xX0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTFfSGFzRGF0YT4NCjxCYXNlLTAtMV9EYXRhIGlkPSJyZWYtNCI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwRWFYSmxZM1JUYUdGd1pWTjBZWFJsSUdsa1BTSnlaV1l0TVNJZ2VHMXNibk02WVRFOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZZMnh5TDI1ellYTnpaVzB2VW1WMmFYUXVSV3hsYldWdWRITXZVbVYyYVhST2IyUmxjeVV5UXlVeU1GWmxjbk5wYjI0bE0wUXlMall1TVM0NE9EVXdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrWkRFMFlXVTJOR0l0WVRGaE1TMDBZakUzTFRoa05HTXRZMlZrT0dFNU5XVXlZVGt4TFRBd01EQXdPV1poUEM5emRISnBibWRKUkQ0TkNqeHBiblJKUkQ0eU5UVTBQQzlwYm5SSlJENE5Danh6ZVc1alNXUWdhV1E5SW5KbFppMDBJajVrTXpjMk5EVXpPUzFpTXpBMUxUUTRZV1F0T1RGalpDMWhZamczTkRjNU56UTJOems4TDNONWJtTkpaRDROQ2p4dFlYUmxjbWxoYkVsa1BqSTFORFU4TDIxaGRHVnlhV0ZzU1dRK0RRbzhMMkV4T2tScGNtVmpkRk5vWVhCbFUzUmhkR1UrRFFvOEwxTlBRVkF0UlU1V09rSnZaSGsrRFFvOEwxTlBRVkF0UlU1V09rVnVkbVZzYjNCbFBnMEs8L0Jhc2UtMC0xX0RhdGE+DQo8QmFzZS0wLTFfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTFfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTAtMl9IYXNEYXRhPnRydWU8L0Jhc2UtMC0yX0hhc0RhdGE+DQo8QmFzZS0wLTJfRGF0YSBpZD0icmVmLTUiPlBGTlBRVkF0UlU1V09rVnVkbVZzYjNCbElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6T25oelpEMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFaUlIaHRiRzV6T2xOUFFWQXRSVTVEUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUlnZUcxc2JuTTZVMDlCVUMxRlRsWTlJbWgwZEhBNkx5OXpZMmhsYldGekxuaHRiSE52WVhBdWIzSm5MM052WVhBdlpXNTJaV3h2Y0dVdklpQjRiV3h1Y3pwamJISTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2YzI5aGNDOWxibU52WkdsdVp5OWpiSEl2TVM0d0lpQlRUMEZRTFVWT1ZqcGxibU52WkdsdVoxTjBlV3hsUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUkrRFFvOFUwOUJVQzFGVGxZNlFtOWtlVDROQ2p4aE1UcEVhWEpsWTNSVGFHRndaVk4wWVhSbElHbGtQU0p5WldZdE1TSWdlRzFzYm5NNllURTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2WTJ4eUwyNXpZWE56WlcwdlVtVjJhWFF1Uld4bGJXVnVkSE12VW1WMmFYUk9iMlJsY3lVeVF5VXlNRlpsY25OcGIyNGxNMFF5TGpZdU1TNDRPRFV3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1pERTBZV1UyTkdJdFlURmhNUzAwWWpFM0xUaGtOR010WTJWa09HRTVOV1V5WVRreExUQXdNREF3T1daaVBDOXpkSEpwYm1kSlJENE5DanhwYm5SSlJENHlOVFUxUEM5cGJuUkpSRDROQ2p4emVXNWpTV1FnYVdROUluSmxaaTAwSWo1bE1HRmhNbUppTmkxa056UTVMVFJpTjJFdE9HVmlaQzAyTTJVeE1UQXpZak0yTXpJOEwzTjVibU5KWkQ0TkNqeHRZWFJsY21saGJFbGtQakkxTkRVOEwyMWhkR1Z5YVdGc1NXUStEUW84TDJFeE9rUnBjbVZqZEZOb1lYQmxVM1JoZEdVK0RRbzhMMU5QUVZBdFJVNVdPa0p2WkhrK0RRbzhMMU5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxQZzBLPC9CYXNlLTAtMl9EYXRhPg0KPEJhc2UtMC0yX0hhc05lc3RlZERhdGE+ZmFsc2U8L0Jhc2UtMC0yX0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTNfSGFzRGF0YT50cnVlPC9CYXNlLTAtM19IYXNEYXRhPg0KPEJhc2UtMC0zX0RhdGEgaWQ9InJlZi02Ij5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBFYVhKbFkzUlRhR0Z3WlZOMFlYUmxJR2xrUFNKeVpXWXRNU0lnZUcxc2JuTTZZVEU5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdlkyeHlMMjV6WVhOelpXMHZVbVYyYVhRdVJXeGxiV1Z1ZEhNdlVtVjJhWFJPYjJSbGN5VXlReVV5TUZabGNuTnBiMjRsTTBReUxqWXVNUzQ0T0RVd0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStaREUwWVdVMk5HSXRZVEZoTVMwMFlqRTNMVGhrTkdNdFkyVmtPR0U1TldVeVlUa3hMVEF3TURBd09XWmpQQzl6ZEhKcGJtZEpSRDROQ2p4cGJuUkpSRDR5TlRVMlBDOXBiblJKUkQ0TkNqeHplVzVqU1dRZ2FXUTlJbkpsWmkwMElqNDVZelZtWkRRNFpTMDVZekU1TFRRNE5HRXRPREF5TlMwM056a3dPRFJqTnpSbE5XUThMM041Ym1OSlpENE5Danh0WVhSbGNtbGhiRWxrUGpJMU5EVThMMjFoZEdWeWFXRnNTV1ErRFFvOEwyRXhPa1JwY21WamRGTm9ZWEJsVTNSaGRHVStEUW84TDFOUFFWQXRSVTVXT2tKdlpIaytEUW84TDFOUFFWQXRSVTVXT2tWdWRtVnNiM0JsUGcwSzwvQmFzZS0wLTNfRGF0YT4NCjxCYXNlLTAtM19IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtM19IYXNOZXN0ZWREYXRhPg0KPC9hMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXI+DQo8L1NPQVAtRU5WOkJvZHk+DQo8L1NPQVAtRU5WOkVudmVsb3BlPg0K"
+      }
+    },
+    {
+      "NodeId": "f968fb92-7718-426b-b4ed-c48193ca57cd",
+      "Binding": {
+        "ByGeometry_InClassDecl-1_InFunctionScope-1_Instance1_f968fb92-7718-426b-b4ed-c48193ca57cd": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNi4xLjg3ODYlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPmZhbHNlPC9CYXNlLTBfSGFzRGF0YT4NCjxCYXNlLTBfSGFzTmVzdGVkRGF0YT50cnVlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTBfTmVzdGVkRGF0YUNvdW50PjU8L0Jhc2UtMF9OZXN0ZWREYXRhQ291bnQ+DQo8QmFzZS0wLTBfSGFzRGF0YT50cnVlPC9CYXNlLTAtMF9IYXNEYXRhPg0KPEJhc2UtMC0wX0RhdGEgaWQ9InJlZi0zIj5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBFYVhKbFkzUlRhR0Z3WlZOMFlYUmxJR2xrUFNKeVpXWXRNU0lnZUcxc2JuTTZZVEU5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdlkyeHlMMjV6WVhOelpXMHZVbVYyYVhRdVJXeGxiV1Z1ZEhNdlVtVjJhWFJPYjJSbGN5VXlReVV5TUZabGNuTnBiMjRsTTBReUxqWXVNUzQ0T0RVd0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStaREUwWVdVMk5HSXRZVEZoTVMwMFlqRTNMVGhrTkdNdFkyVmtPR0U1TldVeVlUa3hMVEF3TURBd09XWTBQQzl6ZEhKcGJtZEpSRDROQ2p4cGJuUkpSRDR5TlRRNFBDOXBiblJKUkQ0TkNqeHplVzVqU1dRZ2FXUTlJbkpsWmkwMElqNHpOekl6TlRNME15MWtOMlZqTFRSa1pqRXRPRFF3TWkxbVl6TmpNVEF4WVRsallqWThMM041Ym1OSlpENE5Danh0WVhSbGNtbGhiRWxrUGpJMU5EVThMMjFoZEdWeWFXRnNTV1ErRFFvOEwyRXhPa1JwY21WamRGTm9ZWEJsVTNSaGRHVStEUW84TDFOUFFWQXRSVTVXT2tKdlpIaytEUW84TDFOUFFWQXRSVTVXT2tWdWRtVnNiM0JsUGcwSzwvQmFzZS0wLTBfRGF0YT4NCjxCYXNlLTAtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMF9IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC0xX0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTFfSGFzRGF0YT4NCjxCYXNlLTAtMV9EYXRhIGlkPSJyZWYtNCI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwRWFYSmxZM1JUYUdGd1pWTjBZWFJsSUdsa1BTSnlaV1l0TVNJZ2VHMXNibk02WVRFOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZZMnh5TDI1ellYTnpaVzB2VW1WMmFYUXVSV3hsYldWdWRITXZVbVYyYVhST2IyUmxjeVV5UXlVeU1GWmxjbk5wYjI0bE0wUXlMall1TVM0NE9EVXdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrWkRFMFlXVTJOR0l0WVRGaE1TMDBZakUzTFRoa05HTXRZMlZrT0dFNU5XVXlZVGt4TFRBd01EQXdPV1kxUEM5emRISnBibWRKUkQ0TkNqeHBiblJKUkQ0eU5UUTVQQzlwYm5SSlJENE5Danh6ZVc1alNXUWdhV1E5SW5KbFppMDBJajVtT1RNM01EaGlOaTFpT0RNNExUUXpaVGd0WVdGallTMDBORFkxTURFM01HVTNOak04TDNONWJtTkpaRDROQ2p4dFlYUmxjbWxoYkVsa1BqSTFORFU4TDIxaGRHVnlhV0ZzU1dRK0RRbzhMMkV4T2tScGNtVmpkRk5vWVhCbFUzUmhkR1UrRFFvOEwxTlBRVkF0UlU1V09rSnZaSGsrRFFvOEwxTlBRVkF0UlU1V09rVnVkbVZzYjNCbFBnMEs8L0Jhc2UtMC0xX0RhdGE+DQo8QmFzZS0wLTFfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTFfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTAtMl9IYXNEYXRhPnRydWU8L0Jhc2UtMC0yX0hhc0RhdGE+DQo8QmFzZS0wLTJfRGF0YSBpZD0icmVmLTUiPlBGTlBRVkF0UlU1V09rVnVkbVZzYjNCbElIaHRiRzV6T25oemFUMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFdGFXNXpkR0Z1WTJVaUlIaHRiRzV6T25oelpEMGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TVM5WVRVeFRZMmhsYldFaUlIaHRiRzV6T2xOUFFWQXRSVTVEUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUlnZUcxc2JuTTZVMDlCVUMxRlRsWTlJbWgwZEhBNkx5OXpZMmhsYldGekxuaHRiSE52WVhBdWIzSm5MM052WVhBdlpXNTJaV3h2Y0dVdklpQjRiV3h1Y3pwamJISTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2YzI5aGNDOWxibU52WkdsdVp5OWpiSEl2TVM0d0lpQlRUMEZRTFVWT1ZqcGxibU52WkdsdVoxTjBlV3hsUFNKb2RIUndPaTh2YzJOb1pXMWhjeTU0Yld4emIyRndMbTl5Wnk5emIyRndMMlZ1WTI5a2FXNW5MeUkrRFFvOFUwOUJVQzFGVGxZNlFtOWtlVDROQ2p4aE1UcEVhWEpsWTNSVGFHRndaVk4wWVhSbElHbGtQU0p5WldZdE1TSWdlRzFzYm5NNllURTlJbWgwZEhBNkx5OXpZMmhsYldGekxtMXBZM0p2YzI5bWRDNWpiMjB2WTJ4eUwyNXpZWE56WlcwdlVtVjJhWFF1Uld4bGJXVnVkSE12VW1WMmFYUk9iMlJsY3lVeVF5VXlNRlpsY25OcGIyNGxNMFF5TGpZdU1TNDRPRFV3SlRKREpUSXdRM1ZzZEhWeVpTVXpSRzVsZFhSeVlXd2xNa01sTWpCUWRXSnNhV05MWlhsVWIydGxiaVV6Ukc1MWJHd2lQZzBLUEhOMGNtbHVaMGxFSUdsa1BTSnlaV1l0TXlJK1pERTBZV1UyTkdJdFlURmhNUzAwWWpFM0xUaGtOR010WTJWa09HRTVOV1V5WVRreExUQXdNREF3T1dZMlBDOXpkSEpwYm1kSlJENE5DanhwYm5SSlJENHlOVFV3UEM5cGJuUkpSRDROQ2p4emVXNWpTV1FnYVdROUluSmxaaTAwSWo1bE56UXpOR0l6WVMwNE1qbG1MVFEwTWpNdFlUWTNNUzFpT1daaE5UTXdaR0U1WkdVOEwzTjVibU5KWkQ0TkNqeHRZWFJsY21saGJFbGtQakkxTkRVOEwyMWhkR1Z5YVdGc1NXUStEUW84TDJFeE9rUnBjbVZqZEZOb1lYQmxVM1JoZEdVK0RRbzhMMU5QUVZBdFJVNVdPa0p2WkhrK0RRbzhMMU5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxQZzBLPC9CYXNlLTAtMl9EYXRhPg0KPEJhc2UtMC0yX0hhc05lc3RlZERhdGE+ZmFsc2U8L0Jhc2UtMC0yX0hhc05lc3RlZERhdGE+DQo8QmFzZS0wLTNfSGFzRGF0YT50cnVlPC9CYXNlLTAtM19IYXNEYXRhPg0KPEJhc2UtMC0zX0RhdGEgaWQ9InJlZi02Ij5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBFYVhKbFkzUlRhR0Z3WlZOMFlYUmxJR2xrUFNKeVpXWXRNU0lnZUcxc2JuTTZZVEU5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdlkyeHlMMjV6WVhOelpXMHZVbVYyYVhRdVJXeGxiV1Z1ZEhNdlVtVjJhWFJPYjJSbGN5VXlReVV5TUZabGNuTnBiMjRsTTBReUxqWXVNUzQ0T0RVd0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStaREUwWVdVMk5HSXRZVEZoTVMwMFlqRTNMVGhrTkdNdFkyVmtPR0U1TldVeVlUa3hMVEF3TURBd09XWTNQQzl6ZEhKcGJtZEpSRDROQ2p4cGJuUkpSRDR5TlRVeFBDOXBiblJKUkQ0TkNqeHplVzVqU1dRZ2FXUTlJbkpsWmkwMElqNDRNakk1WW1OaFppMHpNbUk1TFRSaVlqa3RPV0U0TVMxak16QmxabVZqTXprelpETThMM041Ym1OSlpENE5Danh0WVhSbGNtbGhiRWxrUGpJMU5EVThMMjFoZEdWeWFXRnNTV1ErRFFvOEwyRXhPa1JwY21WamRGTm9ZWEJsVTNSaGRHVStEUW84TDFOUFFWQXRSVTVXT2tKdlpIaytEUW84TDFOUFFWQXRSVTVXT2tWdWRtVnNiM0JsUGcwSzwvQmFzZS0wLTNfRGF0YT4NCjxCYXNlLTAtM19IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtM19IYXNOZXN0ZWREYXRhPg0KPEJhc2UtMC00X0hhc0RhdGE+dHJ1ZTwvQmFzZS0wLTRfSGFzRGF0YT4NCjxCYXNlLTAtNF9EYXRhIGlkPSJyZWYtNyI+UEZOUFFWQXRSVTVXT2tWdWRtVnNiM0JsSUhodGJHNXpPbmh6YVQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0V0YVc1emRHRnVZMlVpSUhodGJHNXpPbmh6WkQwaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNUzlZVFV4VFkyaGxiV0VpSUhodGJHNXpPbE5QUVZBdFJVNURQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SWdlRzFzYm5NNlUwOUJVQzFGVGxZOUltaDBkSEE2THk5elkyaGxiV0Z6TG5odGJITnZZWEF1YjNKbkwzTnZZWEF2Wlc1MlpXeHZjR1V2SWlCNGJXeHVjenBqYkhJOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZjMjloY0M5bGJtTnZaR2x1Wnk5amJISXZNUzR3SWlCVFQwRlFMVVZPVmpwbGJtTnZaR2x1WjFOMGVXeGxQU0pvZEhSd09pOHZjMk5vWlcxaGN5NTRiV3h6YjJGd0xtOXlaeTl6YjJGd0wyVnVZMjlrYVc1bkx5SStEUW84VTA5QlVDMUZUbFk2UW05a2VUNE5DanhoTVRwRWFYSmxZM1JUYUdGd1pWTjBZWFJsSUdsa1BTSnlaV1l0TVNJZ2VHMXNibk02WVRFOUltaDBkSEE2THk5elkyaGxiV0Z6TG0xcFkzSnZjMjltZEM1amIyMHZZMnh5TDI1ellYTnpaVzB2VW1WMmFYUXVSV3hsYldWdWRITXZVbVYyYVhST2IyUmxjeVV5UXlVeU1GWmxjbk5wYjI0bE0wUXlMall1TVM0NE9EVXdKVEpESlRJd1EzVnNkSFZ5WlNVelJHNWxkWFJ5WVd3bE1rTWxNakJRZFdKc2FXTkxaWGxVYjJ0bGJpVXpSRzUxYkd3aVBnMEtQSE4wY21sdVowbEVJR2xrUFNKeVpXWXRNeUkrWkRFMFlXVTJOR0l0WVRGaE1TMDBZakUzTFRoa05HTXRZMlZrT0dFNU5XVXlZVGt4TFRBd01EQXdPV1k0UEM5emRISnBibWRKUkQ0TkNqeHBiblJKUkQ0eU5UVXlQQzlwYm5SSlJENE5Danh6ZVc1alNXUWdhV1E5SW5KbFppMDBJajVoTm1Rek5tUmtaaTFsTVdWaUxUUXpPV1l0T0dZeFppMWhaR1UwT0dVMk9XWTNORE04TDNONWJtTkpaRDROQ2p4dFlYUmxjbWxoYkVsa1BqSTFORFU4TDIxaGRHVnlhV0ZzU1dRK0RRbzhMMkV4T2tScGNtVmpkRk5vWVhCbFUzUmhkR1UrRFFvOEwxTlBRVkF0UlU1V09rSnZaSGsrRFFvOEwxTlBRVkF0UlU1V09rVnVkbVZzYjNCbFBnMEs8L0Jhc2UtMC00X0RhdGE+DQo8QmFzZS0wLTRfSGFzTmVzdGVkRGF0YT5mYWxzZTwvQmFzZS0wLTRfSGFzTmVzdGVkRGF0YT4NCjwvYTE6Q2FsbFNpdGVfeDAwMkJfVHJhY2VTZXJpYWxpc2VySGVscGVyPg0KPC9TT0FQLUVOVjpCb2R5Pg0KPC9TT0FQLUVOVjpFbnZlbG9wZT4NCg=="
+      }
+    },
+    {
+      "NodeId": "a9cf6740-0b98-4691-a60c-8baf722e2658",
+      "Binding": {
+        "ByGeometry_InClassDecl-1_InFunctionScope-1_Instance1_a9cf6740-0b98-4691-a60c-8baf722e2658": "PFNPQVAtRU5WOkVudmVsb3BlIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOlNPQVAtRU5DPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyIgeG1sbnM6U09BUC1FTlY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIiB4bWxuczpjbHI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vc29hcC9lbmNvZGluZy9jbHIvMS4wIiBTT0FQLUVOVjplbmNvZGluZ1N0eWxlPSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VuY29kaW5nLyI+DQo8U09BUC1FTlY6Qm9keT4NCjxhMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXIgaWQ9InJlZi0xIiB4bWxuczphMT0iaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS9jbHIvbnNhc3NlbS9Qcm90b0NvcmUvUHJvdG9Db3JlJTJDJTIwVmVyc2lvbiUzRDIuNi4xLjg3ODYlMkMlMjBDdWx0dXJlJTNEbmV1dHJhbCUyQyUyMFB1YmxpY0tleVRva2VuJTNEbnVsbCI+DQo8TnVtYmVyT2ZFbGVtZW50cz4xPC9OdW1iZXJPZkVsZW1lbnRzPg0KPEJhc2UtMF9IYXNEYXRhPmZhbHNlPC9CYXNlLTBfSGFzRGF0YT4NCjxCYXNlLTBfSGFzTmVzdGVkRGF0YT50cnVlPC9CYXNlLTBfSGFzTmVzdGVkRGF0YT4NCjxCYXNlLTBfTmVzdGVkRGF0YUNvdW50PjE8L0Jhc2UtMF9OZXN0ZWREYXRhQ291bnQ+DQo8QmFzZS0wLTBfSGFzRGF0YT50cnVlPC9CYXNlLTAtMF9IYXNEYXRhPg0KPEJhc2UtMC0wX0RhdGEgaWQ9InJlZi0zIj5QRk5QUVZBdFJVNVdPa1Z1ZG1Wc2IzQmxJSGh0Ykc1ek9uaHphVDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRXRhVzV6ZEdGdVkyVWlJSGh0Ykc1ek9uaHpaRDBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01TOVlUVXhUWTJobGJXRWlJSGh0Ykc1ek9sTlBRVkF0UlU1RFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJZ2VHMXNibk02VTA5QlVDMUZUbFk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbmh0YkhOdllYQXViM0puTDNOdllYQXZaVzUyWld4dmNHVXZJaUI0Yld4dWN6cGpiSEk5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdmMyOWhjQzlsYm1OdlpHbHVaeTlqYkhJdk1TNHdJaUJUVDBGUUxVVk9WanBsYm1OdlpHbHVaMU4wZVd4bFBTSm9kSFJ3T2k4dmMyTm9aVzFoY3k1NGJXeHpiMkZ3TG05eVp5OXpiMkZ3TDJWdVkyOWthVzVuTHlJK0RRbzhVMDlCVUMxRlRsWTZRbTlrZVQ0TkNqeGhNVHBFYVhKbFkzUlRhR0Z3WlZOMFlYUmxJR2xrUFNKeVpXWXRNU0lnZUcxc2JuTTZZVEU5SW1oMGRIQTZMeTl6WTJobGJXRnpMbTFwWTNKdmMyOW1kQzVqYjIwdlkyeHlMMjV6WVhOelpXMHZVbVYyYVhRdVJXeGxiV1Z1ZEhNdlVtVjJhWFJPYjJSbGN5VXlReVV5TUZabGNuTnBiMjRsTTBReUxqWXVNUzQ0T0RVd0pUSkRKVEl3UTNWc2RIVnlaU1V6Ukc1bGRYUnlZV3dsTWtNbE1qQlFkV0pzYVdOTFpYbFViMnRsYmlVelJHNTFiR3dpUGcwS1BITjBjbWx1WjBsRUlHbGtQU0p5WldZdE15SStaREUwWVdVMk5HSXRZVEZoTVMwMFlqRTNMVGhrTkdNdFkyVmtPR0U1TldVeVlUa3hMVEF3TURBd09XWXpQQzl6ZEhKcGJtZEpSRDROQ2p4cGJuUkpSRDR5TlRRM1BDOXBiblJKUkQ0TkNqeHplVzVqU1dRZ2FXUTlJbkpsWmkwMElqNWpNbU15TURZNE9TMDVORGN6TFRRM1pUSXRPR001T0Mxa00yRTJabVUyTmpneE9UazhMM041Ym1OSlpENE5Danh0WVhSbGNtbGhiRWxrUGpJMU5EVThMMjFoZEdWeWFXRnNTV1ErRFFvOEwyRXhPa1JwY21WamRGTm9ZWEJsVTNSaGRHVStEUW84TDFOUFFWQXRSVTVXT2tKdlpIaytEUW84TDFOUFFWQXRSVTVXT2tWdWRtVnNiM0JsUGcwSzwvQmFzZS0wLTBfRGF0YT4NCjxCYXNlLTAtMF9IYXNOZXN0ZWREYXRhPmZhbHNlPC9CYXNlLTAtMF9IYXNOZXN0ZWREYXRhPg0KPC9hMTpDYWxsU2l0ZV94MDAyQl9UcmFjZVNlcmlhbGlzZXJIZWxwZXI+DQo8L1NPQVAtRU5WOkJvZHk+DQo8L1NPQVAtRU5WOkVudmVsb3BlPg0K"
+      }
+    }
+  ],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.8.0.2471",
-      "RunType": "Automatic",
+      "Version": "2.6.1.8786",
+      "RunType": "Manual",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Hintergrundvorschau",
-      "EyeX": -17.0,
-      "EyeY": 24.0,
-      "EyeZ": 50.0,
-      "LookX": 12.0,
-      "LookY": -13.0,
-      "LookZ": -58.0,
-      "UpX": 0.0,
-      "UpY": 1.0,
-      "UpZ": 0.0
+      "EyeX": 158.68163655877851,
+      "EyeY": 133.41208662638664,
+      "EyeZ": -95.2527609785263,
+      "LookX": -96.663964031894537,
+      "LookY": -50.967017394255976,
+      "LookZ": 38.543896297911331,
+      "UpX": -0.22021907194796936,
+      "UpY": 0.971490038292867,
+      "UpZ": 0.087810397152594144
     },
     "NodeViews": [
       {
@@ -214,8 +1335,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1074.5714285714287,
-        "Y": 573.71428571428567
+        "X": 876.32334321532107,
+        "Y": 779.67510177297061
       },
       {
         "ShowGeometry": true,
@@ -224,43 +1345,353 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 718.85714285714289,
-        "Y": 290.85714285714289
+        "X": 570.03762892960674,
+        "Y": 778.67510177297061
       },
       {
         "ShowGeometry": true,
-        "Name": "Delaunay.ByPoints",
-        "Id": "072e31880bc34191a8b9fb4215539d96",
+        "Name": "File Path",
+        "Id": "c53d964fc579486388a8e222e35cf2b2",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1877.7762243708225,
-        "Y": 761.33071450290913
+        "X": 570.03762892960674,
+        "Y": 888.67510177297061
       },
       {
         "ShowGeometry": true,
-        "Name": "List.Flatten",
-        "Id": "c45b96ae86f843249e12e3b717e827b9",
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "3c66a871ac0a48ba9d39706a99b58315",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1611.7538702865754,
-        "Y": 846.96231817731848
+        "X": 876.32334321532107,
+        "Y": 888.67510177297061
       },
       {
         "ShowGeometry": true,
-        "Name": "MeshImporter.ToDynamoPoints",
-        "Id": "0ace6a5f9f8f4541b62baba3665c9499",
+        "Name": "File Path",
+        "Id": "720ca7f36123495da8b44a29034b7b1c",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1315.6627009838799,
-        "Y": 790.63521098279716
+        "X": 570.03762892960674,
+        "Y": 998.67510177297061
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "3114ca89f9294fef8264099f3abd8b2b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 876.32334321532107,
+        "Y": 998.67510177297049
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "56fd057c7fa345d2bc17861497767d88",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 570.03762892960674,
+        "Y": 1108.6751017729705
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "f2aa606117e840b684b013259e6c6e56",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 876.32334321532107,
+        "Y": 1107.6751017729705
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "8a534a66cb6b4cd3b546867c867b3e98",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1240.3233432153211,
+        "Y": 904.67510177297061
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "MeshImporter.ToDynamoPatches",
+        "Id": "6c35956baf8d47d392d7d736855c114c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1459.7519146438924,
+        "Y": 904.67510177297049
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "96971433d2f343f7a9a1e158103e93df",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1843.1804860724637,
+        "Y": 904.67510177297049
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DirectShape.ByGeometry",
+        "Id": "154272f87fbc4e94b23bcc2d63206474",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2167.7519146438926,
+        "Y": 946.67510177297049
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "0c4f9b9b45ac42b7aef2737f2af587c0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1843.1804860724637,
+        "Y": 1014.6751017729705
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "6dbc577e2f0641d0a80e1f5d48c3436c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 861.09304342665439,
+        "Y": 1407.163453066026
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "b814d12412d243218e5de04a49218295",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 554.8073291409404,
+        "Y": 1406.163453066026
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "eeca7faa44ed4dc6892203b632a62bb4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 554.8073291409404,
+        "Y": 1516.163453066026
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "c7a155eff189432cac29d28c08936c95",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 861.09304342665439,
+        "Y": 1516.163453066026
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "3a4ce22b4fed4ba3beadd4818cb9d3bf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 554.8073291409404,
+        "Y": 1626.163453066026
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "fb16e3547f064bd99492ec64c5c3f332",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 861.09304342665439,
+        "Y": 1626.1634530660251
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "2b9fa0e1d91c477cb88dd864987379b0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 554.8073291409404,
+        "Y": 1736.1634530660251
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "f00577164f184ebf82ca56fdcc55b9ed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 861.09304342665439,
+        "Y": 1735.1634530660251
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "6ef8d0410cf54a6c95c75e576e79fa16",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1225.0930434266534,
+        "Y": 1532.163453066026
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "MeshImporter.ToDynamoPatches",
+        "Id": "a5e180ae28124581b03ac21fbd7297f4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1444.5216148552233,
+        "Y": 1532.1634530660251
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "8f43956a89db4a028d5d95a6e566135a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1827.9501862837935,
+        "Y": 1532.1634530660251
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "DirectShape.ByGeometry",
+        "Id": "f968fb927718426bb4edc48193ca57cd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2152.5216148552236,
+        "Y": 1574.1634530660251
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "deb929f184e44bb792968f3177c34161",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1827.9501862837935,
+        "Y": 1642.1634530660251
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "c0b96bf7d72e43389a623877a45c8ad3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 864.8927560463909,
+        "Y": 1860.5539695173218
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "d69b10c7a8c54ae9ad2c0fe46061ca12",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 558.60704176067691,
+        "Y": 1861.5539695173218
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "028d534413594b0ab229d6832c1f7ad8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 559.00827544039964,
+        "Y": 2044.7072905838324
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "2671427e389d4f8996a54d38568a7be4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 865.29398972611364,
+        "Y": 2045.7072905838324
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "a344106fde5c4bf5bccf4973c892bd95",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1229.2939897261094,
+        "Y": 2170.7072905838322
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "MeshImporter.ToDynamoPatches",
+        "Id": "112bcef2686648518e20bf773bdc7c89",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1448.7225611546796,
+        "Y": 2170.7072905838322
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "4aa81f79a8f0461d87cc7b5f61a8a307",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1832.1511325832494,
+        "Y": 2280.7072905838322
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "0eee479052b44ea490d8f954a5bd39a9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1832.1511325832494,
+        "Y": 2170.7072905838322
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DirectShape.ByGeometry",
+        "Id": "a9cf67400b984691a60c8baf722e2658",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2156.7225611546796,
+        "Y": 2212.7072905838322
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DirectShapeExporter.ToDynamoPatches",
+        "Id": "49766649e4c644c4af386f918f5c7317",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2523.8084751613192,
+        "Y": 2506.32931034673
       }
     ],
     "Annotations": [],
-    "X": 1.1372254126729331,
-    "Y": -49.539226814138033,
-    "Zoom": 0.85798632165930477
+    "X": -900.85365942333146,
+    "Y": -1000.0680189105906,
+    "Zoom": 0.60939064784569474
   }
 }
