@@ -342,15 +342,35 @@
       "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
     },
     {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"DeckOnly\";",
+      "Id": "dfbd81dc919a49a893ac63cd9c2f6787",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "23db50dc38ab43d987bfd66d3cf1d315",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
       "HintPath": "C:\\Users\\Sebastian Esser\\Desktop",
       "InputValue": "C:\\Users\\Sebastian Esser\\Desktop",
       "NodeType": "ExtensionNode",
-      "Id": "b0697ee4b7ee41128eba67d83b3f4f07",
+      "Id": "45eed627238c4a97b0b2e286301b5383",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "7b6dba5113144f188d7ec9a939d8a594",
+          "Id": "24d8f433bb3446f8a6c0fe856d5c3711",
           "Name": "",
           "Description": "Directory",
           "UsingDefaultValue": false,
@@ -361,187 +381,6 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "\"geom3\";",
-      "Id": "dfbd81dc919a49a893ac63cd9c2f6787",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "c14d464f4cb849fdbc455d238bb92afc",
-          "Name": "",
-          "Description": "Wert des Ausdrucks in Zeile 1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "Autodesk.DesignScript.Geometry.Cylinder.ByRadiusHeight@Autodesk.DesignScript.Geometry.CoordinateSystem,double,double",
-      "Id": "6b142950d53745ce8abdd16e56ce4851",
-      "Inputs": [
-        {
-          "Id": "7230c8abae674005b66cdce559ecc2a8",
-          "Name": "cs",
-          "Description": "CoordinateSystem\nVorgabewert : Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0)",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "13d023bb2de24cc8bb94e4d99304974b",
-          "Name": "radius",
-          "Description": "double\nVorgabewert : 1",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "94b807e44ae64cc6ab99c22f6e8d0dc5",
-          "Name": "height",
-          "Description": "double\nVorgabewert : 1",
-          "UsingDefaultValue": true,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "842302abbf1b445eb9011d2d43ab8684",
-          "Name": "Cylinder",
-          "Description": "Cylinder",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "Erstellt einen zylindrischen Volumenkörper, definiert durch ein übergeordnetes CoordinateSystem, den Radius und die Höhe des Zylinders.\n\nCylinder.ByRadiusHeight (cs: CoordinateSystem = Autodesk.DesignScript.Geometry.CoordinateSystem.ByOrigin(0, 0, 0), radius: double = 1, height: double = 1): Cylinder"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "10;\n200;",
-      "Id": "3fbe2fd5cc1046f296b3a0d34f6279a3",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "ff472fb54f3343c2933347d290dc8b52",
-          "Name": "",
-          "Description": "Wert des Ausdrucks in Zeile 1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "b5b0a88bcb3440fca0a7f1cfcf106895",
-          "Name": "",
-          "Description": "Wert des Ausdrucks in Zeile 2",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.GetGeometryInformation@Autodesk.DesignScript.Geometry.Solid,IfcInfraToolKit_DynamoCore.DatabaseContainer,string",
-      "Id": "ac8727941f9545338be4bf68c02393bc",
-      "Inputs": [
-        {
-          "Id": "acc8672bda4041869e845b73cb42e581",
-          "Name": "solidGeometry",
-          "Description": "Solid",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "02003124aa7e4d589489e257a65187a5",
-          "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "dae1aa9d0664472d9bf4c907eeab3fd4",
-          "Name": "productGuid",
-          "Description": "string",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "5c630529fb4147119c000b5e7219d40d",
-          "Name": "DatabaseContainer",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "4b8e2367e10443be9a5c0aa8c6171155",
-          "Name": "solidVertices",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "96b1391cc8e84cf68d4df5df5fbe8c6b",
-          "Name": "solidEdges",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "edfac7c035094316973ff6cdceb4fe6c",
-          "Name": "solidFaces",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "fe7cb1b6498e43d0a469551648aadb3d",
-          "Name": "centerOfGravity",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "DynamoGeometryExporter.GetGeometryInformation (solidGeometry: Solid, databaseContainer: DatabaseContainer, productGuid: string): var[]..[]"
     }
   ],
   "Connectors": [
@@ -571,9 +410,14 @@
       "Id": "f7167abafd7a4f14b583b5527d537973"
     },
     {
+      "Start": "cef1cad3423f43cbac7b6fea8ecff53f",
+      "End": "d3cfd3e565844f07bc60d73557e3a970",
+      "Id": "01d77caf6366460ca0b22a4a7579857a"
+    },
+    {
       "Start": "22c6bca09af14b529727fb8013e781da",
-      "End": "02003124aa7e4d589489e257a65187a5",
-      "Id": "ace2b52fc1f04ac1a7ca386c8550a45e"
+      "End": "c9f88b2c24a444919c376c392b060c9b",
+      "Id": "8bf5a421f76644639fc9e302b9ab7ef6"
     },
     {
       "Start": "760a70a26faf43f1aad3bc6c74686ba5",
@@ -581,39 +425,14 @@
       "Id": "c8748b9161414fb6a22b0d4af09d80ad"
     },
     {
-      "Start": "760a70a26faf43f1aad3bc6c74686ba5",
-      "End": "dae1aa9d0664472d9bf4c907eeab3fd4",
-      "Id": "d83568c6a3bc42a4a63b68f66e258413"
-    },
-    {
-      "Start": "7b6dba5113144f188d7ec9a939d8a594",
-      "End": "6fc012fe9c8e4a349c557622d32d1c30",
-      "Id": "a436217191f246eab74af6ed3c3245ed"
-    },
-    {
-      "Start": "c14d464f4cb849fdbc455d238bb92afc",
+      "Start": "23db50dc38ab43d987bfd66d3cf1d315",
       "End": "2a21bdc246f34877bdc80fc5ee6a57f9",
-      "Id": "74dfcf980efb488b8e212c288825d972"
+      "Id": "8d31086d48754136bd4f9e56cb2193a0"
     },
     {
-      "Start": "842302abbf1b445eb9011d2d43ab8684",
-      "End": "acc8672bda4041869e845b73cb42e581",
-      "Id": "cec0a9b44ee1424e8cc40a43d416e57c"
-    },
-    {
-      "Start": "ff472fb54f3343c2933347d290dc8b52",
-      "End": "13d023bb2de24cc8bb94e4d99304974b",
-      "Id": "e21e7c7de12c45a1a3677fcd98129924"
-    },
-    {
-      "Start": "b5b0a88bcb3440fca0a7f1cfcf106895",
-      "End": "94b807e44ae64cc6ab99c22f6e8d0dc5",
-      "Id": "499b42c8d497436583469156191a2607"
-    },
-    {
-      "Start": "5c630529fb4147119c000b5e7219d40d",
-      "End": "d3cfd3e565844f07bc60d73557e3a970",
-      "Id": "0d00b857f81c4d35a8785702a4a29bf6"
+      "Start": "24d8f433bb3446f8a6c0fe856d5c3711",
+      "End": "6fc012fe9c8e4a349c557622d32d1c30",
+      "Id": "e6bd8a6b15544481a069e86ef14c294e"
     }
   ],
   "Dependencies": [],
@@ -648,8 +467,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 898.31582903782623,
-        "Y": 2510.1938357671015
+        "X": 711.4323838753885,
+        "Y": 2662.308267876062
       },
       {
         "ShowGeometry": true,
@@ -658,8 +477,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1217.7444004663976,
-        "Y": 2510.1938357671015
+        "X": 1030.8609553039598,
+        "Y": 2662.308267876062
       },
       {
         "ShowGeometry": true,
@@ -668,8 +487,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1581.7444004663976,
-        "Y": 2510.1938357671015
+        "X": 1394.8609553039598,
+        "Y": 2662.308267876062
       },
       {
         "ShowGeometry": false,
@@ -678,8 +497,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1802.3158290378262,
-        "Y": 2510.1938357671015
+        "X": 1615.4323838753885,
+        "Y": 2662.308267876062
       },
       {
         "ShowGeometry": true,
@@ -688,8 +507,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2185.7444004663976,
-        "Y": 2510.1938357671015
+        "X": 1796.3101967880418,
+        "Y": 2381.3369301382336
       },
       {
         "ShowGeometry": true,
@@ -698,8 +517,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2782.2554828406,
-        "Y": 2757.1833582862332
+        "X": 2192.37532387543,
+        "Y": 2079.0132965074235
       },
       {
         "ShowGeometry": true,
@@ -708,8 +527,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1627.951799830561,
-        "Y": 2291.2392251357105
+        "X": 1321.7462368886358,
+        "Y": 2101.4821250583918
       },
       {
         "ShowGeometry": true,
@@ -718,8 +537,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2185.7444004663976,
-        "Y": 2755.4071691004347
+        "X": 1856.4434194148466,
+        "Y": 3015.0299715526721
       },
       {
         "ShowGeometry": true,
@@ -728,18 +547,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3350.2010600207541,
-        "Y": 2238.9853928408561
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Directory Path",
-        "Id": "b0697ee4b7ee41128eba67d83b3f4f07",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 2838.0774848233036,
-        "Y": 2029.2529226467086
+        "X": 2813.0075625441177,
+        "Y": 2117.9519757656008
       },
       {
         "ShowGeometry": true,
@@ -748,43 +557,61 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 3022.0,
-        "Y": 2234.0
+        "X": 2476.0285183725014,
+        "Y": 2401.9912251161527
       },
       {
         "ShowGeometry": true,
-        "Name": "Cylinder.ByRadiusHeight",
-        "Id": "6b142950d53745ce8abdd16e56ce4851",
+        "Name": "Directory Path",
+        "Id": "45eed627238c4a97b0b2e286301b5383",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1869.5881599847742,
-        "Y": 2038.348285561076
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Code Block",
-        "Id": "3fbe2fd5cc1046f296b3a0d34f6279a3",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1558.0,
-        "Y": 2082.0
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "DynamoGeometryExporter.GetGeometryInformation",
-        "Id": "ac8727941f9545338be4bf68c02393bc",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 2399.2384880345403,
-        "Y": 2091.24683783809
+        "X": 2443.8177029030712,
+        "Y": 2489.5783513573306
       }
     ],
-    "Annotations": [],
-    "X": -397.19987213546062,
-    "Y": -414.01772350742181,
-    "Zoom": 0.36836799066516718
+    "Annotations": [
+      {
+        "Id": "3722c316b23d4d5e9e07f8bbacc127a3",
+        "Title": "MeshImport",
+        "Nodes": [
+          "028d534413594b0ab229d6832c1f7ad8",
+          "2671427e389d4f8996a54d38568a7be4",
+          "a344106fde5c4bf5bccf4973c892bd95",
+          "112bcef2686648518e20bf773bdc7c89"
+        ],
+        "Left": 701.4323838753885,
+        "Top": 2608.8796964474905,
+        "Width": 1207.4285714285716,
+        "Height": 148.42857142857156,
+        "FontSize": 36.0,
+        "InitialTop": 2662.308267876062,
+        "InitialHeight": 125.0,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "5628b1937b5a46af92e7fa2504094841",
+        "Title": "IFC setup",
+        "Nodes": [
+          "01d791b3b64b41658881756bb92861a0",
+          "18b18a20414c41bd93798cd8466b26ec",
+          "d0f279b261e34b09af75121a1fa644a9"
+        ],
+        "Left": 1311.7462368886358,
+        "Top": 2025.5847250788522,
+        "Width": 1731.2613256554819,
+        "Height": 251.85714285714289,
+        "FontSize": 36.0,
+        "InitialTop": 2079.0132965074235,
+        "InitialHeight": 228.42857142857156,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFFFB8D8"
+      }
+    ],
+    "X": -117.97212085202864,
+    "Y": -875.47268157402118,
+    "Zoom": 0.50036679325281386
   }
 }

@@ -1,0 +1,2287 @@
+{
+  "Uuid": "8ab251ec-4449-448a-ac27-1f1c2f68c0fb",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "PTworkflow_DynCore",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "ce0b6344c52c419ea82e063158a90fd7",
+      "Inputs": [
+        {
+          "Id": "6c69e10d16004f1d9fd6d3fcbea74ffd",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5c67e48ae83e45808b682a7448b3cf03",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_1.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_1.off",
+      "NodeType": "ExtensionNode",
+      "Id": "9ca04406266240ce9134827990d96ee3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0fc4454a753e480d9f463f52765821f4",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_2.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_2.off",
+      "NodeType": "ExtensionNode",
+      "Id": "c53d964fc579486388a8e222e35cf2b2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "feee309c099a410caedfbc6352bcfca6",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "3c66a871ac0a48ba9d39706a99b58315",
+      "Inputs": [
+        {
+          "Id": "0e67b60a1d974c5f814deb0de00a013a",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "753e3524227d4cddaeaa42b24ed0c005",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_3.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_3.off",
+      "NodeType": "ExtensionNode",
+      "Id": "720ca7f36123495da8b44a29034b7b1c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "64350abdc32b4ae79eda180e6f372cbd",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "3114ca89f9294fef8264099f3abd8b2b",
+      "Inputs": [
+        {
+          "Id": "c022ea66d33f4aeebda71df5c0387c68",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3c8730b8a44743e1806a7a01a50b5fe1",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pier_4.off",
+      "InputValue": "geometryFiles\\LoD200\\pier_4.off",
+      "NodeType": "ExtensionNode",
+      "Id": "56fd057c7fa345d2bc17861497767d88",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "11c1d374401b4d0daf8814fe41e99d51",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "f2aa606117e840b684b013259e6c6e56",
+      "Inputs": [
+        {
+          "Id": "cdbf099845c2417ba44f9496156ad742",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "551937f47f9c4aed9e1ca84348c36d0b",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "8a534a66cb6b4cd3b546867c867b3e98",
+      "Inputs": [
+        {
+          "Id": "71b06591a1454de0a30f23aca92ebeb8",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "49902593852d4bc8bde99af01383aac7",
+          "Name": "item1",
+          "Description": "Elementindex #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1f807e996cca4d41a6df173d9cb3c683",
+          "Name": "item2",
+          "Description": "Elementindex #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1ec5d09a185445549ec7164845a2e000",
+          "Name": "item3",
+          "Description": "Elementindex #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0aaeef590a124629b53e18ded15d5fa3",
+          "Name": "list",
+          "Description": "Eine Liste",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPatches@var[]",
+      "Id": "6c35956baf8d47d392d7d736855c114c",
+      "Inputs": [
+        {
+          "Id": "f9c4028e1bda4f2983b88965d7f57747",
+          "Name": "geometry",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ef8bfcbaa3244ac09a95624173d18f0a",
+          "Name": "DynamoPatchList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.ToDynamoPatches (geometry: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "96971433d2f343f7a9a1e158103e93df",
+      "Inputs": [
+        {
+          "Id": "42066ee493364c5b8514619627674e93",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c3a8d842449c4a35bf1ba51c952b10a5",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "6dbc577e2f0641d0a80e1f5d48c3436c",
+      "Inputs": [
+        {
+          "Id": "2c6dbcb44041438fba2d4cab3b421f4f",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "970dd6b5d1664df586001a8688092046",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\cutwater_1.off",
+      "InputValue": "geometryFiles\\LoD200\\cutwater_1.off",
+      "NodeType": "ExtensionNode",
+      "Id": "b814d12412d243218e5de04a49218295",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c48c8ab37e2f4e928b102126bf2e1ad7",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\cutwater_2.off",
+      "InputValue": "geometryFiles\\LoD200\\cutwater_2.off",
+      "NodeType": "ExtensionNode",
+      "Id": "eeca7faa44ed4dc6892203b632a62bb4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "736f9663533a49f6b33343cf5b6e05d1",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "c7a155eff189432cac29d28c08936c95",
+      "Inputs": [
+        {
+          "Id": "4226394ba9774064a7ee983ded9fd39e",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "01e3af2490284c0a98a88ee21c8ee2e7",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\cutwater_3.off",
+      "InputValue": "geometryFiles\\LoD200\\cutwater_3.off",
+      "NodeType": "ExtensionNode",
+      "Id": "3a4ce22b4fed4ba3beadd4818cb9d3bf",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8f1b59588f2d40a5a7043543d44a911a",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "fb16e3547f064bd99492ec64c5c3f332",
+      "Inputs": [
+        {
+          "Id": "4e6a14dacac04fb8b3513bd4bd8b2948",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7685b05baf5a4e0e9d94d823b823810f",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\cutwater_4.off",
+      "InputValue": "geometryFiles\\LoD200\\cutwater_4.off",
+      "NodeType": "ExtensionNode",
+      "Id": "2b9fa0e1d91c477cb88dd864987379b0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "845a230b1f4342fca28a54d367a3bb46",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "f00577164f184ebf82ca56fdcc55b9ed",
+      "Inputs": [
+        {
+          "Id": "8ba273ba186b4b56b9303411847fddf4",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c27fd589063c4b5c81d5f150e6eaad7f",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "6ef8d0410cf54a6c95c75e576e79fa16",
+      "Inputs": [
+        {
+          "Id": "3ce89e64e31345dbb035f9dc8bef03ac",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dd5611cc09a64478ab2c32ab7bbfc5e9",
+          "Name": "item1",
+          "Description": "Elementindex #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "110b7f9d3ecf40149d72587cbda044a3",
+          "Name": "item2",
+          "Description": "Elementindex #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6c615657208b432c8003210e6f2cc5fd",
+          "Name": "item3",
+          "Description": "Elementindex #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "745e3147ca7b4264b7dc8720c4f996d0",
+          "Name": "list",
+          "Description": "Eine Liste",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPatches@var[]",
+      "Id": "a5e180ae28124581b03ac21fbd7297f4",
+      "Inputs": [
+        {
+          "Id": "230b5c7799f84326abc585666ba8501e",
+          "Name": "geometry",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "06fdd43cc15f43ad89fbfc005ba9b4d1",
+          "Name": "DynamoPatchList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.ToDynamoPatches (geometry: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "c0b96bf7d72e43389a623877a45c8ad3",
+      "Inputs": [
+        {
+          "Id": "e5d81ca68a2a4a36b0f915f76a414f42",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f69967e6473849dd95986b620dd01db8",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\handrail_1.off",
+      "InputValue": "geometryFiles\\LoD200\\handrail_1.off",
+      "NodeType": "ExtensionNode",
+      "Id": "d69b10c7a8c54ae9ad2c0fe46061ca12",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "acdc05855c944e4cb3575f4d5d87f58d",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\pathway.off",
+      "InputValue": "geometryFiles\\LoD200\\pathway.off",
+      "NodeType": "ExtensionNode",
+      "Id": "028d534413594b0ab229d6832c1f7ad8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5684c50761164fb59ccc85aa88bf3527",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "2671427e389d4f8996a54d38568a7be4",
+      "Inputs": [
+        {
+          "Id": "b59ca595e79d40d3af7aef8f4f6c74ae",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff611178ff7e4eed93cac655089fbe08",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "a344106fde5c4bf5bccf4973c892bd95",
+      "Inputs": [
+        {
+          "Id": "740f7256692343d8adb020ef679006aa",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "07153c86e0a04b81a5bb388852d42c2c",
+          "Name": "list",
+          "Description": "Eine Liste",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPatches@var[]",
+      "Id": "112bcef2686648518e20bf773bdc7c89",
+      "Inputs": [
+        {
+          "Id": "41ec34f046024ae1a5de5a65c252f41c",
+          "Name": "geometry",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9eabc30e3fc24889aa70d2af9cd58081",
+          "Name": "DynamoPatchList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.ToDynamoPatches (geometry: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "0eee479052b44ea490d8f954a5bd39a9",
+      "Inputs": [
+        {
+          "Id": "7698ddeb355a4587b7d660b58162f55e",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5e83d710c580418aaf857eb0aaabdccf",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.GetGeometryInformation@Autodesk.DesignScript.Geometry.Solid,IfcInfraToolKit_DynamoCore.DatabaseContainer,string",
+      "Id": "dc711eac842e4fd2a58c54e3a800530f",
+      "Inputs": [
+        {
+          "Id": "fd2e14419f834b7580b1b18c6be732b3",
+          "Name": "solidGeometry",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ee6b203e828142019a9239b65aae20f3",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2d5f95767e8f43c6b27de8ff3e402ff5",
+          "Name": "productGuid",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b3c9d7d9f73d4f75bb4c6061d0589734",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "24d0385a3f6649b193e9601c5b8fc5ef",
+          "Name": "solidVertices",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2d50e2b51c304972ad803bbd2929b74b",
+          "Name": "solidEdges",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3041cc44fa9342f9b41b90c000922725",
+          "Name": "solidFaces",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f45c105d73844c5ea695d163852fb4a8",
+          "Name": "centerOfGravity",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "DynamoGeometryExporter.GetGeometryInformation (solidGeometry: Solid, databaseContainer: DatabaseContainer, productGuid: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "331bd4395f3249f59c01501f992aad2b",
+      "Inputs": [
+        {
+          "Id": "3f495c633bcf402a8af5c35eef50ac96",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8cc0c11df9b94475ba63995b9f92be9e",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.GetGeometryInformation@Autodesk.DesignScript.Geometry.Solid,IfcInfraToolKit_DynamoCore.DatabaseContainer,string",
+      "Id": "3ad00d426be24d9fad7a6091b4596723",
+      "Inputs": [
+        {
+          "Id": "1125b7f4fd80482d9bc48a143459f266",
+          "Name": "solidGeometry",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "26c18db1327f471485ea03bdcb6d74ef",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f954ba03669c469a9ab38c0cde2732ff",
+          "Name": "productGuid",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cb56eb1190a841e2bb33cd16f96547b0",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "11afdd9c282640838bfd57c5673259ac",
+          "Name": "solidVertices",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6a0331da0c28458eba83fae083641f6c",
+          "Name": "solidEdges",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5eba7e505e9e4169bc2312dcfd5b61b0",
+          "Name": "solidFaces",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "07d2d19277ec481ebc449dd01e175c10",
+          "Name": "centerOfGravity",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "DynamoGeometryExporter.GetGeometryInformation (solidGeometry: Solid, databaseContainer: DatabaseContainer, productGuid: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.CreateIfcModel@string,string",
+      "Id": "db773015b1924dc3a802104288fa6ded",
+      "Inputs": [
+        {
+          "Id": "42ae5e22aedc4cd082b680dddc977ae0",
+          "Name": "projectName",
+          "Description": "string\nVorgabewert : \"sampleProject\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2df48c8ccec7481794ade47568aa02fa",
+          "Name": "siteName",
+          "Description": "string\nVorgabewert : \"sampleSite\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5a7dadb89a9e41b8bc548cc5cf29b73f",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.SaveIfcModel@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
+      "Id": "26d656f3b16949788a41b94baf8a086d",
+      "Inputs": [
+        {
+          "Id": "b9f61660625c4a4e8aa4da72e7fe97da",
+          "Name": "container",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5b4980a1c463497e92bd5fcfe3178e13",
+          "Name": "path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "99cfe207c0da46a88fca7dea20347497",
+          "Name": "modelName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7e691c5b549545189d18fa37feeb35ce",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"null\";",
+      "Id": "c782488f35e04f4386e11b79ce48ac6b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "81f0ce95755a43dbabb1972aeec2e0e5",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\Users\\Sebastian Esser\\Desktop",
+      "InputValue": "C:\\Users\\Sebastian Esser\\Desktop",
+      "NodeType": "ExtensionNode",
+      "Id": "b3874409642f487bb6cb899cd2566684",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b642aa2826804485b66345562a5a96d1",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"PT_ADVEI_sample\";",
+      "Id": "710c2392111245dfb46c9cc7d456f6ad",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "abc9ec84fe8945dc9680f738146430a9",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.GetGeometryInformation@Autodesk.DesignScript.Geometry.Solid,IfcInfraToolKit_DynamoCore.DatabaseContainer,string",
+      "Id": "318d19cbd91c4d079594159bbb9f304b",
+      "Inputs": [
+        {
+          "Id": "5f512340acdb44599e106102c69de92c",
+          "Name": "solidGeometry",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d7c264d4f5f2451ba4bc212400651cb8",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "36bc1d4dc7e24d3bb599a6ea7e3c1889",
+          "Name": "productGuid",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cfc773d707bb4f0982c47513a980d9c4",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f4d712a0251d4cebb03c55ef492e3fe5",
+          "Name": "solidVertices",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ebc6d915c35f47a28bca136e5c986a0c",
+          "Name": "solidEdges",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7ef99590ba53453e80a9925a98d30298",
+          "Name": "solidFaces",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "da678382dff54e2b8923630b0ea67a7a",
+          "Name": "centerOfGravity",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "DynamoGeometryExporter.GetGeometryInformation (solidGeometry: Solid, databaseContainer: DatabaseContainer, productGuid: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\geometryFiles\\LoD200\\handrail_2.off",
+      "InputValue": "geometryFiles\\LoD200\\handrail_2.off",
+      "NodeType": "ExtensionNode",
+      "Id": "41db6bc938af472eb9a1665b760b50f4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "70b91178755e42d28c7b44374c34783a",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.LoadOffGeometry@string[]",
+      "Id": "eb5db5e0401041b494b9a5382035c666",
+      "Inputs": [
+        {
+          "Id": "7b27b22bb1a74b3ab54d94ace2d7f9d5",
+          "Name": "offFilePath",
+          "Description": "string[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a0f556a4fc234ed3bf5d23cee3f3a96c",
+          "Name": "OffGeometry",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.LoadOffGeometry (offFilePath: string[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByJoinedSurfaces@Autodesk.DesignScript.Geometry.Surface[]",
+      "Id": "c5597ee1d5b145b4ba2fd0a81bf43591",
+      "Inputs": [
+        {
+          "Id": "3bf3957e1f814e9a88955496254475ae",
+          "Name": "facesOfSolid",
+          "Description": "Surface[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "585de5c152f04f89a21903b4743ecbe3",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Angeben der ihn bildenden Flächen als Oberflächen.\n\nSolid.ByJoinedSurfaces (facesOfSolid: Surface[]): Solid"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.MeshImporter.ToDynamoPatches@var[]",
+      "Id": "c678fdbbbd594d6db1c1b7d88478ddbf",
+      "Inputs": [
+        {
+          "Id": "77ad2ed82f0e4a908097ee42085241cf",
+          "Name": "geometry",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8616a3006b064d5b86214a1561f1cb4a",
+          "Name": "DynamoPatchList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "MeshImporter.ToDynamoPatches (geometry: var[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "a237213f349c4270b6af67b9a31c86ed",
+      "Inputs": [
+        {
+          "Id": "31235df641ee44bcbcc5e13ec5000624",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5af817fa9ce84164a5b563feee115925",
+          "Name": "item1",
+          "Description": "Elementindex #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eef75204f33940deb8a950a648dc250b",
+          "Name": "list",
+          "Description": "Eine Liste",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.GetGeometryInformation@Autodesk.DesignScript.Geometry.Solid,IfcInfraToolKit_DynamoCore.DatabaseContainer,string",
+      "Id": "4fb6362b26b24f1390dcbebf1b14f23a",
+      "Inputs": [
+        {
+          "Id": "5bb5426b82bd4d9a8fd62e36a5ee2f92",
+          "Name": "solidGeometry",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a9fe4ad4c50548cdb260b006678c5288",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f07f595164944962ba65fa38501c9c47",
+          "Name": "productGuid",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ed4190e75f0c48d6ab0a17b56f5c69ec",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7dd5c20894d94949a936ca92c4fb236d",
+          "Name": "solidVertices",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6893f7301d4848feb68368579c63ee5f",
+          "Name": "solidEdges",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0f129453bf684da0974593b0b2aab354",
+          "Name": "solidFaces",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8469f6091b674f4b82bbae24270fbb87",
+          "Name": "centerOfGravity",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "DynamoGeometryExporter.GetGeometryInformation (solidGeometry: Solid, databaseContainer: DatabaseContainer, productGuid: string): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "5c67e48ae83e45808b682a7448b3cf03",
+      "End": "71b06591a1454de0a30f23aca92ebeb8",
+      "Id": "e29c9cf3d17849048e15f1d8795abfe5"
+    },
+    {
+      "Start": "0fc4454a753e480d9f463f52765821f4",
+      "End": "6c69e10d16004f1d9fd6d3fcbea74ffd",
+      "Id": "458bf1547b6f4bb8aa7e62b122deda03"
+    },
+    {
+      "Start": "feee309c099a410caedfbc6352bcfca6",
+      "End": "0e67b60a1d974c5f814deb0de00a013a",
+      "Id": "3fcc3f921fea45289f44fd690c911e06"
+    },
+    {
+      "Start": "753e3524227d4cddaeaa42b24ed0c005",
+      "End": "49902593852d4bc8bde99af01383aac7",
+      "Id": "88623b9118d2488bbf92b47202093233"
+    },
+    {
+      "Start": "64350abdc32b4ae79eda180e6f372cbd",
+      "End": "c022ea66d33f4aeebda71df5c0387c68",
+      "Id": "7fabfd1f4b5b4aa985b6142d75c3a87c"
+    },
+    {
+      "Start": "3c8730b8a44743e1806a7a01a50b5fe1",
+      "End": "1f807e996cca4d41a6df173d9cb3c683",
+      "Id": "58a3cc4b62ab4959840b3c5a839895c7"
+    },
+    {
+      "Start": "11c1d374401b4d0daf8814fe41e99d51",
+      "End": "cdbf099845c2417ba44f9496156ad742",
+      "Id": "02e472de2e734a699c81894fa96dbd6c"
+    },
+    {
+      "Start": "551937f47f9c4aed9e1ca84348c36d0b",
+      "End": "1ec5d09a185445549ec7164845a2e000",
+      "Id": "c6041b8b632745de94867474e657bd74"
+    },
+    {
+      "Start": "0aaeef590a124629b53e18ded15d5fa3",
+      "End": "f9c4028e1bda4f2983b88965d7f57747",
+      "Id": "f51114f98dad4f8b900e28d5c71c3851"
+    },
+    {
+      "Start": "ef8bfcbaa3244ac09a95624173d18f0a",
+      "End": "42066ee493364c5b8514619627674e93",
+      "Id": "8bf8d7de256e4507937361bf5f4364ee"
+    },
+    {
+      "Start": "c3a8d842449c4a35bf1ba51c952b10a5",
+      "End": "5f512340acdb44599e106102c69de92c",
+      "Id": "43067538a3234f97b756c5f67e5d9d18"
+    },
+    {
+      "Start": "970dd6b5d1664df586001a8688092046",
+      "End": "3ce89e64e31345dbb035f9dc8bef03ac",
+      "Id": "1208926415414bb79211568de26a61b5"
+    },
+    {
+      "Start": "c48c8ab37e2f4e928b102126bf2e1ad7",
+      "End": "2c6dbcb44041438fba2d4cab3b421f4f",
+      "Id": "c31b2ffc2db240f9b211c1107ba12ba0"
+    },
+    {
+      "Start": "736f9663533a49f6b33343cf5b6e05d1",
+      "End": "4226394ba9774064a7ee983ded9fd39e",
+      "Id": "968bc86c99a54de39251038ada1520ec"
+    },
+    {
+      "Start": "01e3af2490284c0a98a88ee21c8ee2e7",
+      "End": "dd5611cc09a64478ab2c32ab7bbfc5e9",
+      "Id": "50eedbd781704895b0d7b8b48828ae92"
+    },
+    {
+      "Start": "8f1b59588f2d40a5a7043543d44a911a",
+      "End": "4e6a14dacac04fb8b3513bd4bd8b2948",
+      "Id": "f3d08605747b470e813e129a3277b94a"
+    },
+    {
+      "Start": "7685b05baf5a4e0e9d94d823b823810f",
+      "End": "110b7f9d3ecf40149d72587cbda044a3",
+      "Id": "d7bc00064153410bbefb82f49b9d77da"
+    },
+    {
+      "Start": "845a230b1f4342fca28a54d367a3bb46",
+      "End": "8ba273ba186b4b56b9303411847fddf4",
+      "Id": "733dc57ee8284c98b6757b6317141300"
+    },
+    {
+      "Start": "c27fd589063c4b5c81d5f150e6eaad7f",
+      "End": "6c615657208b432c8003210e6f2cc5fd",
+      "Id": "dd332088b66b401fa026c97603779ca8"
+    },
+    {
+      "Start": "745e3147ca7b4264b7dc8720c4f996d0",
+      "End": "230b5c7799f84326abc585666ba8501e",
+      "Id": "0bb560e5c0a64defa1b725b99ed1f9d1"
+    },
+    {
+      "Start": "06fdd43cc15f43ad89fbfc005ba9b4d1",
+      "End": "3f495c633bcf402a8af5c35eef50ac96",
+      "Id": "b33eed211c20489e913055279caa423c"
+    },
+    {
+      "Start": "f69967e6473849dd95986b620dd01db8",
+      "End": "31235df641ee44bcbcc5e13ec5000624",
+      "Id": "794f42e9e34244069d49fcdca0fe5e1c"
+    },
+    {
+      "Start": "acdc05855c944e4cb3575f4d5d87f58d",
+      "End": "e5d81ca68a2a4a36b0f915f76a414f42",
+      "Id": "788f9e1e15524faaa72b4dd37c2fff36"
+    },
+    {
+      "Start": "5684c50761164fb59ccc85aa88bf3527",
+      "End": "b59ca595e79d40d3af7aef8f4f6c74ae",
+      "Id": "4a72ec6c65f64f8b93cc8d75279075d9"
+    },
+    {
+      "Start": "ff611178ff7e4eed93cac655089fbe08",
+      "End": "740f7256692343d8adb020ef679006aa",
+      "Id": "30b86be705814155afdeaeb14fc8b522"
+    },
+    {
+      "Start": "07153c86e0a04b81a5bb388852d42c2c",
+      "End": "41ec34f046024ae1a5de5a65c252f41c",
+      "Id": "887a3552e73d4bc280d15b0230e16b0c"
+    },
+    {
+      "Start": "9eabc30e3fc24889aa70d2af9cd58081",
+      "End": "7698ddeb355a4587b7d660b58162f55e",
+      "Id": "4e11fe71ca3d4fee957d4b4cb730ee41"
+    },
+    {
+      "Start": "5e83d710c580418aaf857eb0aaabdccf",
+      "End": "5bb5426b82bd4d9a8fd62e36a5ee2f92",
+      "Id": "281c159ba6c746089e146601b8a697bb"
+    },
+    {
+      "Start": "b3c9d7d9f73d4f75bb4c6061d0589734",
+      "End": "26c18db1327f471485ea03bdcb6d74ef",
+      "Id": "30c77083b9bb400db58916531b0d3c7a"
+    },
+    {
+      "Start": "8cc0c11df9b94475ba63995b9f92be9e",
+      "End": "fd2e14419f834b7580b1b18c6be732b3",
+      "Id": "0d5a8252cfd843a7ba74d480fe8f2a33"
+    },
+    {
+      "Start": "cb56eb1190a841e2bb33cd16f96547b0",
+      "End": "a9fe4ad4c50548cdb260b006678c5288",
+      "Id": "51ac75f5d0a04993865009a51f0e247b"
+    },
+    {
+      "Start": "5a7dadb89a9e41b8bc548cc5cf29b73f",
+      "End": "d7c264d4f5f2451ba4bc212400651cb8",
+      "Id": "65b0086534754ea38034a94037590a89"
+    },
+    {
+      "Start": "81f0ce95755a43dbabb1972aeec2e0e5",
+      "End": "2d5f95767e8f43c6b27de8ff3e402ff5",
+      "Id": "a6e57faa8ed649f89a9c819960fec40d"
+    },
+    {
+      "Start": "81f0ce95755a43dbabb1972aeec2e0e5",
+      "End": "f954ba03669c469a9ab38c0cde2732ff",
+      "Id": "36e7e849dc3b449182126c7e16a72fc9"
+    },
+    {
+      "Start": "81f0ce95755a43dbabb1972aeec2e0e5",
+      "End": "36bc1d4dc7e24d3bb599a6ea7e3c1889",
+      "Id": "db25fc1e58c842948c9a8345329eab64"
+    },
+    {
+      "Start": "81f0ce95755a43dbabb1972aeec2e0e5",
+      "End": "f07f595164944962ba65fa38501c9c47",
+      "Id": "2217d268ca6443c8afe2b7e1cdf7fb99"
+    },
+    {
+      "Start": "b642aa2826804485b66345562a5a96d1",
+      "End": "5b4980a1c463497e92bd5fcfe3178e13",
+      "Id": "64fb90f4967c4ea4b0acfcd21b1f6034"
+    },
+    {
+      "Start": "abc9ec84fe8945dc9680f738146430a9",
+      "End": "99cfe207c0da46a88fca7dea20347497",
+      "Id": "9586a4c6c84046b9935d91fa7e2efb42"
+    },
+    {
+      "Start": "cfc773d707bb4f0982c47513a980d9c4",
+      "End": "ee6b203e828142019a9239b65aae20f3",
+      "Id": "46839c792f204ac68bb495b912f223c8"
+    },
+    {
+      "Start": "70b91178755e42d28c7b44374c34783a",
+      "End": "7b27b22bb1a74b3ab54d94ace2d7f9d5",
+      "Id": "3d0f8ff4c07249a3aac94d0d0fba622a"
+    },
+    {
+      "Start": "a0f556a4fc234ed3bf5d23cee3f3a96c",
+      "End": "5af817fa9ce84164a5b563feee115925",
+      "Id": "a878b0b020304dbeb33a614d9d702374"
+    },
+    {
+      "Start": "585de5c152f04f89a21903b4743ecbe3",
+      "End": "1125b7f4fd80482d9bc48a143459f266",
+      "Id": "a1ab60ec73404c7f906be6ede7be32cc"
+    },
+    {
+      "Start": "8616a3006b064d5b86214a1561f1cb4a",
+      "End": "3bf3957e1f814e9a88955496254475ae",
+      "Id": "dfa6307871c0464faf58d0029407cf7b"
+    },
+    {
+      "Start": "eef75204f33940deb8a950a648dc250b",
+      "End": "77ad2ed82f0e4a908097ee42085241cf",
+      "Id": "88b330426a73425998e3e6c6f199f1ce"
+    },
+    {
+      "Start": "ed4190e75f0c48d6ab0a17b56f5c69ec",
+      "End": "b9f61660625c4a4e8aa4da72e7fe97da",
+      "Id": "3303eb0a59c645c68786799409aa3acf"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": 158.68163655877851,
+      "EyeY": 133.41208662638664,
+      "EyeZ": -95.2527609785263,
+      "LookX": -96.663964031894537,
+      "LookY": -50.967017394255976,
+      "LookZ": 38.543896297911331,
+      "UpX": -0.22021907194796936,
+      "UpY": 0.971490038292867,
+      "UpZ": 0.087810397152594144
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "ce0b6344c52c419ea82e063158a90fd7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 884.420005199898,
+        "Y": 807.71512782611921
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "9ca04406266240ce9134827990d96ee3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 578.13429091418368,
+        "Y": 806.71512782611921
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "c53d964fc579486388a8e222e35cf2b2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 578.13429091418368,
+        "Y": 916.71512782611921
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "3c66a871ac0a48ba9d39706a99b58315",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 884.420005199898,
+        "Y": 916.71512782611921
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "720ca7f36123495da8b44a29034b7b1c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 578.13429091418368,
+        "Y": 1026.7151278261192
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "3114ca89f9294fef8264099f3abd8b2b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 884.420005199898,
+        "Y": 1026.715127826119
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "56fd057c7fa345d2bc17861497767d88",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 578.13429091418368,
+        "Y": 1136.715127826119
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "f2aa606117e840b684b013259e6c6e56",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 884.420005199898,
+        "Y": 1135.715127826119
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "8a534a66cb6b4cd3b546867c867b3e98",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1248.420005199898,
+        "Y": 932.71512782611921
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "MeshImporter.ToDynamoPatches",
+        "Id": "6c35956baf8d47d392d7d736855c114c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1403.7168124028167,
+        "Y": 933.658242005908
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "96971433d2f343f7a9a1e158103e93df",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1746.5914741004601,
+        "Y": 938.37381290485325
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "6dbc577e2f0641d0a80e1f5d48c3436c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 881.09825373712681,
+        "Y": 1309.3545232688164
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "b814d12412d243218e5de04a49218295",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 574.81253945141282,
+        "Y": 1308.3545232688164
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "eeca7faa44ed4dc6892203b632a62bb4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 574.81253945141282,
+        "Y": 1418.3545232688164
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "c7a155eff189432cac29d28c08936c95",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 881.09825373712681,
+        "Y": 1418.3545232688164
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "3a4ce22b4fed4ba3beadd4818cb9d3bf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 574.81253945141282,
+        "Y": 1528.3545232688164
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "fb16e3547f064bd99492ec64c5c3f332",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 881.09825373712681,
+        "Y": 1528.3545232688155
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "2b9fa0e1d91c477cb88dd864987379b0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 574.81253945141282,
+        "Y": 1638.3545232688155
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "f00577164f184ebf82ca56fdcc55b9ed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 881.09825373712681,
+        "Y": 1637.3545232688155
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "6ef8d0410cf54a6c95c75e576e79fa16",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1245.0982537371258,
+        "Y": 1434.3545232688164
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "MeshImporter.ToDynamoPatches",
+        "Id": "a5e180ae28124581b03ac21fbd7297f4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1411.0008500316658,
+        "Y": 1433.1978572710188
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "c0b96bf7d72e43389a623877a45c8ad3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 884.57606341873668,
+        "Y": 1818.9399403253972
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "d69b10c7a8c54ae9ad2c0fe46061ca12",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 578.29034913302269,
+        "Y": 1819.9399403253972
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "028d534413594b0ab229d6832c1f7ad8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 568.13440400549734,
+        "Y": 2143.3375693506378
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "2671427e389d4f8996a54d38568a7be4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 874.42011829121134,
+        "Y": 2144.3375693506378
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "a344106fde5c4bf5bccf4973c892bd95",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1240.1842562475617,
+        "Y": 2139.6734295585529
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "MeshImporter.ToDynamoPatches",
+        "Id": "112bcef2686648518e20bf773bdc7c89",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1413.4002328664703,
+        "Y": 2134.9578586596081
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "0eee479052b44ea490d8f954a5bd39a9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1790.2270050365171,
+        "Y": 2137.7872011989748
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DynamoGeometryExporter.GetGeometryInformation",
+        "Id": "dc711eac842e4fd2a58c54e3a800530f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2269.8394853726531,
+        "Y": 1245.4872391812469
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "331bd4395f3249f59c01501f992aad2b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1751.6941428502575,
+        "Y": 1435.9749724879955
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DynamoGeometryExporter.GetGeometryInformation",
+        "Id": "3ad00d426be24d9fad7a6091b4596723",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2269.3279311516153,
+        "Y": 1459.8850964611688
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.CreateIfcModel",
+        "Id": "db773015b1924dc3a802104288fa6ded",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2185.3665785340795,
+        "Y": 803.2153027273157
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.SaveIfcModel",
+        "Id": "26d656f3b16949788a41b94baf8a086d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2929.038037043375,
+        "Y": 1671.6382187482668
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "c782488f35e04f4386e11b79ce48ac6b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1815.9149509876258,
+        "Y": 1197.1155717554932
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Directory Path",
+        "Id": "b3874409642f487bb6cb899cd2566684",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2619.7865067630178,
+        "Y": 1889.0611294365492
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "710c2392111245dfb46c9cc7d456f6ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2649.3274751841054,
+        "Y": 1986.7610047555122
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DynamoGeometryExporter.GetGeometryInformation",
+        "Id": "318d19cbd91c4d079594159bbb9f304b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2265.780341282516,
+        "Y": 1042.6042235054861
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "41db6bc938af472eb9a1665b760b50f4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 570.5905539295569,
+        "Y": 1941.9157601138709
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "MeshImporter.LoadOffGeometry",
+        "Id": "eb5db5e0401041b494b9a5382035c666",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 876.8762682152709,
+        "Y": 1940.9157601138709
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.ByJoinedSurfaces",
+        "Id": "c5597ee1d5b145b4ba2fd0a81bf43591",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1760.0582029525051,
+        "Y": 1865.8740249729842
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "MeshImporter.ToDynamoPatches",
+        "Id": "c678fdbbbd594d6db1c1b7d88478ddbf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1419.3649101339051,
+        "Y": 1864.2535757538042
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "a237213f349c4270b6af67b9a31c86ed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1253.4623138393652,
+        "Y": 1864.2535757538042
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DynamoGeometryExporter.GetGeometryInformation",
+        "Id": "4fb6362b26b24f1390dcbebf1b14f23a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2266.5222358087722,
+        "Y": 1682.687839537085
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "78a0fa429ffc4348848fe8f5e8bcb2ce",
+        "Title": "Importing Piers",
+        "Nodes": [
+          "ce0b6344c52c419ea82e063158a90fd7",
+          "9ca04406266240ce9134827990d96ee3",
+          "c53d964fc579486388a8e222e35cf2b2",
+          "3c66a871ac0a48ba9d39706a99b58315",
+          "720ca7f36123495da8b44a29034b7b1c",
+          "3114ca89f9294fef8264099f3abd8b2b",
+          "56fd057c7fa345d2bc17861497767d88",
+          "f2aa606117e840b684b013259e6c6e56",
+          "8a534a66cb6b4cd3b546867c867b3e98",
+          "6c35956baf8d47d392d7d736855c114c",
+          "96971433d2f343f7a9a1e158103e93df"
+        ],
+        "Left": 568.13429091418368,
+        "Top": 753.28655639754777,
+        "Width": 1413.0286117577052,
+        "Height": 478.42857142857122,
+        "FontSize": 36.0,
+        "InitialTop": 806.71512782611921,
+        "InitialHeight": 454.99999999999989,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "0c394237044b49b08cb81b75fc205b5f",
+        "Title": "Importing Cutwaters",
+        "Nodes": [
+          "6dbc577e2f0641d0a80e1f5d48c3436c",
+          "b814d12412d243218e5de04a49218295",
+          "eeca7faa44ed4dc6892203b632a62bb4",
+          "c7a155eff189432cac29d28c08936c95",
+          "3a4ce22b4fed4ba3beadd4818cb9d3bf",
+          "fb16e3547f064bd99492ec64c5c3f332",
+          "2b9fa0e1d91c477cb88dd864987379b0",
+          "f00577164f184ebf82ca56fdcc55b9ed",
+          "6ef8d0410cf54a6c95c75e576e79fa16",
+          "a5e180ae28124581b03ac21fbd7297f4",
+          "331bd4395f3249f59c01501f992aad2b"
+        ],
+        "Left": 564.81253945141282,
+        "Top": 1254.925951840245,
+        "Width": 1421.4530319702735,
+        "Height": 478.42857142857042,
+        "FontSize": 36.0,
+        "InitialTop": 1308.3545232688164,
+        "InitialHeight": 454.99999999999909,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "efaba02860bd4ca6bbf145af6d1882be",
+        "Title": "Importing Handrails",
+        "Nodes": [
+          "c0b96bf7d72e43389a623877a45c8ad3",
+          "d69b10c7a8c54ae9ad2c0fe46061ca12",
+          "41db6bc938af472eb9a1665b760b50f4",
+          "eb5db5e0401041b494b9a5382035c666",
+          "c5597ee1d5b145b4ba2fd0a81bf43591",
+          "c678fdbbbd594d6db1c1b7d88478ddbf",
+          "a237213f349c4270b6af67b9a31c86ed"
+        ],
+        "Left": 560.5905539295569,
+        "Top": 1765.5113688968258,
+        "Width": 1434.039077594377,
+        "Height": 271.40439121704503,
+        "FontSize": 36.0,
+        "InitialTop": 1818.9399403253972,
+        "InitialHeight": 247.97581978847393,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "fcfa559248ed4d699b445a8ab3366c3d",
+        "Title": "Importing Deck",
+        "Nodes": [
+          "028d534413594b0ab229d6832c1f7ad8",
+          "2671427e389d4f8996a54d38568a7be4",
+          "a344106fde5c4bf5bccf4973c892bd95",
+          "112bcef2686648518e20bf773bdc7c89",
+          "0eee479052b44ea490d8f954a5bd39a9"
+        ],
+        "Left": 558.13440400549734,
+        "Top": 2081.5292872310365,
+        "Width": 1466.6640296024484,
+        "Height": 156.80828211960124,
+        "FontSize": 36.0,
+        "InitialTop": 2134.9578586596081,
+        "InitialHeight": 128.66413979208482,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "474db00b87444d05a1817e409a1fcd57",
+        "Title": "IFC setup",
+        "Nodes": [
+          "dc711eac842e4fd2a58c54e3a800530f",
+          "3ad00d426be24d9fad7a6091b4596723",
+          "db773015b1924dc3a802104288fa6ded",
+          "26d656f3b16949788a41b94baf8a086d",
+          "b3874409642f487bb6cb899cd2566684",
+          "710c2392111245dfb46c9cc7d456f6ad",
+          "318d19cbd91c4d079594159bbb9f304b",
+          "4fb6362b26b24f1390dcbebf1b14f23a"
+        ],
+        "Left": 2175.3665785340795,
+        "Top": 749.78673129874426,
+        "Width": 983.67145850929546,
+        "Height": 1330.2599877424823,
+        "FontSize": 36.0,
+        "InitialTop": 803.2153027273157,
+        "InitialHeight": 1306.8314163139107,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFFFB8D8"
+      }
+    ],
+    "X": -208.52628613975662,
+    "Y": -325.02514306171372,
+    "Zoom": 0.49403075089703247
+  }
+}
