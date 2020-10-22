@@ -1,6 +1,7 @@
 ﻿// Sebastian Esser20200608
 
 using System;
+using static System.Math;
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.AECC.Interop.Land;
@@ -32,6 +33,25 @@ namespace IfcInfraToolkit_Dyn
             this.Length = alignment.Length;
             this.StartStation = alignment.StartingStation;
             this.EndStation = alignment.EndingStation;
+        }
+
+
+        //Direction is measured diffrently in C3D compared to IFC
+        //-> Corretion C3D measure Clockwise start at Y axis
+        static double angleconv(double direction)
+        {
+
+            direction = direction - (PI / 2);
+            if (direction <= 0)
+            {
+                direction = direction * (-1);
+            }
+            else
+            {
+                direction = (2 * PI) - direction;
+            }
+
+            return (direction);
         }
 
        
@@ -164,8 +184,7 @@ namespace IfcInfraToolkit_Dyn
 
 
 
-
-            //experimenting with C3D Alingment
+            //Maybe for line export the angle need to be adjusted seems to be different def 
             var entities = alignment._entities;
 
             foreach (AeccAlignmentCurve ae in entities)
@@ -178,14 +197,15 @@ namespace IfcInfraToolkit_Dyn
                     var startx = allvalues.StartEasting;
                     var starty = allvalues.StartNorthing;
                     var lenght = allvalues.Length;
-                    var dircetion = allvalues.StartDirection;
+                    var direction = allvalues.StartDirection;
                     var clockwise = allvalues.Clockwise;
                     var radius = allvalues.Radius;
+                    direction = angleconv(direction);
 
 
                     //Convert data into IFC
                     var start = new IfcCartesianPoint(db, startx, starty);
-                    var seg = new IfcCircularArcSegment2D(start, dircetion, radius, lenght, !clockwise);
+                    var seg = new IfcCircularArcSegment2D(start, direction, radius, lenght, !clockwise);
                     var tmp = new IfcAlignment2DHorizontalSegment(seg);
                     segmentshoz.Add(tmp);
 
@@ -200,6 +220,8 @@ namespace IfcInfraToolkit_Dyn
                     var starty = allvalues.StartNorthing;
                     var direction = allvalues.Direction;
                     var length = allvalues.Length;
+                    direction = angleconv(direction);
+
 
                     //Convert Values into IFC
                     var start = new IfcCartesianPoint(db, startx, starty);
@@ -217,6 +239,7 @@ namespace IfcInfraToolkit_Dyn
             {
                 throw new Exception("No Horizontale Segemente found!");
             }
+
             //Save Data into Curve
             IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
             curve.Horizontal = horizontal;
