@@ -9,6 +9,7 @@ using Autodesk.AutoCAD.Interop.Common;
 using Autodesk.DesignScript.Runtime;
 using GeometryGym.Ifc;
 using IfcInfraToolKit_DynamoCore;
+using Autodesk.AutoCAD.Interop;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -237,11 +238,11 @@ namespace IfcInfraToolkit_Dyn
                 throw new Exception("No Horizontale Segemente found!");
             }
 
-
+            var segmentsvert = new List<IfcAlignment2DVerticalSegment>();
             //Vertikal Export of alignemt
             if (twoDim == false)
             {
-                var segmentsvert = new List<IfcAlignment2DVerticalSegment>();
+               
 
                 var aeccAlignment = alignment._alignment;
                 //Errorhandling
@@ -249,36 +250,47 @@ namespace IfcInfraToolkit_Dyn
                 {
                     throw new Exception("No Profil found -> maybe only 2D?");
                 }
+                //check every profil -> needs to be changed now its exporting every profil
                 foreach (AeccProfile ap in aeccAlignment.Profiles)
                 {
+
+                    //Iterate through all segments
                     AeccProfileEntities ape = ap.Entities;
                     var iter = ape.GetEnumerator();
                     while(iter.MoveNext())
                     {
-                        
+                        //Check which Entity are used
                         IAeccProfileEntity enti = (IAeccProfileEntity)iter.Current;
                         AeccProfileEntityType entitype = enti.Type;
                         if (entitype.GetType() == AeccProfileEntityType.aeccProfileEntityTangent.GetType())
                         {
+                            //Gather all infos for the segments
                             aeccProfileTangent expo= (aeccProfileTangent)enti;
-                            //Add implimentation
+                            var startst = expo.StartStation;
+                            var starthi = expo.StartElevation;
+                            var grad = expo.Grade;
+                            var length = expo.Length;
+
+                            var verseg = new IfcAlignment2DVerSegLine(db, startst, length, starthi, grad);
+                            segmentsvert.Add(verseg);
+
                         }
 
+
+                        //TODO:  ADD circular and parabol shapes
+
                     }
-                    
-                    //Line =1 ; Circular =2; Symmetric Parabola =3 ; Asymmetric Parabola =4
-                    
-                    
 
                 }
 
             }
 
-
             //Save Data into Curve
             IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
             curve.Horizontal = horizontal;
+
             //Placement in 2D or 3D
+            //not sure if necessary
             if (twoDim == true)
             {
                 var placement = new IfcAxis2Placement2D(db);
@@ -288,8 +300,8 @@ namespace IfcInfraToolkit_Dyn
             //TODO: Impliment
             if (twoDim == false)
             {
-                var placement = new IfcAxis2Placement2D(db);
-                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
+                IfcAlignment2DVertical vertical = new IfcAlignment2DVertical(segmentsvert);
+                curve.Vertical = vertical;
             }
 
             //end testing
