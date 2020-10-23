@@ -300,6 +300,26 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "56608b27280f4946b6d9174678dcba59",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "415371c7efce42cc9e18fcd321354bd4",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Selection between a true and false."
     }
   ],
   "Connectors": [
@@ -342,6 +362,11 @@
       "Start": "63535acb3455465083c4188d7ea1e837",
       "End": "6afbac02d7de4c0cb0d99308655e9bbe",
       "Id": "b8105f68e370477cb85870a3f248c702"
+    },
+    {
+      "Start": "415371c7efce42cc9e18fcd321354bd4",
+      "End": "76bd5bf9b66547dfa438de77a8a33604",
+      "Id": "240013c6edc045bab8553168784a69a5"
     }
   ],
   "Dependencies": [],
@@ -370,89 +395,99 @@
     },
     "NodeViews": [
       {
-        "ShowGeometry": true,
-        "Name": "Civil3DApplication.Civil3DApplication",
         "Id": "1afbe0a0489742d38c750220f6a5c672",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Civil3DApplication.Civil3DApplication",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 80.5,
         "Y": 349.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Civil3DApplication.GetDocuments",
         "Id": "65d2f969e69c4b16a70d97bf104da301",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Civil3DApplication.GetDocuments",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 347.5,
         "Y": 356.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Civil3DDocument.GetAlignments",
         "Id": "20d1c3d6f95c4b7290e65c53f1e776ba",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Civil3DDocument.GetAlignments",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 726.0,
         "Y": 357.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "Alignment.IfcAddAlignmentByCurve",
         "Id": "8524b9b6a0fe4c6c9eab58e5a4fe1c37",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Alignment.IfcAddAlignmentByCurve",
+        "ShowGeometry": true,
         "Excluded": false,
-        "X": 824.0,
-        "Y": 530.0
+        "X": 846.65492625515935,
+        "Y": 640.75741724744512
       },
       {
-        "ShowGeometry": true,
-        "Name": "IfcModelSetup.CreateIfcModel",
         "Id": "8ee440ed273d4839a5b32b4cf7adc2d7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "IfcModelSetup.CreateIfcModel",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 62.0,
         "Y": 552.0
       },
       {
-        "ShowGeometry": true,
-        "Name": "IfcModelSetup.WatchIFC",
         "Id": "752b57d33b79495e89e052d80ce3376b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "IfcModelSetup.WatchIFC",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 1309.7091988130564,
         "Y": 435.57566765578622
       },
       {
-        "ShowGeometry": true,
-        "Name": "IfcModelSetup.SaveIfcModel",
         "Id": "7b78173a2c6d42d8b351b5c5cebb4dda",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "IfcModelSetup.SaveIfcModel",
+        "ShowGeometry": true,
         "Excluded": false,
         "X": 1302.587537091988,
         "Y": 681.27299703264089
       },
       {
-        "ShowGeometry": true,
-        "Name": "Code Block",
         "Id": "4ffac6beefbb427a90ebda1cb2b0737b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
+        "Name": "Code Block",
+        "ShowGeometry": true,
         "Excluded": false,
-        "X": 994.00197318840037,
-        "Y": 792.181997562582
+        "X": 977.220546332727,
+        "Y": 864.34213304197783
+      },
+      {
+        "Id": "56608b27280f4946b6d9174678dcba59",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Boolean",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 633.0220887017266,
+        "Y": 754.37267357342739
       }
     ],
     "Annotations": [],
-    "X": -739.521470970223,
-    "Y": -470.64634216307337,
+    "X": -634.521470970223,
+    "Y": -296.64634216307337,
     "Zoom": 1.1917937712929565
   }
 }

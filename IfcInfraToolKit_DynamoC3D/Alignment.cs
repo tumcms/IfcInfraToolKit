@@ -183,10 +183,8 @@ namespace IfcInfraToolkit_Dyn
             var segmentshoz = new List<IfcAlignment2DHorizontalSegment>();
 
 
-
-            //Maybe for line export the angle need to be adjusted seems to be different def 
+            //Horizontal Export of alignment
             var entities = alignment._entities;
-
             foreach (AeccAlignmentCurve ae in entities)
             {
                 //Circular handling
@@ -233,12 +231,49 @@ namespace IfcInfraToolkit_Dyn
 
 
             }
-
             //Errorhandling no Segments
             if (segmentshoz.Count == 0)
             {
                 throw new Exception("No Horizontale Segemente found!");
             }
+
+
+            //Vertikal Export of alignemt
+            if (twoDim == false)
+            {
+                var segmentsvert = new List<IfcAlignment2DVerticalSegment>();
+
+                var aeccAlignment = alignment._alignment;
+                //Errorhandling
+                if (aeccAlignment.Profiles == null)
+                {
+                    throw new Exception("No Profil found -> maybe only 2D?");
+                }
+                foreach (AeccProfile ap in aeccAlignment.Profiles)
+                {
+                    AeccProfileEntities ape = ap.Entities;
+                    var iter = ape.GetEnumerator();
+                    while(iter.MoveNext())
+                    {
+                        
+                        IAeccProfileEntity enti = (IAeccProfileEntity)iter.Current;
+                        AeccProfileEntityType entitype = enti.Type;
+                        if (entitype.GetType() == AeccProfileEntityType.aeccProfileEntityTangent.GetType())
+                        {
+                            aeccProfileTangent expo= (aeccProfileTangent)enti;
+                            //Add implimentation
+                        }
+
+                    }
+                    
+                    //Line =1 ; Circular =2; Symmetric Parabola =3 ; Asymmetric Parabola =4
+                    
+                    
+
+                }
+
+            }
+
 
             //Save Data into Curve
             IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
@@ -250,6 +285,12 @@ namespace IfcInfraToolkit_Dyn
                 ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
             }
 
+            //TODO: Impliment
+            if (twoDim == false)
+            {
+                var placement = new IfcAxis2Placement2D(db);
+                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
+            }
 
             //end testing
 
