@@ -278,7 +278,7 @@ namespace IfcInfraToolkit_Dyn
                             var startst = expo.StartStation;
                             var starthi = expo.StartElevation;
                             var grad = expo.Grade;
-                            var length = expo.Length;
+                            var length = expo.Length*Cos(grad); //should be right
 
 
                             //add Segments to exportlist
@@ -296,9 +296,10 @@ namespace IfcInfraToolkit_Dyn
                             var startst = expo.StartStation;
                             var starthi = expo.StartElevation;
                             var endhi = expo.EndElevation;
-                            var length = expo.Length;   //not sure
+                            var endst = expo.EndStation;
                             var radius = expo.Radius;
                             var grad = expo.GradeIn;
+                            var pathlength = expo.Length;
                             var curvetype = expo.CurveType;
                             bool convex = true;
                             //Crest == Convex and Sag== Concave
@@ -309,8 +310,15 @@ namespace IfcInfraToolkit_Dyn
                             }
 
 
+                            //horizonal lenght calc
+                            //calc chord length
+                            var angle = pathlength / radius;
+                            var chordl = 2 * radius * Sin(angle / 2); //always hypotenuse
+                            var elevationdelta = expo.EndElevation - expo.StartElevation; 
+                            var lengthhoz = Sqrt(chordl*chordl - elevationdelta *elevationdelta);
+
                             //add Segments to exportlist
-                            var verseg = new IfcAlignment2DVerSegCircularArc(db, startst, length, starthi, grad, radius, convex); 
+                            var verseg = new IfcAlignment2DVerSegCircularArc(db, startst, lengthhoz, starthi, grad, radius, convex); 
                             segmentsvert.Add(verseg);
                         }
 
@@ -320,10 +328,11 @@ namespace IfcInfraToolkit_Dyn
                         {
                             //Gather all infos for the segments
                             AeccProfileCurveParabolic expo = enti as AeccProfileCurveParabolic;
-                            var startsi = expo.StartStation;
+                            var startst = expo.StartStation;
                             var starthi = expo.StartElevation;
+                            var endst = expo.EndStation;
+                            var length = expo.Length; //leng
                             var grad = expo.GradeIn;
-                            var lenght = expo.Length;
                             var paracon = expo.Radius; //Not sure if right maybe change of sign
                             var curvetype = expo.CurveType;
                             bool convex = true;
@@ -334,9 +343,12 @@ namespace IfcInfraToolkit_Dyn
                                 convex = false;
                             }
 
-                            //add Segments to exportlist
-                            var verseg = new IfcAlignment2DVerSegParabolicArc(db, startsi, lenght, starthi, grad, paracon, convex);
-                            segmentsvert.Add(verseg);
+
+
+
+                            //add Segments to exportlist //TODO: get the right length horizontal and the right paracon
+                            //var verseg = new IfcAlignment2DVerSegParabolicArc(db, startst, length, starthi, grad, paracon, convex);
+                            //segmentsvert.Add(verseg);
 
                         }
 
