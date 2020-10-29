@@ -153,7 +153,8 @@ namespace IfcInfraToolkit_Dyn
             IfcPavement pavement = new IfcPavement(site, start, produktdef);
 
             //Link Pavement to Road
-            road.AddElement(pavement);
+            //road.AddElement(pavement);
+            road.AddAggregated(pavement);
 
             var re = new Dictionary<string, object>
             {
