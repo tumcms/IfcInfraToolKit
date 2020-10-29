@@ -11,3 +11,5 @@ IfcInfraToolKit_Common/obj/
 packages/
 IfcInfraToolKit_Common/
 .vs/
+utilServices/Off_GeomLibrary/bin/
+utilServices/Off_GeomLibrary/obj/
