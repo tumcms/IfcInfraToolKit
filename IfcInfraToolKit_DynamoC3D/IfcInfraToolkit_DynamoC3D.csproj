@@ -7,8 +7,8 @@
     <ProjectGuid>{A17252B7-6231-4BAD-B82F-0D42A9819058}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IfcInfraToolkit_Dyn</RootNamespace>
-    <AssemblyName>IfcInfraToolkit_Dyn</AssemblyName>
+    <RootNamespace>IfcInfraToolkit_DynamoC3D</RootNamespace>
+    <AssemblyName>IfcInfraToolkit_DynamoC3D</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -95,6 +95,7 @@
     <Compile Include="Alignment.cs" />
     <Compile Include="Civil3DApplication.cs" />
     <Compile Include="Civil3DDocument.cs" />
+    <Compile Include="Road.cs" />
     <Compile Include="IFC.cs" />
     <Compile Include="IfcInfraToolkit_DynInteraction.cs" />
     <Compile Include="Profile.cs" />
@@ -103,6 +104,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IfcInfraToolKit_DynamoCore\IfcInfraToolKit_DynamoCore.csproj">
+      <Project>{D0F227C9-2437-4CE5-9024-1596A42E34A1}</Project>
+      <Name>IfcInfraToolKit_DynamoCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

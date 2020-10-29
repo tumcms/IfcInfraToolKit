@@ -142,5 +142,14 @@ namespace IfcInfraToolKit_DynamoCore
 
         #endregion
 
+
+        /// <summary>
+        /// Watch node for Ifc content in the database
+        /// </summary>
+        /// <returns></returns>
+        public static DatabaseIfc WatchIFC(DatabaseContainer databaseContainer)
+        {
+            return databaseContainer.Database;
+        }
     }
 }

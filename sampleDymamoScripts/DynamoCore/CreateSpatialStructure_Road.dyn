@@ -2,7 +2,7 @@
   "Uuid": "94731587-b352-4088-8035-633460975de9",
   "IsCustomNode": false,
   "Description": null,
-  "Name": "CreateSpatialStructure",
+  "Name": "CreateSpatialStructure_Road",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -206,12 +206,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"spatial_updated\";",
+      "Code": "\"blub\";",
       "Id": "bfe02770a59c474eb8761eb17bf1d2a1",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "104f88fa97244347ae89dded624cef44",
+          "Id": "4f695996fcd54c13ab5c91171f328c98",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -357,6 +357,63 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.Road.IFCAddRoad@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
+      "Id": "b46fd420b385419e8559ad99d9021e65",
+      "Inputs": [
+        {
+          "Id": "ee5b4cd34b4041bab6847419909f1379",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "79b9f0b55a864c8f934cecbfe83fb545",
+          "Name": "hostGuid",
+          "Description": "string\nVorgabewert : \"null\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c07559df38464bf1bc755333a7d2bb80",
+          "Name": "roadname",
+          "Description": "string\nVorgabewert : \"DefaultRoad\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e9dfb860f1cb4ce885a4226045aad066",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f841061b89564857b9cb5f5d1947cc57",
+          "Name": "RoadGUID",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Road.IFCAddRoad (databaseContainer: DatabaseContainer, hostGuid: string = \"null\", roadname: string = \"DefaultRoad\"): var[]..[]"
     }
   ],
   "Connectors": [
@@ -386,19 +443,24 @@
       "Id": "979d69198173446c9439028d2e423e41"
     },
     {
-      "Start": "104f88fa97244347ae89dded624cef44",
+      "Start": "4f695996fcd54c13ab5c91171f328c98",
       "End": "181802327d9d4929872ed16ff2ee478a",
-      "Id": "8a235910156c4edca6e2fcbcb2762778"
+      "Id": "de0f55a0fc664eb0ac06f142eb4687d8"
     },
     {
       "Start": "9091b0f376b942bd96650eacbdc0d491",
-      "End": "65e6df4b828e426394375c350cdaf9c9",
-      "Id": "3d4604c1a5b74f53965ea342683c2bcb"
+      "End": "ee5b4cd34b4041bab6847419909f1379",
+      "Id": "d18deb86c78e4d118899f6f61e06015f"
     },
     {
       "Start": "acb5af66b54a4757b9442d2fdabfe0a3",
       "End": "996e4d388d7f47208aa0766721e007bb",
       "Id": "3f950a155b69430bb5d53adca91fb69e"
+    },
+    {
+      "Start": "6c88efb0a7aa4baab57d039b2d989861",
+      "End": "79b9f0b55a864c8f934cecbfe83fb545",
+      "Id": "7daab6296ea44ae689f35347d6247aca"
     },
     {
       "Start": "1a837479578447ffba58d1f73a0d6ca5",
@@ -414,6 +476,11 @@
       "Start": "9bd41e3152be457bade3173853354620",
       "End": "90b54a44a7814feda55fee29dcee756d",
       "Id": "d9c858fc54434e88938a3f193d704e54"
+    },
+    {
+      "Start": "e9dfb860f1cb4ce885a4226045aad066",
+      "End": "65e6df4b828e426394375c350cdaf9c9",
+      "Id": "c5755ef95b0e470e9f3ead874b311243"
     }
   ],
   "Dependencies": [],
@@ -448,8 +515,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 107.285714285714,
-        "Y": 264.25047619047632
+        "X": 82.142857142857,
+        "Y": 281.39333333333337
       },
       {
         "ShowGeometry": true,
@@ -458,8 +525,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1716.4285714285711,
-        "Y": 301.67904761904765
+        "X": 2078.8104620685531,
+        "Y": 101.31437411585955
       },
       {
         "ShowGeometry": true,
@@ -468,8 +535,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 561.57142857142821,
-        "Y": 263.53619047619048
+        "X": 430.71428571428555,
+        "Y": 506.39333333333332
       },
       {
         "ShowGeometry": true,
@@ -478,8 +545,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 907.285714285714,
-        "Y": 468.53619047619043
+        "X": 914.71428571428555,
+        "Y": 578.82190476190476
       },
       {
         "ShowGeometry": true,
@@ -488,8 +555,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1490.1428571428571,
-        "Y": 679.39333333333309
+        "X": 1263.8571428571427,
+        "Y": 251.39333333333332
       },
       {
         "ShowGeometry": true,
@@ -498,8 +565,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1501.5714285714284,
-        "Y": 783.32095238095235
+        "X": 1263.8571428571427,
+        "Y": 361.60666666666668
       },
       {
         "ShowGeometry": true,
@@ -508,8 +575,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1163.2857142857138,
-        "Y": 266.25047619047615
+        "X": 1263.8571428571427,
+        "Y": 471.39333333333332
       },
       {
         "ShowGeometry": true,
@@ -518,8 +585,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1451.8571428571424,
-        "Y": 472.25047619047609
+        "X": 1715.8571428571427,
+        "Y": 473.39333333333332
       },
       {
         "ShowGeometry": true,
@@ -528,8 +595,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 245.14285714285711,
-        "Y": 658.14285714285688
+        "X": 76.0,
+        "Y": 525.0
       },
       {
         "ShowGeometry": true,
@@ -538,52 +605,23 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 966.42857142857179,
-        "Y": 649.85714285714266
-      }
-    ],
-    "Annotations": [
-      {
-        "Id": "cb632575de3648a696add38a543ae550",
-        "Title": "IFC interaction\r\n",
-        "Nodes": [
-          "4a91b71b0261469fbea46be6a6f47f88",
-          "fa446334a91c4f4ab6cbdc808fb6a6bc",
-          "c59600ac548f45d28430e86072c188ab",
-          "a4cfe16135ed44b9bd676ffb44d4cc03"
-        ],
-        "Left": 97.285714285714,
-        "Top": 167.25047619047621,
-        "Width": 1849.1428571428571,
-        "Height": 280.28571428571433,
-        "FontSize": 36.0,
-        "InitialTop": 263.53619047619048,
-        "InitialHeight": 214.00000000000006,
-        "TextblockHeight": 86.285714285714292,
-        "Background": "#FFB9F9E1"
+        "X": 1087.0,
+        "Y": 735.0
       },
       {
-        "Id": "b6fd60384a1541fbb43e0bd1e8eb1aa4",
-        "Title": "User Input",
-        "Nodes": [
-          "e57186de91974105b971e064e9433e24",
-          "bfe02770a59c474eb8761eb17bf1d2a1",
-          "6e36b04430bc4e7b87978bd4bef1f908",
-          "16a8c8344df240459d1f79b952d1312a"
-        ],
-        "Left": 235.14285714285711,
-        "Top": 596.42857142857122,
-        "Width": 1477.5714285714287,
-        "Height": 280.17809523809547,
-        "FontSize": 36.0,
-        "InitialTop": 649.85714285714266,
-        "InitialHeight": 245.32095238095258,
-        "TextblockHeight": 43.428571428571431,
-        "Background": "#FFC1D676"
+        "ShowGeometry": true,
+        "Name": "Road.IFCAddRoad",
+        "Id": "b46fd420b385419e8559ad99d9021e65",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1369.9996619293215,
+        "Y": -6.5174587189048907
       }
     ],
-    "X": 19.912500000000023,
-    "Y": 12.235847462202969,
-    "Zoom": 0.97676875
+    "Annotations": [],
+    "X": 100.71769543200662,
+    "Y": 154.5216320911702,
+    "Zoom": 0.57937399427177749
   }
 }
