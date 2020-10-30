@@ -3212,12 +3212,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"sample_ifcroad\";\n\"test\";",
+      "Code": "\"export\";\n\"sample_ifcroad\";",
       "Id": "d9dc34c6665c46e1b5c5770427069ce0",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "666b4183617547408ac44ac5697fd573",
+          "Id": "77fe6ffc86174a28bcd9f87b3cee82f0",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -3226,7 +3226,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "48b4dfc9209340feac79119210f74265",
+          "Id": "f44c0e3d7a654e65b5330ce9c1867c62",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 2",
           "UsingDefaultValue": false,
@@ -5311,14 +5311,14 @@
       "Id": "7601df132c334fbdb06d93635bb6e5b4"
     },
     {
-      "Start": "666b4183617547408ac44ac5697fd573",
+      "Start": "77fe6ffc86174a28bcd9f87b3cee82f0",
       "End": "aad1cf3a92ef40e28589299d3851216a",
-      "Id": "7c4d5d447ecf49c9991913707829dd73"
+      "Id": "37cb043a106544a9aab442637ae6c769"
     },
     {
-      "Start": "48b4dfc9209340feac79119210f74265",
+      "Start": "f44c0e3d7a654e65b5330ce9c1867c62",
       "End": "c813b023c66246c59df755916ca59943",
-      "Id": "3f1b5b9ea1534a31ab1ddd022ae61e46"
+      "Id": "2112ebf91a1d4319a03b4bbc2b19cec8"
     },
     {
       "Start": "b6b89756d8be459894f592a4a2c2e726",
@@ -7255,7 +7255,7 @@
         "Left": 6692.969783214442,
         "Top": 1380.6104151648044,
         "Width": 2953.500661705416,
-        "Height": 815.77258196450452,
+        "Height": 798.77258196450452,
         "FontSize": 36.0,
         "InitialTop": 1433.6104151648044,
         "InitialHeight": 787.77258196450452,
@@ -7263,8 +7263,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": -7015.4754637325732,
-    "Y": -1195.7851433500246,
-    "Zoom": 0.85011019271288768
+    "X": -2789.80258573113,
+    "Y": -142.34358304668223,
+    "Zoom": 0.36186742359131729
   }
 }

@@ -349,12 +349,13 @@ namespace IfcInfraToolkit_Dyn
                     }
 
 
-                    //parabola -> needs testing
+                    //parabola -> currently not working
                     if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()))
                     {
                         //Gather all infos for the segments
                         AeccProfileCurveParabolic expo = enti as AeccProfileCurveParabolic;
                         var starthi = expo.StartElevation;
+                        var endhi = expo.EndElevation;
                         var endst = expo.EndStation;
                         var length = expo.Length; //leng
                         var grad = expo.GradeIn;
