@@ -48,7 +48,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlignmentService.cs" />
-    <Compile Include="BRepGeometryServices\TfsBRepService.cs" />
     <Compile Include="GeometryService.cs" />
     <Compile Include="ProductService.cs" />
     <Compile Include="ProjectSetupService.cs" />

@@ -92,7 +92,7 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
       "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolkit_Dyn.Alignment.IfcAddAlignmentByCurve@IfcInfraToolKit_DynamoCore.DatabaseContainer,IfcInfraToolkit_Dyn.Alignment,bool,string",
+      "FunctionSignature": "IfcInfraToolkit_Dyn.Alignment.IfcAddAlignmentByCurve@IfcInfraToolKit_DynamoCore.DatabaseContainer,IfcInfraToolkit_Dyn.Alignment,bool,int,string",
       "Id": "8524b9b6a0fe4c6c9eab58e5a4fe1c37",
       "Inputs": [
         {
@@ -124,6 +124,15 @@
         },
         {
           "Id": "1ad9607b496b4ff9a8a3b1e2923e2564",
+          "Name": "profilnum",
+          "Description": "int\nVorgabewert : 2",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7329c24df76d44daa89458268d6be7a6",
           "Name": "Alignmentname",
           "Description": "string\nVorgabewert : \"DefaultAlignment\"",
           "UsingDefaultValue": true,
@@ -153,7 +162,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "Alignment.IfcAddAlignmentByCurve (databaseContainer: DatabaseContainer, alignment: Alignment, twoDim: bool = true, Alignmentname: string = \"DefaultAlignment\"): var[]..[]"
+      "Description": "Alignment.IfcAddAlignmentByCurve (databaseContainer: DatabaseContainer, alignment: Alignment, twoDim: bool = true, profilnum: int = 2, Alignmentname: string = \"DefaultAlignment\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -319,7 +328,31 @@
         }
       ],
       "Replication": "Disabled",
-      "Description": "Selection between a true and false."
+      "Description": "Auswahl zwischen True und False"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.IntegerSlider, CoreNodeModels",
+      "NodeType": "NumberInputNode",
+      "NumberType": "Integer",
+      "InputValue": 1,
+      "MaximumValue": 100,
+      "MinimumValue": 0,
+      "StepValue": 1,
+      "Id": "010e926f24ca40bdbf73e51f9242f396",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e07ba4b1e6214737bb56fe1a004ac4d0",
+          "Name": "",
+          "Description": "Int32",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ein Schieberegler zur Erzeugung ganzzahliger Werte"
     }
   ],
   "Connectors": [
@@ -367,6 +400,11 @@
       "Start": "415371c7efce42cc9e18fcd321354bd4",
       "End": "76bd5bf9b66547dfa438de77a8a33604",
       "Id": "240013c6edc045bab8553168784a69a5"
+    },
+    {
+      "Start": "e07ba4b1e6214737bb56fe1a004ac4d0",
+      "End": "1ad9607b496b4ff9a8a3b1e2923e2564",
+      "Id": "7c96779b05634f0d89e2755a02826d9c"
     }
   ],
   "Dependencies": [],
@@ -395,99 +433,109 @@
     },
     "NodeViews": [
       {
+        "ShowGeometry": true,
+        "Name": "Civil3DApplication.Civil3DApplication",
         "Id": "1afbe0a0489742d38c750220f6a5c672",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Civil3DApplication.Civil3DApplication",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 80.5,
         "Y": 349.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Civil3DApplication.GetDocuments",
         "Id": "65d2f969e69c4b16a70d97bf104da301",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Civil3DApplication.GetDocuments",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 347.5,
         "Y": 356.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Civil3DDocument.GetAlignments",
         "Id": "20d1c3d6f95c4b7290e65c53f1e776ba",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Civil3DDocument.GetAlignments",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 726.0,
         "Y": 357.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "Alignment.IfcAddAlignmentByCurve",
         "Id": "8524b9b6a0fe4c6c9eab58e5a4fe1c37",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Alignment.IfcAddAlignmentByCurve",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 846.65492625515935,
         "Y": 640.75741724744512
       },
       {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.CreateIfcModel",
         "Id": "8ee440ed273d4839a5b32b4cf7adc2d7",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "IfcModelSetup.CreateIfcModel",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 62.0,
         "Y": 552.0
       },
       {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.WatchIFC",
         "Id": "752b57d33b79495e89e052d80ce3376b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "IfcModelSetup.WatchIFC",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 1309.7091988130564,
         "Y": 435.57566765578622
       },
       {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.SaveIfcModel",
         "Id": "7b78173a2c6d42d8b351b5c5cebb4dda",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "IfcModelSetup.SaveIfcModel",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 1302.587537091988,
         "Y": 681.27299703264089
       },
       {
+        "ShowGeometry": true,
+        "Name": "Code Block",
         "Id": "4ffac6beefbb427a90ebda1cb2b0737b",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Code Block",
-        "ShowGeometry": true,
         "Excluded": false,
         "X": 977.220546332727,
         "Y": 864.34213304197783
       },
       {
+        "ShowGeometry": true,
+        "Name": "Boolean",
         "Id": "56608b27280f4946b6d9174678dcba59",
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
-        "Name": "Boolean",
-        "ShowGeometry": true,
         "Excluded": false,
-        "X": 633.0220887017266,
-        "Y": 754.37267357342739
+        "X": 597.78109230481232,
+        "Y": 705.7065356919743
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Integer Slider",
+        "Id": "010e926f24ca40bdbf73e51f9242f396",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 526.04049249680816,
+        "Y": 805.97556115462362
       }
     ],
     "Annotations": [],
-    "X": -634.521470970223,
-    "Y": -296.64634216307337,
+    "X": -637.521470970223,
+    "Y": -407.64634216307337,
     "Zoom": 1.1917937712929565
   }
 }
