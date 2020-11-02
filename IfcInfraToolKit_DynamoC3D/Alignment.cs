@@ -165,6 +165,7 @@ namespace IfcInfraToolkit_Dyn
             DatabaseContainer databaseContainer,
             Alignment alignment,
             bool twoDim = true,
+            int profilnum = 2,
             string Alignmentname = "DefaultAlignment")
         {
             var db = databaseContainer.Database;
@@ -180,6 +181,18 @@ namespace IfcInfraToolkit_Dyn
             IfcAlignmentCurve curve = new IfcAlignmentCurve(db);
             IfcAlignment ifcalignment = new IfcAlignment(site, curve);
             ifcalignment.Name = Alignmentname;
+            if (twoDim == true)
+            {
+                var placement = new IfcAxis2Placement2D(new IfcCartesianPoint(db,0,0));
+                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
+            }
+            else
+            {
+                var placement = new IfcAxis2Placement3D(new IfcCartesianPoint(db, 0, 0, 0));
+                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
+
+            }
+
 
             var segmentshoz = new List<IfcAlignment2DHorizontalSegment>();
 
@@ -231,8 +244,8 @@ namespace IfcInfraToolkit_Dyn
 
                 }
 
-
             }
+
 
             //Errorhandling no Segments
             if (segmentshoz.Count == 0)
@@ -247,7 +260,6 @@ namespace IfcInfraToolkit_Dyn
             {
                 var aeccAlignment = alignment._alignment;
 
-
                 //Errorhandling
                 if (aeccAlignment.Profiles == null)
                 {
@@ -255,106 +267,122 @@ namespace IfcInfraToolkit_Dyn
                 }
 
 
-                
-                //check every profil -> needs to be changed now its exporting every profil
-                foreach (AeccProfile ap in aeccAlignment.Profiles)
+                AeccProfile ap=new AeccProfile();
+                var count_prof = 1;
+                //check every profil and select one
+                foreach (AeccProfile ap_tmp in aeccAlignment.Profiles)
+                { 
+                    if (count_prof == profilnum)
+                    {
+                        ap = ap_tmp;
+                        break;
+                    }
+                    count_prof++;
+                }
+
+
+                double current_length = 0;
+
+                //Iterate through all segments
+                AeccProfileEntities ape = ap.Entities;
+                var iter = ape.GetEnumerator();
+                while(iter.MoveNext())
                 {
 
-                    //Iterate through all segments
-                    AeccProfileEntities ape = ap.Entities;
-                    var iter = ape.GetEnumerator();
-                    while(iter.MoveNext())
+                    //Check which Entity are used
+                    IAeccProfileEntity enti = iter.Current as IAeccProfileEntity;
+                    AeccProfileEntityType entitype = enti.Type;
+
+                    //Vertical Line
+                    if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityTangent.ToString()))
                     {
+                        //Gather all infos for the segments
+                        aeccProfileTangent expo= enti as aeccProfileTangent;
+                        var starthi = expo.StartElevation;
+                        var grad = expo.Grade;
+                        var lengthhoz = expo.Length*Cos(grad); //should be right
 
-                        //Check which Entity are used
-                        IAeccProfileEntity enti = iter.Current as IAeccProfileEntity;
-                        AeccProfileEntityType entitype = enti.Type;
 
-                        //Vertical Line
-                        if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityTangent.ToString()))
+                        //add Segments to exportlist
+                        var verseg = new IfcAlignment2DVerSegLine(db, current_length, lengthhoz, starthi, grad);
+                        segmentsvert.Add(verseg);
+                        current_length +=lengthhoz;
+                        continue;
+
+                    }
+
+                    //Vertical Circular
+                    if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveCircular.ToString()))
+                    {
+                        //Gather all infos for the segments
+                        aeccProfileCurveCircular expo = enti as aeccProfileCurveCircular;
+                        var startst = expo.StartStation;
+                        var starthi = expo.StartElevation;
+                        var endhi = expo.EndElevation;
+                        var endst = expo.EndStation;
+                        var radius = expo.Radius;
+                        var grad = expo.GradeIn;
+                        var pathlength = expo.Length;
+                        var curvetype = expo.CurveType;
+                        bool convex = true;
+                        //Crest == Convex and Sag== Concave
+                        //default -> Convex change if the curve is Concave
+                        if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
                         {
-                            //Gather all infos for the segments
-                            aeccProfileTangent expo= enti as aeccProfileTangent;
-                            var startst = expo.StartStation;
-                            var starthi = expo.StartElevation;
-                            var grad = expo.Grade;
-                            var length = expo.Length*Cos(grad); //should be right
-
-
-                            //add Segments to exportlist
-                            var verseg = new IfcAlignment2DVerSegLine(db, startst, length, starthi, grad);
-                            segmentsvert.Add(verseg);
-                            
-
-                        }
-
-                        //Vertical Circular
-                        if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveCircular.ToString()))
-                        {
-                            //Gather all infos for the segments
-                            aeccProfileCurveCircular expo = enti as aeccProfileCurveCircular;
-                            var startst = expo.StartStation;
-                            var starthi = expo.StartElevation;
-                            var endhi = expo.EndElevation;
-                            var endst = expo.EndStation;
-                            var radius = expo.Radius;
-                            var grad = expo.GradeIn;
-                            var pathlength = expo.Length;
-                            var curvetype = expo.CurveType;
-                            bool convex = true;
-                            //Crest == Convex and Sag== Concave
-                            //default -> Convex change if the curve is Concave
-                            if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
-                            {
-                                convex = false;
-                            }
-
-
-                            //horizonal lenght calc
-                            //calc chord length
-                            var angle = pathlength / radius;
-                            var chordl = 2 * radius * Sin(angle / 2); //always hypotenuse
-                            var elevationdelta = expo.EndElevation - expo.StartElevation; 
-                            var lengthhoz = Sqrt(chordl*chordl - elevationdelta *elevationdelta);
-
-                            //add Segments to exportlist
-                            var verseg = new IfcAlignment2DVerSegCircularArc(db, startst, lengthhoz, starthi, grad, radius, convex); 
-                            segmentsvert.Add(verseg);
+                            convex = false;
                         }
 
 
-                        //parabola -> needs testing
-                        if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()))
+                        //horizonal lenght calc
+                        //calc chord length
+                        var angle = pathlength / radius;
+                        var chordl = 2 * radius * Sin(angle / 2); //always hypotenuse
+                        var elevationdelta = expo.EndElevation - expo.StartElevation; 
+                        var lengthhoz = Sqrt(chordl*chordl - elevationdelta *elevationdelta);
+
+
+                        //add Segments to exportlist
+                        var verseg = new IfcAlignment2DVerSegCircularArc(db, current_length, lengthhoz, starthi, grad, radius, convex); 
+                        segmentsvert.Add(verseg);
+                        current_length += lengthhoz;
+                        continue;
+                    }
+
+
+                    //parabola -> currently not working
+                    if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()))
+                    {
+                        //Gather all infos for the segments
+                        AeccProfileCurveParabolic expo = enti as AeccProfileCurveParabolic;
+                        var starthi = expo.StartElevation;
+                        var endhi = expo.EndElevation;
+                        var endst = expo.EndStation;
+                        var length = expo.Length; //leng
+                        var grad = expo.GradeIn;
+                        var paracon = expo.Radius; //Not sure if right maybe change of sign
+                        var curvetype = expo.CurveType;
+                        bool convex = true;
+                        //Crest == Convex and Sag== Concave
+                        //default -> Convex change if the curve is Concave
+                        if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
                         {
-                            //Gather all infos for the segments
-                            AeccProfileCurveParabolic expo = enti as AeccProfileCurveParabolic;
-                            var startst = expo.StartStation;
-                            var starthi = expo.StartElevation;
-                            var endst = expo.EndStation;
-                            var length = expo.Length; //leng
-                            var grad = expo.GradeIn;
-                            var paracon = expo.Radius; //Not sure if right maybe change of sign
-                            var curvetype = expo.CurveType;
-                            bool convex = true;
-                            //Crest == Convex and Sag== Concave
-                            //default -> Convex change if the curve is Concave
-                            if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
-                            {
-                                convex = false;
-                            }
-
-
-
-
-                            //add Segments to exportlist //TODO: get the right length horizontal and the right paracon
-                            //var verseg = new IfcAlignment2DVerSegParabolicArc(db, startst, length, starthi, grad, paracon, convex);
-                            //segmentsvert.Add(verseg);
-
+                            convex = false;
                         }
+                        var min = expo.HighLowPointElevation;
+
+
+
+
+                        //add Segments to exportlist //TODO: get the right length horizontal and the right paracon
+                        //var verseg = new IfcAlignment2DVerSegParabolicArc(db, current_length, length, starthi, grad, paracon, convex);
+                        //segmentsvert.Add(verseg);
+                        //current_length += length;
 
                     }
 
                 }
+
+                
 
             }
 
@@ -363,16 +391,6 @@ namespace IfcInfraToolkit_Dyn
             //Save Data into Curve
             IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
             curve.Horizontal = horizontal;
-
-            //Placement in 2D or 3D
-            //not sure if necessary
-            if (twoDim == true)
-            {
-                var placement = new IfcAxis2Placement2D(db);
-                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
-            }
-
-            //TODO: Impliment
             if (twoDim == false)
             {
                 IfcAlignment2DVertical vertical = new IfcAlignment2DVertical(segmentsvert);
