@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlignmentImporter.cs" />
     <Compile Include="DatabaseContainer.cs" />
     <Compile Include="DynamoGeometryExporter.cs" />
     <Compile Include="IfcModelSetup.cs" />
@@ -64,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Alignment_ImportService\Alignment_ImportService.csproj">
+      <Project>{B9244428-B5FA-4C74-951A-AB584731D4F8}</Project>
+      <Name>Alignment_ImportService</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IfcInfraToolKit_Common\IfcInfraToolkit_Common.csproj">
       <Project>{84741775-5CC9-46EB-A297-EEA4410D0A5B}</Project>
       <Name>IfcInfraToolkit_Common</Name>
