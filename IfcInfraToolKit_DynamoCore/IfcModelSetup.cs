@@ -52,6 +52,30 @@ namespace IfcInfraToolKit_DynamoCore
 
         #endregion
 
+        #region OpenExistingModel
+        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+        /// <search> init, create, IFC </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [MultiReturn(new[] { "DatabaseContainer" })]
+        public static Dictionary<string, object> OpenIfcModel(string path)
+        {
+            // init container
+            var container = new DatabaseContainer();
+
+            container.Database = new DatabaseIfc(path);
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", container}
+            };
+
+            return d;
+        }
+
+
+        #endregion
+
         #region SpatialStructure
 
         /// <summary>
