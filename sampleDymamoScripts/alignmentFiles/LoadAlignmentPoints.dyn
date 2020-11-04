@@ -1,0 +1,122 @@
+{
+  "Uuid": "2b3701d8-43ce-43a9-bd39-db0a38be36c5",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "LoadAlignmentPoints",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.AlignmentImporter.ImportAlignmentAsPoints@string",
+      "Id": "bf166bd0c610462a911b9401382810cd",
+      "Inputs": [
+        {
+          "Id": "1de19db54aec4b85be4fef052315b86f",
+          "Name": "csvPath",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "97bef91e99e84cefa8c4fae010cb6875",
+          "Name": "DynamoPointList",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "AlignmentImporter.ImportAlignmentAsPoints (csvPath: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\alignmentFiles\\Segura_bridge_alignment.csv",
+      "InputValue": "C:\\dev\\ifcinfratoolkit\\sampleDymamoScripts\\alignmentFiles\\Segura_bridge_alignment.csv",
+      "NodeType": "ExtensionNode",
+      "Id": "f51f7f0d94f5452d93f512cab4b7d9f4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8e97a345540f413088a3ff162ec4814a",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "8e97a345540f413088a3ff162ec4814a",
+      "End": "1de19db54aec4b85be4fef052315b86f",
+      "Id": "eb87aeefa97d4d76b81190999b219024"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "AlignmentImporter.ImportAlignmentAsPoints",
+        "Id": "bf166bd0c610462a911b9401382810cd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 584.85714285714278,
+        "Y": 130.85714285714289
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "f51f7f0d94f5452d93f512cab4b7d9f4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 67.428571428571445,
+        "Y": 125.14285714285711
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
