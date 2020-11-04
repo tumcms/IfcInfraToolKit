@@ -64,6 +64,7 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
 
         }
+
         /// <summary> visualizing Off Geometry </summary>
         /// <search> off, pointcloud </search>
         /// <returns>  </returns>

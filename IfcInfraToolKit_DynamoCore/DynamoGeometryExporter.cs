@@ -19,7 +19,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> pointcloud, bb </search>
         /// <returns>  </returns>
         [MultiReturn(new[] { "DatabaseContainer", "solidVertices", "solidEdges", "solidFaces", "centerOfGravity" })]
-        public static Dictionary<string, object> GetGeometryInformation(Solid solidGeometry, DatabaseContainer databaseContainer, string productGuid)
+        public static Dictionary<string, object> ExportSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string productGuid)
         {
             var solidVertices = solidGeometry.Vertices;
             var solidEdges = solidGeometry.Edges;
