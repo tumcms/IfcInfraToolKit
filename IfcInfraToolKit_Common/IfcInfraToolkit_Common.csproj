@@ -52,6 +52,7 @@
     <Compile Include="ProductService.cs" />
     <Compile Include="ProjectSetupService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
