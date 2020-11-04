@@ -1,0 +1,167 @@
+{
+  "Uuid": "30d12141-01a9-46ae-b2fb-0993c228cca5",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "OpenExistingModel",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.OpenIfcModel@string",
+      "Id": "9e5e4fa061874cba8c8303ab373beb7b",
+      "Inputs": [
+        {
+          "Id": "d70939090d0346e0b81276a818b5de17",
+          "Name": "path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "93909f6057524f078df135d4cef28a81",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.OpenIfcModel (path: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\dev\\IFCSampleFiles\\LevelCrossing\\LevelCrossing_MockUp_IFC2x3\\TUMCMS_LevelCrossing_MockUp 2x3.ifc",
+      "InputValue": "C:\\dev\\IFCSampleFiles\\LevelCrossing\\LevelCrossing_MockUp_IFC2x3\\TUMCMS_LevelCrossing_MockUp 2x3.ifc",
+      "NodeType": "ExtensionNode",
+      "Id": "6a9b82e207de4834a21236e2bd9589ea",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c4d9e8d6f68045f1be4719ccb86c0864",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.WatchIFC@IfcInfraToolKit_DynamoCore.DatabaseContainer",
+      "Id": "5309182571394b999b046a129994acb0",
+      "Inputs": [
+        {
+          "Id": "dd21755941c441a9a6f402e2f8e9c023",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2975d25f5bc54ffb84482f98c540f1ca",
+          "Name": "var",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.WatchIFC (databaseContainer: DatabaseContainer): var"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "93909f6057524f078df135d4cef28a81",
+      "End": "dd21755941c441a9a6f402e2f8e9c023",
+      "Id": "3f41bb72413f4bae94bda0ed171e82e5"
+    },
+    {
+      "Start": "c4d9e8d6f68045f1be4719ccb86c0864",
+      "End": "d70939090d0346e0b81276a818b5de17",
+      "Id": "07b8c8be80304ba0ab3086bb36c5945f"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.8.0.2471",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.OpenIfcModel",
+        "Id": "9e5e4fa061874cba8c8303ab373beb7b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 691.71428571428578,
+        "Y": 308.00000000000006
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "6a9b82e207de4834a21236e2bd9589ea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 65.142857142857,
+        "Y": 303.42857142857127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.WatchIFC",
+        "Id": "5309182571394b999b046a129994acb0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1113.4285714285716,
+        "Y": 306.28571428571428
+      }
+    ],
+    "Annotations": [],
+    "X": 0.0,
+    "Y": 0.0,
+    "Zoom": 1.0
+  }
+}
