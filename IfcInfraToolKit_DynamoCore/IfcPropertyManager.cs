@@ -12,19 +12,18 @@ namespace IfcInfraToolKit_DynamoCore
         /// 
         /// </summary>
         /// <param name="databaseContainer"></param>
-        /// <param name="facilityName"></param>
         /// <param name="hostGuid">GlobalId of parent element</param>
-        /// <param name="PSetName"></param>
+        /// <param name="pSetName"></param>
         /// <param name="ifcProperties"></param>
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer"})]
-        public static Dictionary<string, object> AppendPropertySet(DatabaseContainer databaseContainer, string hostGuid, string PSetName, List<IfcProperty> ifcProperties)
+        public static Dictionary<string, object> AppendPropertySet(DatabaseContainer databaseContainer, string hostGuid, string pSetName, List<IfcProperty> ifcProperties)
         {
             // get current db
             var database = databaseContainer.Database;
 
             var propertyService = new PropertyService();
-            database = propertyService.AddPSet(database, hostGuid, PSetName, ifcProperties);
+            database = propertyService.AddPSet(database, hostGuid, pSetName, ifcProperties);
             
             // assign updated db to container
             databaseContainer.Database = database;
