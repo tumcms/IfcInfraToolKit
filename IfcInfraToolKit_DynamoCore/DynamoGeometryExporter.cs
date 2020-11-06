@@ -24,6 +24,7 @@ namespace IfcInfraToolKit_DynamoCore
             var solidVertices = solidGeometry.Vertices;
             var solidEdges = solidGeometry.Edges;
             var solidFaces = solidGeometry.Faces;
+            
             var centerOfGravity = solidGeometry.Centroid();
 
             // get current db
@@ -33,20 +34,22 @@ namespace IfcInfraToolKit_DynamoCore
             //var hostProduct = database.OfType<IfcProduct>()
             //    .FirstOrDefault(a => a.Guid.ToString() == productGuid);   
 
-
+            //calculate half of the height of the bounding box in z-direction
+            var middleBoundingBoxZ = (centerOfGravity.BoundingBox.MaxPoint.Z - centerOfGravity.BoundingBox.MinPoint.Z) / 2;
+            //Set the z-coordinate to be at the bottom of the solid (or at the bottom of the bounding box)
+            Point newCenterOfGravity= Point.ByCoordinates(centerOfGravity.X,centerOfGravity.Y,centerOfGravity.Z-middleBoundingBoxZ);
 
             var hostProduct = new IfcBuildingElementProxy(
                 database.Project,
                 new IfcLocalPlacement(
                     new IfcAxis2Placement3D(
-                        new IfcCartesianPoint(database, 0,0,0))),
-                null );
+                        new IfcCartesianPoint(database, centerOfGravity.X, centerOfGravity.Y, centerOfGravity.Z-middleBoundingBoxZ))),//set to centroid??
+                null);
 
             var coordList = new List<Tuple<double, double, double>>();
 
 
             var faces = new List<IfcIndexedPolygonalFace>();
-
 
             foreach (var solidFace in solidFaces)
             {
@@ -54,10 +57,9 @@ namespace IfcInfraToolKit_DynamoCore
                 var indexMap = new List<int>();
                 foreach (var faceVertex in solidFace.Vertices)
                 {
-                    var x = faceVertex.PointGeometry.X;
-                    var y = faceVertex.PointGeometry.Y;
-                    var z = faceVertex.PointGeometry.Z;
-                    
+                    var x = faceVertex.PointGeometry.X - centerOfGravity.X;
+                    var y = faceVertex.PointGeometry.Y - centerOfGravity.Y;
+                    var z = faceVertex.PointGeometry.Z - newCenterOfGravity.Z;
                     coordList.Add(new Tuple<double, double, double>(x,y,z));
                     indexMap.Add(coordList.Count());
                 }
@@ -85,7 +87,7 @@ namespace IfcInfraToolKit_DynamoCore
                 {"solidVertices", solidVertices},
                 {"solidEdges", solidEdges},
                 {"solidFaces", solidFaces},
-                {"centerOfGravity", centerOfGravity}
+                {"centerOfGravity", newCenterOfGravity}
             };
 
             return d;
