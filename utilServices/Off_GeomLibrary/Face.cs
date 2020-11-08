@@ -25,6 +25,7 @@ namespace Off_GeomLibrary
         public Face(int numVertices)
         {
             this.NumVertices = numVertices;
+            this.VertexIds = new List<int>(numVertices);
         }
     }
 }
