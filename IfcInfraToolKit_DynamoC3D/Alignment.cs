@@ -156,6 +156,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
         //TODO: Implement Vertical Segemnts / Testing
+        //Change Horizontal Segemts for RC2 + Add Spiral for Horizontal
         /// <summary>
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
@@ -198,6 +199,8 @@ namespace IfcInfraToolkit_Dyn
 
 
             //Horizontal Export of alignment
+            //need to be adjusted for IFC4.3RC2 
+            //TODO: change call of IfcAlignment2DHorizontalSegment 
             var entities = alignment._entities;
             foreach (AeccAlignmentCurve ae in entities)
             {
@@ -244,6 +247,11 @@ namespace IfcInfraToolkit_Dyn
 
                 }
 
+                if(ae.Type == AeccAlignmentEntityType.aeccSpiral)
+                {
+                    //need to be added or not 
+                }
+
             }
 
 
@@ -256,6 +264,8 @@ namespace IfcInfraToolkit_Dyn
 
             var segmentsvert = new List<IfcAlignment2DVerticalSegment>();
             //Vertikal Export of alignemt
+            //need to be adjusted for IFC4.3RC2 
+            //TODO: change call of IfcAlignment2DHorizontalSegment 
             if (twoDim == false)
             {
                 var aeccAlignment = alignment._alignment;
