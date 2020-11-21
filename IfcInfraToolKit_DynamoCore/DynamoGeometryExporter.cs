@@ -5,6 +5,7 @@ using System.Linq;
 using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
 using GeometryGym.Ifc;
+using IfcInfraToolkit_Common;
 
 namespace IfcInfraToolKit_DynamoCore
 {
@@ -19,8 +20,9 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> pointcloud, bb </search>
         /// <returns>  </returns>
         [MultiReturn(new[] { "DatabaseContainer", "solidVertices", "solidEdges", "solidFaces", "centerOfGravity" })]
-        public static Dictionary<string, object> ExportSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string productGuid)
+        public static Dictionary<string, object> ExportSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string productGuid, string buildingElementType)
         {
+            //ToDo: Convert the input parameter buildingElementType into a dropdown menu in Dynamo
             var solidVertices = solidGeometry.Vertices;
             var solidEdges = solidGeometry.Edges;
             var solidFaces = solidGeometry.Faces;
@@ -39,12 +41,8 @@ namespace IfcInfraToolKit_DynamoCore
             //Set the z-coordinate to be at the bottom of the solid (or at the bottom of the bounding box)
             Point newCenterOfGravity= Point.ByCoordinates(centerOfGravity.X,centerOfGravity.Y,centerOfGravity.Z-middleBoundingBoxZ);
 
-            var hostProduct = new IfcBuildingElementProxy(
-                database.Project,
-                new IfcLocalPlacement(
-                    new IfcAxis2Placement3D(
-                        new IfcCartesianPoint(database, centerOfGravity.X, centerOfGravity.Y, centerOfGravity.Z-middleBoundingBoxZ))),//set to centroid??
-                null);
+            //create correct instance of the BuildingElement
+            var hostProduct = ProductService.createBuildingElement(buildingElementType, ref database, centerOfGravity.X, centerOfGravity.Y, centerOfGravity.Z-middleBoundingBoxZ);
 
             var coordList = new List<Tuple<double, double, double>>();
 
