@@ -103,13 +103,16 @@
     <Compile Include="Surface.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\IfcInfraToolKit_DynamoCore\IfcInfraToolKit_DynamoCore.csproj">
       <Project>{D0F227C9-2437-4CE5-9024-1596A42E34A1}</Project>
       <Name>IfcInfraToolKit_DynamoCore</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

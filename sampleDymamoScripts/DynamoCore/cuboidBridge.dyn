@@ -190,7 +190,7 @@
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "b10ea531b25047298206359c3f0bb4a0",
+          "Id": "f04b383260cc42a18c8b2d34a57a9082",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -199,7 +199,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "40642a3399cd4d0ab60d63126fb68a51",
+          "Id": "443c2718ad514061ae36135fa0ce32f8",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 2",
           "UsingDefaultValue": false,
@@ -208,7 +208,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "9621ec20162a491fb874466de6c6467e",
+          "Id": "ee7b44fa6cbd4bb4b6c2951abd4ff07c",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 3",
           "UsingDefaultValue": false,
@@ -324,26 +324,6 @@
       ],
       "Replication": "Auto",
       "Description": "Verschiebt beliebige gegebene Geometrie um die angegebenen Werte in X-, Y- und und Z-Richtung wie im WKS definiert.\n\nGeometry.Translate (xTranslation: double = 0, yTranslation: double = 0, zTranslation: double = 0): Geometry"
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
-      "NodeType": "CodeBlockNode",
-      "Code": "10;",
-      "Id": "0c34a4aa6b734365856c871b3f799d74",
-      "Inputs": [],
-      "Outputs": [
-        {
-          "Id": "d6bcad61bdaf437483435a9fe200afcd",
-          "Name": "",
-          "Description": "Wert des Ausdrucks in Zeile 1",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -966,9 +946,9 @@
       "Id": "6694ae6c3b9b4b1287b3d775e16dd833"
     },
     {
-      "Start": "9621ec20162a491fb874466de6c6467e",
+      "Start": "ee7b44fa6cbd4bb4b6c2951abd4ff07c",
       "End": "db57d3bd66b44f908d8aea34fd7745d5",
-      "Id": "8e717720eeb64f12a50fa7eb6bf279a1"
+      "Id": "da63446722d44c00bd08ce748b5ca034"
     },
     {
       "Start": "57c9d3e5c67c4c02a925bc8b205eac9b",
@@ -1090,15 +1070,15 @@
     },
     "Camera": {
       "Name": "Hintergrundvorschau",
-      "EyeX": 21.60827582625036,
-      "EyeY": 8.7133244333420272,
-      "EyeZ": 6.1758429172452534,
-      "LookX": -25.906218858651226,
-      "LookY": -8.1695405166703416,
-      "LookZ": -15.114603653556925,
-      "UpX": -0.043053912721640553,
-      "UpY": 0.99875692121892312,
-      "UpZ": -0.025119174282939132
+      "EyeX": 25.186916849612476,
+      "EyeY": 11.908474334015883,
+      "EyeZ": -3.0453763051721996,
+      "LookX": -27.508844837854454,
+      "LookY": -9.62494109728342,
+      "LookZ": -10.814285735572993,
+      "UpX": -0.091741002208151165,
+      "UpY": 0.99512958258588435,
+      "UpZ": -0.036065251645228405
     },
     "NodeViews": [
       {
@@ -1138,8 +1118,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -24.0,
-        "Y": 756.0
+        "X": -196.58539440345749,
+        "Y": 658.45173359804585
       },
       {
         "ShowGeometry": true,
@@ -1168,18 +1148,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 836.892983690611,
-        "Y": 911.32580253730634
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Code Block",
-        "Id": "0c34a4aa6b734365856c871b3f799d74",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 591.0,
-        "Y": 1024.0
+        "X": 846.27262469079926,
+        "Y": 986.36293053880945
       },
       {
         "ShowGeometry": true,
