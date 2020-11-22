@@ -19,6 +19,7 @@ namespace IfcInfraToolkit_Dyn
 {
     public class Road
     {
+        /*
         //TODO: testing
         /// <summary>
         /// Adds an IfcRoad with IfcOpenProfileDefs to the IFC model
@@ -164,7 +165,7 @@ namespace IfcInfraToolkit_Dyn
 
             return re;
         }
-
+        */
 
 
 

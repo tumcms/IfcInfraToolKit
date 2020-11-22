@@ -155,6 +155,8 @@ namespace IfcInfraToolkit_Dyn
             return re;
             }
 
+
+
         //TODO: Implement Vertical Segemnts / Testing
         //Change Horizontal Segemts for RC2 + Add Spiral for Horizontal
         /// <summary>
@@ -179,8 +181,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //standard informations
-            IfcAlignmentCurve curve = new IfcAlignmentCurve(db);
-            IfcAlignment ifcalignment = new IfcAlignment(site, curve);
+            IfcAlignment ifcalignment = new IfcAlignment(site);
             ifcalignment.Name = Alignmentname;
             if (twoDim == true)
             {
@@ -195,7 +196,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
 
-            var segmentshoz = new List<IfcAlignment2DHorizontalSegment>();
+            var segmentshoz = new List<IfcAlignmentHorizontalSegment>();
 
 
             //Horizontal Export of alignment
@@ -220,8 +221,7 @@ namespace IfcInfraToolkit_Dyn
 
                     //Convert data into IFC
                     var start = new IfcCartesianPoint(db, startx, starty);
-                    var seg = new IfcCircularArcSegment2D(start, direction, radius, lenght, !clockwise);
-                    var tmp = new IfcAlignment2DHorizontalSegment(seg);
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius, lenght, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
                     segmentshoz.Add(tmp);
                     continue;
 
@@ -241,8 +241,7 @@ namespace IfcInfraToolkit_Dyn
 
                     //Convert Values into IFC
                     var start = new IfcCartesianPoint(db, startx, starty);
-                    var seg = new IfcLineSegment2D(start, direction, length);
-                    var tmp = new IfcAlignment2DHorizontalSegment(seg);
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, 0, 0, length, IfcAlignmentHorizontalSegmentTypeEnum.LINE);
                     segmentshoz.Add(tmp);
 
                 }
@@ -262,7 +261,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
 
-            var segmentsvert = new List<IfcAlignment2DVerticalSegment>();
+            var segmentsvert = new List<IfcAlignmentVerticalSegment>();
             //Vertikal Export of alignemt
             //need to be adjusted for IFC4.3RC2 
             //TODO: change call of IfcAlignment2DHorizontalSegment 
@@ -314,7 +313,8 @@ namespace IfcInfraToolkit_Dyn
 
 
                         //add Segments to exportlist
-                        var verseg = new IfcAlignment2DVerSegLine(db, current_length, lengthhoz, starthi, grad);
+                        IfcAlignmentVerticalSegment verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,
+                            starthi, grad, IfcAlignmentVerticalSegmentTypeEnum.CONSTANTGRADIENT);
                         segmentsvert.Add(verseg);
                         current_length +=lengthhoz;
                         continue;
@@ -352,7 +352,8 @@ namespace IfcInfraToolkit_Dyn
 
 
                         //add Segments to exportlist
-                        var verseg = new IfcAlignment2DVerSegCircularArc(db, current_length, lengthhoz, starthi, grad, radius, convex); 
+                        var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz, starthi,
+                            grad, IfcAlignmentVerticalSegmentTypeEnum.CIRCULARARC);
                         segmentsvert.Add(verseg);
                         current_length += lengthhoz;
                         continue;
@@ -382,11 +383,10 @@ namespace IfcInfraToolkit_Dyn
 
 
 
-
-                        //add Segments to exportlist //TODO: get the right length horizontal and the right paracon
-                        //var verseg = new IfcAlignment2DVerSegParabolicArc(db, current_length, length, starthi, grad, paracon, convex);
-                        //segmentsvert.Add(verseg);
-                        //current_length += length;
+                       // var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz, starthi,
+                       //     grad, IfcAlignmentVerticalSegmentTypeEnum.PARABOLICARC);
+                       //segmentsvert.Add(verseg);
+                       //current_length += length;
 
                     }
 
@@ -399,13 +399,13 @@ namespace IfcInfraToolkit_Dyn
 
 
             //Save Data into Curve
-            IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
-            curve.Horizontal = horizontal;
+            IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(ifcalignment, segmentshoz);
+            
             if (twoDim == false)
             {
-                IfcAlignment2DVertical vertical = new IfcAlignment2DVertical(segmentsvert);
-                curve.Vertical = vertical;
+                IfcAlignmentVertical vertical = new IfcAlignmentVertical(ifcalignment,segmentsvert);
             }
+
 
             //end testing
 
