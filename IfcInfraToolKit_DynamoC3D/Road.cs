@@ -20,7 +20,7 @@ namespace IfcInfraToolkit_Dyn
 {
     public class Road
     {
-        
+        /*
         //TODO: testing
         /// <summary>
         /// Adds an IfcRoad with IfcOpenProfileDefs to the IFC model
@@ -95,7 +95,8 @@ namespace IfcInfraToolkit_Dyn
             {
                 horizontal= iterator;
             }
-/*
+
+
             //Select the road for adding the crosssection
             IfcRoad road = null;
             IEnumerable<IfcRoad> query1 = db.OfType<IfcRoad>();
@@ -170,9 +171,9 @@ namespace IfcInfraToolkit_Dyn
             };
 
             return re;
-           */ 
+           
             
-        }
+        }*/
         
 
 

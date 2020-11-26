@@ -195,13 +195,14 @@ namespace IfcInfraToolkit_Dyn
 
             }
 
-
+            //Test for RC2 to create an IFCCurve
             var segmentshoz = new List<IfcAlignmentHorizontalSegment>();
-
+            var compsegs = new List<IfcCurveSegment>();
 
             //Horizontal Export of alignment
             //need to be adjusted for IFC4.3RC2 
             //TODO: change call of IfcAlignment2DHorizontalSegment 
+
             var entities = alignment._entities;
             foreach (AeccAlignmentCurve ae in entities)
             {
@@ -223,11 +224,20 @@ namespace IfcInfraToolkit_Dyn
                     var start = new IfcCartesianPoint(db, startx, starty);
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius, lenght, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
                     segmentshoz.Add(tmp);
-                    continue;
+                    //continue;
+
+                    //testing for IFC Curve Date into line
+                    var dir = new IfcDirection(db, 1, Cos(direction));
+                    var vector = new IfcVector(dir, lenght);
+                    var line = new IfcLine(start, vector);
+                    var place = new IfcAxis2Placement2D(start);
+
+                    var temp_comp = new IfcCurveSegment(IfcTransitionCode.CONTINUOUS,place,lenght,line);
+                    compsegs.Add(temp_comp);
 
                 }
 
-                // strait lines handling
+                // line handling
                 if (ae.Type == AeccAlignmentEntityType.aeccTangent)
                 {
                     AeccAlignmentTangent allvalues = ae as AeccAlignmentTangent;
@@ -252,6 +262,11 @@ namespace IfcInfraToolkit_Dyn
                 }
 
             }
+
+            //Further testing put together all segments for IFCCurve
+            var compcurve = new IfcCompositeCurve(compsegs);
+
+
 
 
             //Errorhandling no Segments
@@ -314,7 +329,7 @@ namespace IfcInfraToolkit_Dyn
 
                         //add Segments to exportlist
                         IfcAlignmentVerticalSegment verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,
-                            starthi, grad, IfcAlignmentVerticalSegmentTypeEnum.CONSTANTGRADIENT);
+                            starthi, grad, grad, IfcAlignmentVerticalSegmentTypeEnum.CONSTANTGRADIENT);
                         segmentsvert.Add(verseg);
                         current_length +=lengthhoz;
                         continue;
@@ -331,7 +346,8 @@ namespace IfcInfraToolkit_Dyn
                         var endhi = expo.EndElevation;
                         var endst = expo.EndStation;
                         var radius = expo.Radius;
-                        var grad = expo.GradeIn;
+                        var gradin = expo.GradeIn;
+                        var gradout = expo.GradeOut;
                         var pathlength = expo.Length;
                         var curvetype = expo.CurveType;
                         bool convex = true;
@@ -353,7 +369,7 @@ namespace IfcInfraToolkit_Dyn
 
                         //add Segments to exportlist
                         var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz, starthi,
-                            grad, IfcAlignmentVerticalSegmentTypeEnum.CIRCULARARC);
+                            gradin,gradout, IfcAlignmentVerticalSegmentTypeEnum.CIRCULARARC);
                         segmentsvert.Add(verseg);
                         current_length += lengthhoz;
                         continue;
