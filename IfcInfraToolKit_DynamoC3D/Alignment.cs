@@ -197,14 +197,61 @@ namespace IfcInfraToolkit_Dyn
 
             //Test for RC2 to create an IFCCurve
             var segmentshoz = new List<IfcAlignmentHorizontalSegment>();
+            var segmentsvert = new List<IfcAlignmentVerticalSegment>();
             var compsegshoz = new List<IfcCurveSegment>();
             var compsegsver = new List<IfcCurveSegment>();
 
             //Horizontal Export of alignment
 
             var entities = alignment._entities;
+            var last = entities.Count;
+            var count = 1;
             foreach (AeccAlignmentCurve ae in entities)
             {
+                // line handling
+                if (ae.Type == AeccAlignmentEntityType.aeccTangent)
+                {
+                    AeccAlignmentTangent allvalues = ae as AeccAlignmentTangent;
+                    //Get Values of the line
+                    var startx = allvalues.StartEasting;
+                    var starty = allvalues.StartNorthing;
+                    var direction = allvalues.Direction;
+                    var length = allvalues.Length;
+                    direction = angleconv(direction);
+
+
+                    //Convert Values into IFC Sematic
+                    var start = new IfcCartesianPoint(db, startx, starty);
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, 0, 0, length, IfcAlignmentHorizontalSegmentTypeEnum.LINE);
+                    segmentshoz.Add(tmp);
+                    //continue;
+
+
+                    //Convert data into IFC Gemometric
+                    var dir = new IfcDirection(db, 1, Tan(direction));
+                    var vector = new IfcVector(dir, length);
+                    var line = new IfcLine(start, vector);
+                    var place = new IfcAxis2Placement2D(start);
+                    var contin = IfcTransitionCode.CONTINUOUS;
+
+                    if (count == last)
+                    {
+                        contin = IfcTransitionCode.DISCONTINUOUS;
+                    }
+
+                    var temp_comp = new IfcCurveSegment(contin, place, length, line);
+
+                    // Connection of Semantic and Geometric on 1st order
+                    //var connect_geo = new IfcShapeRepresentation(temp_comp);
+                    //var connect_sem = new IfcProductDefinitionShape(connect_geo);
+
+                    compsegshoz.Add(temp_comp);
+                    count++;
+                    continue;
+
+                }
+
+
                 //Circular handling
                 if (ae.Type == AeccAlignmentEntityType.aeccArc)
                 {
@@ -219,46 +266,18 @@ namespace IfcInfraToolkit_Dyn
                     direction = angleconv(direction);
 
 
-                    //Convert data into IFC
+
                     var start = new IfcCartesianPoint(db, startx, starty);
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius, lenght, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
                     segmentshoz.Add(tmp);
+                    count++;
                     continue;
 
 
                 }
+               
 
-                // line handling
-                if (ae.Type == AeccAlignmentEntityType.aeccTangent)
-                {
-                    AeccAlignmentTangent allvalues = ae as AeccAlignmentTangent;
-                    //Get Values of the line
-                    var startx = allvalues.StartEasting;
-                    var starty = allvalues.StartNorthing;
-                    var direction = allvalues.Direction;
-                    var length = allvalues.Length;
-                    direction = angleconv(direction);
-
-
-                    //Convert Values into IFC
-                    var start = new IfcCartesianPoint(db, startx, starty);
-                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, 0, 0, length, IfcAlignmentHorizontalSegmentTypeEnum.LINE);
-                    segmentshoz.Add(tmp);
-                    //continue;
-
-
-                    //testing for IFC Curve Date into line
-                    var dir = new IfcDirection(db, 1, Tan(direction));
-                    var vector = new IfcVector(dir, 1);
-                    var line = new IfcLine(start, vector);
-                    var place = new IfcAxis2Placement2D(start);
-
-                    var temp_comp = new IfcCurveSegment(IfcTransitionCode.CONTINUOUS, place, length, line);
-                    compsegshoz.Add(temp_comp);
-
-
-                }
-
+                //Spiral handling
                 if (ae.Type == AeccAlignmentEntityType.aeccSpiral)
                 {
                     //need to be added or not 
@@ -275,13 +294,26 @@ namespace IfcInfraToolkit_Dyn
             }
 
 
-            var segmentsvert = new List<IfcAlignmentVerticalSegment>();
-            //Vertikal Export of alignemt
+            //put together horizontal segments
+            var selfint = IfcLogicalEnum.FALSE;
+            var basecurve = new IfcCompositeCurve(compsegshoz, selfint);
+
+            //Save Data into Curve horizontal
+            IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(ifcalignment, segmentshoz);
+
+            //Connect Sematic and Geometric Horizontal 2nd order
+            var share = new IfcShapeRepresentation(basecurve);
+            var pds = new IfcProductDefinitionShape(share);
+            horizontal.Representation = pds;
+
+
+            //Vertikal Export of alignment
             //need to be adjusted for IFC4.3RC2 
-            //TODO: change call of IfcAlignment2DHorizontalSegment 
             if (twoDim == false)
             {
                 var aeccAlignment = alignment._alignment;
+
+
 
                 //Errorhandling
                 if (aeccAlignment.Profiles == null)
@@ -326,25 +358,34 @@ namespace IfcInfraToolkit_Dyn
                         var lengthhoz = expo.Length*Cos(grad); //should be right
 
 
-                        //add Segments to exportlist
+                        //add Segments to exportlist for vertical export
                         IfcAlignmentVerticalSegment verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,
                             starthi, grad, grad, IfcAlignmentVerticalSegmentTypeEnum.CONSTANTGRADIENT);
                         segmentsvert.Add(verseg);
                         current_length +=lengthhoz;
-                        //continue;
+                        
 
 
 
                         //testing for IFC Curve Date into line
                         var dir = new IfcDirection(db, 1, Tan(grad));
-                        var vector = new IfcVector(dir, 1);
-                        var start = new IfcCartesianPoint(db, current_length, starthi);
-                        var line = new IfcLine(start, vector);                          //not sure in which domain/coordinates needed
-                        var place = new IfcAxis2Placement2D(start);
+                        var vector = new IfcVector(dir, expo.Length);
+                        var start = new IfcCartesianPoint(db, 0, 0);
+                        var line = new IfcLine(start, vector);
+                        var pointdist = new IfcPointByDistanceExpression(lengthhoz, basecurve);
+                        var place = new IfcAxis2PlacementLinear(pointdist);
 
-                        var temp_comp = new IfcCurveSegment(IfcTransitionCode.CONTINUOUS, place, expo.Length, line);
+
+                        var contin = IfcTransitionCode.CONTINUOUS;
+                        //Last Segment needs to be Discontinuous
+                        if (!(iter.MoveNext()))
+                        {
+                            contin = IfcTransitionCode.DISCONTINUOUS;
+                        }
+                        var temp_comp = new IfcCurveSegment(contin, place, expo.Length, line);
                         compsegsver.Add(temp_comp);
 
+                        continue;
                     }
 
                     //Vertical Circular
@@ -424,13 +465,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
 
-
-            //Save Data into Curve
-            IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(ifcalignment, segmentshoz);
-
-
-
-
+            //Save Data into Curve vertical
             if (twoDim == false)
             {
                 IfcAlignmentVertical vertical = new IfcAlignmentVertical(ifcalignment,segmentsvert);
@@ -438,11 +473,14 @@ namespace IfcInfraToolkit_Dyn
 
 
             //Further testing put together all segments for IFCCurve
-            
-            var basecurve = new IfcCompositeCurve(compsegshoz);
             var curve = new IfcGradientCurve(basecurve,compsegsver);
-            ifcalignment.Axis = curve;
-            
+            ifcalignment.Axis = basecurve;
+
+            //Connect Semantic and Geo on 3rd order
+            var shaperep = new IfcShapeRepresentation(curve);
+            var alignment2gradient = new IfcProductDefinitionShape(shaperep);
+            ifcalignment.Representation = alignment2gradient;
+
 
 
             //return values
