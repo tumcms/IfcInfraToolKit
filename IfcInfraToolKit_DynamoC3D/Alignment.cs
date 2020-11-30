@@ -362,8 +362,6 @@ namespace IfcInfraToolkit_Dyn
                         IfcAlignmentVerticalSegment verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,
                             starthi, grad, grad, IfcAlignmentVerticalSegmentTypeEnum.CONSTANTGRADIENT);
                         segmentsvert.Add(verseg);
-                        current_length +=lengthhoz;
-                        
 
 
 
@@ -372,8 +370,12 @@ namespace IfcInfraToolkit_Dyn
                         var vector = new IfcVector(dir, expo.Length);
                         var start = new IfcCartesianPoint(db, 0, 0);
                         var line = new IfcLine(start, vector);
-                        var pointdist = new IfcPointByDistanceExpression(lengthhoz, basecurve);
+                        var pointdist = new IfcPointByDistanceExpression(current_length, basecurve);
                         var place = new IfcAxis2PlacementLinear(pointdist);
+                        
+                        //update horizontal length
+                        current_length += lengthhoz;
+
 
 
                         var contin = IfcTransitionCode.CONTINUOUS;
