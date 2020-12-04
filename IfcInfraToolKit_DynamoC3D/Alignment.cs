@@ -195,14 +195,14 @@ namespace IfcInfraToolkit_Dyn
 
             }
 
-            //Test for RC2 to create an IFCCurve
+            //Create Containers for IFCCurve
             var segmentshoz = new List<IfcAlignmentHorizontalSegment>();
             var segmentsvert = new List<IfcAlignmentVerticalSegment>();
             var compsegshoz = new List<IfcCurveSegment>();
             var compsegsver = new List<IfcCurveSegment>();
 
             //Horizontal Export of alignment
-
+            //ToDo:Circular update to RC2 + Clothoid implemnent
             var entities = alignment._entities;
             var last = entities.Count;
             var count = 1;
@@ -212,7 +212,7 @@ namespace IfcInfraToolkit_Dyn
                 if (ae.Type == AeccAlignmentEntityType.aeccTangent)
                 {
                     AeccAlignmentTangent allvalues = ae as AeccAlignmentTangent;
-                    //Get Values of the line
+                    //Get Values of the C3D line 
                     var startx = allvalues.StartEasting;
                     var starty = allvalues.StartNorthing;
                     var direction = allvalues.Direction;
@@ -224,7 +224,6 @@ namespace IfcInfraToolkit_Dyn
                     var start = new IfcCartesianPoint(db, startx, starty);
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, 0, 0, length, IfcAlignmentHorizontalSegmentTypeEnum.LINE);
                     segmentshoz.Add(tmp);
-                    //continue;
 
 
                     //Convert data into IFC Gemometric
@@ -253,6 +252,7 @@ namespace IfcInfraToolkit_Dyn
 
 
                 //Circular handling
+                //TODO: Add Geometic Representation
                 if (ae.Type == AeccAlignmentEntityType.aeccArc)
                 {
                     //Get Values of the Circular element
@@ -277,7 +277,8 @@ namespace IfcInfraToolkit_Dyn
                 }
                
 
-                //Spiral handling
+                //Spiral / Clothoid handling
+                //TODO: Implement
                 if (ae.Type == AeccAlignmentEntityType.aeccSpiral)
                 {
                     //need to be added or not 
@@ -295,8 +296,7 @@ namespace IfcInfraToolkit_Dyn
 
 
             //put together horizontal segments
-            var selfint = IfcLogicalEnum.FALSE;
-            var basecurve = new IfcCompositeCurve(compsegshoz, selfint);
+            var basecurve = new IfcCompositeCurve(compsegshoz, IfcLogicalEnum.FALSE);
 
             //Save Data into Curve horizontal
             IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(ifcalignment, segmentshoz);
@@ -324,7 +324,7 @@ namespace IfcInfraToolkit_Dyn
 
                 AeccProfile ap=new AeccProfile();
                 var count_prof = 1;
-                //check every profil and select one
+                //Select Profil
                 foreach (AeccProfile ap_tmp in aeccAlignment.Profiles)
                 { 
                     if (count_prof == profilnum)
@@ -391,6 +391,7 @@ namespace IfcInfraToolkit_Dyn
                     }
 
                     //Vertical Circular
+                    //TODO: Add Geometric representation
                     if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveCircular.ToString()))
                     {
                         //Gather all infos for the segments
@@ -431,6 +432,7 @@ namespace IfcInfraToolkit_Dyn
 
 
                     //parabola -> currently not working
+                    //TODO: Add Geometric representation
                     if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()))
                     {
                         //Gather all infos for the segments
