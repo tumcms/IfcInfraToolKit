@@ -20,7 +20,7 @@ namespace IfcInfraToolkit_Dyn
 {
     public class Road
     {
-        /*
+        
         //TODO: testing
         /// <summary>
         /// Adds an IfcRoad with IfcOpenProfileDefs to the IFC model
@@ -89,12 +89,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //Testing
-            IfcAlignmentHorizontal horizontal = null;
-            var output = alignment.Extract<IfcAlignmentHorizontal>();
-            foreach(var iterator in output)
-            {
-                horizontal= iterator;
-            }
+            var curve = alignment.Axis;
 
 
             //Select the road for adding the crosssection
@@ -138,10 +133,10 @@ namespace IfcInfraToolkit_Dyn
             {
 
                 //Create OpenCrossProfileDef and collect them
-                IfcOpenCrossProfileDef crsec = new IfcOpenCrossProfileDef(db, "Road_part" + (i + 1), true, widths[i], slopes[i]);
+                var crsec = new IfcOpenCrossProfileDef(db, "Road_part" + (i + 1), true, widths[i], slopes[i]);
                 ocpd.Add(crsec);
                 //Create DistanceExpression and collect them
-                IfcPointByDistanceExpression distex = new IfcPointByDistanceExpression(db, stations[i]);
+                var distex = new IfcPointByDistanceExpression(stations[i], curve);
                 de.Add(distex);
 
             }
@@ -154,8 +149,9 @@ namespace IfcInfraToolkit_Dyn
 
 
             //Placement
-            IfcPointByDistanceExpression dist = new IfcPointByDistanceExpression(db, roadstart);
-            IfcLinearPlacement start = new IfcLinearPlacement(curve, dist);  //-> Placemtent
+            IfcPointByDistanceExpression dist = new IfcPointByDistanceExpression(0, curve); //needs 0 to be changed later
+            IfcAxis2PlacementLinear place = new IfcAxis2PlacementLinear(dist);
+            IfcLinearPlacement start = new IfcLinearPlacement(place);
 
             //final assembly
             IfcPavement pavement = new IfcPavement(site, start, produktdef);
@@ -173,7 +169,7 @@ namespace IfcInfraToolkit_Dyn
             return re;
            
             
-        }*/
+        }
         
 
 
