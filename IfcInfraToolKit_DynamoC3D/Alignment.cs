@@ -278,10 +278,44 @@ namespace IfcInfraToolkit_Dyn
                
 
                 //Spiral / Clothoid handling
-                //TODO: Implement
+                //TODO: Testing
                 if (ae.Type == AeccAlignmentEntityType.aeccSpiral)
                 {
-                    //need to be added or not 
+                    AeccAlignmentSpiral allvalues = ae as AeccAlignmentSpiral;
+
+                    var startx = allvalues.StartEasting;
+                    var starty = allvalues.StartNorthing;
+                    var length = allvalues.Length;
+                    var direction = allvalues.StartDirection;
+                    direction = angleconv(direction);
+                    var startradius = allvalues.RadiusIn;
+                    var endradius = allvalues.RadiusOut;
+                    var clothoidconstant = allvalues.A;
+ 
+
+                    //Convert Values into IFC Sematic
+                    var start = new IfcCartesianPoint(db, startx, starty);
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, startradius, 
+                        endradius, length, IfcAlignmentHorizontalSegmentTypeEnum.CLOTHOID);
+                    segmentshoz.Add(tmp);
+
+
+
+                    //Convert data into IFC Gemometric
+                    var place = new IfcAxis2Placement2D(start);
+                    var clothoid = new IfcClothoid(place, clothoidconstant);
+                    var contin = IfcTransitionCode.CONTINUOUS;
+                    if (count == last)
+                    {
+                        contin = IfcTransitionCode.DISCONTINUOUS;
+                    }
+
+                    var temp_comp = new IfcCurveSegment(contin, place, length, clothoid);
+
+
+                    compsegshoz.Add(temp_comp);
+                    count++;
+                    continue;
                 }
 
             }
