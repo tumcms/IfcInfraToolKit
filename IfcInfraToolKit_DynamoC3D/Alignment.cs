@@ -208,6 +208,12 @@ namespace IfcInfraToolkit_Dyn
             var count = 1;
             foreach (AeccAlignmentCurve ae in entities)
             {
+                //Test output to check the Properties
+                /*if (count == 2)
+                {
+                    throw new Exception("test" + ae.Type.ToString());
+                }*/
+
                 // line handling
                 if (ae.Type == AeccAlignmentEntityType.aeccTangent)
                 {
@@ -291,7 +297,7 @@ namespace IfcInfraToolkit_Dyn
                     var startradius = allvalues.RadiusIn;
                     var endradius = allvalues.RadiusOut;
                     var clothoidconstant = allvalues.A;
- 
+
 
                     //Convert Values into IFC Sematic
                     var start = new IfcCartesianPoint(db, startx, starty);
@@ -318,8 +324,8 @@ namespace IfcInfraToolkit_Dyn
                     continue;
                 }
 
-            }
 
+            }
 
 
             //Errorhandling no Segments
