@@ -258,23 +258,51 @@ namespace IfcInfraToolkit_Dyn
 
 
                 //Circular handling
-                //TODO: Add Geometic Representation
+                //TODO: Testing
                 if (ae.Type == AeccAlignmentEntityType.aeccArc)
                 {
                     //Get Values of the Circular element
                     AeccAlignmentArc allvalues = ae as AeccAlignmentArc;
                     var startx = allvalues.StartEasting;
                     var starty = allvalues.StartNorthing;
-                    var lenght = allvalues.Length;
+                    var endx = allvalues.EndEasting;
+                    var endy = allvalues.EndNorthing;
+                    var centerx = allvalues.CenterEasting;
+                    var centery = allvalues.CenterNorthing;
+                    var length = allvalues.Length;
                     var direction = allvalues.StartDirection;
                     var clockwise = allvalues.Clockwise;
                     var radius = allvalues.Radius;
                     direction = angleconv(direction);
 
-
-
                     var start = new IfcCartesianPoint(db, startx, starty);
-                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius, lenght, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
+                    var end = new IfcCartesianPoint(db, endx, endy);
+                    var center = new IfcCartesianPoint(db, centerx, centery);
+
+
+                    //Convert Values into IFC Sematic
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius,
+                        length, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
+
+
+                    //Convert data into IFC Gemometric
+                    //Place circle into the right position -> Start and End points can be used to trimm
+                    var centerplace = new IfcAxis2Placement2D(center);
+                    var circle = new IfcCircle(centerplace, radius);
+                    var trimstart = new IfcTrimmingSelect(start);
+                    var trimend = new IfcTrimmingSelect(end);
+                    var arc = new IfcTrimmedCurve(circle, trimstart, trimend, true, IfcTrimmingPreference.CARTESIAN);
+                    var place = new IfcAxis2Placement2D(start);
+                    var contin = IfcTransitionCode.CONTINUOUS;
+
+
+                    if (count == last)
+                    {
+                        contin = IfcTransitionCode.DISCONTINUOUS;
+                    }
+
+                    var temp_comp = new IfcCurveSegment(contin, place, length, arc);
+
                     segmentshoz.Add(tmp);
                     count++;
                     continue;
@@ -364,6 +392,7 @@ namespace IfcInfraToolkit_Dyn
 
                 AeccProfile ap=new AeccProfile();
                 var count_prof = 1;
+
                 //Select Profil
                 foreach (AeccProfile ap_tmp in aeccAlignment.Profiles)
                 { 
