@@ -284,6 +284,7 @@ namespace IfcInfraToolkit_Dyn
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius,
                         length, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
 
+                    segmentshoz.Add(tmp);
 
                     //Convert data into IFC Gemometric
                     //Place circle into the right position -> Start and End points can be used to trimm
@@ -301,9 +302,9 @@ namespace IfcInfraToolkit_Dyn
                         contin = IfcTransitionCode.DISCONTINUOUS;
                     }
 
-                    var temp_comp = new IfcCurveSegment(contin, place, length, arc);
+                    var temp_comp = new IfcCurveSegment(contin, place, length, arc); // not sure if correct length
 
-                    segmentshoz.Add(tmp);
+                    compsegshoz.Add(temp_comp);
                     count++;
                     continue;
 
@@ -434,7 +435,7 @@ namespace IfcInfraToolkit_Dyn
 
 
 
-                        //testing for IFC Curve Date into line
+                        //Geometric representation for vertical
                         var dir = new IfcDirection(db, 1, Tan(grad));
                         var vector = new IfcVector(dir, expo.Length);
                         var start = new IfcCartesianPoint(db, 0, 0);
@@ -494,7 +495,29 @@ namespace IfcInfraToolkit_Dyn
                         //add Segments to exportlist
                         var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz, starthi,
                             gradin,gradout, IfcAlignmentVerticalSegmentTypeEnum.CIRCULARARC);
-                        segmentsvert.Add(verseg);
+
+
+                        /*
+                        //Convert data into IFC Gemometric
+                        //
+                        var centerplace = new IfcAxis2Placement2D(center);
+                        var circle = new IfcCircle(centerplace, radius);
+                        var trimstart = new IfcTrimmingSelect(start);
+                        var trimend = new IfcTrimmingSelect(end);
+                        var arc = new IfcTrimmedCurve(circle, trimstart, trimend, true, IfcTrimmingPreference.CARTESIAN);
+                        var place = new IfcAxis2Placement2D(start);
+                        var contin = IfcTransitionCode.CONTINUOUS;
+
+                        //Last Segment needs to be Discontinuous
+                        if (!(iter.MoveNext()))
+                        {
+                            contin = IfcTransitionCode.DISCONTINUOUS;
+                        }
+                        var temp_comp = new IfcCurveSegment(contin, place, expo.Length, line);
+
+                        compsegsver.Add(temp_comp);
+                        */
+                        //update horizontal length
                         current_length += lengthhoz;
                         continue;
                     }
