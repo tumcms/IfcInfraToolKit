@@ -475,6 +475,7 @@ namespace IfcInfraToolkit_Dyn
                         var gradout = expo.GradeOut;
                         var pathlength = expo.Length;
                         var curvetype = expo.CurveType;
+
                         bool convex = true;
                         //Crest == Convex and Sag== Concave
                         //default -> Convex change if the curve is Concave
@@ -487,7 +488,7 @@ namespace IfcInfraToolkit_Dyn
                         //horizonal lenght calc
                         //calc chord length
                         var angle = pathlength / radius;
-                        var chordl = 2 * radius * Sin(angle / 2); //always hypotenuse
+                        var chordl = 2 * radius * Sin(angle / 2);               //always hypotenuse
                         var elevationdelta = expo.EndElevation - expo.StartElevation; 
                         var lengthhoz = Sqrt(chordl*chordl - elevationdelta *elevationdelta);
 
@@ -497,15 +498,22 @@ namespace IfcInfraToolkit_Dyn
                             gradin,gradout, IfcAlignmentVerticalSegmentTypeEnum.CIRCULARARC);
 
 
-                        /*
+
                         //Convert data into IFC Gemometric
-                        //
-                        var centerplace = new IfcAxis2Placement2D(center);
-                        var circle = new IfcCircle(centerplace, radius);
-                        var trimstart = new IfcTrimmingSelect(start);
-                        var trimend = new IfcTrimmingSelect(end);
-                        var arc = new IfcTrimmedCurve(circle, trimstart, trimend, true, IfcTrimmingPreference.CARTESIAN);
-                        var place = new IfcAxis2Placement2D(start);
+                        var set = Atan(gradin);                                 // Offset from the x axis CCW
+                        var circle = new IfcCircle(db, radius);
+                        var trimstart = new IfcTrimmingSelect(set);
+                        var trimend = new IfcTrimmingSelect(set+pathlength);
+                        var ccw = false;
+                        //test if CW or CCW 
+                        if (expo.GradeChange < 0) //Should be right
+                        {
+                            ccw = true;
+                        }
+
+                        var arc = new IfcTrimmedCurve(circle, trimstart, trimend, ccw, IfcTrimmingPreference.PARAMETER);
+                        var pointdist = new IfcPointByDistanceExpression(current_length, basecurve);
+                        var place = new IfcAxis2PlacementLinear(pointdist);
                         var contin = IfcTransitionCode.CONTINUOUS;
 
                         //Last Segment needs to be Discontinuous
@@ -513,10 +521,11 @@ namespace IfcInfraToolkit_Dyn
                         {
                             contin = IfcTransitionCode.DISCONTINUOUS;
                         }
-                        var temp_comp = new IfcCurveSegment(contin, place, expo.Length, line);
+
+                        var temp_comp = new IfcCurveSegment(contin, place, pathlength, arc);
 
                         compsegsver.Add(temp_comp);
-                        */
+                        
                         //update horizontal length
                         current_length += lengthhoz;
                         continue;
