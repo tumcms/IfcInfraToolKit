@@ -173,6 +173,8 @@ namespace IfcInfraToolkit_Dyn
         {
             var db = databaseContainer.Database;
             IfcSite site = db.OfType<IfcSite>().First();
+            var origin = new IfcCartesianPoint(db,0, 0);
+            var origin_place = new IfcAxis2Placement2D(origin);
 
             //Errorhandling
             if (alignment == null)
@@ -236,7 +238,6 @@ namespace IfcInfraToolkit_Dyn
                     var dir = new IfcDirection(db, 1, Tan(direction));
                     var vector = new IfcVector(dir, length);
                     var line = new IfcLine(start, vector);
-                    var place = new IfcAxis2Placement2D(start);
                     var contin = IfcTransitionCode.CONTINUOUS;
 
                     if (count == last)
@@ -244,7 +245,7 @@ namespace IfcInfraToolkit_Dyn
                         contin = IfcTransitionCode.DISCONTINUOUS;
                     }
 
-                    var temp_comp = new IfcCurveSegment(contin, place, length, line);
+                    var temp_comp = new IfcCurveSegment(contin, origin_place, length, line);
 
                     // Connection of Semantic and Geometric on 1st order
                     //var connect_geo = new IfcShapeRepresentation(temp_comp);
@@ -288,12 +289,12 @@ namespace IfcInfraToolkit_Dyn
 
                     //Convert data into IFC Gemometric
                     //Place circle into the right position -> Start and End points can be used to trimm
+                    //not sure if placement is right
                     var centerplace = new IfcAxis2Placement2D(center);
                     var circle = new IfcCircle(centerplace, radius);
                     var trimstart = new IfcTrimmingSelect(start);
                     var trimend = new IfcTrimmingSelect(end);
                     var arc = new IfcTrimmedCurve(circle, trimstart, trimend, true, IfcTrimmingPreference.CARTESIAN);
-                    var place = new IfcAxis2Placement2D(start);
                     var contin = IfcTransitionCode.CONTINUOUS;
 
 
@@ -302,7 +303,7 @@ namespace IfcInfraToolkit_Dyn
                         contin = IfcTransitionCode.DISCONTINUOUS;
                     }
 
-                    var temp_comp = new IfcCurveSegment(contin, place, length, arc); // not sure if correct length
+                    var temp_comp = new IfcCurveSegment(contin, origin_place, length, arc); // not sure if correct length
 
                     compsegshoz.Add(temp_comp);
                     count++;
@@ -338,14 +339,14 @@ namespace IfcInfraToolkit_Dyn
 
                     //Convert data into IFC Gemometric
                     var place = new IfcAxis2Placement2D(start);
-                    var clothoid = new IfcClothoid(place, clothoidconstant);
+                    var clothoid = new IfcClothoid(place, clothoidconstant);  //not sure if placement is right
                     var contin = IfcTransitionCode.CONTINUOUS;
                     if (count == last)
                     {
                         contin = IfcTransitionCode.DISCONTINUOUS;
                     }
 
-                    var temp_comp = new IfcCurveSegment(contin, place, length, clothoid);
+                    var temp_comp = new IfcCurveSegment(contin, origin_place, length, clothoid);
 
 
                     compsegshoz.Add(temp_comp);
