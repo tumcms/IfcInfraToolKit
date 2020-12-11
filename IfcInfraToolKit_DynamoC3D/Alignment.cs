@@ -143,7 +143,8 @@ namespace IfcInfraToolkit_Dyn
 
             //Create Alingment with Polyline
             IfcPolyline polyline = new IfcPolyline(points);
-            IfcAlignment alignment = new IfcAlignment(site, polyline);
+            IfcAlignment alignment = new IfcAlignment(site);
+            alignment.Axis = polyline;
             alignment.Name = Alignmentname;
 
             var re = new Dictionary<string, object>
@@ -205,6 +206,7 @@ namespace IfcInfraToolkit_Dyn
 
             //Horizontal Export of alignment
             //ToDo:Circular update to RC2 + Clothoid implemnent
+            double currenthozlength = 0;
             var entities = alignment._entities;
             var last = entities.Count;
             var count = 1;
@@ -240,18 +242,20 @@ namespace IfcInfraToolkit_Dyn
                     var line = new IfcLine(start, vector);
                     var contin = IfcTransitionCode.CONTINUOUS;
 
+
+                    //last part of the curve muss be discontinuous by definition
                     if (count == last)
                     {
                         contin = IfcTransitionCode.DISCONTINUOUS;
                     }
 
-                    var temp_comp = new IfcCurveSegment(contin, origin_place, length, line);
+                    var temp_comp = new IfcCurveSegment(contin, origin_place, new IfcNonNegativeLengthMeasure(currenthozlength)
+                        ,new IfcNonNegativeLengthMeasure(length), line);
+                    // Checking if i need this above
 
-                    // Connection of Semantic and Geometric on 1st order
-                    //var connect_geo = new IfcShapeRepresentation(temp_comp);
-                    //var connect_sem = new IfcProductDefinitionShape(connect_geo);
 
                     compsegshoz.Add(temp_comp);
+                    currenthozlength = +length;
                     count++;
                     continue;
 
@@ -279,6 +283,8 @@ namespace IfcInfraToolkit_Dyn
                     var start = new IfcCartesianPoint(db, startx, starty);
                     var end = new IfcCartesianPoint(db, endx, endy);
                     var center = new IfcCartesianPoint(db, centerx, centery);
+                    var startcir = new IfcCartesianPoint(db, startx - centerx, starty - centery);
+                    var endcir = new IfcCartesianPoint(db, endx - centerx, endy - centery);
 
 
                     //Convert Values into IFC Sematic
@@ -289,23 +295,28 @@ namespace IfcInfraToolkit_Dyn
 
                     //Convert data into IFC Gemometric
                     //Place circle into the right position -> Start and End points can be used to trimm
-                    //not sure if placement is right
+                    //not sure if placement is right 
+                    //not sure how to implement trimmed curve rotation direction
                     var centerplace = new IfcAxis2Placement2D(center);
                     var circle = new IfcCircle(centerplace, radius);
-                    var trimstart = new IfcTrimmingSelect(start);
-                    var trimend = new IfcTrimmingSelect(end);
-                    var arc = new IfcTrimmedCurve(circle, trimstart, trimend, true, IfcTrimmingPreference.CARTESIAN);
+                    var trimstart = new IfcTrimmingSelect(startcir);
+                    var trimend = new IfcTrimmingSelect(endcir);
+                    var arc = new IfcTrimmedCurve(circle, trimstart, trimend, !clockwise, IfcTrimmingPreference.CARTESIAN);
                     var contin = IfcTransitionCode.CONTINUOUS;
 
-
+                    //last part of the curve muss be discontinuous by definition
                     if (count == last)
                     {
                         contin = IfcTransitionCode.DISCONTINUOUS;
                     }
 
-                    var temp_comp = new IfcCurveSegment(contin, origin_place, length, arc); // not sure if correct length
+                    var temp_comp = new IfcCurveSegment(contin, origin_place, new IfcNonNegativeLengthMeasure(currenthozlength)
+                            , new IfcNonNegativeLengthMeasure(length), arc);
+                    // Checking if i need this above
+
 
                     compsegshoz.Add(temp_comp);
+                    currenthozlength = +length;
                     count++;
                     continue;
 
@@ -341,15 +352,20 @@ namespace IfcInfraToolkit_Dyn
                     var place = new IfcAxis2Placement2D(start);
                     var clothoid = new IfcClothoid(place, clothoidconstant);  //not sure if placement is right
                     var contin = IfcTransitionCode.CONTINUOUS;
+
+                    //last part of the curve muss be discontinuous by definition
                     if (count == last)
                     {
                         contin = IfcTransitionCode.DISCONTINUOUS;
                     }
 
-                    var temp_comp = new IfcCurveSegment(contin, origin_place, length, clothoid);
+                    var temp_comp = new IfcCurveSegment(contin, origin_place, new IfcNonNegativeLengthMeasure(currenthozlength)
+                            , new IfcNonNegativeLengthMeasure(length), clothoid);
+                    // Checking if i need this above
 
 
                     compsegshoz.Add(temp_comp);
+                    currenthozlength = +length;
                     count++;
                     continue;
                 }
@@ -369,12 +385,10 @@ namespace IfcInfraToolkit_Dyn
             var basecurve = new IfcCompositeCurve(compsegshoz, IfcLogicalEnum.FALSE);
 
             //Save Data into Curve horizontal
-            IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(ifcalignment, segmentshoz);
 
-            //Connect Sematic and Geometric Horizontal 2nd order
-            var share = new IfcShapeRepresentation(basecurve);
-            var pds = new IfcProductDefinitionShape(share);
-            horizontal.Representation = pds;
+            IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(new 
+                IfcLocalPlacement(origin_place), 0, segmentshoz,out basecurve);
+            var con = new IfcRelAggregates(ifcalignment, horizontal);
 
 
             //Vertikal Export of alignment
@@ -408,6 +422,7 @@ namespace IfcInfraToolkit_Dyn
 
 
                 double current_length = 0;
+                double currentverlength = 0;
 
                 //Iterate through all segments
                 AeccProfileEntities ape = ap.Entities;
@@ -443,19 +458,23 @@ namespace IfcInfraToolkit_Dyn
                         var line = new IfcLine(start, vector);
                         var pointdist = new IfcPointByDistanceExpression(current_length, basecurve);
                         var place = new IfcAxis2PlacementLinear(pointdist);
-                        
-                        //update horizontal length
-                        current_length += lengthhoz;
+
 
 
 
                         var contin = IfcTransitionCode.CONTINUOUS;
-                        //Last Segment needs to be Discontinuous
+                        //last part of the curve must be discontinuous by definition
                         if (!(iter.MoveNext()))
                         {
                             contin = IfcTransitionCode.DISCONTINUOUS;
                         }
-                        var temp_comp = new IfcCurveSegment(contin, place, expo.Length, line);
+                        var temp_comp = new IfcCurveSegment(contin, place,new IfcNonNegativeLengthMeasure(currentverlength)
+                            , new IfcNonNegativeLengthMeasure(expo.Length), line);
+                        // Checking if i need this above
+
+                        //update horizontal length
+                        current_length += lengthhoz;
+                        currentverlength = +expo.Length;
                         compsegsver.Add(temp_comp);
 
                         continue;
@@ -517,18 +536,22 @@ namespace IfcInfraToolkit_Dyn
                         var place = new IfcAxis2PlacementLinear(pointdist);
                         var contin = IfcTransitionCode.CONTINUOUS;
 
-                        //Last Segment needs to be Discontinuous
+                        //last part of the curve must be discontinuous by definition
                         if (!(iter.MoveNext()))
                         {
                             contin = IfcTransitionCode.DISCONTINUOUS;
                         }
 
-                        var temp_comp = new IfcCurveSegment(contin, place, pathlength, arc);
+                        var temp_comp = new IfcCurveSegment(contin, place, new IfcNonNegativeLengthMeasure(currentverlength)
+                            , new IfcNonNegativeLengthMeasure(pathlength), arc);
+                        // Checking if i need this above
+
 
                         compsegsver.Add(temp_comp);
                         
                         //update horizontal length
                         current_length += lengthhoz;
+                        currentverlength = +pathlength;
                         continue;
                     }
 
@@ -570,22 +593,18 @@ namespace IfcInfraToolkit_Dyn
 
             }
 
+            //Further testing put together all segments for IFCCurve
+            var curve = new IfcGradientCurve(basecurve, compsegsver);
+
 
             //Save Data into Curve vertical
             if (twoDim == false)
             {
-                IfcAlignmentVertical vertical = new IfcAlignmentVertical(ifcalignment,segmentsvert);
+
+                IfcAlignmentVertical vertical = new IfcAlignmentVertical(new
+                IfcLocalPlacement(origin_place),segmentsvert,basecurve,0,out curve);
+
             }
-
-
-            //Further testing put together all segments for IFCCurve
-            var curve = new IfcGradientCurve(basecurve,compsegsver);
-            ifcalignment.Axis = basecurve;
-
-            //Connect Semantic and Geo on 3rd order
-            var shaperep = new IfcShapeRepresentation(curve);
-            var alignment2gradient = new IfcProductDefinitionShape(shaperep);
-            ifcalignment.Representation = alignment2gradient;
 
 
 
