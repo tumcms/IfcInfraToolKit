@@ -204,6 +204,7 @@ namespace IfcInfraToolkit_Dyn
             var compsegshoz = new List<IfcCurveSegment>();
             var compsegsver = new List<IfcCurveSegment>();
 
+
             //Horizontal Export of alignment
             //ToDo:Circular update to RC2 + Clothoid implemnent
             double currenthozlength = 0;
@@ -237,14 +238,8 @@ namespace IfcInfraToolkit_Dyn
 
 
                     var temp_comp = tmp.generateCurveSegment(currenthozlength); //shouldn´t be needed anymore
-
-
-
-                    //test for Alignment Segment
-
-
+               
                     
-
                     //compsegshoz.Add(temp_comp);
                     currenthozlength = +length;
                     count++;
@@ -384,6 +379,14 @@ namespace IfcInfraToolkit_Dyn
 
             //Needs to be ajusted if Curve isn´t circleisch
             basecurve.Segments.Last().Transition = IfcTransitionCode.DISCONTINUOUS;
+
+
+            //test for Alignment Segment -> Should work
+            for (int i = 0; i < segmentshoz.Count;i++)
+                {
+                var tmp_segments = new IfcAlignmentSegment(horizontal, segmentshoz[i]);
+                }
+
 
 
 
