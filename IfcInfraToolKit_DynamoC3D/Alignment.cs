@@ -176,6 +176,7 @@ namespace IfcInfraToolkit_Dyn
             IfcSite site = db.OfType<IfcSite>().First();
             var origin = databaseContainer.Database.Factory.Origin2d;
             var origin_place = databaseContainer.Database.Factory.Origin2dPlace;
+            var origin3d = databaseContainer.Database.Factory.Origin;
 
             //Errorhandling
             if (alignment == null)
@@ -188,12 +189,11 @@ namespace IfcInfraToolkit_Dyn
             ifcalignment.Name = Alignmentname;
             if (twoDim == true)
             {
-                var placement = new IfcAxis2Placement2D(new IfcCartesianPoint(db,0,0));
-                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
+                ifcalignment.ObjectPlacement = new IfcLocalPlacement(origin_place);
             }
             else
             {
-                var placement = new IfcAxis2Placement3D(new IfcCartesianPoint(db, 0, 0, 0));
+                var placement = new IfcAxis2Placement3D(origin3d);
                 ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
 
             }
@@ -236,25 +236,16 @@ namespace IfcInfraToolkit_Dyn
                     segmentshoz.Add(tmp);
 
 
-                    //Convert data into IFC Gemometric
-                    var dir = new IfcDirection(db, 1, Tan(direction));
-                    var vector = new IfcVector(dir, length);
-                    var line = new IfcLine(start, vector);
-                    var contin = IfcTransitionCode.CONTINUOUS;
-
-
+                    var temp_comp = tmp.generateCurveSegment(currenthozlength); //Get Curvesement
+                                        
                     //last part of the curve muss be discontinuous by definition
                     if (count == last)
                     {
-                        contin = IfcTransitionCode.DISCONTINUOUS;
+                        temp_comp.Transition = IfcTransitionCode.DISCONTINUOUS;
                     }
+                    
 
-                    var temp_comp = new IfcCurveSegment(contin, origin_place, new IfcNonNegativeLengthMeasure(currenthozlength)
-                        ,new IfcNonNegativeLengthMeasure(length), line);
-                    // Checking if i need this above
-
-
-                    compsegshoz.Add(temp_comp);
+                    //compsegshoz.Add(temp_comp);
                     currenthozlength = +length;
                     count++;
                     continue;
@@ -382,14 +373,14 @@ namespace IfcInfraToolkit_Dyn
 
 
             //put together horizontal segments
-            var basecurve = new IfcCompositeCurve(compsegshoz, IfcLogicalEnum.FALSE);
+            //var basecurve = new IfcCompositeCurve(compsegshoz, IfcLogicalEnum.FALSE);
+            var basecurve = new IfcCompositeCurve(); 
 
-            //Save Data into Curve horizontal
-
+            //create horizontal curve
             IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(new 
                 IfcLocalPlacement(origin_place), 0, segmentshoz,out basecurve);
             var con = new IfcRelAggregates(ifcalignment, horizontal);
-
+            basecurve.SelfIntersect = IfcLogicalEnum.FALSE;
 
             //Vertikal Export of alignment
             //need to be adjusted for IFC4.3RC2 
@@ -596,10 +587,10 @@ namespace IfcInfraToolkit_Dyn
             //Further testing put together all segments for IFCCurve
             var curve = new IfcGradientCurve(basecurve, compsegsver);
 
-
             //Save Data into Curve vertical
             if (twoDim == false)
             {
+
 
                 IfcAlignmentVertical vertical = new IfcAlignmentVertical(new
                 IfcLocalPlacement(origin_place),segmentsvert,basecurve,0,out curve);
