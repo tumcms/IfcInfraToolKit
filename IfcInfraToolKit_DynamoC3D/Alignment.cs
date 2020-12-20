@@ -174,8 +174,8 @@ namespace IfcInfraToolkit_Dyn
         {
             var db = databaseContainer.Database;
             IfcSite site = db.OfType<IfcSite>().First();
-            var origin = new IfcCartesianPoint(db,0, 0);
-            var origin_place = new IfcAxis2Placement2D(origin);
+            var origin = databaseContainer.Database.Factory.Origin2d;
+            var origin_place = databaseContainer.Database.Factory.Origin2dPlace;
 
             //Errorhandling
             if (alignment == null)
