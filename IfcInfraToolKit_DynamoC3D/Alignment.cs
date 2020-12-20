@@ -236,13 +236,13 @@ namespace IfcInfraToolkit_Dyn
                     segmentshoz.Add(tmp);
 
 
-                    var temp_comp = tmp.generateCurveSegment(currenthozlength); //Get Curvesement
-                                        
-                    //last part of the curve muss be discontinuous by definition
-                    if (count == last)
-                    {
-                        temp_comp.Transition = IfcTransitionCode.DISCONTINUOUS;
-                    }
+                    var temp_comp = tmp.generateCurveSegment(currenthozlength); //shouldn´t be needed anymore
+
+
+
+                    //test for Alignment Segment
+
+
                     
 
                     //compsegshoz.Add(temp_comp);
@@ -381,6 +381,11 @@ namespace IfcInfraToolkit_Dyn
                 IfcLocalPlacement(origin_place), 0, segmentshoz,out basecurve);
             var con = new IfcRelAggregates(ifcalignment, horizontal);
             basecurve.SelfIntersect = IfcLogicalEnum.FALSE;
+
+            //Needs to be ajusted if Curve isn´t circleisch
+            basecurve.Segments.Last().Transition = IfcTransitionCode.DISCONTINUOUS;
+
+
 
             //Vertikal Export of alignment
             //need to be adjusted for IFC4.3RC2 
