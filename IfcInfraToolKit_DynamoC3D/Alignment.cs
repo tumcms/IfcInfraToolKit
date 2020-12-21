@@ -235,12 +235,8 @@ namespace IfcInfraToolkit_Dyn
                     var start = new IfcCartesianPoint(db, startx, starty);
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, 0, 0, length, IfcAlignmentHorizontalSegmentTypeEnum.LINE);
                     segmentshoz.Add(tmp);
-
-
-                    var temp_comp = tmp.generateCurveSegment(currenthozlength); //shouldn´t be needed anymore
                
                     
-                    //compsegshoz.Add(temp_comp);
                     currenthozlength = +length;
                     count++;
                     continue;
@@ -367,10 +363,7 @@ namespace IfcInfraToolkit_Dyn
             }
 
 
-            //put together horizontal segments
-            //var basecurve = new IfcCompositeCurve(compsegshoz, IfcLogicalEnum.FALSE);
-            var basecurve = new IfcCompositeCurve(); 
-
+            IfcCompositeCurve basecurve = null; 
             //create horizontal curve
             IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(new 
                 IfcLocalPlacement(origin_place), 0, segmentshoz,out basecurve);
@@ -381,10 +374,16 @@ namespace IfcInfraToolkit_Dyn
             basecurve.Segments.Last().Transition = IfcTransitionCode.DISCONTINUOUS;
 
 
+            var georep = basecurve.Segments;
             //test for Alignment Segment -> Should work
+            //needs to be adden to curve
             for (int i = 0; i < segmentshoz.Count;i++)
                 {
                 var tmp_segments = new IfcAlignmentSegment(horizontal, segmentshoz[i]);
+                var share = new IfcShapeRepresentation((IfcCurveSegment)georep[i], true);
+                var pds = new IfcProductDefinitionShape(share);
+                tmp_segments.Representation = pds;
+
                 }
 
 
@@ -598,7 +597,6 @@ namespace IfcInfraToolkit_Dyn
             //Save Data into Curve vertical
             if (twoDim == false)
             {
-
 
                 IfcAlignmentVertical vertical = new IfcAlignmentVertical(new
                 IfcLocalPlacement(origin_place),segmentsvert,basecurve,0,out curve);
