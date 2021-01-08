@@ -378,7 +378,6 @@ namespace IfcInfraToolkit_Dyn
 
 
                 double current_length = 0;
-                double currentverlength = 0;
 
                 //Iterate through all segments
                 AeccProfileEntities ape = ap.Entities;
@@ -397,7 +396,7 @@ namespace IfcInfraToolkit_Dyn
                         aeccProfileTangent expo= enti as aeccProfileTangent;
                         var starthi = expo.StartElevation;
                         var grad = expo.Grade;
-                        var lengthhoz = expo.Length*Cos(grad); //should be right
+                        var lengthhoz = expo.Length; //should be right
 
 
                         //add Segments to exportlist for vertical export
@@ -407,7 +406,6 @@ namespace IfcInfraToolkit_Dyn
 
                         //update horizontal length
                         current_length += lengthhoz;
-                        currentverlength = +expo.Length;
 
                         continue;
                     }
@@ -425,17 +423,8 @@ namespace IfcInfraToolkit_Dyn
                         var radius = expo.Radius;
                         var gradin = expo.GradeIn;
                         var gradout = expo.GradeOut;
-                        var pathlength = expo.Length;
+                        var lengthhoz = expo.Length;
                         var curvetype = expo.CurveType;
-
-
-
-                        //horizonal lenght calc
-                        //calc chord length
-                        var angle = pathlength / radius;
-                        var chordl = 2 * radius * Sin(angle / 2);               //always hypotenuse
-                        var elevationdelta = expo.EndElevation - expo.StartElevation; 
-                        var lengthhoz = Sqrt(chordl*chordl - elevationdelta *elevationdelta);
 
 
                         //add Segments to exportlist
@@ -445,38 +434,32 @@ namespace IfcInfraToolkit_Dyn
                         
                         //update horizontal length
                         current_length += lengthhoz;
-                        currentverlength = +pathlength;
                         continue;
                     }
 
 
                     //parabola -> currently not working
                     //TODO: Add Geometric representation
-                    if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()))
+                    if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()) ||
+                        entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveAsymmetricParabola.ToString()))
                     {
                         //Gather all infos for the segments
                         AeccProfileCurveParabolic expo = enti as AeccProfileCurveParabolic;
                         var starthi = expo.StartElevation;
                         var endhi = expo.EndElevation;
                         var endst = expo.EndStation;
-                        var length = expo.Length; //leng
+                        var lengthhoz = expo.Length; 
                         var gradin = expo.GradeIn;
                         var gradout = expo.GradeOut;
                         var paracon = expo.Radius; //Not sure if right maybe change of sign
                         var curvetype = expo.CurveType;
-                        var test = expo.
-
-                        var min = expo.HighLowPointElevation;
-
-
-                        double lengthhoz = 0;
 
 
                         var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,starthi, gradin, 
                             gradout, IfcAlignmentVerticalSegmentTypeEnum.PARABOLICARC);
                        segmentsvert.Add(verseg);
-                       current_length += length;
-
+                       current_length += lengthhoz;
+                        continue;
                     }
 
                 }
