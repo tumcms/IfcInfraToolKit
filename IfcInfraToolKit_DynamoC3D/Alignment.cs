@@ -158,7 +158,7 @@ namespace IfcInfraToolkit_Dyn
 
 
 
-        //TODO: Implement Vertical Segemnts / Testing
+        //TODO: Testing
         //Change Horizontal Segemts for RC2 + Add Spiral for Horizontal
         /// <summary>
         /// Adds an alignment curve to the project and links it with the IfcSite entity
@@ -201,8 +201,7 @@ namespace IfcInfraToolkit_Dyn
             //Create Containers for IFCCurve
             var segmentshoz = new List<IfcAlignmentHorizontalSegment>();
             var segmentsvert = new List<IfcAlignmentVerticalSegment>();
-            var compsegshoz = new List<IfcCurveSegment>();
-            var compsegsver = new List<IfcCurveSegment>();
+
 
 
             //Horizontal Export of alignment
@@ -234,9 +233,9 @@ namespace IfcInfraToolkit_Dyn
                     //Convert Values into IFC Sematic
                     var start = new IfcCartesianPoint(db, startx, starty);
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, 0, 0, length, IfcAlignmentHorizontalSegmentTypeEnum.LINE);
-                    segmentshoz.Add(tmp);
-               
                     
+                    
+                    segmentshoz.Add(tmp);
                     currenthozlength = +length;
                     count++;
                     continue;
@@ -273,31 +272,8 @@ namespace IfcInfraToolkit_Dyn
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius,
                         length, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
 
+
                     segmentshoz.Add(tmp);
-
-                    //Convert data into IFC Gemometric
-                    //Place circle into the right position -> Start and End points can be used to trimm
-                    //not sure if placement is right 
-                    //not sure how to implement trimmed curve rotation direction
-                    var centerplace = new IfcAxis2Placement2D(center);
-                    var circle = new IfcCircle(centerplace, radius);
-                    var trimstart = new IfcTrimmingSelect(startcir);
-                    var trimend = new IfcTrimmingSelect(endcir);
-                    var arc = new IfcTrimmedCurve(circle, trimstart, trimend, !clockwise, IfcTrimmingPreference.CARTESIAN);
-                    var contin = IfcTransitionCode.CONTINUOUS;
-
-                    //last part of the curve muss be discontinuous by definition
-                    if (count == last)
-                    {
-                        contin = IfcTransitionCode.DISCONTINUOUS;
-                    }
-
-                    var temp_comp = new IfcCurveSegment(contin, origin_place, new IfcNonNegativeLengthMeasure(currenthozlength)
-                            , new IfcNonNegativeLengthMeasure(length), arc);
-                    // Checking if i need this above
-
-
-                    compsegshoz.Add(temp_comp);
                     currenthozlength = +length;
                     count++;
                     continue;
@@ -326,27 +302,9 @@ namespace IfcInfraToolkit_Dyn
                     var start = new IfcCartesianPoint(db, startx, starty);
                     var tmp = new IfcAlignmentHorizontalSegment(start, direction, startradius, 
                         endradius, length, IfcAlignmentHorizontalSegmentTypeEnum.CLOTHOID);
+
+
                     segmentshoz.Add(tmp);
-
-
-
-                    //Convert data into IFC Gemometric
-                    var place = new IfcAxis2Placement2D(start);
-                    var clothoid = new IfcClothoid(place, clothoidconstant);  //not sure if placement is right
-                    var contin = IfcTransitionCode.CONTINUOUS;
-
-                    //last part of the curve muss be discontinuous by definition
-                    if (count == last)
-                    {
-                        contin = IfcTransitionCode.DISCONTINUOUS;
-                    }
-
-                    var temp_comp = new IfcCurveSegment(contin, origin_place, new IfcNonNegativeLengthMeasure(currenthozlength)
-                            , new IfcNonNegativeLengthMeasure(length), clothoid);
-                    // Checking if i need this above
-
-
-                    compsegshoz.Add(temp_comp);
                     currenthozlength = +length;
                     count++;
                     continue;
@@ -447,33 +405,9 @@ namespace IfcInfraToolkit_Dyn
                             starthi, grad, grad, IfcAlignmentVerticalSegmentTypeEnum.CONSTANTGRADIENT);
                         segmentsvert.Add(verseg);
 
-
-
-                        //Geometric representation for vertical
-                        var dir = new IfcDirection(db, 1, Tan(grad));
-                        var vector = new IfcVector(dir, expo.Length);
-                        var start = new IfcCartesianPoint(db, 0, 0);
-                        var line = new IfcLine(start, vector);
-                        var pointdist = new IfcPointByDistanceExpression(current_length, basecurve);
-                        var place = new IfcAxis2PlacementLinear(pointdist);
-
-
-
-
-                        var contin = IfcTransitionCode.CONTINUOUS;
-                        //last part of the curve must be discontinuous by definition
-                        if (!(iter.MoveNext()))
-                        {
-                            contin = IfcTransitionCode.DISCONTINUOUS;
-                        }
-                        var temp_comp = new IfcCurveSegment(contin, place,new IfcNonNegativeLengthMeasure(currentverlength)
-                            , new IfcNonNegativeLengthMeasure(expo.Length), line);
-                        // Checking if i need this above
-
                         //update horizontal length
                         current_length += lengthhoz;
                         currentverlength = +expo.Length;
-                        compsegsver.Add(temp_comp);
 
                         continue;
                     }
@@ -494,13 +428,6 @@ namespace IfcInfraToolkit_Dyn
                         var pathlength = expo.Length;
                         var curvetype = expo.CurveType;
 
-                        bool convex = true;
-                        //Crest == Convex and Sag== Concave
-                        //default -> Convex change if the curve is Concave
-                        if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
-                        {
-                            convex = false;
-                        }
 
 
                         //horizonal lenght calc
@@ -515,37 +442,6 @@ namespace IfcInfraToolkit_Dyn
                         var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz, starthi,
                             gradin,gradout, IfcAlignmentVerticalSegmentTypeEnum.CIRCULARARC);
 
-
-
-                        //Convert data into IFC Gemometric
-                        var set = Atan(gradin);                                 // Offset from the x axis CCW
-                        var circle = new IfcCircle(db, radius);
-                        var trimstart = new IfcTrimmingSelect(set);
-                        var trimend = new IfcTrimmingSelect(set+pathlength);
-                        var ccw = false;
-                        //test if CW or CCW 
-                        if (expo.GradeChange < 0) //Should be right
-                        {
-                            ccw = true;
-                        }
-
-                        var arc = new IfcTrimmedCurve(circle, trimstart, trimend, ccw, IfcTrimmingPreference.PARAMETER);
-                        var pointdist = new IfcPointByDistanceExpression(current_length, basecurve);
-                        var place = new IfcAxis2PlacementLinear(pointdist);
-                        var contin = IfcTransitionCode.CONTINUOUS;
-
-                        //last part of the curve must be discontinuous by definition
-                        if (!(iter.MoveNext()))
-                        {
-                            contin = IfcTransitionCode.DISCONTINUOUS;
-                        }
-
-                        var temp_comp = new IfcCurveSegment(contin, place, new IfcNonNegativeLengthMeasure(currentverlength)
-                            , new IfcNonNegativeLengthMeasure(pathlength), arc);
-                        // Checking if i need this above
-
-
-                        compsegsver.Add(temp_comp);
                         
                         //update horizontal length
                         current_length += lengthhoz;
@@ -564,24 +460,22 @@ namespace IfcInfraToolkit_Dyn
                         var endhi = expo.EndElevation;
                         var endst = expo.EndStation;
                         var length = expo.Length; //leng
-                        var grad = expo.GradeIn;
+                        var gradin = expo.GradeIn;
+                        var gradout = expo.GradeOut;
                         var paracon = expo.Radius; //Not sure if right maybe change of sign
                         var curvetype = expo.CurveType;
-                        bool convex = true;
-                        //Crest == Convex and Sag== Concave
-                        //default -> Convex change if the curve is Concave
-                        if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
-                        {
-                            convex = false;
-                        }
+                        var test = expo.
+
                         var min = expo.HighLowPointElevation;
 
 
+                        double lengthhoz = 0;
 
-                       // var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz, starthi,
-                       //     grad, IfcAlignmentVerticalSegmentTypeEnum.PARABOLICARC);
-                       //segmentsvert.Add(verseg);
-                       //current_length += length;
+
+                        var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,starthi, gradin, 
+                            gradout, IfcAlignmentVerticalSegmentTypeEnum.PARABOLICARC);
+                       segmentsvert.Add(verseg);
+                       current_length += length;
 
                     }
 
@@ -592,15 +486,13 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //Further testing put together all segments for IFCCurve
-            var curve = new IfcGradientCurve(basecurve, compsegsver);
+            var curve = new IfcGradientCurve(basecurve, segmentsvert, 0);
 
             //Save Data into Curve vertical
             if (twoDim == false)
             {
-
                 IfcAlignmentVertical vertical = new IfcAlignmentVertical(new
                 IfcLocalPlacement(origin_place),segmentsvert,basecurve,0,out curve);
-
             }
 
 
