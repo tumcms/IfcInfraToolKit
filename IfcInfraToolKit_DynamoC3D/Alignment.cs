@@ -113,9 +113,9 @@ namespace IfcInfraToolkit_Dyn
             return string.Format($"Alignment (Name = {this.Name}, Length = {this.Length.ToString("#.###")} )");
         }
 
-        //quick solution for Alignment export
+        //quick solution for Alignment export (IFC 4.3RC1)
         /// <summary>
-        /// Adds an alignment curve by points to the project and links it with the IfcSite entity
+        /// Adds an alignment curve by points to the project and links it with the IfcSite entity (IFC 4.3RC1)
         /// </summary>
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "AlignmentGUID" })]
@@ -159,7 +159,6 @@ namespace IfcInfraToolkit_Dyn
 
 
         //TODO: Testing
-        //Change Horizontal Segemts for RC2 + Add Spiral for Horizontal
         /// <summary>
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
@@ -492,9 +491,6 @@ namespace IfcInfraToolkit_Dyn
 
 
     }
-
-
-
 
 
 }
