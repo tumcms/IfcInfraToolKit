@@ -88,8 +88,9 @@ namespace IfcInfraToolkit_Dyn
                 throw new ArgumentNullException("No Alignment found!\n");
             }
 
-            //Testing
-            var curve = alignment.Axis;
+            //Should be the right Axis
+            var curve = alignment.IsDecomposedBy.First().RelatedObjects.OfType<IfcAlignmentHorizontal>().First().
+                Representation.Representations.First().Items.OfType<IfcCurve>().First();
 
 
             //Select the road for adding the crosssection
