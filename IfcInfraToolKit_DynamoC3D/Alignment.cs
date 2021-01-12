@@ -467,9 +467,8 @@ namespace IfcInfraToolkit_Dyn
 
             }
 
-            //Further testing put together all segments for IFCCurve
-            var curve = new IfcGradientCurve(basecurve, segmentsvert, 0);
 
+            IfcGradientCurve curve = null;
             //Save Data into Curve vertical
             if (twoDim == false)
             {
