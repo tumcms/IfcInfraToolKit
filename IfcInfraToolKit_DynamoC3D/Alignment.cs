@@ -475,6 +475,7 @@ namespace IfcInfraToolkit_Dyn
             {
                 IfcAlignmentVertical vertical = new IfcAlignmentVertical(new
                 IfcLocalPlacement(origin_place),segmentsvert,basecurve,0,out curve);
+                var con_v = new IfcRelAggregates(ifcalignment, vertical);
             }
 
 
