@@ -907,6 +907,26 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;",
+      "Id": "3e790ae7fbba464b99453f1a2a15c9c4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b4a4b0958398469ba1435c75d874de30",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     }
   ],
   "Connectors": [
@@ -936,14 +956,14 @@
       "Id": "cc9b8845c465430683bc4fe80ea995a1"
     },
     {
-      "Start": "b10ea531b25047298206359c3f0bb4a0",
+      "Start": "f04b383260cc42a18c8b2d34a57a9082",
       "End": "934ba47a9c3e46488846d1d5a01772e8",
-      "Id": "934b7fc7aa6f4bceb5a8c1738ae756f8"
+      "Id": "45acde7461164c9f965b04690d4b858b"
     },
     {
-      "Start": "40642a3399cd4d0ab60d63126fb68a51",
+      "Start": "443c2718ad514061ae36135fa0ce32f8",
       "End": "269e8da9eac641cfab735cb15c6b4d9e",
-      "Id": "6694ae6c3b9b4b1287b3d775e16dd833"
+      "Id": "6473ccacd6b44b8d93b485e3cf439484"
     },
     {
       "Start": "ee7b44fa6cbd4bb4b6c2951abd4ff07c",
@@ -959,11 +979,6 @@
       "Start": "5c84d50455d044f8aefae72366cf06ae",
       "End": "0f06429fd85a43b89a47420c2ed0be5c",
       "Id": "767bbd5c000048df97193e505dfe48e9"
-    },
-    {
-      "Start": "d6bcad61bdaf437483435a9fe200afcd",
-      "End": "c8501d82df8f41a1b2c7bfae51c61e7d",
-      "Id": "1b5cca063f1348f9905763e9ebe38c51"
     },
     {
       "Start": "67ef72fa4db047f187c627e5661e93ab",
@@ -1054,6 +1069,11 @@
       "Start": "e1c4b7673cc14ddcb15806014da81e25",
       "End": "91282ac2652a451faa00ab4b36a6218e",
       "Id": "8d614d96d20948749e74fe6329aed212"
+    },
+    {
+      "Start": "b4a4b0958398469ba1435c75d874de30",
+      "End": "c8501d82df8f41a1b2c7bfae51c61e7d",
+      "Id": "45f7667cce974fafadc1bfb3f1843e45"
     }
   ],
   "Dependencies": [],
@@ -1070,15 +1090,15 @@
     },
     "Camera": {
       "Name": "Hintergrundvorschau",
-      "EyeX": 25.186916849612476,
-      "EyeY": 11.908474334015883,
-      "EyeZ": -3.0453763051721996,
-      "LookX": -27.508844837854454,
-      "LookY": -9.62494109728342,
-      "LookZ": -10.814285735572993,
-      "UpX": -0.091741002208151165,
-      "UpY": 0.99512958258588435,
-      "UpZ": -0.036065251645228405
+      "EyeX": 25.452281894191529,
+      "EyeY": 13.340893199095008,
+      "EyeZ": -5.3359968972073037,
+      "LookX": -27.774209882433507,
+      "LookY": -11.057359962362545,
+      "LookZ": -8.5236651435378885,
+      "UpX": -0.140597639894252,
+      "UpY": 0.98912614785468456,
+      "UpZ": -0.043148201425100889
     },
     "NodeViews": [
       {
@@ -1288,13 +1308,23 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -256.35642881443141,
-        "Y": 655.80909779733167
+        "X": -329.40422971169733,
+        "Y": 533.27730274385351
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "3e790ae7fbba464b99453f1a2a15c9c4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 527.65428988841973,
+        "Y": 1109.9707642701044
       }
     ],
     "Annotations": [],
-    "X": 111.36718889848984,
-    "Y": 58.154277387962651,
-    "Zoom": 0.426455554100617
+    "X": 164.55980345997432,
+    "Y": -253.74137860318837,
+    "Zoom": 0.67900743610005765
   }
 }

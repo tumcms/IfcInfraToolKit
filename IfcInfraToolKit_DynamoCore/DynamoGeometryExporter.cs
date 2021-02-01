@@ -91,6 +91,63 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
 
         }
+        /// <summary> calculates some geometric values of a given Dynamo solid geometry </summary>
+        /// <search> pointcloud, bb </search>
+        /// <returns>  </returns>
+        [MultiReturn(new[] { "DatabaseContainer", "meshFaceIndices", "meshVertexNormals", "meshVertexPositions", "centerOfGravity" })]
+        public static Dictionary<string, object> ExportMeshGeometryAsBRep(Mesh meshGeometry, DatabaseContainer databaseContainer, string productGuid, string buildingElementType)
+        {
+            //ToDo: Convert the input parameter buildingElementType into a dropdown menu in Dynamo
+            var meshFaceIndices = meshGeometry.FaceIndices;
+            var meshVertexNormals = meshGeometry.VertexNormals;
+            var meshVertexPositions = meshGeometry.VertexPositions;
 
+            // get current db
+            var database = databaseContainer.Database;
+
+            //ToDo: get the correct Center Of Gravity and shift all coordinates accordingly
+            //define Center of Gravity
+            var newCenterOfGravity=new IfcCartesianPoint(database,0,0,0);
+
+            //create correct instance of the BuildingElement
+            var hostProduct = ProductService.createBuildingElement(buildingElementType, ref database, 0, 0, 0);
+
+            //Get all Coordinates and match them to an IfcCoordinateList
+            var coordList = new List<Tuple<double, double, double>>();
+            foreach (var meshPoint in meshVertexPositions)
+            {
+                coordList.Add(new Tuple<double, double, double>(meshPoint.X, meshPoint.Y, meshPoint.Z));
+            }
+            var coordinates = new IfcCartesianPointList3D(database, coordList);
+
+            //Get all Indices for all faces and define them as IfcFaceIndexList
+            var faceIndexList = new List<Tuple<int, int, int>>();
+            foreach (var meshFace in meshFaceIndices)
+            {
+                faceIndexList.Add(new Tuple<int, int, int>((int)meshFace.A,(int)meshFace.B,(int)meshFace.C));
+            }
+
+            hostProduct.Representation = new IfcProductDefinitionShape(
+                new IfcShapeRepresentation(
+                    new IfcTriangulatedFaceSet(
+                        coordinates,
+                        faceIndexList)
+                    )
+                );
+            
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"meshFaceIndices", meshFaceIndices},
+                {"meshVertexNormals", meshVertexNormals},
+                {"meshVertexPositions", meshVertexPositions},
+                {"centerOfGravity", newCenterOfGravity}
+            };
+
+            return d;
+
+        }
     }
 }

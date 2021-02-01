@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="AlignmentImporter.cs" />
     <Compile Include="DatabaseContainer.cs" />
+    <Compile Include="DropDownNode.cs" />
     <Compile Include="DynamoGeometryExporter.cs" />
     <Compile Include="IfcModelSetup.cs" />
     <Compile Include="IfcPropertyManager.cs" />
