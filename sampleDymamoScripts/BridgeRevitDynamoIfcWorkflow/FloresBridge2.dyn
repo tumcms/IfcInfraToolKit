@@ -892,6 +892,26 @@
       ],
       "Replication": "Auto",
       "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"IfcRailing\";",
+      "Id": "b6de835d4a6147e6b33318aea400a379",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d44f8c2891064b3797096f11343325be",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly"
     }
   ],
   "Connectors": [
@@ -944,11 +964,6 @@
       "Start": "c2fedc12be334ffeb1826519a87984e9",
       "End": "5d0226b157214bb2acf8e3c4425b2d9a",
       "Id": "8444cbbfcbee4bc9baba9a6dbf98bb85"
-    },
-    {
-      "Start": "c2fedc12be334ffeb1826519a87984e9",
-      "End": "fbf44aa4a2704ba1a5037e6867dd445c",
-      "Id": "b46390e8904945cb9c1605f1ae2e6f2a"
     },
     {
       "Start": "39a5d6d34ee54b8db2470c5d9917f6bc",
@@ -1034,6 +1049,11 @@
       "Start": "1d6a83e37657455fb3e3047d199d1b22",
       "End": "df72015ce1b445cba9d6fa583aecf202",
       "Id": "2332d4ac37f148c6bbfc9cfbd670441b"
+    },
+    {
+      "Start": "d44f8c2891064b3797096f11343325be",
+      "End": "fbf44aa4a2704ba1a5037e6867dd445c",
+      "Id": "af5557d6e3de4deaa47ae48a4116a926"
     }
   ],
   "Dependencies": [],
@@ -1300,6 +1320,16 @@
         "Excluded": false,
         "X": 1419.7576420583887,
         "Y": 96.714510723073658
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "b6de835d4a6147e6b33318aea400a379",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1268.1638402190404,
+        "Y": 512.720549468123
       }
     ],
     "Annotations": [
@@ -1337,7 +1367,7 @@
         "Height": 409.77505917047819,
         "FontSize": 36.0,
         "InitialTop": -488.93004104537835,
-        "InitialHeight": 374.10870972211711,
+        "InitialHeight": 374.10870972211717,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
@@ -1358,7 +1388,7 @@
         "Height": 373.34857565985226,
         "FontSize": 36.0,
         "InitialTop": -17.574442848178592,
-        "InitialHeight": 350.14857565985227,
+        "InitialHeight": 351.6406516247431,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
@@ -1377,7 +1407,7 @@
         "Height": 444.3207015491347,
         "FontSize": 36.0,
         "InitialTop": -58.884025849855504,
-        "InitialHeight": 421.12070154913465,
+        "InitialHeight": 443.52070154913469,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
@@ -1396,7 +1426,7 @@
         "Height": 385.8946214834383,
         "FontSize": 36.0,
         "InitialTop": 377.66123933218535,
-        "InitialHeight": 362.69462148343837,
+        "InitialHeight": 385.09462148343835,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
@@ -1413,7 +1443,7 @@
         "Height": 401.74654072560975,
         "FontSize": 36.0,
         "InitialTop": -61.753319295125607,
-        "InitialHeight": 569.40447719124018,
+        "InitialHeight": 298.54654072560976,
         "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       }
