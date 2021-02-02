@@ -20,7 +20,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> pointcloud, bb </search>
         /// <returns>  </returns>
         [MultiReturn(new[] { "DatabaseContainer", "solidVertices", "solidEdges", "solidFaces", "centerOfGravity" })]
-        public static Dictionary<string, object> ExportSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string productGuid, string buildingElementType)
+        public static Dictionary<string, object> ExportSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string parentGuid, string buildingElementType)
         {
             //ToDo: Convert the input parameter buildingElementType into a dropdown menu in Dynamo
             var solidVertices = solidGeometry.Vertices;
@@ -32,9 +32,14 @@ namespace IfcInfraToolKit_DynamoCore
             // get current db
             var database = databaseContainer.Database;
 
-            //// get host
-            //var hostProduct = database.OfType<IfcProduct>()
-            //    .FirstOrDefault(a => a.Guid.ToString() == productGuid);   
+            // Add product into spatial structure
+            var parent = database.OfType<IfcObjectDefinition>().FirstOrDefault(a => a.Guid.ToString() == parentGuid);
+
+            if (parent == null)
+            {
+                parent = database.Project.UppermostSite();
+
+            }
 
             //calculate half of the height of the bounding box in z-direction
             var middleBoundingBoxZ = (centerOfGravity.BoundingBox.MaxPoint.Z - centerOfGravity.BoundingBox.MinPoint.Z) / 2;
@@ -44,9 +49,12 @@ namespace IfcInfraToolKit_DynamoCore
             //create correct instance of the BuildingElement
             var hostProduct = ProductService.createBuildingElement(buildingElementType, ref database, centerOfGravity.X, centerOfGravity.Y, centerOfGravity.Z-middleBoundingBoxZ);
 
+            // assign the new product into the spatial structure
+            parent.AddAggregated(hostProduct);
+
+            // process geometry
             var coordList = new List<Tuple<double, double, double>>();
-
-
+            
             var faces = new List<IfcIndexedPolygonalFace>();
 
             foreach (var solidFace in solidFaces)
@@ -78,7 +86,7 @@ namespace IfcInfraToolKit_DynamoCore
                     )
                 );
 
-            // beautiful return values
+            // beautify return values
             var d = new Dictionary<string, object>
             {
                 {"DatabaseContainer", databaseContainer},
@@ -95,7 +103,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> pointcloud, bb </search>
         /// <returns>  </returns>
         [MultiReturn(new[] { "DatabaseContainer", "meshFaceIndices", "meshVertexNormals", "meshVertexPositions", "centerOfGravity" })]
-        public static Dictionary<string, object> ExportMeshGeometryAsBRep(Mesh meshGeometry, DatabaseContainer databaseContainer, string productGuid, string buildingElementType)
+        public static Dictionary<string, object> ExportMeshGeometryAsBRep(Mesh meshGeometry, DatabaseContainer databaseContainer, string parentGuid, string buildingElementType)
         {
             //ToDo: Convert the input parameter buildingElementType into a dropdown menu in Dynamo
             var meshFaceIndices = meshGeometry.FaceIndices;
@@ -109,8 +117,19 @@ namespace IfcInfraToolKit_DynamoCore
             //define Center of Gravity
             var newCenterOfGravity=new IfcCartesianPoint(database,0,0,0);
 
+            // Add product into spatial structure
+            var parent = database.OfType<IfcObjectDefinition>().FirstOrDefault(a => a.Guid.ToString() == parentGuid);
+
+            if (parent == null)
+            {
+                parent = database.Project.UppermostSite();
+            }
+
             //create correct instance of the BuildingElement
             var hostProduct = ProductService.createBuildingElement(buildingElementType, ref database, 0, 0, 0);
+
+            // assign the new product into the spatial structure
+            parent.AddAggregated(hostProduct);
 
             //Get all Coordinates and match them to an IfcCoordinateList
             var coordList = new List<Tuple<double, double, double>>();
@@ -134,9 +153,11 @@ namespace IfcInfraToolKit_DynamoCore
                         faceIndexList)
                     )
                 );
-            
 
-            // beautiful return values
+            // writing the db back to the container
+            databaseContainer.Database = database;
+
+            // beautify return values
             var d = new Dictionary<string, object>
             {
                 {"DatabaseContainer", databaseContainer},
