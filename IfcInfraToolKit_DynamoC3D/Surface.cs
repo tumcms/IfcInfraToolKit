@@ -8,6 +8,7 @@ using Autodesk.AECC.Interop.Land;
 using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
 using GeometryGym.Ifc;
+using IfcInfraToolKit_DynamoCore;
 
 namespace IfcInfraToolkit_Dyn
 {
@@ -92,7 +93,29 @@ namespace IfcInfraToolkit_Dyn
             return string.Format($"Surface (\"{this.Name}\")");
         }
 
-       
+
+
+        /// Export Surface into a IFCSurface
+        // TODO: Implement
+        [MultiReturn(new[] { "DatabaseContainer", "SurfaceGUID" })]
+        public static Dictionary<string, object> IFCAddSurface(DatabaseContainer databaseContainer, Surface Civil3DSurface,string Surfacename)
+        {
+            var db = databaseContainer.Database;
+            //Not sure if this is the right class
+            //var ifcsurface = new IfcCurveBoundedSurface();
+
+
+
+
+            var re = new Dictionary<string, object>
+                {
+                    {"DatabaseContainer", databaseContainer},
+                    //{"SurfaceGUID", ifcsurface.StepId}          //Identification necessary?
+                };
+
+            return re;
+        }
+
 
 
     }
