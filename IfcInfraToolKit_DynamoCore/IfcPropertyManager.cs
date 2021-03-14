@@ -37,6 +37,35 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="databaseContainer"></param>
+        /// <param name="hostGuid">GlobalId of parent element</param>
+        /// <param name="pSetName"></param>
+        /// <param name="ifcProperties"></param>
+        /// <returns></returns>
+        [MultiReturn(new[] { "DatabaseContainer" })]
+        public static Dictionary<string, object> AppendPropertySetByElementName(DatabaseContainer databaseContainer, string HostElementName, string pSetName, List<IfcProperty> ifcProperties)
+        {
+            // get current db
+            var database = databaseContainer.Database;
+
+            var propertyService = new PropertyService();
+            database = propertyService.AddPSetByElementName(database, HostElementName, pSetName, ifcProperties);
+
+            // assign updated db to container
+            databaseContainer.Database = database;
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer}
+            };
+
+            return d;
+        }
+
 
         /// <summary>
         /// 

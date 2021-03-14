@@ -113,9 +113,9 @@ namespace IfcInfraToolkit_Dyn
             return string.Format($"Alignment (Name = {this.Name}, Length = {this.Length.ToString("#.###")} )");
         }
 
-        //quick solution for Alignment export
+        //quick solution for Alignment export (IFC 4.3RC1)
         /// <summary>
-        /// Adds an alignment curve by points to the project and links it with the IfcSite entity
+        /// Adds an alignment curve by points to the project and links it with the IfcSite entity (IFC 4.3RC1)
         /// </summary>
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "AlignmentGUID" })]
@@ -143,7 +143,8 @@ namespace IfcInfraToolkit_Dyn
 
             //Create Alingment with Polyline
             IfcPolyline polyline = new IfcPolyline(points);
-            IfcAlignment alignment = new IfcAlignment(site, polyline);
+            IfcAlignment alignment = new IfcAlignment(site);
+            alignment.Axis = polyline;
             alignment.Name = Alignmentname;
 
             var re = new Dictionary<string, object>
@@ -155,7 +156,9 @@ namespace IfcInfraToolkit_Dyn
             return re;
             }
 
-        //TODO: Implement Vertical Segemnts / Testing
+
+
+        //TODO: Testing
         /// <summary>
         /// Adds an alignment curve to the project and links it with the IfcSite entity
         /// </summary>
@@ -170,6 +173,9 @@ namespace IfcInfraToolkit_Dyn
         {
             var db = databaseContainer.Database;
             IfcSite site = db.OfType<IfcSite>().First();
+            var origin = databaseContainer.Database.Factory.Origin2d;
+            var origin_place = databaseContainer.Database.Factory.Origin2dPlace;
+            var origin3d = databaseContainer.Database.Factory.Origin;
 
             //Errorhandling
             if (alignment == null)
@@ -178,57 +184,44 @@ namespace IfcInfraToolkit_Dyn
             }
 
             //standard informations
-            IfcAlignmentCurve curve = new IfcAlignmentCurve(db);
-            IfcAlignment ifcalignment = new IfcAlignment(site, curve);
+            IfcAlignment ifcalignment = new IfcAlignment(site);
             ifcalignment.Name = Alignmentname;
             if (twoDim == true)
             {
-                var placement = new IfcAxis2Placement2D(new IfcCartesianPoint(db,0,0));
-                ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
+                ifcalignment.ObjectPlacement = new IfcLocalPlacement(origin_place);
             }
             else
             {
-                var placement = new IfcAxis2Placement3D(new IfcCartesianPoint(db, 0, 0, 0));
+                var placement = new IfcAxis2Placement3D(origin3d);
                 ifcalignment.ObjectPlacement = new IfcLocalPlacement(placement);
 
             }
 
+            //Create Containers for IFCCurve
+            var segmentshoz = new List<IfcAlignmentHorizontalSegment>();
+            var segmentsvert = new List<IfcAlignmentVerticalSegment>();
 
-            var segmentshoz = new List<IfcAlignment2DHorizontalSegment>();
 
 
             //Horizontal Export of alignment
+            //ToDo:Circular update to RC2 + Clothoid implemnent
+            double currenthozlength = 0;
             var entities = alignment._entities;
+            var last = entities.Count;
+            var count = 1;
             foreach (AeccAlignmentCurve ae in entities)
             {
-                //Circular handling
-                if (ae.Type == AeccAlignmentEntityType.aeccArc)
+                //Test output to check the Properties
+                /*if (count == 2)
                 {
-                    //Get Values of the Circular element
-                    AeccAlignmentArc allvalues = ae as AeccAlignmentArc;
-                    var startx = allvalues.StartEasting;
-                    var starty = allvalues.StartNorthing;
-                    var lenght = allvalues.Length;
-                    var direction = allvalues.StartDirection;
-                    var clockwise = allvalues.Clockwise;
-                    var radius = allvalues.Radius;
-                    direction = angleconv(direction);
+                    throw new Exception("test" + ae.Type.ToString());
+                }*/
 
-
-                    //Convert data into IFC
-                    var start = new IfcCartesianPoint(db, startx, starty);
-                    var seg = new IfcCircularArcSegment2D(start, direction, radius, lenght, !clockwise);
-                    var tmp = new IfcAlignment2DHorizontalSegment(seg);
-                    segmentshoz.Add(tmp);
-                    continue;
-
-                }
-
-                // strait lines handling
+                // line handling
                 if (ae.Type == AeccAlignmentEntityType.aeccTangent)
                 {
                     AeccAlignmentTangent allvalues = ae as AeccAlignmentTangent;
-                    //Get Values of the line
+                    //Get Values of the C3D line 
                     var startx = allvalues.StartEasting;
                     var starty = allvalues.StartNorthing;
                     var direction = allvalues.Direction;
@@ -236,13 +229,86 @@ namespace IfcInfraToolkit_Dyn
                     direction = angleconv(direction);
 
 
-                    //Convert Values into IFC
+                    //Convert Values into IFC Sematic
                     var start = new IfcCartesianPoint(db, startx, starty);
-                    var seg = new IfcLineSegment2D(start, direction, length);
-                    var tmp = new IfcAlignment2DHorizontalSegment(seg);
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, 0, 0, length, IfcAlignmentHorizontalSegmentTypeEnum.LINE);
+                    
+                    
                     segmentshoz.Add(tmp);
+                    currenthozlength = +length;
+                    count++;
+                    continue;
 
                 }
+
+
+                //Circular handling
+                //TODO: Testing
+                if (ae.Type == AeccAlignmentEntityType.aeccArc)
+                {
+                    //Get Values of the Circular element
+                    AeccAlignmentArc allvalues = ae as AeccAlignmentArc;
+                    var startx = allvalues.StartEasting;
+                    var starty = allvalues.StartNorthing;
+                    var endx = allvalues.EndEasting;
+                    var endy = allvalues.EndNorthing;
+                    var centerx = allvalues.CenterEasting;
+                    var centery = allvalues.CenterNorthing;
+                    var length = allvalues.Length;
+                    var direction = allvalues.StartDirection;
+                    var clockwise = allvalues.Clockwise;
+                    var radius = allvalues.Radius;
+                    direction = angleconv(direction);
+
+                    var start = new IfcCartesianPoint(db, startx, starty);
+                    var end = new IfcCartesianPoint(db, endx, endy);
+                    var center = new IfcCartesianPoint(db, centerx, centery);
+                    var startcir = new IfcCartesianPoint(db, startx - centerx, starty - centery);
+                    var endcir = new IfcCartesianPoint(db, endx - centerx, endy - centery);
+
+
+                    //Convert Values into IFC Sematic
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, radius, radius,
+                        length, IfcAlignmentHorizontalSegmentTypeEnum.CIRCULARARC);
+
+
+                    segmentshoz.Add(tmp);
+                    currenthozlength = +length;
+                    count++;
+                    continue;
+
+
+                }
+               
+
+                //Spiral / Clothoid handling
+                //TODO: Testing
+                if (ae.Type == AeccAlignmentEntityType.aeccSpiral)
+                {
+                    AeccAlignmentSpiral allvalues = ae as AeccAlignmentSpiral;
+
+                    var startx = allvalues.StartEasting;
+                    var starty = allvalues.StartNorthing;
+                    var length = allvalues.Length;
+                    var direction = allvalues.StartDirection;
+                    direction = angleconv(direction);
+                    var startradius = allvalues.RadiusIn;
+                    var endradius = allvalues.RadiusOut;
+                    var clothoidconstant = allvalues.A;
+
+
+                    //Convert Values into IFC Sematic
+                    var start = new IfcCartesianPoint(db, startx, starty);
+                    var tmp = new IfcAlignmentHorizontalSegment(start, direction, startradius, 
+                        endradius, length, IfcAlignmentHorizontalSegmentTypeEnum.CLOTHOID);
+
+
+                    segmentshoz.Add(tmp);
+                    currenthozlength = +length;
+                    count++;
+                    continue;
+                }
+
 
             }
 
@@ -254,11 +320,39 @@ namespace IfcInfraToolkit_Dyn
             }
 
 
-            var segmentsvert = new List<IfcAlignment2DVerticalSegment>();
-            //Vertikal Export of alignemt
+            IfcCompositeCurve basecurve = null; 
+            //create horizontal curve
+            IfcAlignmentHorizontal horizontal = new IfcAlignmentHorizontal(new 
+                IfcLocalPlacement(origin_place), 0, segmentshoz,out basecurve);
+            var con = new IfcRelAggregates(ifcalignment, horizontal);
+            basecurve.SelfIntersect = IfcLogicalEnum.FALSE;
+
+            //Needs to be ajusted if Curve isn´t circleisch
+            basecurve.Segments.Last().Transition = IfcTransitionCode.DISCONTINUOUS;
+
+
+            var georep = basecurve.Segments;
+            //test for Alignment Segment -> Should work
+            //needs to be adden to curve
+            for (int i = 0; i < segmentshoz.Count;i++)
+                {
+                var tmp_segments = new IfcAlignmentSegment(horizontal, segmentshoz[i]);
+                var share = new IfcShapeRepresentation((IfcCurveSegment)georep[i], true);
+                var pds = new IfcProductDefinitionShape(share);
+                tmp_segments.Representation = pds;
+
+                }
+
+
+
+
+            //Vertikal Export of alignment
+            //need to be adjusted for IFC4.3RC2 
             if (twoDim == false)
             {
                 var aeccAlignment = alignment._alignment;
+
+
 
                 //Errorhandling
                 if (aeccAlignment.Profiles == null)
@@ -269,7 +363,8 @@ namespace IfcInfraToolkit_Dyn
 
                 AeccProfile ap=new AeccProfile();
                 var count_prof = 1;
-                //check every profil and select one
+
+                //Select Profil
                 foreach (AeccProfile ap_tmp in aeccAlignment.Profiles)
                 { 
                     if (count_prof == profilnum)
@@ -300,18 +395,22 @@ namespace IfcInfraToolkit_Dyn
                         aeccProfileTangent expo= enti as aeccProfileTangent;
                         var starthi = expo.StartElevation;
                         var grad = expo.Grade;
-                        var lengthhoz = expo.Length*Cos(grad); //should be right
+                        var lengthhoz = expo.Length; //should be right
 
 
-                        //add Segments to exportlist
-                        var verseg = new IfcAlignment2DVerSegLine(db, current_length, lengthhoz, starthi, grad);
+                        //add Segments to exportlist for vertical export
+                        IfcAlignmentVerticalSegment verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,
+                            starthi, grad, grad, IfcAlignmentVerticalSegmentTypeEnum.CONSTANTGRADIENT);
                         segmentsvert.Add(verseg);
-                        current_length +=lengthhoz;
-                        continue;
 
+                        //update horizontal length
+                        current_length += lengthhoz;
+
+                        continue;
                     }
 
                     //Vertical Circular
+                    //TODO: Add Geometric representation
                     if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveCircular.ToString()))
                     {
                         //Gather all infos for the segments
@@ -321,63 +420,45 @@ namespace IfcInfraToolkit_Dyn
                         var endhi = expo.EndElevation;
                         var endst = expo.EndStation;
                         var radius = expo.Radius;
-                        var grad = expo.GradeIn;
-                        var pathlength = expo.Length;
+                        var gradin = expo.GradeIn;
+                        var gradout = expo.GradeOut;
+                        var lengthhoz = expo.Length;
                         var curvetype = expo.CurveType;
-                        bool convex = true;
-                        //Crest == Convex and Sag== Concave
-                        //default -> Convex change if the curve is Concave
-                        if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
-                        {
-                            convex = false;
-                        }
-
-
-                        //horizonal lenght calc
-                        //calc chord length
-                        var angle = pathlength / radius;
-                        var chordl = 2 * radius * Sin(angle / 2); //always hypotenuse
-                        var elevationdelta = expo.EndElevation - expo.StartElevation; 
-                        var lengthhoz = Sqrt(chordl*chordl - elevationdelta *elevationdelta);
 
 
                         //add Segments to exportlist
-                        var verseg = new IfcAlignment2DVerSegCircularArc(db, current_length, lengthhoz, starthi, grad, radius, convex); 
-                        segmentsvert.Add(verseg);
+                        var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz, starthi,
+                            gradin,gradout, IfcAlignmentVerticalSegmentTypeEnum.CIRCULARARC);
+
+                        
+                        //update horizontal length
                         current_length += lengthhoz;
                         continue;
                     }
 
 
                     //parabola -> currently not working
-                    if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()))
+                    //TODO: Add Geometric representation
+                    if (entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveSymmetricParabola.ToString()) ||
+                        entitype.ToString().Equals(AeccProfileEntityType.aeccProfileEntityCurveAsymmetricParabola.ToString()))
                     {
                         //Gather all infos for the segments
                         AeccProfileCurveParabolic expo = enti as AeccProfileCurveParabolic;
                         var starthi = expo.StartElevation;
                         var endhi = expo.EndElevation;
                         var endst = expo.EndStation;
-                        var length = expo.Length; //leng
-                        var grad = expo.GradeIn;
+                        var lengthhoz = expo.Length; 
+                        var gradin = expo.GradeIn;
+                        var gradout = expo.GradeOut;
                         var paracon = expo.Radius; //Not sure if right maybe change of sign
                         var curvetype = expo.CurveType;
-                        bool convex = true;
-                        //Crest == Convex and Sag== Concave
-                        //default -> Convex change if the curve is Concave
-                        if (curvetype.ToString().Equals(AeccProfileVerticalCurveType.aeccSag.ToString()))
-                        {
-                            convex = false;
-                        }
-                        var min = expo.HighLowPointElevation;
 
 
-
-
-                        //add Segments to exportlist //TODO: get the right length horizontal and the right paracon
-                        //var verseg = new IfcAlignment2DVerSegParabolicArc(db, current_length, length, starthi, grad, paracon, convex);
-                        //segmentsvert.Add(verseg);
-                        //current_length += length;
-
+                        var verseg = new IfcAlignmentVerticalSegment(db, current_length, lengthhoz,starthi, gradin, 
+                            gradout, IfcAlignmentVerticalSegmentTypeEnum.PARABOLICARC);
+                       segmentsvert.Add(verseg);
+                       current_length += lengthhoz;
+                        continue;
                     }
 
                 }
@@ -387,17 +468,16 @@ namespace IfcInfraToolkit_Dyn
             }
 
 
-
-            //Save Data into Curve
-            IfcAlignment2DHorizontal horizontal = new IfcAlignment2DHorizontal(segmentshoz);
-            curve.Horizontal = horizontal;
+            IfcGradientCurve curve = null;
+            //Save Data into Curve vertical
             if (twoDim == false)
             {
-                IfcAlignment2DVertical vertical = new IfcAlignment2DVertical(segmentsvert);
-                curve.Vertical = vertical;
+                IfcAlignmentVertical vertical = new IfcAlignmentVertical(new
+                IfcLocalPlacement(origin_place),segmentsvert,basecurve,0,out curve);
+                var con_v = new IfcRelAggregates(ifcalignment, vertical);
             }
 
-            //end testing
+
 
             //return values
             var re = new Dictionary<string, object>
@@ -411,9 +491,6 @@ namespace IfcInfraToolkit_Dyn
 
 
     }
-
-
-
 
 
 }

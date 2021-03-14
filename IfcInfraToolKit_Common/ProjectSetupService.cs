@@ -87,7 +87,7 @@ namespace IfcInfraToolkit_Common
         /// <param name="host"></param>
         /// <returns></returns>
         public Guid AddFacilityPart(ref DatabaseIfc database, string facilityPartName, string facilityType,
-            IfcSpatialStructureElement host)
+            IfcObjectDefinition host)
         {
             // ToDo: parse user input and select corresponding IFC content
             var partType = new IfcFacilityPartTypeSelect(IfcBridgePartTypeEnum.ABUTMENT);

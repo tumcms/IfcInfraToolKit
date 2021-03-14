@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autodesk.AECC.Interop.Land;
 using Autodesk.DesignScript.Runtime;
 using GeometryGym.Ifc;
 using IfcInfraToolKit_DynamoCore;
@@ -19,6 +20,7 @@ namespace IfcInfraToolkit_Dyn
 {
     public class Road
     {
+        
         //TODO: testing
         /// <summary>
         /// Adds an IfcRoad with IfcOpenProfileDefs to the IFC model
@@ -64,7 +66,7 @@ namespace IfcInfraToolkit_Dyn
 
             //List for all Crossprofiles and DistanceExpression
             List<IfcOpenCrossProfileDef> ocpd = new List<IfcOpenCrossProfileDef>();
-            List<IfcDistanceExpression> de = new List<IfcDistanceExpression>();
+            List<IfcPointByDistanceExpression> de = new List<IfcPointByDistanceExpression>();
 
             //var definition
             IfcSite site = db.OfType<IfcSite>().First();
@@ -86,7 +88,9 @@ namespace IfcInfraToolkit_Dyn
                 throw new ArgumentNullException("No Alignment found!\n");
             }
 
-            IfcCurve curve = (IfcCurve)alignment.Axis;//Not sure if it is a proper solution
+            //Should be the right Axis
+            var curve = alignment.IsDecomposedBy.First().RelatedObjects.OfType<IfcAlignmentHorizontal>().First().
+                Representation.Representations.First().Items.OfType<IfcCurve>().First();
 
 
             //Select the road for adding the crosssection
@@ -130,10 +134,10 @@ namespace IfcInfraToolkit_Dyn
             {
 
                 //Create OpenCrossProfileDef and collect them
-                IfcOpenCrossProfileDef crsec = new IfcOpenCrossProfileDef(db, "Road_part" + (i + 1), true, widths[i], slopes[i]);
+                var crsec = new IfcOpenCrossProfileDef(db, "Road_part" + (i + 1), true, widths[i], slopes[i]);
                 ocpd.Add(crsec);
                 //Create DistanceExpression and collect them
-                IfcDistanceExpression distex = new IfcDistanceExpression(db, stations[i]);
+                var distex = new IfcPointByDistanceExpression(stations[i], curve);
                 de.Add(distex);
 
             }
@@ -146,8 +150,9 @@ namespace IfcInfraToolkit_Dyn
 
 
             //Placement
-            IfcDistanceExpression dist = new IfcDistanceExpression(db, roadstart);
-            IfcLinearPlacement start = new IfcLinearPlacement(curve, dist);  //-> Placemtent
+            IfcPointByDistanceExpression dist = new IfcPointByDistanceExpression(0, curve); //needs 0 to be changed later
+            IfcAxis2PlacementLinear place = new IfcAxis2PlacementLinear(dist);
+            IfcLinearPlacement start = new IfcLinearPlacement(place);
 
             //final assembly
             IfcPavement pavement = new IfcPavement(site, start, produktdef);
@@ -163,8 +168,10 @@ namespace IfcInfraToolkit_Dyn
             };
 
             return re;
+           
+            
         }
-
+        
 
 
 

@@ -96,7 +96,6 @@
     <Compile Include="Civil3DApplication.cs" />
     <Compile Include="Civil3DDocument.cs" />
     <Compile Include="Road.cs" />
-    <Compile Include="IFC.cs" />
     <Compile Include="IfcInfraToolkit_DynInteraction.cs" />
     <Compile Include="Profile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

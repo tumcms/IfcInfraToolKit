@@ -93,7 +93,7 @@ namespace IfcInfraToolKit_DynamoCore
 
             // get host
             var host = database.OfType<IfcSpatialStructureElement>().FirstOrDefault(a => a.Guid.ToString() == hostGuid);
-
+            
             ProjectSetupService service = new ProjectSetupService();
             var guid = service.AddFacility(ref database, facilityName, host);
 
@@ -124,10 +124,9 @@ namespace IfcInfraToolKit_DynamoCore
             var database = databaseContainer.Database;
 
             // get host
-            var hostFacility = database.OfType<IfcFacility>()
+            var hostFacility = database.OfType<IfcObjectDefinition>()
                 .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
-            var hostFacilityPart = database.OfType<IfcFacilityPart>()
-                .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
+           
 
             ProjectSetupService service = new ProjectSetupService();
 
@@ -138,14 +137,12 @@ namespace IfcInfraToolKit_DynamoCore
                 var host = hostFacility;
                 guid = service.AddFacilityPart(ref database, facilityPartName, "type", host);
             }
-            else if (hostFacilityPart != null)
-            {
-                var host = hostFacilityPart;
-                guid = service.AddFacilityPart(ref database, facilityPartName, "type", host);
-            }
+            
             else
             {
-                guid = Guid.Empty;
+                var e = new Exception("Couldn't find the host item.");
+                throw e;
+               
             }
            
 

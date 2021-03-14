@@ -111,7 +111,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary> group single Off meshes </summary>
         /// <search> off, pointcloud </search>
         /// <returns>  </returns>
-        [MultiReturn(new[] {"OffGeometry"})]
+        /*[MultiReturn(new[] {"OffGeometry"})]
         public static Dictionary<string, object> JoinOffGeometries(OffGeometry [] geometries)
         {
             var util = new OffGeometryUtilities();
@@ -126,6 +126,6 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
         }
 
-
+    */
     }
 }
