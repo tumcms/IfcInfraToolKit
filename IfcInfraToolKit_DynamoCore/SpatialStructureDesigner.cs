@@ -31,7 +31,7 @@ namespace IfcInfraToolKit_DynamoCore
             // get host
             var host = database.OfType<IfcSpatialStructureElement>().FirstOrDefault(a => a.Guid.ToString() == hostGuid);
 
-            ProjectSetupService service = new ProjectSetupService();
+            var service = new SpatialStructureService();
             var guid = service.AddFacility(ref database, facilityName, host);
 
             // assign updated db to container
@@ -66,7 +66,7 @@ namespace IfcInfraToolKit_DynamoCore
                 .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
 
 
-            ProjectSetupService service = new ProjectSetupService();
+            var service = new SpatialStructureService();
 
             Guid guid;
 

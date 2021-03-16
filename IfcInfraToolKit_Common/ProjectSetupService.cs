@@ -53,49 +53,5 @@ namespace IfcInfraToolkit_Common
             var project = new IfcProject(site, projectName, IfcUnitAssignment.Length.Metre);
             return database;
         }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="database"></param>
-        /// <param name="FacilityName"></param>
-        /// <param name="host"></param>
-        /// <returns></returns>
-        public Guid AddFacility(ref DatabaseIfc database, string FacilityName, IfcSpatialStructureElement host)
-        {
-            // if no host was found in the model, add the facility to the IfcSite entity
-            if (host == null)
-            {
-                var project = database.Project;
-                host = project.Extract<IfcSite>().First();
-            }
-
-            // create an IfcFacility element
-            var trafficFacility = new IfcFacility(host, FacilityName)
-            {
-                CompositionType = IfcElementCompositionEnum.COMPLEX
-            };
-            return trafficFacility.Guid;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="database"></param>
-        /// <param name="facilityPartName"></param>
-        /// <param name="facilityType"></param>
-        /// <param name="host"></param>
-        /// <returns></returns>
-        public Guid AddFacilityPart(ref DatabaseIfc database, string facilityPartName, string facilityType,
-            IfcObjectDefinition host)
-        {
-            // ToDo: parse user input and select corresponding IFC content
-            var partType = new IfcFacilityPartTypeSelect(IfcBridgePartTypeEnum.ABUTMENT);
-            var usage = IfcFacilityUsageEnum.LATERAL;
-
-            var facilityPart = host.StepClassName == "IfcFacility" ? new IfcFacilityPart(host as IfcFacility, facilityPartName, partType, usage) : new IfcFacilityPart(host as IfcFacilityPart, facilityPartName, partType, usage);
-
-            return facilityPart.Guid;
-        }
     }
 }
