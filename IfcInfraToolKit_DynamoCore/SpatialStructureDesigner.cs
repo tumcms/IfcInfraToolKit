@@ -52,11 +52,12 @@ namespace IfcInfraToolKit_DynamoCore
         /// </summary>
         /// <param name="databaseContainer"></param>
         /// <param name="facilityPartName"></param>
+        /// <param name="facilityType"></param>This is the type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive
+        /// <param name="facilityPartType"></param>The part of the facilityPartTypeEnum, e.g. PIER
         /// <param name="hostGuid"></param>
         /// <returns></returns>
         [MultiReturn(new[] {"DatabaseContainer", "FacilityPartGUID"})]
-        public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string hostGuid,
-            string facilityPartName = "DefaultFacilityPart")
+        public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string hostGuid, string facilityType = "IfcFacilityPartCommonTypeEnum", string facilityPartType = "NOTDEFINED", string facilityPartName = "DefaultFacilityPart")
         {
             // get current db
             var database = databaseContainer.Database;
@@ -73,7 +74,7 @@ namespace IfcInfraToolKit_DynamoCore
             if (hostFacility != null)
             {
                 var host = hostFacility;
-                guid = service.AddFacilityPart(ref database, facilityPartName, "type", host);
+                guid = service.AddFacilityPart(ref database, facilityType, facilityPartName, facilityPartType, host);
             }
 
             else
