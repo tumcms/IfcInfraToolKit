@@ -137,6 +137,7 @@ namespace IfcInfraToolkit_Common
             }
             else
             {
+                //Default value:
                 selectedPartType = new IfcFacilityPartTypeSelect(IfcFacilityPartCommonTypeEnum.NOTDEFINED);
             }
             // ToDo: parse user input and select corresponding IFC content

@@ -115,8 +115,8 @@ namespace IfcInfraToolKit_DynamoCore
         /// </summary>
         /// <param name="databaseContainer"></param>
         /// <param name="facilityPartName"></param>
-        /// <param name="facilityType"></param>
-        /// <param name="facilityPartType"></param>
+        /// <param name="facilityType"></param>This is the type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive
+        /// <param name="facilityPartType"></param>The part of the facilityPartTypeEnum, e.g. PIER
         /// <param name="hostGuid"></param>
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "FacilityPartGUID" })]
