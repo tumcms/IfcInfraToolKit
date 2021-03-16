@@ -11,7 +11,7 @@ namespace IfcInfraToolkit_Common
         /// <summary>
         /// This functions creates a subtype of IfcBuildingElement using the specified type in "buildingType"
         /// </summary>
-        /// <param name="buildingType">Case sensitive, has specify the type of the IfcBuildingElement</param>
+        /// <param name="buildingType">Case sensitive, specify the type of the IfcBuildingElement</param>
         /// <param name="database"></param>
         /// <param name="x"></param>
         /// <param name="y"></param>
