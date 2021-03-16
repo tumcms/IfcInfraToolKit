@@ -86,5 +86,62 @@ namespace IfcInfraToolKit_DynamoCore
         {
             return databaseContainer.Database;
         }
+
+        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+        /// <search> init, create, IFC </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [MultiReturn(new[] {"DatabaseContainer", "GUIDs", "Names", "IfcClasses"})]
+        public static Dictionary<string, object> GetRootedItems(DatabaseContainer databaseContainer)
+        {
+            var db = databaseContainer.Database;
+
+            // get all IfcObjectDefinitin items
+            var items = db.OfType<IfcObjectDefinition>().ToList();
+
+            var _guids = items.Select(a => a.GlobalId).ToList();
+            var _names = items.Select(a => a.Name).ToList();
+            var _clsNames = items.Select(a => a.StepClassName).ToList();
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"GUIDs", _guids}, 
+                {"Names", _names}, 
+                {"IfcClasses", _clsNames}, 
+
+            };
+            return d;
+        }
+
+        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+        /// <search> init, create, IFC </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
+        public static Dictionary<string, object> GetSpatialStructureItems(DatabaseContainer databaseContainer)
+        {
+            var db = databaseContainer.Database;
+
+            // get all IfcObjectDefinitin items
+            var items = db.OfType<IfcSpatialElement>().ToList();
+
+            var _guids = items.Select(a => a.GlobalId).ToList();
+            var _names = items.Select(a => a.Name).ToList();
+            var _clsNames = items.Select(a => a.StepClassName).ToList();
+            var _pdts = items.Select(a => a.GetPredefinedType()).ToList();
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"GUIDs", _guids},
+                {"Names", _names},
+                {"IfcClasses", _clsNames},
+                {"PredefinedTypes", _pdts},
+
+            };
+            return d;
+        }
+
     }
 }
