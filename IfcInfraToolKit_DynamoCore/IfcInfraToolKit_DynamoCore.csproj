@@ -56,6 +56,7 @@
     <Compile Include="IfcPropertyManager.cs" />
     <Compile Include="MeshImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpatialStructureDesigner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alignment_ImportService\Alignment_ImportService.csproj">
