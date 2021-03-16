@@ -40,63 +40,6 @@
       "Description": "IfcModelSetup.OpenIfcModel (path: string): var[]..[]"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.GetRootedItems@IfcInfraToolKit_DynamoCore.DatabaseContainer",
-      "Id": "dd0784ed1fbf46fbadfb72c1d64cb0f7",
-      "Inputs": [
-        {
-          "Id": "5488c03a4df143b1a279b4aea4d75dcb",
-          "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "15d9102ff86b4464896ccd19d4a4c281",
-          "Name": "DatabaseContainer",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "dad8a480960f49649c390a418c6151b9",
-          "Name": "GUIDs",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "6a7493589cbc470e81a70f29ac75ebc3",
-          "Name": "Names",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "a9751d09a36d4d1883ab5b815d91f3be",
-          "Name": "IfcClasses",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "IfcModelSetup.GetRootedItems (databaseContainer: DatabaseContainer): var[]..[]"
-    },
-    {
       "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
       "HintPath": "C:\\Users\\Sebastian Esser\\Desktop\\f-bru_enriched_testing_export_select.ifc",
       "InputValue": "C:\\Users\\Sebastian Esser\\Desktop\\f-bru_enriched_testing_export_select.ifc",
@@ -116,93 +59,6 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die Auswahl einer Datei auf dem System, um ihren Dateinamen abzurufen."
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "NodeType": "ExtensionNode",
-      "Id": "125b05f90005411a8a8ae1d2b0d84608",
-      "Inputs": [
-        {
-          "Id": "4c1039863b214075a32591ef89606878",
-          "Name": "",
-          "Description": "Auszuwertender Block",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "cfc0af8cb7ae40c2a5e1064fa8bc5a36",
-          "Name": "",
-          "Description": "Inhalt beobachten",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Visualisierung der Ausgabe des Blocks"
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "NodeType": "ExtensionNode",
-      "Id": "04693ff3cbe9436b84a8d11786cdddd2",
-      "Inputs": [
-        {
-          "Id": "251777ee4eeb48c0905c69ae2a081e62",
-          "Name": "",
-          "Description": "Auszuwertender Block",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "089622d215cb4bab8d50658b08704652",
-          "Name": "",
-          "Description": "Inhalt beobachten",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Visualisierung der Ausgabe des Blocks"
-    },
-    {
-      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
-      "NodeType": "ExtensionNode",
-      "Id": "54c445f775954a41b53bd455685248ef",
-      "Inputs": [
-        {
-          "Id": "c75256a2b435419eab0239811f9fd008",
-          "Name": "",
-          "Description": "Auszuwertender Block",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "ecb6a95e71ef4f849f08340a73c10bb6",
-          "Name": "",
-          "Description": "Inhalt beobachten",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Disabled",
-      "Description": "Visualisierung der Ausgabe des Blocks"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -385,33 +241,162 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualisierung der Ausgabe des Blocks"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.GetObjectDefinitionItems@IfcInfraToolKit_DynamoCore.DatabaseContainer",
+      "Id": "450befbfb2574e96bdf6e213d755a006",
+      "Inputs": [
+        {
+          "Id": "d2edc050df2b40e88fe4d61d9ff304f7",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f52900f2a61d43ab915d792b8a9f9717",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6652a13b80944d4fa00999b269b043e5",
+          "Name": "GUIDs",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "20aa3edebffd4b758073689e75ffff4c",
+          "Name": "Names",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "50165357adbd41f296c84ac29e6d9944",
+          "Name": "IfcClasses",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.GetObjectDefinitionItems (databaseContainer: DatabaseContainer): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "54c445f775954a41b53bd455685248ef",
+      "Inputs": [
+        {
+          "Id": "825e200716d24b0786bf44167aeb4827",
+          "Name": "",
+          "Description": "Auszuwertender Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3673a8c837474e32b157af788c43437c",
+          "Name": "",
+          "Description": "Inhalt beobachten",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualisierung der Ausgabe des Blocks"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "04693ff3cbe9436b84a8d11786cdddd2",
+      "Inputs": [
+        {
+          "Id": "df02df1bdd1a4d6fb70acf9f5db67574",
+          "Name": "",
+          "Description": "Auszuwertender Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9ff3dc3879c343e88dc7c3048367b6d6",
+          "Name": "",
+          "Description": "Inhalt beobachten",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualisierung der Ausgabe des Blocks"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "125b05f90005411a8a8ae1d2b0d84608",
+      "Inputs": [
+        {
+          "Id": "55240e0f221e438ebc78d3581644fc56",
+          "Name": "",
+          "Description": "Auszuwertender Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0bccb01c6cc54a8e9cac74062f8744ab",
+          "Name": "",
+          "Description": "Inhalt beobachten",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualisierung der Ausgabe des Blocks"
     }
   ],
   "Connectors": [
-    {
-      "Start": "db6dba72e8d4448c9a0ae8b67404cb5f",
-      "End": "5488c03a4df143b1a279b4aea4d75dcb",
-      "Id": "0b2cd2e8a303472e8c280426ba44acb0"
-    },
     {
       "Start": "db6dba72e8d4448c9a0ae8b67404cb5f",
       "End": "ae5d1edd7ea044a184750a0063012021",
       "Id": "0c38995bbf984808b4ba958b67b3a91e"
     },
     {
-      "Start": "dad8a480960f49649c390a418c6151b9",
-      "End": "4c1039863b214075a32591ef89606878",
-      "Id": "c11068c37aa5426e9c6e7a1d23760811"
-    },
-    {
-      "Start": "6a7493589cbc470e81a70f29ac75ebc3",
-      "End": "251777ee4eeb48c0905c69ae2a081e62",
-      "Id": "dba355afcdfc489484b6e118b05c75a6"
-    },
-    {
-      "Start": "a9751d09a36d4d1883ab5b815d91f3be",
-      "End": "c75256a2b435419eab0239811f9fd008",
-      "Id": "7bd9df885f744233adbc7724a789a469"
+      "Start": "db6dba72e8d4448c9a0ae8b67404cb5f",
+      "End": "d2edc050df2b40e88fe4d61d9ff304f7",
+      "Id": "aa5f1ab0e93a4fb1baa271cef1c0521f"
     },
     {
       "Start": "83bce5d9d43e47b79ee3a62ca796652d",
@@ -437,6 +422,21 @@
       "Start": "3fc652fa8a0d457c9c5456cad29b7c72",
       "End": "2496fa7ce3ea4c1aa5869f5c8921b5d0",
       "Id": "3d5065fe75044dbd8d76d53d91ccbdfc"
+    },
+    {
+      "Start": "6652a13b80944d4fa00999b269b043e5",
+      "End": "55240e0f221e438ebc78d3581644fc56",
+      "Id": "f907005d7ce64dda87e5f19902cb2cb2"
+    },
+    {
+      "Start": "20aa3edebffd4b758073689e75ffff4c",
+      "End": "df02df1bdd1a4d6fb70acf9f5db67574",
+      "Id": "2573b2fff5fd46b38a21f70d913ecd14"
+    },
+    {
+      "Start": "50165357adbd41f296c84ac29e6d9944",
+      "End": "825e200716d24b0786bf44167aeb4827",
+      "Id": "38252969576c449ca44abdc189f6656a"
     }
   ],
   "Dependencies": [],
@@ -476,16 +476,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "IfcModelSetup.GetRootedItems",
-        "Id": "dd0784ed1fbf46fbadfb72c1d64cb0f7",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1378.3943286491449,
-        "Y": 899.56639855142521
-      },
-      {
-        "ShowGeometry": true,
         "Name": "File Path",
         "Id": "02e45a0a2c9d4b80b9aa248f0f272a05",
         "IsSetAsInput": false,
@@ -493,36 +483,6 @@
         "Excluded": false,
         "X": 492.98345051782564,
         "Y": 655.2129246405276
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch",
-        "Id": "125b05f90005411a8a8ae1d2b0d84608",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1830.3943286491449,
-        "Y": 556.56639855142521
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch",
-        "Id": "04693ff3cbe9436b84a8d11786cdddd2",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1830.3943286491449,
-        "Y": 951.56639855142521
-      },
-      {
-        "ShowGeometry": true,
-        "Name": "Watch",
-        "Id": "54c445f775954a41b53bd455685248ef",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1830.3943286491449,
-        "Y": 1345.5663985514252
       },
       {
         "ShowGeometry": true,
@@ -573,6 +533,46 @@
         "Excluded": false,
         "X": 2666.4602240031627,
         "Y": 1340.2568776095056
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.GetObjectDefinitionItems",
+        "Id": "450befbfb2574e96bdf6e213d755a006",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1424.2161371838083,
+        "Y": 857.01950484211386
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "54c445f775954a41b53bd455685248ef",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1841.3572995188731,
+        "Y": 1349.2207221746742
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "04693ff3cbe9436b84a8d11786cdddd2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1841.3572995188731,
+        "Y": 955.22072217466916
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "125b05f90005411a8a8ae1d2b0d84608",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1841.3572995188731,
+        "Y": 560.22072217466916
       }
     ],
     "Annotations": [
@@ -592,28 +592,9 @@
         "Height": 1078.1428571428569,
         "FontSize": 36.0,
         "InitialTop": 560.25687760950586,
-        "InitialHeight": 1054.7142857142858,
+        "InitialHeight": 924.99999999999977,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFFFB8D8"
-      },
-      {
-        "Id": "18439ff7151f4f558d01e999703ee036",
-        "Title": "All IfcObjectDefinition items",
-        "Nodes": [
-          "dd0784ed1fbf46fbadfb72c1d64cb0f7",
-          "125b05f90005411a8a8ae1d2b0d84608",
-          "04693ff3cbe9436b84a8d11786cdddd2",
-          "54c445f775954a41b53bd455685248ef"
-        ],
-        "Left": 1368.3943286491449,
-        "Top": 503.13782712285376,
-        "Width": 728.0,
-        "Height": 1220.8571428571431,
-        "FontSize": 36.0,
-        "InitialTop": 556.56639855142521,
-        "InitialHeight": 1197.4285714285716,
-        "TextblockHeight": 43.428571428571431,
-        "Background": "#FFB9F9E1"
       },
       {
         "Id": "85ffba8723c04f6a88f61f184c6f0e02",
@@ -628,13 +609,32 @@
         "Height": 148.42857142857144,
         "FontSize": 36.0,
         "InitialTop": 655.2129246405276,
-        "InitialHeight": 125.0,
+        "InitialHeight": 145.0,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
+      },
+      {
+        "Id": "40ab211f1fc14f2ba668adfaf48d264e",
+        "Title": "ObjectDefinition items",
+        "Nodes": [
+          "450befbfb2574e96bdf6e213d755a006",
+          "54c445f775954a41b53bd455685248ef",
+          "04693ff3cbe9436b84a8d11786cdddd2",
+          "125b05f90005411a8a8ae1d2b0d84608"
+        ],
+        "Left": 1414.2161371838083,
+        "Top": 506.79215074609772,
+        "Width": 693.141162335065,
+        "Height": 1220.8571428571477,
+        "FontSize": 36.0,
+        "InitialTop": 560.22072217466916,
+        "InitialHeight": 1197.4285714285763,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFA4E1FF"
       }
     ],
-    "X": -297.48644582161154,
-    "Y": -323.55568097887158,
-    "Zoom": 0.7454336356232788
+    "X": -49.438138307821646,
+    "Y": -185.51612390885555,
+    "Zoom": 0.62548217436884523
   }
 }

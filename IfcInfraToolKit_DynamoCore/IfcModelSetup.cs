@@ -91,24 +91,24 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> init, create, IFC </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
         [MultiReturn(new[] {"DatabaseContainer", "GUIDs", "Names", "IfcClasses"})]
-        public static Dictionary<string, object> GetRootedItems(DatabaseContainer databaseContainer)
+        public static Dictionary<string, object> GetObjectDefinitionItems(DatabaseContainer databaseContainer)
         {
             var db = databaseContainer.Database;
 
-            // get all IfcObjectDefinitin items
+            // get all IfcObjectDefinition items
             var items = db.OfType<IfcObjectDefinition>().ToList();
 
-            var _guids = items.Select(a => a.GlobalId).ToList();
-            var _names = items.Select(a => a.Name).ToList();
-            var _clsNames = items.Select(a => a.StepClassName).ToList();
+            var guids = items.Select(a => a.GlobalId).ToList();
+            var names = items.Select(a => a.Name).ToList();
+            var clsNames = items.Select(a => a.StepClassName).ToList();
 
             // beautiful return values
             var d = new Dictionary<string, object>
             {
                 {"DatabaseContainer", databaseContainer},
-                {"GUIDs", _guids}, 
-                {"Names", _names}, 
-                {"IfcClasses", _clsNames}, 
+                {"GUIDs", guids}, 
+                {"Names", names}, 
+                {"IfcClasses", clsNames}, 
 
             };
             return d;
@@ -122,22 +122,51 @@ namespace IfcInfraToolKit_DynamoCore
         {
             var db = databaseContainer.Database;
 
-            // get all IfcObjectDefinitin items
+            // get all IfcObjectDefinition items
             var items = db.OfType<IfcSpatialElement>().ToList();
 
-            var _guids = items.Select(a => a.GlobalId).ToList();
-            var _names = items.Select(a => a.Name).ToList();
-            var _clsNames = items.Select(a => a.StepClassName).ToList();
-            var _pdts = items.Select(a => a.GetPredefinedType()).ToList();
+            var guids = items.Select(a => a.GlobalId).ToList();
+            var names = items.Select(a => a.Name).ToList();
+            var clsNames = items.Select(a => a.StepClassName).ToList();
+            var pdts = items.Select(a => a.GetPredefinedType()).ToList();
 
             // beautiful return values
             var d = new Dictionary<string, object>
             {
                 {"DatabaseContainer", databaseContainer},
-                {"GUIDs", _guids},
-                {"Names", _names},
-                {"IfcClasses", _clsNames},
-                {"PredefinedTypes", _pdts},
+                {"GUIDs", guids},
+                {"Names", names},
+                {"IfcClasses", clsNames},
+                {"PredefinedTypes", pdts},
+
+            };
+            return d;
+        }
+
+        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+        /// <search> init, create, IFC </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
+        public static Dictionary<string, object> GetElementItems(DatabaseContainer databaseContainer)
+        {
+            var db = databaseContainer.Database;
+
+            // get all IfcObjectDefinition items
+            var items = db.OfType<IfcElement>().ToList();
+
+            var guids = items.Select(a => a.GlobalId).ToList();
+            var names = items.Select(a => a.Name).ToList();
+            var clsNames = items.Select(a => a.StepClassName).ToList();
+            var pdts = items.Select(a => a.GetPredefinedType()).ToList();
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"GUIDs", guids},
+                {"Names", names},
+                {"IfcClasses", clsNames},
+                {"PredefinedTypes", pdts},
 
             };
             return d;
