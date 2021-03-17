@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GeometryGym.Ifc;
 
@@ -32,61 +33,63 @@ namespace IfcInfraToolkit_Common
         }
 
         /// <summary>
-        /// This function creates a facility part. FacilityType differs between Railway, Bridge, Marine, Road or Common Type 
+        /// This function creates a facility part. FacilityType differs between Railway, Bridge, Marine, Road or Common Facility Type 
         /// </summary>
         /// <param name="database"></param>
-        /// <param name="facilityType"></param>
-        /// <param name="facilityPartName"></param>
-        /// <param name="facilityPartType"></param>
+        /// <param name="facilityType">Differs between the different Facility Types, e.g. IfcRailwayPartTypeEnum (case Sensitive)</param>
+        /// <param name="facilityPartName">The individual name of the facility Part</param>
+        /// <param name="facilityPartType">Enter a valid facility Part Type for the according Facility Type, e.g. for IfcRailwayPartTypeEnum: TRACKSTRUCTURE</param>
         /// <param name="host"></param>
         /// <returns></returns>
         public Guid AddFacilityPart(ref DatabaseIfc database, string facilityType, string facilityPartName,
             string facilityPartType,
             IfcObjectDefinition host)
         {
-            //Generic Attempt:
-            //Type enumType = Type.GetType("GeometryGym.Ifc." + facilityType);
-            IfcFacilityPartTypeSelect selectedPartType = new IfcFacilityPartTypeSelect();
-            if (facilityType == "IfcRailwayPartTypeEnum")
+            Dictionary<string, Func<IfcFacilityPartTypeSelect>> dict =
+                new Dictionary<string, Func<IfcFacilityPartTypeSelect>>
+                {
+                    {
+                        "IfcRailwayPartTypeEnum", () => new IfcFacilityPartTypeSelect(
+                            (IfcRailwayPartTypeEnum) Enum.Parse(typeof(IfcRailwayPartTypeEnum), facilityPartType,
+                                false))
+                    },
+                    {
+                        "IfcBridgePartTypeEnum",
+                        () => new IfcFacilityPartTypeSelect(
+                            (IfcBridgePartTypeEnum) Enum.Parse(typeof(IfcBridgePartTypeEnum), facilityPartType, false))
+                    },
+                    {
+                        "IfcMarinePartTypeEnum",
+                        () => new IfcFacilityPartTypeSelect(
+                            (IfcMarinePartTypeEnum) Enum.Parse(typeof(IfcMarinePartTypeEnum), facilityPartType, false))
+                    },
+                    {
+                        "IfcRoadPartTypeEnum",
+                        () => new IfcFacilityPartTypeSelect(
+                            (IfcRoadPartTypeEnum) Enum.Parse(typeof(IfcRoadPartTypeEnum), facilityPartType, false))
+                    },
+                    {
+                        "IfcFacilityPartCommonTypeEnum",
+                        () => new IfcFacilityPartTypeSelect(
+                            (IfcFacilityPartCommonTypeEnum) Enum.Parse(typeof(IfcFacilityPartCommonTypeEnum),
+                                facilityPartType, false))
+                    },
+                    {"Default", () => new IfcFacilityPartTypeSelect(IfcFacilityPartCommonTypeEnum.NOTDEFINED)}
+                };
+            IfcFacilityPartTypeSelect selectedPartType =new IfcFacilityPartTypeSelect();
+            if (dict.ContainsKey(facilityType))
             {
-                IfcRailwayPartTypeEnum partType =
-                    (IfcRailwayPartTypeEnum)Enum.Parse(typeof(IfcRailwayPartTypeEnum), facilityPartType,
-                        false);
-                selectedPartType = new IfcFacilityPartTypeSelect(partType);
-            }
-            else if (facilityType == "IfcBridgePartTypeEnum")
-            {
-                IfcBridgePartTypeEnum partType =
-                    (IfcBridgePartTypeEnum)Enum.Parse(typeof(IfcBridgePartTypeEnum), facilityPartType, false);
-                selectedPartType = new IfcFacilityPartTypeSelect(partType);
-            }
-            else if (facilityType == "IfcMarinePartTypeEnum")
-            {
-                IfcMarinePartTypeEnum partType = (IfcMarinePartTypeEnum)Enum.Parse(typeof(IfcMarinePartTypeEnum), facilityPartType, false);
-                selectedPartType = new IfcFacilityPartTypeSelect(partType);
-            }
-            else if (facilityType == "IfcRoadPartTypeEnum")
-            {
-                IfcRoadPartTypeEnum partType = (IfcRoadPartTypeEnum)Enum.Parse(typeof(IfcRoadPartTypeEnum), facilityPartType, false);
-                selectedPartType = new IfcFacilityPartTypeSelect(partType);
-            }
-            else if (facilityType == "IfcFacilityPartCommonTypeEnum")
-            {
-                IfcFacilityPartCommonTypeEnum partType =
-                    (IfcFacilityPartCommonTypeEnum)Enum.Parse(typeof(IfcFacilityPartCommonTypeEnum), facilityPartType,
-                        false);
-                selectedPartType = new IfcFacilityPartTypeSelect(partType);
+                selectedPartType = dict[facilityType]();
             }
             else
             {
-                //Default value, does this one make sense?
-                selectedPartType = new IfcFacilityPartTypeSelect(IfcFacilityPartCommonTypeEnum.NOTDEFINED);
+                selectedPartType = dict["Default"]();
             }
-            // ToDo: parse user input and select corresponding IFC content
 
             //Should this be left hardcoded?
             var usage = IfcFacilityUsageEnum.LATERAL;
 
+            //ToDo: Check if host is valid???
             var facilityPart = host.StepClassName == "IfcFacility" ? new IfcFacilityPart(host as IfcFacility, facilityPartName, selectedPartType, usage) : new IfcFacilityPart(host as IfcFacilityPart, facilityPartName, selectedPartType, usage);
 
             return facilityPart.Guid;

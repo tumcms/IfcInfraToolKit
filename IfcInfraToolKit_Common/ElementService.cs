@@ -12,7 +12,7 @@ namespace IfcInfraToolkit_Common
        
         // ToDo: Create method overloading to accept also geometry and placement
 
-        public string AddElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid)
+        public string AddElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid, IfcProductDefinitionShape representation=null, IfcLocalPlacement placement=null)
         {
             // get host
             var host = database.OfType<IfcObjectDefinition>().FirstOrDefault(a => a.Guid.ToString() == hostGuid);
@@ -33,40 +33,14 @@ namespace IfcInfraToolkit_Common
                 {"IfcWall", () => new IfcWall(host, null, null)}
             };
 
-            var buildingElement = dict[IfcClass]();
-            buildingElement.Name = elementName;
-
-            // return GUID of recently created element
-            return buildingElement.GlobalId;
-        }
-        public string AddElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid, IfcProductDefinitionShape representation, IfcLocalPlacement placement)
-        {
-            // get host
-            var host = database.OfType<IfcObjectDefinition>().FirstOrDefault(a => a.Guid.ToString() == hostGuid);
-
-            // catch issues of no element with specified host guid is available
-            if (host == null)
-            {
-                host = database.Project.UppermostSite();
-            }
-
-            // ToDo: extend the dict to create any kind of IfcElement specialization
-            // ToDo: catch exceptions of specific IfcClass doesnt exist
-            Dictionary<string, Func<IfcElement>> dict = new Dictionary<string, Func<IfcElement>>
-            {
-                {"IfcBeam", () => new IfcBeam(host, null, null)},
-                {"IfcBearing", () => new IfcBearing(host, null, null)},
-                {"IfcBuiltElement", () => new IfcBuiltElement(host, null, null)},
-                {"IfcWall", () => new IfcWall(host, null, null)}
-            };
-
+            //set attributes of the building element
             var buildingElement = dict[IfcClass]();
             buildingElement.Name = elementName;
             buildingElement.Representation = representation;
             buildingElement.ObjectPlacement = placement;
+
             // return GUID of recently created element
             return buildingElement.GlobalId;
         }
-
     }
 }

@@ -32,9 +32,6 @@ namespace IfcInfraToolKit_DynamoCore
             // get current db
             var database = databaseContainer.Database;
 
-            //Get direct access to element for adding placement and representation
-            //var buildingElement = database.OfType<IfcElement>().First(a => a.Guid.ToString() == hostProduct["ElementGUID"].ToString());
-
             //calculate half of the height of the bounding box in z-direction
             var middleBoundingBoxZ = (centerOfGravity.BoundingBox.MaxPoint.Z - centerOfGravity.BoundingBox.MinPoint.Z) / 2;
 
@@ -72,7 +69,6 @@ namespace IfcInfraToolKit_DynamoCore
 
             var coordinates = new IfcCartesianPointList3D(database, coordList);
             
-
             IfcProductDefinitionShape representation = new IfcProductDefinitionShape(
                 new IfcShapeRepresentation(
                     new IfcPolygonalFaceSet(
