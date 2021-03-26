@@ -6,7 +6,7 @@ using IfcInfraToolkit_Common;
 
 namespace IfcInfraToolKit_DynamoCore
 {
-    public class ElementDesigner
+    public static class ElementDesigner
     {
         /// <summary>
         /// 
