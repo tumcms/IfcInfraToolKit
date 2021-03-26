@@ -20,7 +20,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> pointcloud, bb </search>
         /// <returns>  </returns>
         [MultiReturn(new[] { "DatabaseContainer", "solidVertices", "solidEdges", "solidFaces", "centerOfGravity" })]
-        public static Dictionary<string, object> ExportSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string parentGuid, string buildingElementType)
+        public static Dictionary<string, object> AddSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string elementGuid)
         {
             //ToDo: Convert the input parameter buildingElementType into a dropdown menu in Dynamo
             var solidVertices = solidGeometry.Vertices;
@@ -77,9 +77,18 @@ namespace IfcInfraToolKit_DynamoCore
                         )
                     )
                 );
-            //create correct instance of the BuildingElement
 
-            var hostProduct = ElementDesigner.AddElement(databaseContainer, buildingElementType, representation,placement,"DefaultName", parentGuid);
+            // find host element by GUID
+            var element = database.OfType<IfcElement>().FirstOrDefault(a => a.GlobalId == elementGuid);
+
+            if (element == null)
+            {
+                var e = new Exception("Could not find IfcElement specified by given GUID. ");
+                throw e; 
+            }
+
+            // add shape representation to product
+            element.Representation = representation; 
 
             // writing the db back to the container
             databaseContainer.Database = database;
@@ -101,7 +110,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <search> pointcloud, bb </search>
         /// <returns>  </returns>
         [MultiReturn(new[] { "DatabaseContainer", "meshFaceIndices", "meshVertexNormals", "meshVertexPositions", "centerOfGravity" })]
-        public static Dictionary<string, object> ExportMeshGeometryAsBRep(Mesh meshGeometry, DatabaseContainer databaseContainer, string parentGuid, string buildingElementType)
+        public static Dictionary<string, object> AddMeshGeometryAsBRep(Mesh meshGeometry, DatabaseContainer databaseContainer, string elementGuid)
         {
             //ToDo: Convert the input parameter buildingElementType into a dropdown menu in Dynamo
             var meshFaceIndices = meshGeometry.FaceIndices;
@@ -137,8 +146,20 @@ namespace IfcInfraToolKit_DynamoCore
                         faceIndexList)
                     )
                 );
-            //create correct instance of the BuildingElement
-            var hostProduct = ElementDesigner.AddElement(databaseContainer, buildingElementType, representation, null, "DefaultName", parentGuid);
+
+            // find host element by GUID
+            var element = database.OfType<IfcElement>().FirstOrDefault(a => a.GlobalId == elementGuid);
+
+            if (element == null)
+            {
+                var e = new Exception("Could not find IfcElement specified by given GUID. ");
+                throw e;
+            }
+
+
+            // append representation to element
+            element.Representation = representation;
+
 
             // beautify return values
             var d = new Dictionary<string, object>

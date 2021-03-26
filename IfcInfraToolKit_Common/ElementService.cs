@@ -9,7 +9,10 @@ namespace IfcInfraToolkit_Common
 {
     public class ElementService
     {
-        public string AddElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid, IfcProductDefinitionShape representation=null, IfcLocalPlacement placement=null)
+       
+        // ToDo: Create method overloading to accept also geometry and placement
+
+        public string AddElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid)
         {
             // get host
             var host = database.OfType<IfcObjectDefinition>().FirstOrDefault(a => a.Guid.ToString() == hostGuid);
@@ -110,8 +113,6 @@ namespace IfcInfraToolkit_Common
 
             //set attributes of the building element
             buildingElement.Name = elementName;
-            buildingElement.Representation = representation;
-            buildingElement.ObjectPlacement = placement;
 
             // return GUID of recently created element
             return buildingElement.GlobalId;
