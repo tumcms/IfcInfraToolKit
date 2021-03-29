@@ -39,11 +39,9 @@ namespace IfcInfraToolKit_DynamoCore
             Point newCenterOfGravity= Point.ByCoordinates(centerOfGravity.X,centerOfGravity.Y,centerOfGravity.Z-middleBoundingBoxZ);
 
             //set the local placement
-            IfcLocalPlacement placement = new IfcLocalPlacement(
-                new IfcAxis2Placement3D(
-                    new IfcCartesianPoint(database, centerOfGravity.X, centerOfGravity.Y,
-                        centerOfGravity.Z - middleBoundingBoxZ)));
-
+            var site = database.Project.UppermostSite();
+            IfcAxis2Placement3D placement = new IfcAxis2Placement3D(new IfcCartesianPoint(database, centerOfGravity.X, centerOfGravity.Y, centerOfGravity.Z - middleBoundingBoxZ));
+            IfcLocalPlacement localPlacement = new IfcLocalPlacement(site.ObjectPlacement, placement);
 
             // process geometry
             var coordList = new List<Tuple<double, double, double>>();
@@ -59,6 +57,11 @@ namespace IfcInfraToolKit_DynamoCore
                     var x = faceVertex.PointGeometry.X - centerOfGravity.X;
                     var y = faceVertex.PointGeometry.Y - centerOfGravity.Y;
                     var z = faceVertex.PointGeometry.Z - newCenterOfGravity.Z;
+
+                    //var x = faceVertex.PointGeometry.X;
+                    //var y = faceVertex.PointGeometry.Y;
+                    //var z = faceVertex.PointGeometry.Z;
+
                     coordList.Add(new Tuple<double, double, double>(x,y,z));
                     indexMap.Add(coordList.Count());
                 }
@@ -88,7 +91,8 @@ namespace IfcInfraToolKit_DynamoCore
             }
 
             // add shape representation to product
-            element.Representation = representation; 
+            element.Representation = representation;
+            element.ObjectPlacement = localPlacement;
 
             // writing the db back to the container
             databaseContainer.Database = database;

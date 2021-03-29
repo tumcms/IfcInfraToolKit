@@ -21,6 +21,9 @@ namespace IfcInfraToolkit_Common
         public DatabaseIfc CreateDatabase()
         {
             var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned);
+            // ToDo: catch units from Dynamo
+            database.Project.UnitsInContext.SetUnits(IfcUnitAssignment.Length.Millimetre);
+            database.Factory.ApplicationFullName = "IfcInfraToolkit_TUMCMS";
             return database;
         }
 
