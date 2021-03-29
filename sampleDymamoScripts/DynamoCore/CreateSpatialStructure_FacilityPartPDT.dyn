@@ -91,11 +91,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "list[0];",
+      "Code": "list[2];",
       "Id": "e3ad0d8192cd46c58047d0963652e57e",
       "Inputs": [
         {
-          "Id": "bac8eed3437545559d1e4f3be11e7557",
+          "Id": "4d23999f1c2e4e1bb65bceef607bf29a",
           "Name": "list",
           "Description": "list",
           "UsingDefaultValue": false,
@@ -106,7 +106,7 @@
       ],
       "Outputs": [
         {
-          "Id": "d2c089d6160c4aa8a2ca5c64079933e1",
+          "Id": "20f7759169f94f42bc9ded63af049735",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -448,18 +448,18 @@
     },
     {
       "Start": "b0d730057f864ecdaf92bc6d9e372802",
-      "End": "bac8eed3437545559d1e4f3be11e7557",
-      "Id": "e72c95d49f3041cda2e3fd0268c5c449"
+      "End": "4d23999f1c2e4e1bb65bceef607bf29a",
+      "Id": "376ca523858b4fcf83193d132a031f23"
     },
     {
-      "Start": "d2c089d6160c4aa8a2ca5c64079933e1",
+      "Start": "20f7759169f94f42bc9ded63af049735",
       "End": "2ce0956ccb62432aa8dd80760e8a7588",
-      "Id": "da1d68d7b73a4394983a58761cc8a0e2"
+      "Id": "30b2fa33913f421db345fbb9cbf11af7"
     },
     {
-      "Start": "d2c089d6160c4aa8a2ca5c64079933e1",
+      "Start": "20f7759169f94f42bc9ded63af049735",
       "End": "dd523be0b1224008a7582a7c70731c33",
-      "Id": "768d0827976f4ce987f88e215c5fce2d"
+      "Id": "2fcb884c066a41a6aaf09508d7b53dbb"
     },
     {
       "Start": "06e515c51be44d608b3a6ba7f9e8adac",
@@ -650,7 +650,7 @@
         "Height": 267.28571428571433,
         "FontSize": 36.0,
         "InitialTop": 267.94769015573843,
-        "InitialHeight": 243.85714285714289,
+        "InitialHeight": 201.21333333333331,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       },
@@ -667,7 +667,7 @@
         "Height": 413.97216484526689,
         "FontSize": 36.0,
         "InitialTop": -101.43100850684323,
-        "InitialHeight": 392.82930770240978,
+        "InitialHeight": 324.82930770240972,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       },
@@ -686,13 +686,13 @@
         "Height": 476.28087292456507,
         "FontSize": 36.0,
         "InitialTop": -286.85167628399597,
-        "InitialHeight": 409.9951586388508,
+        "InitialHeight": 326.56658721027941,
         "TextblockHeight": 86.285714285714292,
         "Background": "#FFFFB8D8"
       }
     ],
-    "X": 108.24010211306449,
-    "Y": 385.27555927985475,
-    "Zoom": 0.60122796620338881
+    "X": -711.60959403673428,
+    "Y": 194.4907943687279,
+    "Zoom": 0.837801617107672
   }
 }

@@ -157,7 +157,7 @@ namespace IfcInfraToolKit_DynamoCore
             var pdt = new Dictionary<string, List<string>>
             {
                 {
-                    "IfcRailwayPartTypeEnum", new List<string>
+                    "IfcMarinePartTypeEnum", new List<string>
                     {
                         "CREST",
                         "MANUFACTURING",
