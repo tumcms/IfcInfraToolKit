@@ -96,6 +96,13 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="databaseContainer"></param>
+        /// <param name="hostGuid"></param>
+        /// <param name="bridgeName"></param>
+        /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "FacilityPartGUID" })]
         public static Dictionary<string, object> AddBridge(DatabaseContainer databaseContainer, string hostGuid, string bridgeName)
         {
@@ -140,9 +147,10 @@ namespace IfcInfraToolKit_DynamoCore
         /// 
         /// </summary>
         /// <returns></returns>
-        public static List<string> GetAvailableFacilityPartTypes()
+        [MultiReturn(new[] { "FacilityPartTypeList"})]
+        public static Dictionary<string, object> GetAvailableFacilityPartTypes()
         {
-            return new List<string>
+            var lst =  new List<string>
             {
                 "IfcRailwayPartTypeEnum",
                 "IfcBridgePartTypeEnum",
@@ -150,9 +158,22 @@ namespace IfcInfraToolKit_DynamoCore
                 "IfcRoadPartTypeEnum",
                 "IfcFacilityPartCommonTypeEnum"
             };
+
+            var d = new Dictionary<string, object>
+            {
+                {"FacilityPartTypeList", lst}
+            };
+
+            return d;
         }
 
-        public static List<string> GetPredefinedType(string FacilityPartEnum)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="facilityPartEnum"></param>
+        /// <returns></returns>
+        [MultiReturn(new[] { "PredefinedType" })]
+        public static Dictionary<string, object> GetPredefinedType(string facilityPartEnum)
         {
             var pdt = new Dictionary<string, List<string>>
             {
@@ -187,10 +208,14 @@ namespace IfcInfraToolKit_DynamoCore
                         "NOTDEFINED"
                     }
                 }
+
+                // ToDo: alle anderen ENUMs hier einbauen
             };
-
-            return pdt[FacilityPartEnum];
-
+            var d = new Dictionary<string, object>
+            {
+                {"PredefinedType", pdt[facilityPartEnum]}
+            };
+            return d;
         }
 
     }

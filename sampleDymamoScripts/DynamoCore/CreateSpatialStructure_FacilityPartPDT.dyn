@@ -18,8 +18,8 @@
       "Outputs": [
         {
           "Id": "89b39a4e90c54f5c90445f1daee11c98",
-          "Name": "string[]",
-          "Description": "string[]",
+          "Name": "FacilityPartTypeList",
+          "Description": "var",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -27,7 +27,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.GetAvailableFacilityPartTypes ( ): string[]"
+      "Description": "SpatialStructureDesigner.GetAvailableFacilityPartTypes ( ): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -37,7 +37,7 @@
       "Inputs": [
         {
           "Id": "2ce0956ccb62432aa8dd80760e8a7588",
-          "Name": "FacilityPartEnum",
+          "Name": "facilityPartEnum",
           "Description": "string",
           "UsingDefaultValue": false,
           "Level": 2,
@@ -48,8 +48,8 @@
       "Outputs": [
         {
           "Id": "b21982de78ea4b2db677c672ea962d25",
-          "Name": "string[]",
-          "Description": "string[]",
+          "Name": "PredefinedType",
+          "Description": "var",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -57,7 +57,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.GetPredefinedType (FacilityPartEnum: string): string[]"
+      "Description": "SpatialStructureDesigner.GetPredefinedType (facilityPartEnum: string): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -492,9 +492,9 @@
       "Id": "da35d10548bb48b69c388cb0a9ec017a"
     },
     {
-      "Start": "f9866786c1be447eb4790fb360a7cd22",
+      "Start": "722c606c50b94aada71cce9b2b9d6813",
       "End": "172d436caedd433b83dfed043e8164ba",
-      "Id": "2c5b797ab91b4d26865814ebd83569d7"
+      "Id": "1fa119c53df443fda373722de9c75224"
     }
   ],
   "Dependencies": [],
@@ -663,8 +663,8 @@
         ],
         "Left": 2158.9802149979914,
         "Top": -154.85957993541467,
-        "Width": 728.62313322706677,
-        "Height": 413.97216484526689,
+        "Width": 617.76599036992411,
+        "Height": 416.25787913098117,
         "FontSize": 36.0,
         "InitialTop": -101.43100850684323,
         "InitialHeight": 324.82930770240972,
@@ -691,8 +691,8 @@
         "Background": "#FFFFB8D8"
       }
     ],
-    "X": -711.60959403673428,
-    "Y": 194.4907943687279,
-    "Zoom": 0.837801617107672
+    "X": 157.08031851412704,
+    "Y": 432.14566611295965,
+    "Zoom": 0.66307579993665644
   }
 }

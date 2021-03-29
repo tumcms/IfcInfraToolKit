@@ -7,18 +7,40 @@ using GeometryGym.Ifc;
 
 namespace IfcInfraToolkit_Common
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ElementService
     {
-       
-        // ToDo: Create method overloading to accept also geometry and placement
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="database"></param>
+        /// <param name="elementName"></param>
+        /// <param name="IfcClass"></param>
+        /// <param name="hostGuid"></param>
+        /// <param name="systemGuid"></param>
+        /// <returns></returns>
+        public static string AddDistributionElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid, string systemGuid = null)
+        {
+            return "null";
+        }
 
-        public string AddElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="database"></param>
+        /// <param name="elementName"></param>
+        /// <param name="IfcClass"></param>
+        /// <param name="hostGuid"></param>
+        /// <returns></returns>
+        public string AddBuiltElement(ref DatabaseIfc database, string elementName, string IfcClass, string hostGuid)
         {
             // get host
             var host = database.OfType<IfcObjectDefinition>().FirstOrDefault(a => a.Guid.ToString() == hostGuid);
 
             // catch issues of no element with specified host guid is available
-            if (host== null)
+            if (host == null)
             {
                 host = database.Project.UppermostSite();
             }

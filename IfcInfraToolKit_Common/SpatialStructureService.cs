@@ -76,7 +76,7 @@ namespace IfcInfraToolkit_Common
                     },
                     {"Default", () => new IfcFacilityPartTypeSelect(IfcFacilityPartCommonTypeEnum.NOTDEFINED)}
                 };
-            IfcFacilityPartTypeSelect selectedPartType =new IfcFacilityPartTypeSelect();
+            IfcFacilityPartTypeSelect selectedPartType = new IfcFacilityPartTypeSelect();
             if (dict.ContainsKey(facilityType))
             {
                 selectedPartType = dict[facilityType]();
@@ -85,12 +85,16 @@ namespace IfcInfraToolkit_Common
             {
                 selectedPartType = dict["Default"]();
             }
+            // ToDo: Usagetype als neuen Input definieren, in Dynamo dafür eine GetUsageTypes... implementieren
+            // ToDo: Das Testskript "CreateSpatialStrcture_PDT" generiert immer den Default Fall. 
 
             //Should this be left hardcoded?
             var usage = IfcFacilityUsageEnum.LATERAL;
 
             //ToDo: Check if host is valid???
-            var facilityPart = host.StepClassName == "IfcFacility" ? new IfcFacilityPart(host as IfcFacility, facilityPartName, selectedPartType, usage) : new IfcFacilityPart(host as IfcFacilityPart, facilityPartName, selectedPartType, usage);
+            var facilityPart = host.StepClassName == "IfcFacility"
+                ? new IfcFacilityPart(host as IfcFacility, facilityPartName, selectedPartType, usage)
+                : new IfcFacilityPart(host as IfcFacilityPart, facilityPartName, selectedPartType, usage);
 
             return facilityPart.Guid;
         }
@@ -112,7 +116,5 @@ namespace IfcInfraToolkit_Common
             };
             return bridge.Guid;
         }
-
-
     }
 }

@@ -17,7 +17,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <param name="hostGuid">GlobalId of parent element</param>
         /// <returns></returns>
         [MultiReturn(new[] { "DatabaseContainer", "ElementGUID" })]
-        public static Dictionary<string, object> AddElement(DatabaseContainer databaseContainer,
+        public static Dictionary<string, object> AddBuiltElement(DatabaseContainer databaseContainer,
             string IfcClass, string elementName = "DefaultElement",
             string hostGuid = "null")
         {
@@ -25,7 +25,7 @@ namespace IfcInfraToolKit_DynamoCore
             var database = databaseContainer.Database;
             
             var service = new ElementService();
-            var guid = service.AddElement(ref database, elementName, IfcClass, hostGuid);
+            var guid = service.AddBuiltElement(ref database, elementName, IfcClass, hostGuid);
 
             // assign updated db to container
             databaseContainer.Database = database;
@@ -39,6 +39,44 @@ namespace IfcInfraToolKit_DynamoCore
 
             return d;
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="databaseContainer"></param>
+        /// <param name="IfcClass"></param>
+        /// <param name="elementName"></param>
+        /// <param name="hostGuid"></param>
+        /// <returns></returns>
+        public static Dictionary<string, object> AddDistributionElement(DatabaseContainer databaseContainer,
+            string IfcClass, string elementName = "DefaultElement",
+            string hostGuid = "null")
+        {
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer}
+            };
+
+            return d;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetAvailableBuiltElementClassNames()
+        {
+            return new List<string>
+            {
+                "IfcBeam",
+                "IfcWall"
+                // ToDo: passende ENUM einfüllen
+                // ToDo: gleiche Methode für DistributionElement etc. ebenfalls einführen
+            };
+        }
+
 
     }
 }
