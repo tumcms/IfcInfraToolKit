@@ -16,8 +16,10 @@ namespace IfcInfraToolKit_DynamoCore
     {
         #region CreateAndSave
 
-        
+
         /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+        /// <param name="projectName"></param>
+        /// <param name="siteName"></param>
         /// <search> init, create, IFC </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
         [MultiReturn(new[] {"DatabaseContainer"})]

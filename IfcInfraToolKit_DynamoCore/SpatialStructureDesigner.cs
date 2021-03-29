@@ -12,13 +12,14 @@ namespace IfcInfraToolKit_DynamoCore
 {
     public static class SpatialStructureDesigner
     {
-       
+
 
         /// <summary>
-        /// 
+        /// Adds a facility to the Ifc database
         /// </summary>
+        /// <search> Facility, IfcFacility, Add </search>
         /// <param name="databaseContainer"></param>
-        /// <param name="facilityName"></param>
+        /// <param name="facilityName">Enter any name of the Facility</param>
         /// <param name="hostGuid">GlobalId of parent element</param>
         /// <returns></returns>
         [MultiReturn(new[] {"DatabaseContainer", "FacilityGUID"})]
@@ -48,16 +49,20 @@ namespace IfcInfraToolKit_DynamoCore
         }
 
         /// <summary>
-        /// 
+        /// Creates a facility Part, which either belongs to an IfcFacility or to another IfcFacilityPart depending on hostGuid
         /// </summary>
+        /// <search> FacilityPart, IfcFacilityPart, Add </search>
         /// <param name="databaseContainer"></param>
-        /// <param name="name">Name of IfcFacilityPart</param>
-        /// <param name="facilityType">This is the type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive</param>
-        /// <param name="selectType">The part of the facilityPartTypeEnum, e.g. PIER</param>
         /// <param name="hostGuid"></param>
-        /// <returns></returns>
+        /// <param name="name">user defined name of the IfcFacilityPart</param>
+        /// <param name="facilityType">Type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive</param>
+        /// <param name="facilityPartType">Predefined FacilityPartType according to the Facility Type, e.g. PIER, case sensitive</param>
+        /// <param name="usageType">Predefined usage type of the facility part</param>
+        /// <returns>The updated databaseContainer including the added facility Part and also returns the guid of the new created facility Part</returns>
         [MultiReturn(new[] {"DatabaseContainer", "FacilityPartGUID"})]
-        public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string name, string facilityType, string selectType,  string hostGuid)
+        public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string hostGuid,
+            string name = "DefaultFacilityPart", string facilityType = "IfcFacilityPartCommonTypeEnum",
+            string facilityPartType = "NOTDEFINED", string usageType = "NOTDEFINED")
         {
             // get current db
             var database = databaseContainer.Database;
@@ -74,7 +79,7 @@ namespace IfcInfraToolKit_DynamoCore
             if (hostFacility != null)
             {
                 var host = hostFacility;
-                guid = service.AddFacilityPart(ref database, facilityType, name, selectType, host);
+                guid = service.AddFacilityPart(ref database, facilityType, name, facilityPartType, usageType, host);
             }
 
             else
@@ -103,8 +108,9 @@ namespace IfcInfraToolKit_DynamoCore
         /// <param name="hostGuid"></param>
         /// <param name="bridgeName"></param>
         /// <returns></returns>
-        [MultiReturn(new[] { "DatabaseContainer", "FacilityPartGUID" })]
-        public static Dictionary<string, object> AddBridge(DatabaseContainer databaseContainer, string hostGuid, string bridgeName)
+        [MultiReturn(new[] {"DatabaseContainer", "FacilityPartGUID"})]
+        public static Dictionary<string, object> AddBridge(DatabaseContainer databaseContainer, string hostGuid,
+            string bridgeName)
         {
             // get current db
             var database = databaseContainer.Database;
@@ -146,11 +152,11 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary>
         /// Returns a list of possible Facility types. Choose between Railway, Bridge, Marine, Road and CommonType
         /// </summary>
-        /// <returns></returns>
-        [MultiReturn(new[] { "FacilityPartTypeList"})]
+        /// <returns>List with all IfcFacility Types</returns>
+        [MultiReturn(new[] {"FacilityPartTypeList"})]
         public static Dictionary<string, object> GetAvailableFacilityPartTypes()
         {
-            var lst =  new List<string>
+            var lst = new List<string>
             {
                 "IfcRailwayPartTypeEnum",
                 "IfcBridgePartTypeEnum",
@@ -171,9 +177,10 @@ namespace IfcInfraToolKit_DynamoCore
         /// Returns a list of the matching predefined FacilityPartTypes depending on the input of the facility type.
         /// </summary>
         /// <param name="facilityPartEnum">Choose between IfcRailwayPartTypeEnum, IfcBridgePartTypeEnum, IfcMarinePartTypeEnum, IfcRoadPartTypeEnum and IfcFacilityPartCommonTypeEnum (=Default) </param>
-        /// <returns></returns>
-        [MultiReturn(new[] { "PredefinedType" })]
-        public static Dictionary<string, object> GetPredefinedType(string facilityPartEnum="IfcFacilityPartCommonTypeEnum")
+        /// <returns>List with all Predefined Types for a facility type</returns>
+        [MultiReturn(new[] {"PredefinedType"})]
+        public static Dictionary<string, object> GetPredefinedType(
+            string facilityPartEnum = "IfcFacilityPartCommonTypeEnum")
         {
             var pdt = new Dictionary<string, List<string>>
             {
@@ -209,17 +216,18 @@ namespace IfcInfraToolKit_DynamoCore
                     }
                 },
                 {
-                    "IfcRailwayPartTypeEnum", new List<string> {
-                    "TRACKSTRUCTURE",
-                    "TRACKSTRUCTUREPART",
-                    "LINESIDESTRUCTUREPART",
-                    "DILATATIONSUPERSTRUCTURE",
-                    "PLAINTRACKSUPESTRUCTURE",
-                    "LINESIDESTRUCTURE",
-                    "SUPERSTRUCTURE",
-                    "TURNOUTSUPERSTRUCTURE",
-                    "USERDEFINED",
-                    "NOTDEFINED"
+                    "IfcRailwayPartTypeEnum", new List<string>
+                    {
+                        "TRACKSTRUCTURE",
+                        "TRACKSTRUCTUREPART",
+                        "LINESIDESTRUCTUREPART",
+                        "DILATATIONSUPERSTRUCTURE",
+                        "PLAINTRACKSUPESTRUCTURE",
+                        "LINESIDESTRUCTURE",
+                        "SUPERSTRUCTURE",
+                        "TURNOUTSUPERSTRUCTURE",
+                        "USERDEFINED",
+                        "NOTDEFINED"
                     }
                 },
                 {
@@ -289,12 +297,38 @@ namespace IfcInfraToolKit_DynamoCore
             //Check, if facilityPartEnum (input) exists in dictionary, otherwise set default value: "IfcFacilityPartCommonTypeEnum"
             var d = new Dictionary<string, object>
             {
-                {"PredefinedType", pdt.ContainsKey(facilityPartEnum)
-                    ? pdt[facilityPartEnum]
-                    : pdt["IfcFacilityPartCommonTypeEnum"]}
+                {
+                    "PredefinedType", pdt.ContainsKey(facilityPartEnum)
+                        ? pdt[facilityPartEnum]
+                        : pdt["IfcFacilityPartCommonTypeEnum"]
+                }
             };
             return d;
         }
 
+        /// <summary>
+        /// Returns a list of all predefined usage types of IfcFacilityParts (IfcFacilityPartUsageEnum).
+        /// </summary>
+        /// <returns></returns>
+        [MultiReturn(new[] {"PredefinedFacilityPartUsage"})]
+        public static Dictionary<string, object> GetPredefinedFacilityPartUsage()
+        {
+            var usageList = new List<string>
+            {
+                "LATERAL",
+                "REGION",
+                "VERTICAL",
+                "LONGITUDINAL",
+                "USERDEFINED",
+                "NOTDEFINED"
+            };
+            var d = new Dictionary<string, object>
+            {
+                {
+                    "PredefinedFacilityPartUsage", usageList
+                }
+            };
+            return d;
+        }
     }
 }
