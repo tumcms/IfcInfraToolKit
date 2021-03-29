@@ -38,11 +38,11 @@ namespace IfcInfraToolkit_Common
         /// <param name="database"></param>
         /// <param name="facilityType">Differs between the different Facility Types, e.g. IfcRailwayPartTypeEnum (case Sensitive)</param>
         /// <param name="facilityPartName">The individual name of the facility Part</param>
-        /// <param name="facilityPartType">Enter a valid facility Part Type for the according Facility Type, e.g. for IfcRailwayPartTypeEnum: TRACKSTRUCTURE</param>
+        /// <param name="SelectType">Enter a valid facility Part Type for the according Facility Type, e.g. for IfcRailwayPartTypeEnum: TRACKSTRUCTURE</param>
         /// <param name="host"></param>
         /// <returns></returns>
         public Guid AddFacilityPart(ref DatabaseIfc database, string facilityType, string facilityPartName,
-            string facilityPartType,
+            string SelectType,
             IfcObjectDefinition host)
         {
             Dictionary<string, Func<IfcFacilityPartTypeSelect>> dict =
@@ -50,29 +50,29 @@ namespace IfcInfraToolkit_Common
                 {
                     {
                         "IfcRailwayPartTypeEnum", () => new IfcFacilityPartTypeSelect(
-                            (IfcRailwayPartTypeEnum) Enum.Parse(typeof(IfcRailwayPartTypeEnum), facilityPartType,
+                            (IfcRailwayPartTypeEnum) Enum.Parse(typeof(IfcRailwayPartTypeEnum), SelectType,
                                 false))
                     },
                     {
                         "IfcBridgePartTypeEnum",
                         () => new IfcFacilityPartTypeSelect(
-                            (IfcBridgePartTypeEnum) Enum.Parse(typeof(IfcBridgePartTypeEnum), facilityPartType, false))
+                            (IfcBridgePartTypeEnum) Enum.Parse(typeof(IfcBridgePartTypeEnum), SelectType, false))
                     },
                     {
                         "IfcMarinePartTypeEnum",
                         () => new IfcFacilityPartTypeSelect(
-                            (IfcMarinePartTypeEnum) Enum.Parse(typeof(IfcMarinePartTypeEnum), facilityPartType, false))
+                            (IfcMarinePartTypeEnum) Enum.Parse(typeof(IfcMarinePartTypeEnum), SelectType, false))
                     },
                     {
                         "IfcRoadPartTypeEnum",
                         () => new IfcFacilityPartTypeSelect(
-                            (IfcRoadPartTypeEnum) Enum.Parse(typeof(IfcRoadPartTypeEnum), facilityPartType, false))
+                            (IfcRoadPartTypeEnum) Enum.Parse(typeof(IfcRoadPartTypeEnum), SelectType, false))
                     },
                     {
                         "IfcFacilityPartCommonTypeEnum",
                         () => new IfcFacilityPartTypeSelect(
                             (IfcFacilityPartCommonTypeEnum) Enum.Parse(typeof(IfcFacilityPartCommonTypeEnum),
-                                facilityPartType, false))
+                                SelectType, false))
                     },
                     {"Default", () => new IfcFacilityPartTypeSelect(IfcFacilityPartCommonTypeEnum.NOTDEFINED)}
                 };
@@ -94,5 +94,25 @@ namespace IfcInfraToolkit_Common
 
             return facilityPart.Guid;
         }
+
+
+        public Guid AddBridge(ref DatabaseIfc database, string bridgeName, IfcSpatialStructureElement host)
+        {
+            // if no host was found in the model, add the facility to the IfcSite entity
+            if (host == null)
+            {
+                var project = database.Project;
+                host = project.Extract<IfcSite>().First();
+            }
+
+            // create an IfcBridge element
+            var bridge = new IfcBridge(host, null, null)
+            {
+                Name = bridgeName
+            };
+            return bridge.Guid;
+        }
+
+
     }
 }

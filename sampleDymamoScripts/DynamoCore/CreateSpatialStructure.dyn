@@ -97,63 +97,6 @@
       "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
     },
     {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.AddFacility@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
-      "Id": "c59600ac548f45d28430e86072c188ab",
-      "Inputs": [
-        {
-          "Id": "f2fab0e9dcf7468d806e4eec7b960013",
-          "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "c719fe782660465c86befb637df7edd3",
-          "Name": "hostGuid",
-          "Description": "string\nVorgabewert : \"null\" (deaktiviert)",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "c60f59cfdc3b48ecaeeeace94ef9b74f",
-          "Name": "facilityName",
-          "Description": "string\nVorgabewert : \"DefaultFacility\" (deaktiviert)",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "cf1853e1a00d40feb568645665eaa8fa",
-          "Name": "DatabaseContainer",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "e8aae9909a824ae2ad16622ac5f2715a",
-          "Name": "FacilityGUID",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "IfcModelSetup.AddFacility (databaseContainer: DatabaseContainer, hostGuid: string = \"null\", facilityName: string = \"DefaultFacility\"): var[]..[]"
-    },
-    {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
       "NodeType": "ExtensionNode",
       "Id": "9e3aca64f88446608b269fa4dfdf65d8",
@@ -222,63 +165,6 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
-    },
-    {
-      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
-      "NodeType": "FunctionNode",
-      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.AddFacilityPart@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
-      "Id": "a4cfe16135ed44b9bd676ffb44d4cc03",
-      "Inputs": [
-        {
-          "Id": "7eff22e1fc8b4878af89a0b0bb23a5f7",
-          "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "2413a5bc31904ba28d7ad5a0d59dcb62",
-          "Name": "hostGuid",
-          "Description": "string",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "90b54a44a7814feda55fee29dcee756d",
-          "Name": "facilityPartName",
-          "Description": "string\nVorgabewert : \"DefaultFacilityPart\" (deaktiviert)",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Outputs": [
-        {
-          "Id": "9091b0f376b942bd96650eacbdc0d491",
-          "Name": "DatabaseContainer",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        },
-        {
-          "Id": "acb5af66b54a4757b9442d2fdabfe0a3",
-          "Name": "FacilityPartGUID",
-          "Description": "var",
-          "UsingDefaultValue": false,
-          "Level": 2,
-          "UseLevels": false,
-          "KeepListStructure": false
-        }
-      ],
-      "Replication": "Auto",
-      "Description": "IfcModelSetup.AddFacilityPart (databaseContainer: DatabaseContainer, hostGuid: string, facilityPartName: string = \"DefaultFacilityPart\"): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -357,28 +243,123 @@
       ],
       "Replication": "Disabled",
       "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.AddFacility@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
+      "Id": "20fd1fd63dee4436976a7f8b1920b447",
+      "Inputs": [
+        {
+          "Id": "94c203528f0d45288bf03f54f87b9d3b",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "006c80a72fcc459db95ba0b758858976",
+          "Name": "hostGuid",
+          "Description": "string\nVorgabewert : \"null\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "aa7676eff5ca40938c6227d83e502bd8",
+          "Name": "facilityName",
+          "Description": "string\nVorgabewert : \"DefaultFacility\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8b13f217e07c4e32bae51dd8d0e5c305",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cd29fba797a44becbd5d1c0a39f9401f",
+          "Name": "FacilityGUID",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "SpatialStructureDesigner.AddFacility (databaseContainer: DatabaseContainer, hostGuid: string = \"null\", facilityName: string = \"DefaultFacility\"): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.AddFacilityPart@IfcInfraToolKit_DynamoCore.DatabaseContainer,string",
+      "Id": "34a189d5f45744cc8d615544134c2de4",
+      "Inputs": [
+        {
+          "Id": "359a165cfc8844ee959e9074a648c2fb",
+          "Name": "databaseContainer",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "219c8e29a40d4429bf5381af639f8a22",
+          "Name": "hostGuid",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "681587f3d8e14165878b2886044e19e0",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "74bbf83b0a284c7787a8630994581d00",
+          "Name": "FacilityPartGUID",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "SpatialStructureDesigner.AddFacilityPart (databaseContainer: DatabaseContainer, hostGuid: string): var[]..[]"
     }
   ],
   "Connectors": [
     {
       "Start": "5a8191e195b040c58420608e9cbe07a2",
-      "End": "f2fab0e9dcf7468d806e4eec7b960013",
-      "Id": "0b22d966df4e41789275e1e44e6daab0"
-    },
-    {
-      "Start": "cf1853e1a00d40feb568645665eaa8fa",
-      "End": "7eff22e1fc8b4878af89a0b0bb23a5f7",
-      "Id": "11bea78bcb254db898f4ba12b025f632"
-    },
-    {
-      "Start": "e8aae9909a824ae2ad16622ac5f2715a",
-      "End": "360c073d986c44c5b280f0076ffd29e3",
-      "Id": "34e35d4ff78f400f89e7e2688fa2aaf1"
+      "End": "94c203528f0d45288bf03f54f87b9d3b",
+      "Id": "9fb2f6e866534939ba33b3eb3796ea7f"
     },
     {
       "Start": "b28424d809794a63a74be9407744a3d8",
-      "End": "2413a5bc31904ba28d7ad5a0d59dcb62",
-      "Id": "5049d66580d948e9a7b845dcad3b2855"
+      "End": "219c8e29a40d4429bf5381af639f8a22",
+      "Id": "9e4decb07cab4477844501088fef611c"
     },
     {
       "Start": "10526e42b4fb4b6897070266711b5465",
@@ -391,29 +372,34 @@
       "Id": "8a235910156c4edca6e2fcbcb2762778"
     },
     {
-      "Start": "9091b0f376b942bd96650eacbdc0d491",
-      "End": "65e6df4b828e426394375c350cdaf9c9",
-      "Id": "3d4604c1a5b74f53965ea342683c2bcb"
-    },
-    {
-      "Start": "acb5af66b54a4757b9442d2fdabfe0a3",
-      "End": "996e4d388d7f47208aa0766721e007bb",
-      "Id": "3f950a155b69430bb5d53adca91fb69e"
-    },
-    {
       "Start": "1a837479578447ffba58d1f73a0d6ca5",
-      "End": "c719fe782660465c86befb637df7edd3",
-      "Id": "204f9e9c567b404db41b2214a67789f3"
+      "End": "006c80a72fcc459db95ba0b758858976",
+      "Id": "5c15c3da2e994802959af721bdcda38a"
     },
     {
       "Start": "55dc76cb9ce54ad8b4bbf930c4d91256",
-      "End": "c60f59cfdc3b48ecaeeeace94ef9b74f",
-      "Id": "29e8d0b74dfa4131b030997523c8198c"
+      "End": "aa7676eff5ca40938c6227d83e502bd8",
+      "Id": "2ccbf84176c94e4dadbc2fa790d136e7"
     },
     {
-      "Start": "9bd41e3152be457bade3173853354620",
-      "End": "90b54a44a7814feda55fee29dcee756d",
-      "Id": "d9c858fc54434e88938a3f193d704e54"
+      "Start": "8b13f217e07c4e32bae51dd8d0e5c305",
+      "End": "359a165cfc8844ee959e9074a648c2fb",
+      "Id": "7d0b730de1494de5a58e7ecc6f27ee40"
+    },
+    {
+      "Start": "cd29fba797a44becbd5d1c0a39f9401f",
+      "End": "360c073d986c44c5b280f0076ffd29e3",
+      "Id": "dfad683d188d420f9152494bcc3d2e17"
+    },
+    {
+      "Start": "681587f3d8e14165878b2886044e19e0",
+      "End": "65e6df4b828e426394375c350cdaf9c9",
+      "Id": "ae23c29b12fe472ebe164374c75c3cfa"
+    },
+    {
+      "Start": "74bbf83b0a284c7787a8630994581d00",
+      "End": "996e4d388d7f47208aa0766721e007bb",
+      "Id": "150931dc61c041afa46aecf99e233d77"
     }
   ],
   "Dependencies": [],
@@ -424,7 +410,7 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.8.0.2471",
+      "Version": "2.10.0.3455",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -463,16 +449,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "IfcModelSetup.AddFacility",
-        "Id": "c59600ac548f45d28430e86072c188ab",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 561.57142857142821,
-        "Y": 263.53619047619048
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Watch",
         "Id": "9e3aca64f88446608b269fa4dfdf65d8",
         "IsSetAsInput": false,
@@ -503,16 +479,6 @@
       },
       {
         "ShowGeometry": true,
-        "Name": "IfcModelSetup.AddFacilityPart",
-        "Id": "a4cfe16135ed44b9bd676ffb44d4cc03",
-        "IsSetAsInput": false,
-        "IsSetAsOutput": false,
-        "Excluded": false,
-        "X": 1163.2857142857138,
-        "Y": 266.25047619047615
-      },
-      {
-        "ShowGeometry": true,
         "Name": "Watch",
         "Id": "ebb2ae00e09e440b932a15917dd072ba",
         "IsSetAsInput": false,
@@ -540,6 +506,26 @@
         "Excluded": false,
         "X": 966.42857142857179,
         "Y": 649.85714285714266
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "SpatialStructureDesigner.AddFacility",
+        "Id": "20fd1fd63dee4436976a7f8b1920b447",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 513.17065835695507,
+        "Y": 241.39066477601779
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "SpatialStructureDesigner.AddFacilityPart",
+        "Id": "34a189d5f45744cc8d615544134c2de4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1049.6333574349098,
+        "Y": 254.84610870054661
       }
     ],
     "Annotations": [
@@ -548,17 +534,15 @@
         "Title": "IFC interaction\r\n",
         "Nodes": [
           "4a91b71b0261469fbea46be6a6f47f88",
-          "fa446334a91c4f4ab6cbdc808fb6a6bc",
-          "c59600ac548f45d28430e86072c188ab",
-          "a4cfe16135ed44b9bd676ffb44d4cc03"
+          "fa446334a91c4f4ab6cbdc808fb6a6bc"
         ],
         "Left": 97.285714285714,
-        "Top": 167.25047619047621,
+        "Top": 167.96476190476204,
         "Width": 1849.1428571428571,
-        "Height": 280.28571428571433,
+        "Height": 279.5714285714285,
         "FontSize": 36.0,
-        "InitialTop": 263.53619047619048,
-        "InitialHeight": 214.00000000000006,
+        "InitialTop": 264.25047619047632,
+        "InitialHeight": 183.14285714285717,
         "TextblockHeight": 86.285714285714292,
         "Background": "#FFB9F9E1"
       },
@@ -577,7 +561,7 @@
         "Height": 280.17809523809547,
         "FontSize": 36.0,
         "InitialTop": 649.85714285714266,
-        "InitialHeight": 245.32095238095258,
+        "InitialHeight": 278.46380952380969,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       }
