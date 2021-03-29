@@ -121,11 +121,11 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "list[4];",
+      "Code": "list[5];",
       "Id": "78ce26dd89294951be49c1ba37845853",
       "Inputs": [
         {
-          "Id": "c189b084394f4b3b9e0c454f29656ca1",
+          "Id": "27ce248b67c8432abf4b9b40ae48a5ba",
           "Name": "list",
           "Description": "list",
           "UsingDefaultValue": false,
@@ -136,7 +136,7 @@
       ],
       "Outputs": [
         {
-          "Id": "06e515c51be44d608b3a6ba7f9e8adac",
+          "Id": "5d1486a8bae040108dc1194a48c6ce13",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -433,6 +433,55 @@
       ],
       "Replication": "Disabled",
       "Description": "Visualisierung der Ausgabe des Blocks"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "1e598b1abad146f9b3f8a238c322070d",
+      "Inputs": [
+        {
+          "Id": "5a3f7c90a33b4bfdbbd0c2c1593c1f64",
+          "Name": "",
+          "Description": "Auszuwertender Block",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dea7f253ff8843acb747ef73fd864ed6",
+          "Name": "",
+          "Description": "Inhalt beobachten",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Visualisierung der Ausgabe des Blocks"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"IfcMarinePartTypeEnum\";",
+      "Id": "2439cd34a3d04e398a1f20d78ffec5d3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9facc22fab314d7495c4916644d2c83f",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
     }
   ],
   "Connectors": [
@@ -443,8 +492,8 @@
     },
     {
       "Start": "b21982de78ea4b2db677c672ea962d25",
-      "End": "c189b084394f4b3b9e0c454f29656ca1",
-      "Id": "d55db6b5539149e6b9079b43887e543d"
+      "End": "27ce248b67c8432abf4b9b40ae48a5ba",
+      "Id": "837c2ba038cf416d8920bb1e3f142e1c"
     },
     {
       "Start": "b0d730057f864ecdaf92bc6d9e372802",
@@ -458,13 +507,13 @@
     },
     {
       "Start": "20f7759169f94f42bc9ded63af049735",
-      "End": "dd523be0b1224008a7582a7c70731c33",
-      "Id": "2fcb884c066a41a6aaf09508d7b53dbb"
+      "End": "8e9af93bfde14b75b7fdd509a8dbe8c6",
+      "Id": "e9209ab1c9c3450fba2bc52ab4b7c741"
     },
     {
-      "Start": "06e515c51be44d608b3a6ba7f9e8adac",
-      "End": "8e9af93bfde14b75b7fdd509a8dbe8c6",
-      "Id": "d4168f9a04164d96a905785bc59081bb"
+      "Start": "5d1486a8bae040108dc1194a48c6ce13",
+      "End": "dd523be0b1224008a7582a7c70731c33",
+      "Id": "8af453126506464895f475b98d5cb08d"
     },
     {
       "Start": "5443f0ed47104d0099a4831a141494ea",
@@ -495,6 +544,11 @@
       "Start": "722c606c50b94aada71cce9b2b9d6813",
       "End": "172d436caedd433b83dfed043e8164ba",
       "Id": "1fa119c53df443fda373722de9c75224"
+    },
+    {
+      "Start": "f9866786c1be447eb4790fb360a7cd22",
+      "End": "5a3f7c90a33b4bfdbbd0c2c1593c1f64",
+      "Id": "409b30427cbb4890b61457794843cc39"
     }
   ],
   "Dependencies": [],
@@ -629,8 +683,28 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2587.317633939344,
-        "Y": 78.3982991955665
+        "X": 2685.0772300981689,
+        "Y": -244.68524420737785
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "1e598b1abad146f9b3f8a238c322070d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2535.3420729511054,
+        "Y": 97.20610899850783
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "2439cd34a3d04e398a1f20d78ffec5d3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1590.2404038411755,
+        "Y": 269.80780980294116
       }
     ],
     "Annotations": [
@@ -645,30 +719,13 @@
           "78ce26dd89294951be49c1ba37845853"
         ],
         "Left": -110.95059113676803,
-        "Top": 214.51911872716698,
-        "Width": 1659.4285714285713,
-        "Height": 267.28571428571433,
+        "Top": 214.74769015573844,
+        "Width": 1659.2,
+        "Height": 261.0,
         "FontSize": 36.0,
         "InitialTop": 267.94769015573843,
         "InitialHeight": 201.21333333333331,
-        "TextblockHeight": 43.428571428571431,
-        "Background": "#FFC1D676"
-      },
-      {
-        "Id": "4ad5684401094a4d849249eb831abdc1",
-        "Title": "Check IFC content",
-        "Nodes": [
-          "2dedad2e4deb4c6ea3752e3bddc0fd70",
-          "18fe423726d847fda1b4fd4729eec9ca"
-        ],
-        "Left": 2158.9802149979914,
-        "Top": -154.85957993541467,
-        "Width": 617.76599036992411,
-        "Height": 416.25787913098117,
-        "FontSize": 36.0,
-        "InitialTop": -101.43100850684323,
-        "InitialHeight": 324.82930770240972,
-        "TextblockHeight": 43.428571428571431,
+        "TextblockHeight": 43.2,
         "Background": "#FFC1D676"
       },
       {
@@ -681,18 +738,36 @@
           "8865947ed58146fda89816f9e259f970"
         ],
         "Left": 600.475302932391,
-        "Top": -383.13739056971025,
-        "Width": 1221.6622463887215,
-        "Height": 476.28087292456507,
+        "Top": -383.25167628399595,
+        "Width": 1220.0622463887216,
+        "Height": 472.96658721027939,
         "FontSize": 36.0,
         "InitialTop": -286.85167628399597,
         "InitialHeight": 326.56658721027941,
-        "TextblockHeight": 86.285714285714292,
+        "TextblockHeight": 86.4,
         "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "09f19ca069b544448aae5bb326dc3259",
+        "Title": "Check Ifc content",
+        "Nodes": [
+          "2dedad2e4deb4c6ea3752e3bddc0fd70",
+          "18fe423726d847fda1b4fd4729eec9ca",
+          "1e598b1abad146f9b3f8a238c322070d"
+        ],
+        "Left": 2158.9802149979914,
+        "Top": -297.88524420737787,
+        "Width": 712.09701510017749,
+        "Height": 614.89135320588571,
+        "FontSize": 36.0,
+        "InitialTop": -244.68524420737785,
+        "InitialHeight": 591.69135320588566,
+        "TextblockHeight": 43.2,
+        "Background": "#FFC1D676"
       }
     ],
-    "X": 157.08031851412704,
-    "Y": 432.14566611295965,
-    "Zoom": 0.66307579993665644
+    "X": -910.67186230543712,
+    "Y": 266.07968018385782,
+    "Zoom": 0.671033868566963
   }
 }

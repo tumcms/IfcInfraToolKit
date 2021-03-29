@@ -144,7 +144,7 @@ namespace IfcInfraToolKit_DynamoCore
         }
 
         /// <summary>
-        /// 
+        /// Returns a list of possible Facility types. Choose between Railway, Bridge, Marine, Road and CommonType
         /// </summary>
         /// <returns></returns>
         [MultiReturn(new[] { "FacilityPartTypeList"})]
@@ -168,12 +168,12 @@ namespace IfcInfraToolKit_DynamoCore
         }
 
         /// <summary>
-        /// 
+        /// Returns a list of the matching predefined FacilityPartTypes depending on the input of the facility type.
         /// </summary>
-        /// <param name="facilityPartEnum"></param>
+        /// <param name="facilityPartEnum">Choose between IfcRailwayPartTypeEnum, IfcBridgePartTypeEnum, IfcMarinePartTypeEnum, IfcRoadPartTypeEnum and IfcFacilityPartCommonTypeEnum (=Default) </param>
         /// <returns></returns>
         [MultiReturn(new[] { "PredefinedType" })]
-        public static Dictionary<string, object> GetPredefinedType(string facilityPartEnum)
+        public static Dictionary<string, object> GetPredefinedType(string facilityPartEnum="IfcFacilityPartCommonTypeEnum")
         {
             var pdt = new Dictionary<string, List<string>>
             {
@@ -207,13 +207,91 @@ namespace IfcInfraToolKit_DynamoCore
                         "USERDEFINED",
                         "NOTDEFINED"
                     }
+                },
+                {
+                    "IfcRailwayPartTypeEnum", new List<string> {
+                    "TRACKSTRUCTURE",
+                    "TRACKSTRUCTUREPART",
+                    "LINESIDESTRUCTUREPART",
+                    "DILATATIONSUPERSTRUCTURE",
+                    "PLAINTRACKSUPESTRUCTURE",
+                    "LINESIDESTRUCTURE",
+                    "SUPERSTRUCTURE",
+                    "TURNOUTSUPERSTRUCTURE",
+                    "USERDEFINED",
+                    "NOTDEFINED"
+                    }
+                },
+                {
+                    "IfcBridgePartTypeEnum", new List<string>
+                    {
+                        "ABUTMENT",
+                        "DECK",
+                        "DECK_SEGMENT",
+                        "FOUNDATION",
+                        "PIER",
+                        "PIER_SEGMENT",
+                        "PYLON",
+                        "SUBSTRUCTURE",
+                        "SUPERSTRUCTURE",
+                        "SURFACESTRUCTURE",
+                        "USERDEFINED",
+                        "NOTDEFINED"
+                    }
+                },
+                {
+                    "IfcRoadPartTypeEnum", new List<string>
+                    {
+                        "ROADSIDEPART",
+                        "BUS_STOP",
+                        "HARDSHOULDER",
+                        "INTERSECTION",
+                        "PASSINGBAY",
+                        "ROADWAYPLATEAU",
+                        "ROADSIDE",
+                        "REFUGEISLAND",
+                        "TOLLPLAZA",
+                        "CENTRALRESERVE",
+                        "SIDEWALK",
+                        "PARKINGBAY",
+                        "RAILWAYCROSSING",
+                        "PEDESTRIAN_CROSSING",
+                        "SOFTSHOULDER",
+                        "BICYCLECROSSING",
+                        "CENTRALISLAND",
+                        "SHOULDER",
+                        "TRAFFICLANE",
+                        "ROADSEGMENT",
+                        "ROUNDABOUT",
+                        "LAYBY",
+                        "CARRIAGEWAY",
+                        "TRAFFICISLAND",
+                        "USERDEFINED",
+                        "NOTDEFINED"
+                    }
+                },
+                {
+                    "IfcFacilityPartCommonTypeEnum", new List<string>
+                    {
+                        "SEGMENT",
+                        "ABOVEGROUND",
+                        "JUNCTION",
+                        "LEVELCROSSING",
+                        "BELOWGROUND",
+                        "SUBSTRUCTURE",
+                        "TERMINAL",
+                        "SUPERSTRUCTURE",
+                        "USERDEFINED",
+                        "NOTDEFINED"
+                    }
                 }
-
-                // ToDo: alle anderen ENUMs hier einbauen
             };
+            //Check, if facilityPartEnum (input) exists in dictionary, otherwise set default value: "IfcFacilityPartCommonTypeEnum"
             var d = new Dictionary<string, object>
             {
-                {"PredefinedType", pdt[facilityPartEnum]}
+                {"PredefinedType", pdt.ContainsKey(facilityPartEnum)
+                    ? pdt[facilityPartEnum]
+                    : pdt["IfcFacilityPartCommonTypeEnum"]}
             };
             return d;
         }

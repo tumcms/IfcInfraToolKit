@@ -88,7 +88,6 @@ namespace IfcInfraToolkit_Common
             // ToDo: Usagetype als neuen Input definieren, in Dynamo dafür eine GetUsageTypes... implementieren
             // ToDo: Das Testskript "CreateSpatialStrcture_PDT" generiert immer den Default Fall. 
 
-            //Should this be left hardcoded?
             var usage = IfcFacilityUsageEnum.LATERAL;
 
             //ToDo: Check if host is valid???
