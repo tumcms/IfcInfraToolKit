@@ -20,7 +20,7 @@ namespace IfcInfraToolkit_Common
         /// <returns></returns>
         public DatabaseIfc CreateDatabase()
         {
-            var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned);
+            var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned);            
             return database;
         }
 
@@ -50,7 +50,7 @@ namespace IfcInfraToolkit_Common
             var site = new IfcSite(database, siteName);
 
             // create top-most spatial structure element IfcProject, set units and assign facility to project
-            var project = new IfcProject(site, projectName, IfcUnitAssignment.Length.Metre);
+            var project = new IfcProject(site, projectName, IfcUnitAssignment.Length.Millimetre);
             return database;
         }
     }

@@ -68,7 +68,7 @@ namespace IfcInfraToolKit_DynamoCore
             var database = databaseContainer.Database;
 
             // get host
-            var hostFacility = database.OfType<IfcObjectDefinition>()
+            var hostFacility = database.OfType<IfcSpatialStructureElement>()
                 .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
 
 
@@ -108,7 +108,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <param name="hostGuid"></param>
         /// <param name="bridgeName"></param>
         /// <returns></returns>
-        [MultiReturn(new[] {"DatabaseContainer", "FacilityPartGUID"})]
+        [MultiReturn(new[] {"DatabaseContainer", "BridgeGUID" })]
         public static Dictionary<string, object> AddBridge(DatabaseContainer databaseContainer, string hostGuid,
             string bridgeName)
         {
@@ -116,34 +116,19 @@ namespace IfcInfraToolKit_DynamoCore
             var database = databaseContainer.Database;
 
             // get host
-            var hostFacility = database.OfType<IfcSpatialStructureElement>()
-                .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
+            var host = database.OfType<IfcSpatialStructureElement>().FirstOrDefault(a => a.GlobalId == hostGuid);
 
-
+            // run transaction on database
             var service = new SpatialStructureService();
-
-            Guid guid;
-
-            if (hostFacility != null)
-            {
-                var host = hostFacility;
-                guid = service.AddBridge(ref database, bridgeName, host);
-            }
-
-            else
-            {
-                var e = new Exception("Couldn't find host item with specified GUID.");
-                throw e;
-            }
-
-
+            var bridgeGuid = service.AddBridge(ref database, bridgeName, host);
+            
             // assign updated db to container
             databaseContainer.Database = database;
             // beautiful return values
             var d = new Dictionary<string, object>
             {
                 {"DatabaseContainer", databaseContainer},
-                {"BridgeGUID", guid.ToString()}
+                {"BridgeGUID", bridgeGuid.ToString()}
             };
 
             return d;

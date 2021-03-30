@@ -44,7 +44,7 @@ namespace IfcInfraToolkit_Common
         /// <returns></returns>
         public Guid AddFacilityPart(ref DatabaseIfc database, string facilityType, string facilityPartName,
             string facilityPartType, string usageType,
-            IfcObjectDefinition host)
+            IfcSpatialStructureElement host)
         {
             Dictionary<string, Func<IfcFacilityPartTypeSelect>> dictPDT =
                 new Dictionary<string, Func<IfcFacilityPartTypeSelect>>
@@ -96,11 +96,18 @@ namespace IfcInfraToolkit_Common
             IfcFacilityUsageEnum usage = dictUsage.ContainsKey(usageType)
                 ? dictUsage[usageType]
                 : dictUsage["NOTDEFINED"];
-            //ToDo: Check if host is valid???
-            var facilityPart = host.StepClassName == "IfcFacility"
-                ? new IfcFacilityPart(host as IfcFacility, facilityPartName, selectedPartType, usage)
-                : new IfcFacilityPart(host as IfcFacilityPart, facilityPartName, selectedPartType, usage);
 
+            // ToDo: Catch cases with IfcSpatialZones
+            IfcFacilityPart facilityPart; 
+            try
+            {
+                facilityPart = new IfcFacilityPart(host as IfcFacility, facilityPartName, selectedPartType, usage);
+            }
+            catch (Exception)
+            {
+                facilityPart = new IfcFacilityPart(host as IfcFacilityPart, facilityPartName, selectedPartType, usage);
+            }
+                        
             return facilityPart.Guid;
         }
 
@@ -111,11 +118,11 @@ namespace IfcInfraToolkit_Common
             if (host == null)
             {
                 var project = database.Project;
-                host = project.Extract<IfcSite>().First();
+                host = project.UppermostSite();
             }
 
             // create an IfcBridge element
-            var bridge = new IfcBridge(host, null, null)
+            var bridge = new IfcBridge(host, host.ObjectPlacement, null)
             {
                 Name = bridgeName
             };
