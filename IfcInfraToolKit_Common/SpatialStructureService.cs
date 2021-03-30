@@ -128,5 +128,22 @@ namespace IfcInfraToolkit_Common
             };
             return bridge.Guid;
         }
+
+        public  Guid AddRoad(ref DatabaseIfc database, string roadName, IfcSpatialStructureElement host)
+        {
+            // if no host was found in the model, add the facility to the IfcSite entity
+            if (host == null)
+            {
+                var project = database.Project;
+                host = project.UppermostSite();
+            }
+
+            // create an IfcBridge element
+            var road = new IfcRoad(host, host.ObjectPlacement, null)
+            {
+                Name = roadName
+            };
+            return road.Guid;
+        }
     }
 }
