@@ -49,28 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlignmentImporter.cs" />
     <Compile Include="DatabaseContainer.cs" />
     <Compile Include="DynamoGeometryExporter.cs" />
     <Compile Include="ElementDesigner.cs" />
     <Compile Include="IfcModelSetup.cs" />
     <Compile Include="IfcPropertyManager.cs" />
-    <Compile Include="MeshImporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SpatialStructureDesigner.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Alignment_ImportService\Alignment_ImportService.csproj">
-      <Project>{B9244428-B5FA-4C74-951A-AB584731D4F8}</Project>
-      <Name>Alignment_ImportService</Name>
-    </ProjectReference>
     <ProjectReference Include="..\IfcInfraToolKit_Common\IfcInfraToolkit_Common.csproj">
       <Project>{84741775-5CC9-46EB-A297-EEA4410D0A5B}</Project>
       <Name>IfcInfraToolkit_Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\utilServices\Off_GeomLibrary\Off_GeomLibrary.csproj">
-      <Project>{0752CB64-500D-4D1F-B92E-B036157BAB25}</Project>
-      <Name>Off_GeomLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

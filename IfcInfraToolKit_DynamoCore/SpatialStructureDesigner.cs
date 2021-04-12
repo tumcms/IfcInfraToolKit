@@ -53,7 +53,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// </summary>
         /// <search> FacilityPart, IfcFacilityPart, Add </search>
         /// <param name="databaseContainer"></param>
-        /// <param name="hostGuid"></param>
+        /// <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the program stops</param>
         /// <param name="name">user defined name of the IfcFacilityPart</param>
         /// <param name="facilityType">Type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive</param>
         /// <param name="facilityPartType">Predefined FacilityPartType according to the Facility Type, e.g. PIER, case sensitive</param>
@@ -68,7 +68,7 @@ namespace IfcInfraToolKit_DynamoCore
             var database = databaseContainer.Database;
 
             // get host
-            var hostFacility = database.OfType<IfcObjectDefinition>()
+            var hostFacility = database.OfType<IfcSpatialStructureElement>()
                 .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
 
 
@@ -102,13 +102,13 @@ namespace IfcInfraToolKit_DynamoCore
         }
 
         /// <summary>
-        /// 
+        /// Adds an IfcBridge entity to the spatial structure
         /// </summary>
         /// <param name="databaseContainer"></param>
-        /// <param name="hostGuid"></param>
-        /// <param name="bridgeName"></param>
+        /// <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the uppermost IfcSite item is taken. </param>
+        /// <param name="bridgeName">The bridge's name</param>
         /// <returns></returns>
-        [MultiReturn(new[] {"DatabaseContainer", "FacilityPartGUID"})]
+        [MultiReturn(new[] {"DatabaseContainer", "BridgeGUID" })]
         public static Dictionary<string, object> AddBridge(DatabaseContainer databaseContainer, string hostGuid,
             string bridgeName)
         {
@@ -116,26 +116,44 @@ namespace IfcInfraToolKit_DynamoCore
             var database = databaseContainer.Database;
 
             // get host
-            var hostFacility = database.OfType<IfcSpatialStructureElement>()
-                .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
+            var host = database.OfType<IfcSpatialStructureElement>().FirstOrDefault(a => a.GlobalId == hostGuid);
 
-
+            // run transaction on database
             var service = new SpatialStructureService();
-
-            Guid guid;
-
-            if (hostFacility != null)
+            var bridgeGuid = service.AddBridge(ref database, bridgeName, host);
+            
+            // assign updated db to container
+            databaseContainer.Database = database;
+            // beautiful return values
+            var d = new Dictionary<string, object>
             {
-                var host = hostFacility;
-                guid = service.AddBridge(ref database, bridgeName, host);
-            }
+                {"DatabaseContainer", databaseContainer},
+                {"BridgeGUID", bridgeGuid.ToString()}
+            };
 
-            else
-            {
-                var e = new Exception("Couldn't find host item with specified GUID.");
-                throw e;
-            }
+            return d;
+        }
 
+        /// <summary>
+        /// Adds an IfcRoad entity to the spatial structure
+        /// </summary>
+        /// <param name="databaseContainer"></param>
+        /// <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the uppermost IfcSite item is taken. </param>
+        /// <param name="roadName">The road's name</param>
+        /// <returns></returns>
+        [MultiReturn(new[] { "DatabaseContainer", "RoadGUID" })]
+        public static Dictionary<string, object> AddRoad(DatabaseContainer databaseContainer, string hostGuid,
+            string roadName)
+        {
+            // get current db
+            var database = databaseContainer.Database;
+
+            // get host
+            var host = database.OfType<IfcSpatialStructureElement>().FirstOrDefault(a => a.GlobalId == hostGuid);
+
+            // run transaction on database
+            var service = new SpatialStructureService();
+            var bridgeGuid = service.AddRoad(ref database, roadName, host);
 
             // assign updated db to container
             databaseContainer.Database = database;
@@ -143,11 +161,12 @@ namespace IfcInfraToolKit_DynamoCore
             var d = new Dictionary<string, object>
             {
                 {"DatabaseContainer", databaseContainer},
-                {"BridgeGUID", guid.ToString()}
+                {"RoadGUID", bridgeGuid.ToString()}
             };
 
             return d;
         }
+
 
         /// <summary>
         /// Returns a list of possible Facility types. Choose between Railway, Bridge, Marine, Road and CommonType

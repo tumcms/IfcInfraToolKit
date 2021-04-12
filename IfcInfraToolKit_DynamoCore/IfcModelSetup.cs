@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.DesignScript.Runtime;
+using Dynamo.Graph.Nodes;
 using GeometryGym.Ifc;
 using IfcInfraToolkit_Common;
 using Microsoft.SqlServer.Server;
@@ -92,6 +93,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
         /// <search> init, create, IFC </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] {"DatabaseContainer", "GUIDs", "Names", "IfcClasses"})]
         public static Dictionary<string, object> GetObjectDefinitionItems(DatabaseContainer databaseContainer)
         {
@@ -119,6 +121,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
         /// <search> init, create, IFC </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
         public static Dictionary<string, object> GetSpatialStructureItems(DatabaseContainer databaseContainer)
         {
@@ -148,6 +151,7 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
         /// <search> init, create, IFC </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
         public static Dictionary<string, object> GetElementItems(DatabaseContainer databaseContainer)
         {
