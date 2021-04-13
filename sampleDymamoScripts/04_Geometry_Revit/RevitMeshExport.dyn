@@ -1,0 +1,310 @@
+{
+  "Uuid": "a5000feb-9660-4cdb-ba03-c375a7a990f9",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "RevitMeshExport",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 413,
+      "SelectedString": "OST_BridgeFoundations",
+      "NodeType": "ExtensionNode",
+      "Id": "d80693a9c3514f6a8975c7d104e6a17b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7254cefa81af4d7288d01b5dfc3e3542",
+          "Name": "Category",
+          "Description": "Die ausgewählte Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Alle integrierten Kategorien"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "2a31712b4b7945a189dcefb6a7813266",
+      "Inputs": [
+        {
+          "Id": "1b343877e3eb4cc39ed38d4a2dce20d7",
+          "Name": "Category",
+          "Description": "Die Kategorie",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "157fb6df2ac14634b585bf507507eb89",
+          "Name": "Elements",
+          "Description": "Ein Elementtyp",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ruft alle Elemente der angegebenen Kategorie aus dem Modell ab."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Geometry",
+      "Id": "544dc7c24b494fd9916832d126120d30",
+      "Inputs": [
+        {
+          "Id": "ffe53e2ed2fc43118a68d10ad5731156",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f0a10d7156184e86ba0f916663e4c47d",
+          "Name": "var[]",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Ruft die gesamte mit diesem Objekt verknüpfte Geometrie ab.\n\nElement.Geometry ( ): var[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Mesh.FaceIndices",
+      "Id": "a0bad1b089634498b86d94a0b681e1db",
+      "Inputs": [
+        {
+          "Id": "7e11a7c0fcaa49df971304ce13c39231",
+          "Name": "mesh",
+          "Description": "Autodesk.DesignScript.Geometry.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4a15456e32784e3ab1ff74add4875a89",
+          "Name": "IndexGroup[]",
+          "Description": "IndexGroup[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Die Scheitelpunktindizes für jede Fläche gegen den Uhrzeigersinn\n\nMesh.FaceIndices: IndexGroup[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "d6adf0cb47b641d4a98c6e5668559cd7",
+      "Inputs": [
+        {
+          "Id": "4bfdb2e3c6b94b41b1e17ebb6b75ae65",
+          "Name": "list",
+          "Description": "Zu vereinfachende Liste\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eae3df4e66494dc2b382590d8377d735",
+          "Name": "amt",
+          "Description": "Die zu entfernenden Verschachtelungsebenen\n\nint\nVorgabewert : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "6fd856bcf83a4b9997c4f3a97928d015",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Vereinfacht eine verschachtelte Liste von Listen um eine bestimmte Anzahl von Ebenen.\n\nList.Flatten (list: var[]..[], amt: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Mesh.VertexPositions",
+      "Id": "067c5704e1844093baae97d474001d3e",
+      "Inputs": [
+        {
+          "Id": "12bf46000200401daa1e38ff6ba9c48c",
+          "Name": "mesh",
+          "Description": "Autodesk.DesignScript.Geometry.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff33cd569a0f44838638450ae2c63f48",
+          "Name": "Point[]",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Die Positionen der Scheitelpunkte\n\nMesh.VertexPositions: Point[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "7254cefa81af4d7288d01b5dfc3e3542",
+      "End": "1b343877e3eb4cc39ed38d4a2dce20d7",
+      "Id": "87f0de76743e43ab9f972d1435f3c8e6"
+    },
+    {
+      "Start": "157fb6df2ac14634b585bf507507eb89",
+      "End": "ffe53e2ed2fc43118a68d10ad5731156",
+      "Id": "22b4479a6d9341b2b94aaa4a0c4fc1d8"
+    },
+    {
+      "Start": "f0a10d7156184e86ba0f916663e4c47d",
+      "End": "4bfdb2e3c6b94b41b1e17ebb6b75ae65",
+      "Id": "4f5f2fea00014b8db294ac62893160c0"
+    },
+    {
+      "Start": "6fd856bcf83a4b9997c4f3a97928d015",
+      "End": "7e11a7c0fcaa49df971304ce13c39231",
+      "Id": "9e6c7f9572de4d828c8ad0c99b75b8bb"
+    },
+    {
+      "Start": "6fd856bcf83a4b9997c4f3a97928d015",
+      "End": "12bf46000200401daa1e38ff6ba9c48c",
+      "Id": "72fe5aa00acd4c73860847bb9b6e73b4"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.0.7460",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": 33752.604680605633,
+      "EyeY": 12531.484499810358,
+      "EyeZ": 43191.583730394181,
+      "LookX": -28981.775293096216,
+      "LookY": -27473.267349197005,
+      "LookZ": -55110.496399066993,
+      "UpX": -0.092226672683247884,
+      "UpY": 0.9801724878485446,
+      "UpZ": -0.17537427094808805
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "d80693a9c3514f6a8975c7d104e6a17b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 32.571428571428669,
+        "Y": 255.99999999999989
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "2a31712b4b7945a189dcefb6a7813266",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 388.57142857142867,
+        "Y": 252.57142857142844
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.Geometry",
+        "Id": "544dc7c24b494fd9916832d126120d30",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 638.28571428571422,
+        "Y": 254.85714285714278
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.FaceIndices",
+        "Id": "a0bad1b089634498b86d94a0b681e1db",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 404.57142857142861,
+        "Y": 446.85714285714289
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "d6adf0cb47b641d4a98c6e5668559cd7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 863.42857142857133,
+        "Y": 310.85714285714278
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.VertexPositions",
+        "Id": "067c5704e1844093baae97d474001d3e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 436.28571428571439,
+        "Y": 829.71428571428567
+      }
+    ],
+    "Annotations": [],
+    "X": 69.142857142857338,
+    "Y": -192.57142857142856,
+    "Zoom": 1.0
+  }
+}

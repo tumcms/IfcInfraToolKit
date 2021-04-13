@@ -140,7 +140,7 @@ namespace IfcInfraToolKit_DynamoCore
             var faceIndexList = new List<Tuple<int, int, int>>();
             foreach (var meshFace in meshFaceIndices)
             {
-                faceIndexList.Add(new Tuple<int, int, int>((int)meshFace.A,(int)meshFace.B,(int)meshFace.C));
+                faceIndexList.Add(new Tuple<int, int, int>((int)meshFace.A +1,(int)meshFace.B +1,(int)meshFace.C +1));
             }
 
             IfcProductDefinitionShape representation = new IfcProductDefinitionShape(
