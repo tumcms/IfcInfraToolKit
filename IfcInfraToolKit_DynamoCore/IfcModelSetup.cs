@@ -21,8 +21,9 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
         /// <param name="projectName"></param>
         /// <param name="siteName"></param>
-        /// <search> init, create, IFC </search>
+        /// <search> init, create, IFC, create model, ifc model </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] {"DatabaseContainer"})]
         public static Dictionary<string, object> CreateIfcModel(string projectName = "sampleProject", string siteName = "sampleSite")
         {
@@ -42,12 +43,13 @@ namespace IfcInfraToolKit_DynamoCore
 
             return d;
         }
-        
-        /// <summary> Stores an DatabaseIfc instance into an *.ifc Model </summary>
+
+        /// <summary> Stores a DatabaseIfc instance into a *.ifc Model </summary>
         /// <param name="container">IFC container</param>
         /// <param name="path">folder to store the resulting model</param>
         /// <param name="modelName">file name without *.ifc label</param>
         /// <search> store, save, IFC </search>
+        [NodeCategory("Actions")]
         public static void SaveIfcModel(DatabaseContainer container, string path, string modelName)
         {
             container.Database.WriteFile(path + "/" + modelName + ".ifc");
@@ -57,8 +59,10 @@ namespace IfcInfraToolKit_DynamoCore
 
         #region OpenExistingModel
         /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
-        /// <search> init, create, IFC </search>
+        /// <param name="path">folder and model name for opening the ifc model</param>
+        /// <search> init, create, IFC, open model, existing model, open </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] { "DatabaseContainer" })]
         public static Dictionary<string, object> OpenIfcModel(string path)
         {
@@ -79,20 +83,24 @@ namespace IfcInfraToolKit_DynamoCore
 
         #endregion
 
-       
+
 
         /// <summary>
         /// Watch node for Ifc content in the database
         /// </summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> watch, IFC, database content, model content, content </search>
         /// <returns></returns>
+        [NodeCategory("Actions")]
         public static DatabaseIfc WatchIFC(DatabaseContainer databaseContainer)
         {
             return databaseContainer.Database;
         }
 
-        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
-        /// <search> init, create, IFC </search>
-        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        /// <summary> Lists attributes of all IfcObjectDefinition items in the database</summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> IfcObjectDefinition, IFC, get, object definition, get object </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcObjectDefinition items in this database </returns>
         [NodeCategory("Query")]
         [MultiReturn(new[] {"DatabaseContainer", "GUIDs", "Names", "IfcClasses"})]
         public static Dictionary<string, object> GetObjectDefinitionItems(DatabaseContainer databaseContainer)
@@ -118,9 +126,10 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
         }
 
-        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
-        /// <search> init, create, IFC </search>
-        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        /// <summary> Lists attributes of all IfcSpatialElements from the database. </summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> IFC, spatial structure, get, spatial, IfcSpatialElement </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcSpatialElements in this database </returns>
         [NodeCategory("Query")]
         [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
         public static Dictionary<string, object> GetSpatialStructureItems(DatabaseContainer databaseContainer)
@@ -148,9 +157,10 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
         }
 
-        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
-        /// <search> init, create, IFC </search>
-        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        /// <summary> Lists attributes of all IfcElements in the database. </summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> IFC, find, get, IfcElement, elements, get elements </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcElements in this database </returns>
         [NodeCategory("Query")]
         [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
         public static Dictionary<string, object> GetElementItems(DatabaseContainer databaseContainer)

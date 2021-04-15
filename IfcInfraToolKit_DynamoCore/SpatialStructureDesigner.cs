@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
+using Dynamo.Graph.Nodes;
 using GeometryGym.Ifc;
 using IfcInfraToolkit_Common;
 
@@ -17,11 +18,12 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary>
         /// Adds a facility to the Ifc database
         /// </summary>
-        /// <search> Facility, IfcFacility, Add </search>
-        /// <param name="databaseContainer"></param>
-        /// <param name="facilityName">Enter any name of the Facility</param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <param name="facilityName">Enter an arbitrary name of the Facility</param>
         /// <param name="hostGuid">GlobalId of parent element</param>
-        /// <returns></returns>
+        /// <returns>Returns the updated database container including the added Facility and the Guid of the facility</returns>
+        /// <search> IFC, add, facility, IfcFacility, add IfcFacility, add facility</search>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] {"DatabaseContainer", "FacilityGUID"})]
         public static Dictionary<string, object> AddFacility(DatabaseContainer databaseContainer,
             string hostGuid = "null", string facilityName = "DefaultFacility")
@@ -52,13 +54,14 @@ namespace IfcInfraToolKit_DynamoCore
         /// Creates a facility Part, which either belongs to an IfcFacility or to another IfcFacilityPart depending on hostGuid
         /// </summary>
         /// <search> FacilityPart, IfcFacilityPart, Add </search>
-        /// <param name="databaseContainer"></param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
         /// <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the program stops</param>
         /// <param name="name">user defined name of the IfcFacilityPart</param>
-        /// <param name="facilityType">Type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive</param>
-        /// <param name="facilityPartType">Predefined FacilityPartType according to the Facility Type, e.g. PIER, case sensitive</param>
-        /// <param name="usageType">Predefined usage type of the facility part</param>
+        /// <param name="facilityType">Type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive, use GetAvailableFacilityPartTypes()</param>
+        /// <param name="facilityPartType">Predefined FacilityPartType according to the Facility Type, e.g. PIER, case sensitive, use GetPredefinedType(facilityType)</param>
+        /// <param name="usageType">Predefined usage type of the facility part, use GetPredefinedFacilityPartUsage()</param>
         /// <returns>The updated databaseContainer including the added facility Part and also returns the guid of the new created facility Part</returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] {"DatabaseContainer", "FacilityPartGUID"})]
         public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string hostGuid,
             string name = "DefaultFacilityPart", string facilityType = "IfcFacilityPartCommonTypeEnum",
@@ -104,13 +107,15 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary>
         /// Adds an IfcBridge entity to the spatial structure
         /// </summary>
-        /// <param name="databaseContainer"></param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
         /// <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the uppermost IfcSite item is taken. </param>
         /// <param name="bridgeName">The bridge's name</param>
-        /// <returns></returns>
+        /// <search> Bridge, IfcBridge, Add, add bridge, add IfcBridge </search>
+        /// <returns>The updated databaseContainer including the added Bridge and also returns the guid of the new created IfcBridge</returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] {"DatabaseContainer", "BridgeGUID" })]
         public static Dictionary<string, object> AddBridge(DatabaseContainer databaseContainer, string hostGuid,
-            string bridgeName)
+            string bridgeName = "DefaultBridge")
         {
             // get current db
             var database = databaseContainer.Database;
@@ -137,13 +142,15 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary>
         /// Adds an IfcRoad entity to the spatial structure
         /// </summary>
-        /// <param name="databaseContainer"></param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
         /// <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the uppermost IfcSite item is taken. </param>
-        /// <param name="roadName">The road's name</param>
-        /// <returns></returns>
+        /// <param name="roadName">The road's name (arbitrary)</param>
+        /// <search> road, IfcRoad, Add, add road, add IfcRoad </search>
+        /// <returns>The updated databaseContainer including the added Road and also returns the guid of the new created IfcRoad</returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] { "DatabaseContainer", "RoadGUID" })]
         public static Dictionary<string, object> AddRoad(DatabaseContainer databaseContainer, string hostGuid,
-            string roadName)
+            string roadName = "DefaultRoad")
         {
             // get current db
             var database = databaseContainer.Database;
@@ -171,7 +178,9 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary>
         /// Returns a list of possible Facility types. Choose between Railway, Bridge, Marine, Road and CommonType
         /// </summary>
+        /// <search> FacilityPartType, facility part, list, choose facility type, facility type </search>
         /// <returns>List with all IfcFacility Types</returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] {"FacilityPartTypeList"})]
         public static Dictionary<string, object> GetAvailableFacilityPartTypes()
         {
@@ -195,8 +204,10 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary>
         /// Returns a list of the matching predefined FacilityPartTypes depending on the input of the facility type.
         /// </summary>
-        /// <param name="facilityPartEnum">Choose between IfcRailwayPartTypeEnum, IfcBridgePartTypeEnum, IfcMarinePartTypeEnum, IfcRoadPartTypeEnum and IfcFacilityPartCommonTypeEnum (=Default) </param>
-        /// <returns>List with all Predefined Types for a facility type</returns>
+        /// <param name="facilityPartEnum">Choose between IfcRailwayPartTypeEnum, IfcBridgePartTypeEnum, IfcMarinePartTypeEnum, IfcRoadPartTypeEnum and IfcFacilityPartCommonTypeEnum (=Default), Choose from GetAvailableFacilityPartTypes()</param>
+        /// <search> FacilityPartType, facility part predefined, predefined, choose facility part type, facility type, IfcFacilityPartTypeEnum  </search>
+        /// <returns>List with all Predefined Types for a facility type as string</returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] {"PredefinedType"})]
         public static Dictionary<string, object> GetPredefinedType(
             string facilityPartEnum = "IfcFacilityPartCommonTypeEnum")
@@ -328,7 +339,9 @@ namespace IfcInfraToolKit_DynamoCore
         /// <summary>
         /// Returns a list of all predefined usage types of IfcFacilityParts (IfcFacilityPartUsageEnum).
         /// </summary>
-        /// <returns></returns>
+        /// <search> IfcFacilityUsageEnum, usage enum, FacilityPartTypeUsage, facility part predefined usage, predefined usage, choose facility part type usage, facility type usage, IfcFacilityPartTypeEnum </search>
+        /// <returns>A list with all facility usage predefined types </returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] {"PredefinedFacilityPartUsage"})]
         public static Dictionary<string, object> GetPredefinedFacilityPartUsage()
         {
