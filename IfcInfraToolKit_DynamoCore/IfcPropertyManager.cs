@@ -9,6 +9,11 @@ namespace IfcInfraToolKit_DynamoCore
 {
     public class IfcPropertyManager
     {
+        [IsVisibleInDynamoLibrary(false)]   // Don't show the constructor in Dynamo 
+        internal IfcPropertyManager()
+        {
+        }
+
         /// <summary>
         /// Adds a list of IfcProperties to an Ifc Instance with a specific hostGuid
         /// </summary>

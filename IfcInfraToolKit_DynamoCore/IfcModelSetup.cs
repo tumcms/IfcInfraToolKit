@@ -45,14 +45,14 @@ namespace IfcInfraToolKit_DynamoCore
         }
 
         /// <summary> Stores a DatabaseIfc instance into a *.ifc Model </summary>
-        /// <param name="container">IFC container</param>
+        /// <param name="databaseContainer">IFC container</param>
         /// <param name="path">folder to store the resulting model</param>
         /// <param name="modelName">file name without *.ifc label</param>
         /// <search> store, save, IFC </search>
         [NodeCategory("Actions")]
-        public static void SaveIfcModel(DatabaseContainer container, string path, string modelName)
+        public static void SaveIfcModel(DatabaseContainer databaseContainer, string path, string modelName)
         {
-            container.Database.WriteFile(path + "/" + modelName + ".ifc");
+            databaseContainer.Database.WriteFile(path + "/" + modelName + ".ifc");
         }
 
         #endregion
