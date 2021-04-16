@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Autodesk.DesignScript.Runtime;
+using Dynamo.Graph.Nodes;
 using GeometryGym.Ifc;
 using IfcInfraToolkit_Common;
 
@@ -12,13 +13,15 @@ namespace IfcInfraToolKit_DynamoCore
         #region IfcBuiltElement
 
         /// <summary>
-        /// 
+        /// Adds an IfcElement of the subclass IfcBuiltElement to the database
         /// </summary>
-        /// <param name="databaseContainer"></param>
-        /// <param name="IfcClass">Desired IfcClass name</param>
-        /// <param name="elementName"></param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <param name="IfcClass">Desired IfcClass, that should be created</param>
+        /// <param name="elementName">provide an arbitrary name of the BuiltElement</param>
         /// <param name="hostGuid">GlobalId of parent element</param>
-        /// <returns></returns>
+        /// <search> IfcBuiltElement, Ifc, IfcElement, add, add element, builtElement</search>
+        /// <returns> Updated database container with added builtElement semantics and the guid of the created IfcElement instance</returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] { "DatabaseContainer", "ElementGUID" })]
         public static Dictionary<string, object> AddBuiltElement(DatabaseContainer databaseContainer,
             string IfcClass="IfcBuildingElementProxy", string elementName = "DefaultElement",
@@ -42,9 +45,11 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
         }
         /// <summary>
-        /// 
+        /// Provides a list with all possible predefined subclasses of IfcBuiltElement
         /// </summary>
-        /// <returns></returns>
+        /// <search> predefined IfcBuiltElement, Ifc, predefined IfcElement, add, add element, builtElement, predefined, list IfcElement </search>
+        /// <returns> List of possible IfcBuiltElement predefined subclasses</returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] { "PredefinedBuiltElement" })]
         public static Dictionary<string, object> GetAvailableBuiltElementClassNames()
         {
@@ -94,13 +99,15 @@ namespace IfcInfraToolKit_DynamoCore
         #region IfcDistributionElement
 
         /// <summary>
-        /// 
+        /// Adds an IfcElement of the subclass IfcDistributionElement to the database
         /// </summary>
-        /// <param name="databaseContainer"></param>
-        /// <param name="IfcClass"></param>
-        /// <param name="elementName"></param>
-        /// <param name="hostGuid"></param>
-        /// <returns></returns>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <param name="IfcClass">Desired IfcClass, that should be created (A subclass of IfcDistributionElement)</param>
+        /// <param name="elementName">provide an arbitrary name of the Distribution Element</param>
+        /// <param name="hostGuid">GlobalId of parent element</param>
+        /// <search> IfcDistributionElement, Ifc, IfcElement, add, add element, distributionElement</search>
+        /// <returns> Updated database container with added distributionElement semantics and the guid of the created IfcElement instance</returns>
+        [NodeCategory("Actions")]
         public static Dictionary<string, object> AddDistributionElement(DatabaseContainer databaseContainer,
             string IfcClass = "IfcDistributionElement", string elementName = "DefaultElement",
             string hostGuid = "null")
@@ -124,9 +131,11 @@ namespace IfcInfraToolKit_DynamoCore
         }
 
         /// <summary>
-        /// 
+        /// Provides a list with all possible predefined subclasses of IfcDistributionElement
         /// </summary>
-        /// <returns></returns>
+        /// <search> predefined IfcDistributionElement, Ifc, predefined IfcElement, add, add element, distributionElement, predefined, list IfcElement </search>
+        /// <returns> List of possible IfcDistributionElement predefined subclasses as string</returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] { "PredefinedDistributionElement" })]
         public static Dictionary<string, object> GetAvailableDistributionElementClassNames()
         {
@@ -164,15 +173,16 @@ namespace IfcInfraToolKit_DynamoCore
         #endregion
 
         #region IfcElementComponent
-
         /// <summary>
-        /// 
+        /// Adds an IfcElement of the subclass IfcElementComponent to the database
         /// </summary>
-        /// <param name="databaseContainer"></param>
-        /// <param name="IfcClass"></param>
-        /// <param name="elementName"></param>
-        /// <param name="hostGuid"></param>
-        /// <returns></returns>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <param name="IfcClass">Desired IfcClass, that should be created (A subclass of IfcElementComponent)</param>
+        /// <param name="elementName">provide an arbitrary name of the Element component</param>
+        /// <param name="hostGuid">GlobalId of parent element</param>
+        /// <search> IfcElementComponent, Ifc, IfcElementComponent, add, add element, elementComponent</search>
+        /// <returns> Updated database container with added ElementComponent semantics and the guid of the created IfcElement instance</returns>
+        [NodeCategory("Actions")]
         public static Dictionary<string, object> AddElementComponent(DatabaseContainer databaseContainer,
             string IfcClass = "IfcBuildingElementPart", string elementName = "DefaultElement",
             string hostGuid = "null")
@@ -196,9 +206,11 @@ namespace IfcInfraToolKit_DynamoCore
         }
 
         /// <summary>
-        /// 
+        /// Provides a list with all possible predefined subclasses of IfcElementComponent as input for IfcClass in function AddElementComponent()
         /// </summary>
-        /// <returns></returns>
+        /// <search> predefined IfcElementComponent, Ifc, predefined IfcElement, add, add element, elementComponent, predefined, list IfcElement </search>
+        /// <returns> List of possible IfcElementComponent predefined subclasses as string</returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] { "PredefinedElementComponents" })]
         public static Dictionary<string, object> GetAvailableElementComponentClassNames()
         {
@@ -232,13 +244,15 @@ namespace IfcInfraToolKit_DynamoCore
         #region OtherIfcElementSubtypes
 
         /// <summary>
-        /// 
+        /// Adds an IfcElement of a subclass other then IfcBuiltElement, IfcDistributionElement or IfcElementComponent to the database
         /// </summary>
-        /// <param name="databaseContainer"></param>
-        /// <param name="IfcClass">Desired IfcClass name</param>
-        /// <param name="elementName"></param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <param name="IfcClass">Desired IfcClass, that should be created, choose from GetAvailableOtherElementClassNames() </param>
+        /// <param name="elementName">provide an arbitrary name of the Element component</param>
         /// <param name="hostGuid">GlobalId of parent element</param>
-        /// <returns></returns>
+        /// <search> IfcElement, Ifc, other IfcElement, add, add element, other element</search>
+        /// <returns> Updated database container with added subclass of IfcElement semantics and the guid of the created IfcElement instance</returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] { "DatabaseContainer", "ElementGUID" })]
         public static Dictionary<string, object> AddOtherElement(DatabaseContainer databaseContainer,
             string IfcClass = "IfcTransportElement", string elementName = "DefaultElement",
@@ -262,9 +276,12 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
         }
         /// <summary>
-        /// 
+        /// Provides a list with all possible predefined subclasses other then
+        /// IfcBuiltElement, IfcDistributionElement or IfcElementComponent as input for IfcClass in function AddOtherElement()
         /// </summary>
-        /// <returns></returns>
+        /// <search> predefined other IfcElement, Ifc, predefined IfcElement, add, add element, other element, predefined, list IfcElement </search>
+        /// <returns> List of possible other IfcElement predefined subclasses as string</returns>
+        [NodeCategory("Query")]
         [MultiReturn(new[] { "PredefinedOtherElements" })]
         public static Dictionary<string, object> GetAvailableOtherElementClassNames()
         {

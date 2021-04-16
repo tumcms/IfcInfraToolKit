@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Autodesk.DesignScript.Geometry;
 using Autodesk.DesignScript.Runtime;
+using Dynamo.Graph.Nodes;
 using GeometryGym.Ifc;
 using IfcInfraToolkit_Common;
 
@@ -12,13 +13,17 @@ namespace IfcInfraToolKit_DynamoCore
     public class DynamoGeometryExporter
     {
         [IsVisibleInDynamoLibrary(false)]   // Don't show this class in Dynamo but make it accessible among all dlls
-        public DynamoGeometryExporter()
+        internal DynamoGeometryExporter()
         {
         }
 
-        /// <summary> calculates some geometric values of a given Dynamo solid geometry </summary>
-        /// <search> pointcloud, bb </search>
-        /// <returns>  </returns>
+        /// <summary> calculates some geometric values of a given Dynamo solid geometry, converts it to a BRep and adds the geometry to a predefined IfcElement in the database container </summary>
+        /// <param name="solidGeometry">Solid geometry data</param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <param name="elementGuid">Guid of IfcElement subtype, to which the geometry should be added</param>
+        /// <search> pointcloud, bb, solid, geometry, add geometry, add, BRep, convert geometry </search>
+        /// <returns> Updated database container with added geometry, Lists of solid data</returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] { "DatabaseContainer", "solidVertices", "solidEdges", "solidFaces", "centerOfGravity" })]
         public static Dictionary<string, object> AddSolidGeometryAsBRep(Solid solidGeometry, DatabaseContainer databaseContainer, string elementGuid)
         {
@@ -110,9 +115,13 @@ namespace IfcInfraToolKit_DynamoCore
             return d;
 
         }
-        /// <summary> calculates some geometric values of a given Dynamo solid geometry </summary>
-        /// <search> pointcloud, bb </search>
-        /// <returns>  </returns>
+        /// <summary> calculates some geometric values of a given Dynamo mesh geometry, converts it to a BRep and adds the geometry to a predefined IfcElement in the database container </summary>
+        /// <param name="meshGeometry">mesh geometry data in dynamo format</param>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <param name="elementGuid">Guid of IfcElement subtype, to which the geometry should be added</param>
+        /// <search> pointcloud, bb, mesh, geometry, add geometry, add, BRep, convert geometry, convert mesh, convert </search>
+        /// <returns> Updated database container with added geometry, Lists of mesh data</returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] { "DatabaseContainer", "meshFaceIndices", "meshVertexNormals", "meshVertexPositions", "centerOfGravity" })]
         public static Dictionary<string, object> AddMeshGeometryAsBRep(Mesh meshGeometry, DatabaseContainer databaseContainer, string elementGuid)
         {
