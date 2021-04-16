@@ -470,7 +470,7 @@
         {
           "Id": "99877dd2917449999cd0863344e26cc6",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -478,7 +478,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
+      "Description": "Creates a new DatabaseIfc instance that acts as a central container for the IFC content.\n\nIfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -529,7 +529,7 @@
         {
           "Id": "f209e86a4c5147e2b518d99ed8abcfdb",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -538,7 +538,7 @@
         {
           "Id": "113f1964a59d46c09238f943143dc0ea",
           "Name": "hostGuid",
-          "Description": "string",
+          "Description": "GUID of the parent item in the spatial structure. If \"null\", the uppermost IfcSite item is taken.\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -547,7 +547,7 @@
         {
           "Id": "3a70f7147988431db0e7524f12c01733",
           "Name": "bridgeName",
-          "Description": "string",
+          "Description": "The bridge's name\n\nstring\nVorgabewert : \"DefaultBridge\" (deaktiviert)",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -558,7 +558,7 @@
         {
           "Id": "0a523b4527a24754ac2ebeeb91d585e3",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "The updated databaseContainer including the added Bridge and also returns the guid of the new created IfcBridge",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -575,7 +575,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.AddBridge (databaseContainer: DatabaseContainer, hostGuid: string, bridgeName: string): var[]..[]"
+      "Description": "Adds an IfcBridge entity to the spatial structure\n\nSpatialStructureDesigner.AddBridge (databaseContainer: DatabaseContainer, hostGuid: string, bridgeName: string = \"DefaultBridge\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
@@ -626,7 +626,7 @@
         {
           "Id": "75cf23b0a495427791b7fd7fba225c7b",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -635,7 +635,7 @@
         {
           "Id": "38f11275bb974ff1be896e661642a2c1",
           "Name": "IfcClass",
-          "Description": "string\nVorgabewert : \"IfcBuildingElementProxy\"",
+          "Description": "Desired IfcClass, that should be created\n\nstring\nVorgabewert : \"IfcBuildingElementProxy\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -644,7 +644,7 @@
         {
           "Id": "9cc4e4bb68f5433abef61ce9bc267b57",
           "Name": "elementName",
-          "Description": "string\nVorgabewert : \"DefaultElement\"",
+          "Description": "provide an arbitrary name of the BuiltElement\n\nstring\nVorgabewert : \"DefaultElement\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -653,7 +653,7 @@
         {
           "Id": "e08e3446290341dab4aae7b08f9b768c",
           "Name": "hostGuid",
-          "Description": "string\nVorgabewert : \"null\"",
+          "Description": "GlobalId of parent element\n\nstring\nVorgabewert : \"null\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -664,7 +664,7 @@
         {
           "Id": "acfbf1eef9b54e75be487f06730dccab",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Updated database container with added builtElement semantics and the guid of the created IfcElement instance",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -681,7 +681,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
+      "Description": "Adds an IfcElement of the subclass IfcBuiltElement to the database\n\nElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -693,7 +693,7 @@
         {
           "Id": "77606588dc9643b3a34554cdbd82e88a",
           "Name": "PredefinedBuiltElement",
-          "Description": "var",
+          "Description": "List of possible IfcBuiltElement predefined subclasses",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -701,7 +701,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
+      "Description": "Provides a list with all possible predefined subclasses of IfcBuiltElement\n\nElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -791,7 +791,7 @@
         {
           "Id": "e7f440db1abd46b9b589e56ba28fc998",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -800,7 +800,7 @@
         {
           "Id": "2ed7c5f750c34eb6bedbd7b9375f589d",
           "Name": "IfcClass",
-          "Description": "string\nVorgabewert : \"IfcBuildingElementProxy\"",
+          "Description": "Desired IfcClass, that should be created\n\nstring\nVorgabewert : \"IfcBuildingElementProxy\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -809,7 +809,7 @@
         {
           "Id": "796f9ac001cd4620ac6397bef940952e",
           "Name": "elementName",
-          "Description": "string\nVorgabewert : \"DefaultElement\"",
+          "Description": "provide an arbitrary name of the BuiltElement\n\nstring\nVorgabewert : \"DefaultElement\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -818,7 +818,7 @@
         {
           "Id": "6f77fb2254b14782ba4ac49c00a7efee",
           "Name": "hostGuid",
-          "Description": "string\nVorgabewert : \"null\"",
+          "Description": "GlobalId of parent element\n\nstring\nVorgabewert : \"null\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -829,7 +829,7 @@
         {
           "Id": "a13021d0c752477aa4d1d31165400a61",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Updated database container with added builtElement semantics and the guid of the created IfcElement instance",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -846,7 +846,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
+      "Description": "Adds an IfcElement of the subclass IfcBuiltElement to the database\n\nElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -858,7 +858,7 @@
         {
           "Id": "053fc4fbe2984e59b1a270f2694c9cab",
           "Name": "PredefinedBuiltElement",
-          "Description": "var",
+          "Description": "List of possible IfcBuiltElement predefined subclasses",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -866,7 +866,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
+      "Description": "Provides a list with all possible predefined subclasses of IfcBuiltElement\n\nElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -956,7 +956,7 @@
         {
           "Id": "177a242393554ba6a964f4af6d274b31",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -965,7 +965,7 @@
         {
           "Id": "9050a521033e460583251c5e00469d13",
           "Name": "IfcClass",
-          "Description": "string\nVorgabewert : \"IfcBuildingElementProxy\"",
+          "Description": "Desired IfcClass, that should be created\n\nstring\nVorgabewert : \"IfcBuildingElementProxy\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -974,7 +974,7 @@
         {
           "Id": "00c757c4d34d479c8a2a966ca55564ce",
           "Name": "elementName",
-          "Description": "string\nVorgabewert : \"DefaultElement\"",
+          "Description": "provide an arbitrary name of the BuiltElement\n\nstring\nVorgabewert : \"DefaultElement\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -983,7 +983,7 @@
         {
           "Id": "ba98819332784f9ca6c90f90263e04fd",
           "Name": "hostGuid",
-          "Description": "string\nVorgabewert : \"null\"",
+          "Description": "GlobalId of parent element\n\nstring\nVorgabewert : \"null\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -994,7 +994,7 @@
         {
           "Id": "9d5bcd67d35340f487a4190137862213",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Updated database container with added builtElement semantics and the guid of the created IfcElement instance",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1011,7 +1011,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
+      "Description": "Adds an IfcElement of the subclass IfcBuiltElement to the database\n\nElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1023,7 +1023,7 @@
         {
           "Id": "6a13729f40e34504a7c6a90363adfe38",
           "Name": "PredefinedBuiltElement",
-          "Description": "var",
+          "Description": "List of possible IfcBuiltElement predefined subclasses",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1031,7 +1031,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
+      "Description": "Provides a list with all possible predefined subclasses of IfcBuiltElement\n\nElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -1121,7 +1121,7 @@
         {
           "Id": "848fd8cdb16e4c73b9f64b07810ee716",
           "Name": "solidGeometry",
-          "Description": "Solid",
+          "Description": "Solid geometry data\n\nSolid",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1130,7 +1130,7 @@
         {
           "Id": "90315464773449468118c254cce6fac6",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1139,7 +1139,7 @@
         {
           "Id": "535ba6dd8a954dd18197c96e8a4a5df8",
           "Name": "elementGuid",
-          "Description": "string",
+          "Description": "Guid of IfcElement subtype, to which the geometry should be added\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1150,7 +1150,7 @@
         {
           "Id": "1d3dd7c2853f475189f2e969c33f4182",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Updated database container with added geometry, Lists of solid data",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1194,7 +1194,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "DynamoGeometryExporter.AddSolidGeometryAsBRep (solidGeometry: Solid, databaseContainer: DatabaseContainer, elementGuid: string): var[]..[]"
+      "Description": "calculates some geometric values of a given Dynamo solid geometry, converts it to a BRep and adds the geometry to a predefined IfcElement in the database container\n\nDynamoGeometryExporter.AddSolidGeometryAsBRep (solidGeometry: Solid, databaseContainer: DatabaseContainer, elementGuid: string): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1205,7 +1205,7 @@
         {
           "Id": "8a1254363f4d4056b4db3d5ca0989d4d",
           "Name": "solidGeometry",
-          "Description": "Solid",
+          "Description": "Solid geometry data\n\nSolid",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1214,7 +1214,7 @@
         {
           "Id": "ff093f86065a4ccca8a5447df667d074",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1223,7 +1223,7 @@
         {
           "Id": "f96b206eb6714d06a0fbf5b31102c35e",
           "Name": "elementGuid",
-          "Description": "string",
+          "Description": "Guid of IfcElement subtype, to which the geometry should be added\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1234,7 +1234,7 @@
         {
           "Id": "26321d8c0e5e4b439c3d82912bdc90bb",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Updated database container with added geometry, Lists of solid data",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1278,7 +1278,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "DynamoGeometryExporter.AddSolidGeometryAsBRep (solidGeometry: Solid, databaseContainer: DatabaseContainer, elementGuid: string): var[]..[]"
+      "Description": "calculates some geometric values of a given Dynamo solid geometry, converts it to a BRep and adds the geometry to a predefined IfcElement in the database container\n\nDynamoGeometryExporter.AddSolidGeometryAsBRep (solidGeometry: Solid, databaseContainer: DatabaseContainer, elementGuid: string): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1289,7 +1289,7 @@
         {
           "Id": "87cf4397193b4baf850b93a34fe1e979",
           "Name": "solidGeometry",
-          "Description": "Solid",
+          "Description": "Solid geometry data\n\nSolid",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1298,7 +1298,7 @@
         {
           "Id": "7582d4f001664f09ab372291b8b25e3b",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1307,7 +1307,7 @@
         {
           "Id": "0fea2f63581740148175f11b2482c4bb",
           "Name": "elementGuid",
-          "Description": "string",
+          "Description": "Guid of IfcElement subtype, to which the geometry should be added\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1318,7 +1318,7 @@
         {
           "Id": "4dd1f27bec484560bde8a30047b60b64",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Updated database container with added geometry, Lists of solid data",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1362,7 +1362,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "DynamoGeometryExporter.AddSolidGeometryAsBRep (solidGeometry: Solid, databaseContainer: DatabaseContainer, elementGuid: string): var[]..[]"
+      "Description": "calculates some geometric values of a given Dynamo solid geometry, converts it to a BRep and adds the geometry to a predefined IfcElement in the database container\n\nDynamoGeometryExporter.AddSolidGeometryAsBRep (solidGeometry: Solid, databaseContainer: DatabaseContainer, elementGuid: string): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -1372,8 +1372,8 @@
       "Inputs": [
         {
           "Id": "4c6e509212e14563a9301cee23e60216",
-          "Name": "container",
-          "Description": "DatabaseContainer",
+          "Name": "databaseContainer",
+          "Description": "IFC container\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1382,7 +1382,7 @@
         {
           "Id": "ce1acf729238420ba61db33f6d8d91bb",
           "Name": "path",
-          "Description": "string",
+          "Description": "folder to store the resulting model\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1391,7 +1391,7 @@
         {
           "Id": "02c4f8e16936495bbb481874e0d116b1",
           "Name": "modelName",
-          "Description": "string",
+          "Description": "file name without *.ifc label\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -1410,7 +1410,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
+      "Description": "Stores a DatabaseIfc instance into a *.ifc Model\n\nIfcModelSetup.SaveIfcModel (databaseContainer: DatabaseContainer, path: string, modelName: string): void"
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
@@ -2125,7 +2125,7 @@
         "Height": 417.92761904761892,
         "FontSize": 36.0,
         "InitialTop": 1259.3127534668893,
-        "InitialHeight": 394.49904761904759,
+        "InitialHeight": 416.21333333333337,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       },
@@ -2144,7 +2144,7 @@
         "Height": 308.9276190476188,
         "FontSize": 36.0,
         "InitialTop": 930.43371887749981,
-        "InitialHeight": 285.49904761904736,
+        "InitialHeight": 307.21333333333314,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       },
@@ -2161,7 +2161,7 @@
         "Height": 199.28571428571433,
         "FontSize": 36.0,
         "InitialTop": 699.26067210803842,
-        "InitialHeight": 175.85714285714289,
+        "InitialHeight": 154.14244493923513,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       },
@@ -2181,7 +2181,7 @@
         "Height": 517.23306913621468,
         "FontSize": 36.0,
         "InitialTop": 461.82729594580587,
-        "InitialHeight": 493.80449770764312,
+        "InitialHeight": 515.5187834219289,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFA4E1FF"
       },
@@ -2201,7 +2201,7 @@
         "Height": 517.2330691362157,
         "FontSize": 36.0,
         "InitialTop": 1011.1747457817962,
-        "InitialHeight": 493.80449770764426,
+        "InitialHeight": 515.51878342193,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFA4E1FF"
       },
@@ -2221,7 +2221,7 @@
         "Height": 517.23306913621559,
         "FontSize": 36.0,
         "InitialTop": 1574.9232340712806,
-        "InitialHeight": 493.80449770764426,
+        "InitialHeight": 515.51878342193,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFFFC999"
       },
@@ -2237,7 +2237,7 @@
         "Height": 294.71428571428572,
         "FontSize": 36.0,
         "InitialTop": 407.15418737487437,
-        "InitialHeight": 228.42857142857144,
+        "InitialHeight": 145.0,
         "TextblockHeight": 86.285714285714292,
         "Background": "#FFC1D676"
       },
@@ -2253,7 +2253,7 @@
         "Height": 294.71428571428567,
         "FontSize": 36.0,
         "InitialTop": 968.88611325141574,
-        "InitialHeight": 228.42857142857133,
+        "InitialHeight": 145.0,
         "TextblockHeight": 86.285714285714292,
         "Background": "#FFC1D676"
       },
@@ -2269,7 +2269,7 @@
         "Height": 251.85714285714266,
         "FontSize": 36.0,
         "InitialTop": 1563.4853326632874,
-        "InitialHeight": 228.42857142857133,
+        "InitialHeight": 145.0,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       },
@@ -2283,11 +2283,11 @@
         ],
         "Left": 4660.479907768321,
         "Top": 742.15726681837975,
-        "Width": 538.34901044384969,
+        "Width": 578.92043901527813,
         "Height": 593.251085603532,
         "FontSize": 36.0,
         "InitialTop": 795.5858382469512,
-        "InitialHeight": 569.82251417496059,
+        "InitialHeight": 591.53679988924637,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFC1D676"
       }
