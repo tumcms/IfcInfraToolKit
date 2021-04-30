@@ -135,6 +135,7 @@ namespace IfcInfraToolkit_Dyn
 
                 //Create OpenCrossProfileDef and collect them
                 var crsec = new IfcOpenCrossProfileDef(db, "Road_part" + (i + 1), true, widths[i], slopes[i]);
+                crsec.ProfileType = IfcProfileTypeEnum.CURVE; // info from Jaud -> should be Curve
                 ocpd.Add(crsec);
                 //Create DistanceExpression and collect them
                 var distex = new IfcPointByDistanceExpression(stations[i], curve);
@@ -153,6 +154,8 @@ namespace IfcInfraToolkit_Dyn
             IfcPointByDistanceExpression dist = new IfcPointByDistanceExpression(0, curve); //needs 0 to be changed later
             IfcAxis2PlacementLinear place = new IfcAxis2PlacementLinear(dist);
             IfcLinearPlacement start = new IfcLinearPlacement(place);
+            start.PlacementMeasuredAlong = curve; //dont know if this is right
+            start.Distance = dist;
 
             //final assembly
             IfcPavement pavement = new IfcPavement(site, start, produktdef);

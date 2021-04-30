@@ -347,7 +347,6 @@ namespace IfcInfraToolkit_Dyn
 
 
             //Vertikal Export of alignment
-            //need to be adjusted for IFC4.3RC2 
             if (twoDim == false)
             {
                 var aeccAlignment = alignment._alignment;
@@ -477,7 +476,7 @@ namespace IfcInfraToolkit_Dyn
                 var con_v = new IfcRelAggregates(ifcalignment, vertical);
             }
 
-
+            ifcalignment.Axis = basecurve; // set Axis for Alignment
 
             //return values
             var re = new Dictionary<string, object>
