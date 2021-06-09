@@ -10,6 +10,9 @@ using IfcInfraToolkit_Common;
 
 namespace IfcInfraToolKit_DynamoCore
 {
+    /// <summary>
+    /// Management of all geometry-related export methods
+    /// </summary>
     public class DynamoGeometryExporter
     {
         [IsVisibleInDynamoLibrary(false)]   // Don't show this class in Dynamo but make it accessible among all dlls
@@ -119,10 +122,10 @@ namespace IfcInfraToolKit_DynamoCore
         /// <param name="meshGeometry">mesh geometry data in dynamo format</param>
         /// <param name="databaseContainer">IFC container including all Ifc content</param>
         /// <param name="elementGuid">Guid of IfcElement subtype, to which the geometry should be added</param>
-        /// <search> pointcloud, bb, mesh, geometry, add geometry, add, BRep, convert geometry, convert mesh, convert </search>
+        /// <search> bb, mesh, geometry, add, BRep </search>
         /// <returns> Updated database container with added geometry, Lists of mesh data</returns>
         [NodeCategory("Actions")]
-        [MultiReturn(new[] { "DatabaseContainer", "meshFaceIndices", "meshVertexNormals", "meshVertexPositions", "centerOfGravity" })]
+        [MultiReturn(new[] { "DatabaseContainer" })]
         public static Dictionary<string, object> AddMeshGeometryAsBRep(Mesh meshGeometry, DatabaseContainer databaseContainer, string elementGuid)
         {
             //ToDo: Convert the input parameter buildingElementType into a dropdown menu in Dynamo
@@ -177,11 +180,7 @@ namespace IfcInfraToolKit_DynamoCore
             // beautify return values
             var d = new Dictionary<string, object>
             {
-                {"DatabaseContainer", databaseContainer},
-                {"meshFaceIndices", meshFaceIndices},
-                {"meshVertexNormals", meshVertexNormals},
-                {"meshVertexPositions", meshVertexPositions},
-                {"centerOfGravity", newCenterOfGravity}
+                {"DatabaseContainer", databaseContainer}
             };
 
             return d;

@@ -8,6 +8,9 @@ using IfcInfraToolkit_Common;
 namespace IfcInfraToolKit_DynamoCore
 {
    
+    /// <summary>
+    /// Methods to define IfcElement subclass instances
+    /// </summary>
     public static class ElementDesigner
     {
         #region IfcBuiltElement
