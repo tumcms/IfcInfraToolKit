@@ -33,13 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GeometryGymIFC">
-      <HintPath>..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\bin\Debug\GeometryGymIFC.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\bin\Debug\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,16 +56,26 @@
       <Project>{84741775-5CC9-46EB-A297-EEA4410D0A5B}</Project>
       <Name>IfcInfraToolkit_Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\GeometryGymIFC.csproj">
+      <Project>{6cd3be38-25bc-4fcf-9426-d15ed4d4657c}</Project>
+      <Name>GeometryGymIFC</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DynamoVisualProgramming.Core">
-      <Version>2.10.1.3976</Version>
+      <Version>2.11.1.4675</Version>
     </PackageReference>
     <PackageReference Include="DynamoVisualProgramming.DynamoServices">
-      <Version>2.10.1.3976</Version>
+      <Version>2.11.1.4675</Version>
     </PackageReference>
     <PackageReference Include="DynamoVisualProgramming.ZeroTouchLibrary">
-      <Version>2.10.1.3976</Version>
+      <Version>2.11.1.4675</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="NUnit">
+      <Version>3.13.2</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
