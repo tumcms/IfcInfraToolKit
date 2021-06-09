@@ -1,0 +1,796 @@
+{
+  "Uuid": "8a9c23a7-3b0c-47b8-9f0c-8024c06b52ad",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "geometryLofting",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Rectangle.ByWidthLength@Autodesk.DesignScript.Geometry.Plane,double,double",
+      "Id": "172ffc8be0ec429798ef24495cc8c172",
+      "Inputs": [
+        {
+          "Id": "654ea5f1fa354001b03f6ac32e4fe85a",
+          "Name": "plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2ddb0ad3d19649989c8f5aebab5a5758",
+          "Name": "width",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f9db2ae6ca714186ac76ceff23ed167a",
+          "Name": "length",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "79dcf28e1a474060bc611c4b5134d797",
+          "Name": "Rectangle",
+          "Description": "Rectangle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt ein Rectangle zentriert am Ursprung der eingegebenen Plane mit der eingegebenen Breite (X-Achse) und Länge (Y-Achse).\n\nRectangle.ByWidthLength (plane: Plane, width: double = 1, length: double = 1): Rectangle"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "3;",
+      "Id": "cb5ed180e6bb47e7934a1b1925f8b7f9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "00de38093015417aa14bb6fff0eb4f59",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "3;",
+      "Id": "89a0aa4c1a7f48e1a767771c58138b44",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0858bf5f5dfe4ba4a15415a5b78a2173",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Plane.XY",
+      "Id": "d81169f8a7bf4a9390248d1328d07681",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "45ebe30d56c0470685b4270735ed3c6d",
+          "Name": "Plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine Ebene in der Welt-XY-Ebene.\n\nPlane.XY ( ): Plane"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Plane.Offset@double",
+      "Id": "f03f022f7ee44d74b688035d3c3a7f1c",
+      "Inputs": [
+        {
+          "Id": "6e1fcd01735346279873c285b63f5321",
+          "Name": "plane",
+          "Description": "Autodesk.DesignScript.Geometry.Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dea10651336642f98ce9b505568ecdbb",
+          "Name": "dist",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "92eeed4e7e0140d78eb85c84a58e4442",
+          "Name": "Plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen neuen Ebenenversatz von dieser Ebene in Richtung der Normalen mit der angegebenen Entfernung.\n\nPlane.Offset (dist: double = 1): Plane"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;",
+      "Id": "9def77ecfd514dff9316e2041f1fa853",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a03451e49d9646c7af6e466af7017b55",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Rectangle.ByWidthLength@Autodesk.DesignScript.Geometry.Plane,double,double",
+      "Id": "b8d9569ba3844fee9d2d87bb96a426f2",
+      "Inputs": [
+        {
+          "Id": "cc53756f9f52424b932621be9de78384",
+          "Name": "plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0604a83f45324f06ba4068d0816b3322",
+          "Name": "width",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b2cfdddca18948bf8dff79b00da0cb35",
+          "Name": "length",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f1425a5d59c04b53977c2700027ec6a2",
+          "Name": "Rectangle",
+          "Description": "Rectangle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt ein Rectangle zentriert am Ursprung der eingegebenen Plane mit der eingegebenen Breite (X-Achse) und Länge (Y-Achse).\n\nRectangle.ByWidthLength (plane: Plane, width: double = 1, length: double = 1): Rectangle"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;\n10;",
+      "Id": "3120756f8458403bb599c72de2b5896f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2d03030171b648fe999e4392f55d1e9e",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9b951f8231ff4d6aa5ee4cdee072fed8",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Polygon.RegularPolygon@Autodesk.DesignScript.Geometry.Circle,int",
+      "Id": "cde6d46d791b4d1db57c25592fc71def",
+      "Inputs": [
+        {
+          "Id": "53c010598e60427d85c81dca24b5d7c0",
+          "Name": "circle",
+          "Description": "Circle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2842f98625f04903b45c7c96602ebd80",
+          "Name": "numberSides",
+          "Description": "int\nVorgabewert : 5",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cf80a2a5c3ac4b60a6c86494c11eee4c",
+          "Name": "Polygon",
+          "Description": "Polygon",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt eine einbeschriebene Polygonkurve innerhalb eines Kreises.\n\nPolygon.RegularPolygon (circle: Circle, numberSides: int = 5): Polygon"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "4;",
+      "Id": "661cc36c88df4695b76793509e95cecb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6890841266bb4c049d79e24bf02f6222",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Circle.ByPlaneRadius@Autodesk.DesignScript.Geometry.Plane,double",
+      "Id": "a570ec775684429db2057319e93de5c9",
+      "Inputs": [
+        {
+          "Id": "630915f5866942a4a5b67c51e53e828b",
+          "Name": "plane",
+          "Description": "Plane\nVorgabewert : Autodesk.DesignScript.Geometry.Plane.XY()",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "509bdfab7bca47b5ac4844cfa0f5fd93",
+          "Name": "radius",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "83a1df9e46c7425bab97b2c61967f884",
+          "Name": "Circle",
+          "Description": "Circle",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Kreis zentriert am Ursprung der Eingabeebene, innerhalb der Eingabeebene und mit dem angegebenen Radius.\n\nCircle.ByPlaneRadius (plane: Plane = Autodesk.DesignScript.Geometry.Plane.XY(), radius: double = 1): Circle"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Plane.Offset@double",
+      "Id": "5f1a3e54b1574035b1349ed7283961de",
+      "Inputs": [
+        {
+          "Id": "a479ab00e3dc44d7a26a9def97ed2c06",
+          "Name": "plane",
+          "Description": "Autodesk.DesignScript.Geometry.Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f549175fcd8c451eb8139c45f6031712",
+          "Name": "dist",
+          "Description": "double\nVorgabewert : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2b29fd3f56424c84ba4f9f9a09893903",
+          "Name": "Plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen neuen Ebenenversatz von dieser Ebene in Richtung der Normalen mit der angegebenen Entfernung.\n\nPlane.Offset (dist: double = 1): Plane"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "20;",
+      "Id": "10fd1ecd858a4205bf348d002956273b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c9e59caf8c584d0d96857ff5aca00303",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;",
+      "Id": "71c683aa7ea54e5faaa6e06195050501",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "fee947b099e5458b81b2e09558c3a9f9",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.ByLoft@Autodesk.DesignScript.Geometry.Curve[]",
+      "Id": "a5e35877e7bd4b258a14b6fafa3bdd00",
+      "Inputs": [
+        {
+          "Id": "ff90af59808944508bf2aecb65daf808",
+          "Name": "crossSections",
+          "Description": "Curve[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "83d2ab68796b4309b18f8de01700bba9",
+          "Name": "Solid",
+          "Description": "Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Erstellt einen Volumenkörper durch Erhebung zwischen den eingegebenen geschlossenen Querschnittskurven.\n\nSolid.ByLoft (crossSections: Curve[]): Solid"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.CreateList, CoreNodeModels",
+      "VariableInputPorts": true,
+      "NodeType": "ExtensionNode",
+      "Id": "a37d74ea2f3b4fba96b5012f56bb3222",
+      "Inputs": [
+        {
+          "Id": "9539a315c4394fc89f275d8d6ab489d4",
+          "Name": "item0",
+          "Description": "Elementindex #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b6d699a3a0b04108a583599ca8f3b433",
+          "Name": "item1",
+          "Description": "Elementindex #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1504d7e3574a455fb0dc328ba41e92a5",
+          "Name": "item2",
+          "Description": "Elementindex #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "44bab2d39b5d4313ba8abdcd598a8277",
+          "Name": "list",
+          "Description": "Eine Liste (type: var[]..[])",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Erstellt eine neue Liste aus den angegebenen Eingaben."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "79dcf28e1a474060bc611c4b5134d797",
+      "End": "9539a315c4394fc89f275d8d6ab489d4",
+      "Id": "840170d59bf944c8a89e5ab5a15fe0e6"
+    },
+    {
+      "Start": "00de38093015417aa14bb6fff0eb4f59",
+      "End": "2ddb0ad3d19649989c8f5aebab5a5758",
+      "Id": "8aefcf8500d344cebd6285dc4f8fe7ea"
+    },
+    {
+      "Start": "0858bf5f5dfe4ba4a15415a5b78a2173",
+      "End": "f9db2ae6ca714186ac76ceff23ed167a",
+      "Id": "ad73ab0b5ded4ce69b08ad729013a922"
+    },
+    {
+      "Start": "45ebe30d56c0470685b4270735ed3c6d",
+      "End": "654ea5f1fa354001b03f6ac32e4fe85a",
+      "Id": "37f0747c26df4ea7b08a47c720ec1538"
+    },
+    {
+      "Start": "45ebe30d56c0470685b4270735ed3c6d",
+      "End": "6e1fcd01735346279873c285b63f5321",
+      "Id": "c2880feab4f6472598b041c3a0f742e0"
+    },
+    {
+      "Start": "45ebe30d56c0470685b4270735ed3c6d",
+      "End": "a479ab00e3dc44d7a26a9def97ed2c06",
+      "Id": "fde0a6d4b0be494f9e38973d7f7af029"
+    },
+    {
+      "Start": "92eeed4e7e0140d78eb85c84a58e4442",
+      "End": "cc53756f9f52424b932621be9de78384",
+      "Id": "ff33bc8954524bddb207dd7b4cd1baed"
+    },
+    {
+      "Start": "a03451e49d9646c7af6e466af7017b55",
+      "End": "dea10651336642f98ce9b505568ecdbb",
+      "Id": "b99729ed10784f2e887bf673ad76643a"
+    },
+    {
+      "Start": "f1425a5d59c04b53977c2700027ec6a2",
+      "End": "b6d699a3a0b04108a583599ca8f3b433",
+      "Id": "e48fadadb53440f1bef72ec2426bfb2b"
+    },
+    {
+      "Start": "2d03030171b648fe999e4392f55d1e9e",
+      "End": "0604a83f45324f06ba4068d0816b3322",
+      "Id": "4e07fd817bab44ca93b1d6e1d0507716"
+    },
+    {
+      "Start": "9b951f8231ff4d6aa5ee4cdee072fed8",
+      "End": "b2cfdddca18948bf8dff79b00da0cb35",
+      "Id": "60af9a6a82714de4839125a24b03e393"
+    },
+    {
+      "Start": "cf80a2a5c3ac4b60a6c86494c11eee4c",
+      "End": "1504d7e3574a455fb0dc328ba41e92a5",
+      "Id": "569523464fb64e86a1b5892e04f73e3f"
+    },
+    {
+      "Start": "6890841266bb4c049d79e24bf02f6222",
+      "End": "2842f98625f04903b45c7c96602ebd80",
+      "Id": "53384c72e6004c76a6d9ff1fc321767d"
+    },
+    {
+      "Start": "83a1df9e46c7425bab97b2c61967f884",
+      "End": "53c010598e60427d85c81dca24b5d7c0",
+      "Id": "c39431e7fed54849baf02d0d9d99ab10"
+    },
+    {
+      "Start": "2b29fd3f56424c84ba4f9f9a09893903",
+      "End": "630915f5866942a4a5b67c51e53e828b",
+      "Id": "9f2c3e65cae04da8b3eaafb963fcc424"
+    },
+    {
+      "Start": "c9e59caf8c584d0d96857ff5aca00303",
+      "End": "f549175fcd8c451eb8139c45f6031712",
+      "Id": "e43d037704e74038a8a7483162fca582"
+    },
+    {
+      "Start": "fee947b099e5458b81b2e09558c3a9f9",
+      "End": "509bdfab7bca47b5ac4844cfa0f5fd93",
+      "Id": "e36f1d5e7d104eaa92b587bcf7208f4a"
+    },
+    {
+      "Start": "44bab2d39b5d4313ba8abdcd598a8277",
+      "End": "ff90af59808944508bf2aecb65daf808",
+      "Id": "78529acad1614988a46a2fd2ce54bfd9"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "ExtensionWorkspaceData": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.11.0.4533",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": 39.185131072998047,
+      "EyeY": 29.412467956542969,
+      "EyeZ": 30.59979248046875,
+      "LookX": -53.777496337890625,
+      "LookY": -11.519355773925781,
+      "LookZ": -25.539714813232422,
+      "UpX": 0.022521220147609711,
+      "UpY": 0.99968916177749634,
+      "UpZ": 0.010694972239434719
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Rectangle.ByWidthLength",
+        "Id": "172ffc8be0ec429798ef24495cc8c172",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 714.00496384758776,
+        "Y": 389.64620420985648
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "cb5ed180e6bb47e7934a1b1925f8b7f9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 424.29067813330209,
+        "Y": 282.85953754318979
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "89a0aa4c1a7f48e1a767771c58138b44",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 424.29067813330209,
+        "Y": 391.85953754318979
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Plane.XY",
+        "Id": "d81169f8a7bf4a9390248d1328d07681",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -75.369409723435638,
+        "Y": 309.6364271980616
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Plane.Offset",
+        "Id": "f03f022f7ee44d74b688035d3c3a7f1c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 130.48291203879592,
+        "Y": 532.59693054637489
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "9def77ecfd514dff9316e2041f1fa853",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -126.50724750377532,
+        "Y": 521.13540344077114
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Rectangle.ByWidthLength",
+        "Id": "b8d9569ba3844fee9d2d87bb96a426f2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 714.00496384758776,
+        "Y": 550.64620420985648
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "3120756f8458403bb599c72de2b5896f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 424.29067813330209,
+        "Y": 636.07287087652321
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Polygon.RegularPolygon",
+        "Id": "cde6d46d791b4d1db57c25592fc71def",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 714.00496384758776,
+        "Y": 711.64620420985648
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "661cc36c88df4695b76793509e95cecb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 424.29067813330209,
+        "Y": 889.85953754318984
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Circle.ByPlaneRadius",
+        "Id": "a570ec775684429db2057319e93de5c9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 424.29067813330209,
+        "Y": 753.64620420985648
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Plane.Offset",
+        "Id": "5f1a3e54b1574035b1349ed7283961de",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 137.43353527615926,
+        "Y": 700.64620420985648
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "10fd1ecd858a4205bf348d002956273b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -48.280750438126461,
+        "Y": 730.85953754318973
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "71c683aa7ea54e5faaa6e06195050501",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -63.300375838054094,
+        "Y": 868.11568287239254
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Solid.ByLoft",
+        "Id": "a5e35877e7bd4b258a14b6fafa3bdd00",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1387.8593259310207,
+        "Y": 512.92464997132674
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List Create",
+        "Id": "a37d74ea2f3b4fba96b5012f56bb3222",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1166.9727330779297,
+        "Y": 520.90249902873188
+      }
+    ],
+    "Annotations": [],
+    "X": 195.2882455266743,
+    "Y": -140.96855893737688,
+    "Zoom": 0.658674852158215
+  }
+}

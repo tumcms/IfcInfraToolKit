@@ -2,7 +2,7 @@
   "Uuid": "94731587-b352-4088-8035-633460975de9",
   "IsCustomNode": false,
   "Description": null,
-  "Name": "CreateSpatialStructure",
+  "Name": "CreateSpatialStructure_withPDTs",
   "ElementResolver": {
     "ResolutionMap": {}
   },
@@ -38,7 +38,7 @@
         {
           "Id": "5a8191e195b040c58420608e9cbe07a2",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -46,7 +46,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
+      "Description": "Creates a new DatabaseIfc instance that acts as a central container for the IFC content.\n\nIfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -56,8 +56,8 @@
       "Inputs": [
         {
           "Id": "65e6df4b828e426394375c350cdaf9c9",
-          "Name": "container",
-          "Description": "DatabaseContainer",
+          "Name": "databaseContainer",
+          "Description": "IFC container\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -66,7 +66,7 @@
         {
           "Id": "a4cb844ce79748389a0d1749aaebd02d",
           "Name": "path",
-          "Description": "string",
+          "Description": "folder to store the resulting model\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -75,7 +75,7 @@
         {
           "Id": "181802327d9d4929872ed16ff2ee478a",
           "Name": "modelName",
-          "Description": "string",
+          "Description": "file name without *.ifc label\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -94,7 +94,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
+      "Description": "Stores a DatabaseIfc instance into a *.ifc Model\n\nIfcModelSetup.SaveIfcModel (databaseContainer: DatabaseContainer, path: string, modelName: string): void"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -253,7 +253,7 @@
         {
           "Id": "94c203528f0d45288bf03f54f87b9d3b",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -262,7 +262,7 @@
         {
           "Id": "006c80a72fcc459db95ba0b758858976",
           "Name": "hostGuid",
-          "Description": "string\nVorgabewert : \"null\"",
+          "Description": "GlobalId of parent element\n\nstring\nVorgabewert : \"null\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -271,7 +271,7 @@
         {
           "Id": "aa7676eff5ca40938c6227d83e502bd8",
           "Name": "facilityName",
-          "Description": "string\nVorgabewert : \"DefaultFacility\"",
+          "Description": "Enter an arbitrary name of the Facility\n\nstring\nVorgabewert : \"DefaultFacility\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -282,7 +282,7 @@
         {
           "Id": "8b13f217e07c4e32bae51dd8d0e5c305",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Returns the updated database container including the added Facility and the Guid of the facility",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -299,7 +299,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.AddFacility (databaseContainer: DatabaseContainer, hostGuid: string = \"null\", facilityName: string = \"DefaultFacility\"): var[]..[]"
+      "Description": "Adds a facility to the Ifc database\n\nSpatialStructureDesigner.AddFacility (databaseContainer: DatabaseContainer, hostGuid: string = \"null\", facilityName: string = \"DefaultFacility\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -310,7 +310,7 @@
         {
           "Id": "359a165cfc8844ee959e9074a648c2fb",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -319,7 +319,7 @@
         {
           "Id": "219c8e29a40d4429bf5381af639f8a22",
           "Name": "hostGuid",
-          "Description": "string",
+          "Description": "GUID of the parent item in the spatial structure. If \"null\", the program stops\n\nstring",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -328,7 +328,7 @@
         {
           "Id": "e0772c4d1c6742ee8c398e2888796c57",
           "Name": "name",
-          "Description": "string\nVorgabewert : \"DefaultFacilityPart\"",
+          "Description": "user defined name of the IfcFacilityPart\n\nstring\nVorgabewert : \"DefaultFacilityPart\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -337,7 +337,7 @@
         {
           "Id": "df172bee07c14ecb9fa4845094c752df",
           "Name": "facilityType",
-          "Description": "string\nVorgabewert : \"IfcFacilityPartCommonTypeEnum\"",
+          "Description": "Type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive, use GetAvailableFacilityPartTypes()\n\nstring\nVorgabewert : \"IfcFacilityPartCommonTypeEnum\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -346,7 +346,7 @@
         {
           "Id": "e28e26c2f2644299964f6471b4ace33a",
           "Name": "facilityPartType",
-          "Description": "string\nVorgabewert : \"NOTDEFINED\"",
+          "Description": "Predefined FacilityPartType according to the Facility Type, e.g. PIER, case sensitive, use GetPredefinedType(facilityType)\n\nstring\nVorgabewert : \"NOTDEFINED\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -355,7 +355,7 @@
         {
           "Id": "08edba9a6a2a4d4a8571522d7abcd083",
           "Name": "usageType",
-          "Description": "string\nVorgabewert : \"NOTDEFINED\"",
+          "Description": "Predefined usage type of the facility part, use GetPredefinedFacilityPartUsage()\n\nstring\nVorgabewert : \"NOTDEFINED\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -366,7 +366,7 @@
         {
           "Id": "681587f3d8e14165878b2886044e19e0",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "The updated databaseContainer including the added facility Part and also returns the guid of the new created facility Part",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -383,7 +383,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.AddFacilityPart (databaseContainer: DatabaseContainer, hostGuid: string, name: string = \"DefaultFacilityPart\", facilityType: string = \"IfcFacilityPartCommonTypeEnum\", facilityPartType: string = \"NOTDEFINED\", usageType: string = \"NOTDEFINED\"): var[]..[]"
+      "Description": "Creates a facility Part, which either belongs to an IfcFacility or to another IfcFacilityPart depending on hostGuid\n\nSpatialStructureDesigner.AddFacilityPart (databaseContainer: DatabaseContainer, hostGuid: string, name: string = \"DefaultFacilityPart\", facilityType: string = \"IfcFacilityPartCommonTypeEnum\", facilityPartType: string = \"NOTDEFINED\", usageType: string = \"NOTDEFINED\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -395,7 +395,7 @@
         {
           "Id": "ead0981e6dd6400a897e6c266e772df3",
           "Name": "PredefinedFacilityPartUsage",
-          "Description": "var",
+          "Description": "A list with all facility usage predefined types",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -403,7 +403,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.GetPredefinedFacilityPartUsage ( ): var[]..[]"
+      "Description": "Returns a list of all predefined usage types of IfcFacilityParts (IfcFacilityPartUsageEnum).\n\nSpatialStructureDesigner.GetPredefinedFacilityPartUsage ( ): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -414,7 +414,7 @@
         {
           "Id": "5264754e0d6148ecb4a9ebe4f9907b63",
           "Name": "facilityPartEnum",
-          "Description": "string\nVorgabewert : \"IfcFacilityPartCommonTypeEnum\"",
+          "Description": "Choose between IfcRailwayPartTypeEnum, IfcBridgePartTypeEnum, IfcMarinePartTypeEnum, IfcRoadPartTypeEnum and IfcFacilityPartCommonTypeEnum (=Default), Choose from GetAvailableFacilityPartTypes()\n\nstring\nVorgabewert : \"IfcFacilityPartCommonTypeEnum\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -425,7 +425,7 @@
         {
           "Id": "efc3b4001fff4a47ac903d7e958dc165",
           "Name": "PredefinedType",
-          "Description": "var",
+          "Description": "List with all Predefined Types for a facility type as string",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -433,7 +433,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.GetPredefinedType (facilityPartEnum: string = \"IfcFacilityPartCommonTypeEnum\"): var[]..[]"
+      "Description": "Returns a list of the matching predefined FacilityPartTypes depending on the input of the facility type.\n\nSpatialStructureDesigner.GetPredefinedType (facilityPartEnum: string = \"IfcFacilityPartCommonTypeEnum\"): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -504,7 +504,7 @@
         {
           "Id": "57bf2b66d3de4b6aa370f71bc91eed53",
           "Name": "FacilityPartTypeList",
-          "Description": "var",
+          "Description": "List with all IfcFacility Types",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -512,7 +512,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.GetAvailableFacilityPartTypes ( ): var[]..[]"
+      "Description": "Returns a list of possible Facility types. Choose between Railway, Bridge, Marine, Road and CommonType\n\nSpatialStructureDesigner.GetAvailableFacilityPartTypes ( ): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -699,7 +699,7 @@
         {
           "Id": "cc8aaf2f4d8d47229e5aaf1e9962a42f",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -710,7 +710,7 @@
         {
           "Id": "9674b1f33e44443a97147b209293f43b",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcSpatialElements in this database",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -754,7 +754,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcModelSetup.GetSpatialStructureItems (databaseContainer: DatabaseContainer): var[]..[]"
+      "Description": "Lists attributes of all IfcSpatialElements from the database.\n\nIfcModelSetup.GetSpatialStructureItems (databaseContainer: DatabaseContainer): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -1046,8 +1046,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -503.40746412258693,
-        "Y": 1811.3384394806931
+        "X": 1375.1045128144854,
+        "Y": 1771.5120291649864
       },
       {
         "ShowGeometry": true,
@@ -1056,8 +1056,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -501.56252865407487,
-        "Y": 1436.0920281504241
+        "X": 561.92973359581333,
+        "Y": 1412.6592847990476
       },
       {
         "ShowGeometry": true,
@@ -1066,8 +1066,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 270.7937890734911,
-        "Y": 1798.3175088382782
+        "X": 2149.3057660105633,
+        "Y": 1758.4910985225715
       },
       {
         "ShowGeometry": true,
@@ -1076,8 +1076,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 587.49045826883093,
-        "Y": 1794.7397642740502
+        "X": 2466.0024352059031,
+        "Y": 1754.9133539583436
       },
       {
         "ShowGeometry": true,
@@ -1086,8 +1086,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -495.02403884906448,
-        "Y": 1076.9193167157077
+        "X": -395.3950544711746,
+        "Y": 1042.311353721283
       },
       {
         "ShowGeometry": true,
@@ -1096,8 +1096,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -56.317107072519434,
-        "Y": 1078.7683665667353
+        "X": 43.311877305370444,
+        "Y": 1044.1604035723105
       },
       {
         "ShowGeometry": true,
@@ -1106,8 +1106,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 225.46345221910133,
-        "Y": 1081.39611635238
+        "X": 325.09243659699121,
+        "Y": 1046.7881533579553
       },
       {
         "ShowGeometry": true,
@@ -1116,8 +1116,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 556.05245009170665,
-        "Y": 1073.3396478524357
+        "X": 655.68143446959652,
+        "Y": 1038.731684858011
       },
       {
         "ShowGeometry": true,
@@ -1126,8 +1126,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -63.237296465481677,
-        "Y": 1435.1396007892722
+        "X": 1000.2549657844065,
+        "Y": 1411.7068574378957
       },
       {
         "ShowGeometry": true,
@@ -1136,8 +1136,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 249.61074560833345,
-        "Y": 1457.6783092023829
+        "X": 1313.1030078582216,
+        "Y": 1434.2455658510064
       },
       {
         "ShowGeometry": true,
@@ -1146,8 +1146,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 557.18501943096612,
-        "Y": 1451.8018114847534
+        "X": 1620.6772816808543,
+        "Y": 1428.3690681333769
       },
       {
         "ShowGeometry": true,
@@ -1180,7 +1180,7 @@
         ],
         "Left": 63.07002618103013,
         "Top": 156.55953253653394,
-        "Width": 2243.5737061274076,
+        "Width": 2284.145134698836,
         "Height": 305.23319464994148,
         "FontSize": 36.0,
         "InitialTop": 252.84524682224821,
@@ -1215,13 +1215,13 @@
           "e91e8fbbf31f4396a0e7f95bca487d7d",
           "65bfc19e7b7f49cbacc229f4f67025f4"
         ],
-        "Left": -513.40746412258693,
-        "Top": 1741.3111928454789,
-        "Width": 1274.897922391418,
+        "Left": 1365.1045128144854,
+        "Top": 1701.4847825297722,
+        "Width": 1274.8979223914178,
         "Height": 335.43488742137083,
         "FontSize": 36.0,
-        "InitialTop": 1794.7397642740502,
-        "InitialHeight": 177.85084749596172,
+        "InitialTop": 1754.9133539583436,
+        "InitialHeight": 161.59867520664284,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFFFB8D8"
       },
@@ -1234,31 +1234,31 @@
           "9fd58fa3ae1a4d299d235f5767f7fd29",
           "7281f4759d2a4fa89b821695437ee805"
         ],
-        "Left": -505.02403884906448,
-        "Top": 1019.9110764238643,
-        "Width": 1281.3622032264855,
+        "Left": -405.3950544711746,
+        "Top": 985.30311342943958,
+        "Width": 1281.3622032264852,
         "Height": 337.2858615714423,
         "FontSize": 36.0,
-        "InitialTop": 1073.3396478524357,
+        "InitialTop": 1038.731684858011,
         "InitialHeight": 153.05646849994423,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFFFAA45"
       },
       {
         "Id": "c6e96c95b57c49fe8446ec9c23e1912a",
-        "Title": "PDT",
+        "Title": "Predefined type",
         "Nodes": [
           "22a711e47eef4e81bf80416f90e564b4",
           "d2826fababc240038087c152ef271965",
           "6dd7eff09bf74be1a7660446aba59f39",
           "05870fba148b41c4a2368fc32d6bf3b1"
         ],
-        "Left": -511.56252865407487,
-        "Top": 1381.7110293607009,
+        "Left": 551.92973359581333,
+        "Top": 1358.2782860093243,
         "Width": 1289.0332623707552,
-        "Height": 348.5193535526239,
+        "Height": 348.51935355262412,
         "FontSize": 36.0,
-        "InitialTop": 1435.1396007892722,
+        "InitialTop": 1411.7068574378957,
         "InitialHeight": 167.53870841311073,
         "TextblockHeight": 43.428571428571431,
         "Background": "#FFB9F9E1"
@@ -1300,8 +1300,8 @@
         "Id": "3de9d417b4c94f5780d6329959e3adbd",
         "Title": "Build inputs for \"AddFacilityPart\"",
         "Nodes": [],
-        "Left": -579.67851097820972,
-        "Top": 958.5732400321956,
+        "Left": -393.00525603858443,
+        "Top": 925.01400318911681,
         "Width": 0.0,
         "Height": 0.0,
         "FontSize": 36.0,
@@ -1325,8 +1325,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": 477.24722286425254,
-    "Y": 143.49202452655089,
-    "Zoom": 0.40784290626975295
+    "X": 236.30004532084581,
+    "Y": -73.890209660026926,
+    "Zoom": 0.54487872805979964
   }
 }
