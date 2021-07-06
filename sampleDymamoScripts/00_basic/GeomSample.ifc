@@ -1,0 +1,49 @@
+ISO-10303-21;
+HEADER;
+FILE_DESCRIPTION(('ViewDefinition [Ifc4NotAssigned]'),'2;1');
+FILE_NAME(
+/* name */ '.\\Unittest\\Initial_GeomRepresentation_03.ifc',
+/* time_stamp */ '2021-01-19T08:54:10',
+/* author */ ('Sebastian Esser'),
+/* organization */ ('Unknown'),
+/* preprocessor_version */ 'GeometryGymIFC v0.1.6.0 by Geometry Gym Pty Ltd built 2020-12-16T04:57:54',
+/* originating_system */ 'CreateUnitTest v1.0.0.0',
+/* authorization */ 'None');
+
+FILE_SCHEMA (('IFC4'));
+ENDSEC;
+
+DATA;
+#1= IFCCARTESIANPOINT((0.0,0.0,0.0));
+#2= IFCAXIS2PLACEMENT3D(#1,$,$);
+#3= IFCLOCALPLACEMENT($,#2);
+#4= IFCSITE('2gG1du9OH4eQ4omNt$zfn1',$,'site',$,$,#3,$,$,$,$,$,$,$,$);
+#5= IFCPROJECT('2KrDsiaI1FkRwWUa5EvoNK',$,'GeomRepresentation_03',$,$,$,$,(#25),$);
+#6= IFCRELAGGREGATES('1U7z3bi0N_4L0UNA$m7S6j',$,$,$,#5,(#4));
+#7= IFCCARTESIANPOINT((2.0,5.0,1.0));
+#8= IFCAXIS2PLACEMENT3D(#7,$,$);
+#9= IFCLOCALPLACEMENT(#3,#8);
+#10= IFCCARTESIANPOINT((10.0,5.0,1.0));
+#11= IFCAXIS2PLACEMENT3D(#10,$,$);
+#13= IFCCARTESIANPOINT((15.0,3.0,6.0));
+#14= IFCAXIS2PLACEMENT3D(#13,$,$);
+#16= IFCCARTESIANPOINT((5.0,8.0,3.0));
+#17= IFCAXIS2PLACEMENT3D(#16,$,$);
+#19= IFCCARTESIANPOINT((0.0,0.0,0.0));
+#20= IFCAXIS2PLACEMENT3D(#19,$,$);
+#22= IFCRECTANGLEPROFILEDEF(.AREA.,'rectangleProfileDef',$,4.0,6.0);
+#23= IFCEXTRUDEDAREASOLID(#22,$,#24,1.35);
+#24= IFCDIRECTION((0.0,0.0,1.0));
+#25= IFCGEOMETRICREPRESENTATIONCONTEXT($,'Model',3,0.0001,#27,#28);
+#26= IFCCARTESIANPOINT((0.0,0.0,0.0));
+#27= IFCAXIS2PLACEMENT3D(#26,$,$);
+#28= IFCDIRECTION((0.0,1.0));
+#29= IFCGEOMETRICREPRESENTATIONSUBCONTEXT('Body','Model',*,*,*,*,#25,$,.MODEL_VIEW.,$);
+#30= IFCSHAPEREPRESENTATION(#29,'Body','SweptSolid',(#23));
+#31= IFCPRODUCTDEFINITIONSHAPE($,$,(#30));
+#32= IFCBUILDINGELEMENTPROXY('3xowIo77q008Yxqwlj5Rkg',$,'Cylinder_extrudedArea',$,$,#9,#31,$,$);
+#33= IFCRELCONTAINEDINSPATIALSTRUCTURE('000H8Y4pT8TK92qH5AlDKn',$,'Site','Site Container for Elements',(#32),#4);
+ENDSEC;
+
+END-ISO-10303-21;
+

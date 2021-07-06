@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.DesignScript.Runtime;
+using Dynamo.Graph.Nodes;
 using GeometryGym.Ifc;
 using IfcInfraToolkit_Common;
 using Microsoft.SqlServer.Server;
@@ -16,10 +17,13 @@ namespace IfcInfraToolKit_DynamoCore
     {
         #region CreateAndSave
 
-        
+
         /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
-        /// <search> init, create, IFC </search>
+        /// <param name="projectName"></param>
+        /// <param name="siteName"></param>
+        /// <search> init, create, IFC, create model, ifc model </search>
         /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [NodeCategory("Actions")]
         [MultiReturn(new[] {"DatabaseContainer"})]
         public static Dictionary<string, object> CreateIfcModel(string projectName = "sampleProject", string siteName = "sampleSite")
         {
@@ -39,117 +43,150 @@ namespace IfcInfraToolKit_DynamoCore
 
             return d;
         }
-        
-        /// <summary> Stores an DatabaseIfc instance into an *.ifc Model </summary>
-        /// <param name="container">IFC container</param>
+
+        /// <summary> Stores a DatabaseIfc instance into a *.ifc Model </summary>
+        /// <param name="databaseContainer">IFC container</param>
         /// <param name="path">folder to store the resulting model</param>
         /// <param name="modelName">file name without *.ifc label</param>
         /// <search> store, save, IFC </search>
-        public static void SaveIfcModel(DatabaseContainer container, string path, string modelName)
+        [NodeCategory("Actions")]
+        public static void SaveIfcModel(DatabaseContainer databaseContainer, string path, string modelName)
         {
-            container.Database.WriteFile(path + "/" + modelName + ".ifc");
+            databaseContainer.Database.WriteFile(path + "/" + modelName + ".ifc");
         }
 
         #endregion
 
-        #region SpatialStructure
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="databaseContainer"></param>
-        /// <param name="facilityName"></param>
-        /// <param name="hostGuid">GlobalId of parent element</param>
-        /// <returns></returns>
-        [MultiReturn(new[] { "DatabaseContainer", "FacilityGUID" })]
-        public static Dictionary<string, object> AddFacility(DatabaseContainer databaseContainer, string hostGuid = "null", string facilityName = "DefaultFacility")
+        #region OpenExistingModel
+        /// <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+        /// <param name="path">folder and model name for opening the ifc model</param>
+        /// <search> init, create, IFC, open model, existing model, open </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        [NodeCategory("Actions")]
+        [MultiReturn(new[] { "DatabaseContainer" })]
+        public static Dictionary<string, object> OpenIfcModel(string path)
         {
-            // get current db
-            var database = databaseContainer.Database;
+            // init container
+            var container = new DatabaseContainer();
 
-            // get host
-            var host = database.OfType<IfcSpatialStructureElement>().FirstOrDefault(a => a.Guid.ToString() == hostGuid);
-
-            ProjectSetupService service = new ProjectSetupService();
-            var guid = service.AddFacility(ref database, facilityName, host);
-
-            // assign updated db to container
-            databaseContainer.Database = database;
+            container.Database = new DatabaseIfc(path);
 
             // beautiful return values
             var d = new Dictionary<string, object>
             {
-                {"DatabaseContainer", databaseContainer},
-                {"FacilityGUID", guid.ToString()}
-            };
-
-            return d;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="databaseContainer"></param>
-        /// <param name="facilityPartName"></param>
-        /// <param name="hostGuid"></param>
-        /// <returns></returns>
-        [MultiReturn(new[] { "DatabaseContainer", "FacilityPartGUID" })]
-        public static Dictionary<string, object> AddFacilityPart(DatabaseContainer databaseContainer, string hostGuid, string facilityPartName = "DefaultFacilityPart")
-        {
-            // get current db
-            var database = databaseContainer.Database;
-
-            // get host
-            var hostFacility = database.OfType<IfcFacility>()
-                .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
-            var hostFacilityPart = database.OfType<IfcFacilityPart>()
-                .FirstOrDefault(a => a.Guid.ToString() == hostGuid);
-
-            ProjectSetupService service = new ProjectSetupService();
-
-            Guid guid; 
-
-            if (hostFacility != null)
-            {
-                var host = hostFacility;
-                guid = service.AddFacilityPart(ref database, facilityPartName, "type", host);
-            }
-            else if (hostFacilityPart != null)
-            {
-                var host = hostFacilityPart;
-                guid = service.AddFacilityPart(ref database, facilityPartName, "type", host);
-            }
-            else
-            {
-                guid = Guid.Empty;
-            }
-           
-
-            // assign updated db to container
-            databaseContainer.Database = database;
-            // beautiful return values
-            var d = new Dictionary<string, object>
-            {
-                {"DatabaseContainer", databaseContainer},
-                {"FacilityPartGUID", guid.ToString()}
+                {"DatabaseContainer", container}
             };
 
             return d;
         }
 
 
-
-
         #endregion
+
 
 
         /// <summary>
         /// Watch node for Ifc content in the database
         /// </summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> watch, IFC, database content, model content, content </search>
         /// <returns></returns>
+        [NodeCategory("Actions")]
         public static DatabaseIfc WatchIFC(DatabaseContainer databaseContainer)
         {
             return databaseContainer.Database;
         }
+
+        /// <summary> Lists attributes of all IfcObjectDefinition items in the database</summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> IfcObjectDefinition, IFC, get, object definition, get object </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcObjectDefinition items in this database </returns>
+        [NodeCategory("Query")]
+        [MultiReturn(new[] {"DatabaseContainer", "GUIDs", "Names", "IfcClasses"})]
+        public static Dictionary<string, object> GetObjectDefinitionItems(DatabaseContainer databaseContainer)
+        {
+            var db = databaseContainer.Database;
+
+            // get all IfcObjectDefinition items
+            var items = db.OfType<IfcObjectDefinition>().ToList();
+
+            var guids = items.Select(a => a.GlobalId).ToList();
+            var names = items.Select(a => a.Name).ToList();
+            var clsNames = items.Select(a => a.StepClassName).ToList();
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"GUIDs", guids}, 
+                {"Names", names}, 
+                {"IfcClasses", clsNames}, 
+
+            };
+            return d;
+        }
+
+        /// <summary> Lists attributes of all IfcSpatialElements from the database. </summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> IFC, spatial structure, get, spatial, IfcSpatialElement </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcSpatialElements in this database </returns>
+        [NodeCategory("Query")]
+        [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
+        public static Dictionary<string, object> GetSpatialStructureItems(DatabaseContainer databaseContainer)
+        {
+            var db = databaseContainer.Database;
+
+            // get all IfcObjectDefinition items
+            var items = db.OfType<IfcSpatialElement>().ToList();
+
+            var guids = items.Select(a => a.GlobalId).ToList();
+            var names = items.Select(a => a.Name).ToList();
+            var clsNames = items.Select(a => a.StepClassName).ToList();
+            var pdts = items.Select(a => a.GetPredefinedType()).ToList();
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"GUIDs", guids},
+                {"Names", names},
+                {"IfcClasses", clsNames},
+                {"PredefinedTypes", pdts},
+
+            };
+            return d;
+        }
+
+        /// <summary> Lists attributes of all IfcElements in the database. </summary>
+        /// <param name="databaseContainer">IFC container including all Ifc content</param>
+        /// <search> IFC, find, get, IfcElement, elements, get elements </search>
+        /// <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcElements in this database </returns>
+        [NodeCategory("Query")]
+        [MultiReturn(new[] { "DatabaseContainer", "GUIDs", "Names", "IfcClasses", "PredefinedTypes" })]
+        public static Dictionary<string, object> GetElementItems(DatabaseContainer databaseContainer)
+        {
+            var db = databaseContainer.Database;
+
+            // get all IfcObjectDefinition items
+            var items = db.OfType<IfcElement>().ToList();
+
+            var guids = items.Select(a => a.GlobalId).ToList();
+            var names = items.Select(a => a.Name).ToList();
+            var clsNames = items.Select(a => a.StepClassName).ToList();
+            var pdts = items.Select(a => a.GetPredefinedType()).ToList();
+
+            // beautiful return values
+            var d = new Dictionary<string, object>
+            {
+                {"DatabaseContainer", databaseContainer},
+                {"GUIDs", guids},
+                {"Names", names},
+                {"IfcClasses", clsNames},
+                {"PredefinedTypes", pdts},
+
+            };
+            return d;
+        }
+
     }
 }

@@ -1,0 +1,277 @@
+{
+  "Uuid": "d99c9deb-741c-4447-8b7f-1b3a46aafdf2",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "CreateAndStoreIFC",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.CreateIfcModel@string,string",
+      "Id": "98583dcbc9ed4c99b93834da4bc851fa",
+      "Inputs": [
+        {
+          "Id": "20ff7e38335b40119e39fe589bfb8abf",
+          "Name": "projectName",
+          "Description": "string\nVorgabewert : \"sampleProject\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fb0fac12615a4311a2ec8b58edfb5285",
+          "Name": "siteName",
+          "Description": "string\nVorgabewert : \"sampleSite\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8f54edc1cb9049d5a44e83b756cb4e05",
+          "Name": "DatabaseContainer",
+          "Description": "var",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "IfcInfraToolKit_DynamoCore.IfcModelSetup.SaveIfcModel@IfcInfraToolKit_DynamoCore.DatabaseContainer,string,string",
+      "Id": "2205cd2e4d38468b90b1e7b5b56b1138",
+      "Inputs": [
+        {
+          "Id": "e0579c4bf9484cada3492eb026e9289e",
+          "Name": "container",
+          "Description": "DatabaseContainer",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7276f5bd1201450788f97f75a4f1aade",
+          "Name": "path",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fcdf360aac5d42ecbae1f633e5246dfe",
+          "Name": "modelName",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "53dcc0e602c04402bc8824d26b6a8b94",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "IfcModelSetup.SaveIfcModel (container: DatabaseContainer, path: string, modelName: string): void"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\dev",
+      "InputValue": "C:\\dev",
+      "NodeType": "ExtensionNode",
+      "Id": "c28bcfb16b394da285dace8f9a158800",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b40570eb61ee459aa4f6b1df62d36134",
+          "Name": "",
+          "Description": "Directory",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die Auswahl einen Verzeichnisses auf dem System, um seinen Pfad abzurufen."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"mySampleModel\";",
+      "Id": "3de8e9bb446046cb8a2ea0a4d8e47879",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ebbb7663d3ea47239ba26db0a4a76b1c",
+          "Name": "",
+          "Description": "Wert des Ausdrucks in Zeile 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "8f54edc1cb9049d5a44e83b756cb4e05",
+      "End": "e0579c4bf9484cada3492eb026e9289e",
+      "Id": "9fe8cc13d4d64c1ba2a2373bd01dc556"
+    },
+    {
+      "Start": "b40570eb61ee459aa4f6b1df62d36134",
+      "End": "7276f5bd1201450788f97f75a4f1aade",
+      "Id": "cf302413761c461590f48032a15e8711"
+    },
+    {
+      "Start": "ebbb7663d3ea47239ba26db0a4a76b1c",
+      "End": "fcdf360aac5d42ecbae1f633e5246dfe",
+      "Id": "63c93f4512ee4890be4caa4a38a48d7a"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "ExtensionWorkspaceData": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.11.0.4533",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.CreateIfcModel",
+        "Id": "98583dcbc9ed4c99b93834da4bc851fa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 781.00114895258957,
+        "Y": 580.58253459576008
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IfcModelSetup.SaveIfcModel",
+        "Id": "2205cd2e4d38468b90b1e7b5b56b1138",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1380.1913990396026,
+        "Y": 574.13018347822492
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Directory Path",
+        "Id": "c28bcfb16b394da285dace8f9a158800",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 865.38883092939932,
+        "Y": 766.90546421495844
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "3de8e9bb446046cb8a2ea0a4d8e47879",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 865.38883092939932,
+        "Y": 877.11879754829181
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "bf79ae911a92415bb2c08c7b788f9c11",
+        "Title": "Create IFC model",
+        "Nodes": [
+          "98583dcbc9ed4c99b93834da4bc851fa"
+        ],
+        "Left": 771.00114895258957,
+        "Top": 527.15396316718864,
+        "Width": 330.28571428571422,
+        "Height": 173.0,
+        "FontSize": 36.0,
+        "InitialTop": 580.58253459576008,
+        "InitialHeight": 149.57142857142856,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "3a268daa982843fe9405fed01ee853b3",
+        "Title": "Save IFC model",
+        "Nodes": [
+          "2205cd2e4d38468b90b1e7b5b56b1138"
+        ],
+        "Left": 1370.1913990396026,
+        "Top": 477.84446919251064,
+        "Width": 240.0,
+        "Height": 242.14285714285717,
+        "FontSize": 36.0,
+        "InitialTop": 574.13018347822492,
+        "InitialHeight": 175.85714285714289,
+        "TextblockHeight": 86.285714285714292,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "031aafb946fa4fffab9595635d4ed209",
+        "Title": "Enter a suitable path here!",
+        "Nodes": [],
+        "Left": 813.22367547399256,
+        "Top": 732.70988150408516,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -954.063037057683,
+    "Y": -575.10596283201471,
+    "Zoom": 1.442589092933134
+  }
+}

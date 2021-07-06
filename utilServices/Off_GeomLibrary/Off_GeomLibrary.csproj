@@ -4,4 +4,12 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="DynamoVisualProgramming.Core" Version="2.11.1.4675" />
+    <PackageReference Include="DynamoVisualProgramming.DynamoServices" Version="2.11.1.4675" />
+    <PackageReference Include="DynamoVisualProgramming.ZeroTouchLibrary" Version="2.11.1.4675" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="NUnit" Version="3.13.2" />
+  </ItemGroup>
+
 </Project>

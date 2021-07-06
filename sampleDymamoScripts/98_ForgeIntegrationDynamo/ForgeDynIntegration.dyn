@@ -1,0 +1,630 @@
+{
+  "Uuid": "b935d50b-320c-4e71-ba09-ea750c8655e1",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "ForgeDynIntegration",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Token.ByClientIdAndSecret@string,string,string",
+      "Id": "d53131cc57a8403e8cfe104705ff893c",
+      "Inputs": [
+        {
+          "Id": "092c787a956c4be2bec8b4ca099d9442",
+          "Name": "ClientId",
+          "Description": "Client ID of the app.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cb98d3c3f3054f68a2d3f7c10fe10e62",
+          "Name": "ClientSecret",
+          "Description": "Client secret of the app.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7d92871e40f04acbb10aab954120b104",
+          "Name": "Scope",
+          "Description": "Space-separated list of required scopes.\n\nstring\nVorgabewert : \"data:read\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "da46680244a24bcaa9aec42440061359",
+          "Name": "Token",
+          "Description": "The Token",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns a 2-Legged Token.\n\nToken.ByClientIdAndSecret (ClientId: string, ClientSecret: string, Scope: string = \"data:read\"): Token"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Hub.GetAllHubs@string",
+      "Id": "17e59242904a40f5beab308a4b62d25c",
+      "Inputs": [
+        {
+          "Id": "bf2197578181496e824007318a2788cc",
+          "Name": "AccessToken",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b0191998f8a341bc95c943c9549a7a28",
+          "Name": "Hub[]",
+          "Description": "The List of Hubs.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns a collection of accessible hubs for this member.\n\nHub.GetAllHubs (AccessToken: string): Hub[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "clientId = \"uAZ8dG4WdiyAb9N1Dk6PY0lQFLVZV1pi\";\nclientSecret = \"OfWOLHtYSV34YRZU\";",
+      "Id": "09cfef8db52f414485de7e01ed84619c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "6b9243ed8c0147da8d05710d3ae763a5",
+          "Name": "",
+          "Description": "clientId",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "969e29f28bac4810afb186c5402d6c72",
+          "Name": "",
+          "Description": "clientSecret",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Token.AccesToken",
+      "Id": "b7e44acffb6c46859a8725798402f23c",
+      "Inputs": [
+        {
+          "Id": "23fc685c34ad4480bf1563a199a68c60",
+          "Name": "token",
+          "Description": "Collaboration.Forge.Token",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "548b40e75a6a4663b1fd61f5a5b54470",
+          "Name": "string",
+          "Description": "The Access Token value.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the Access Token.\n\nToken.AccesToken: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Project.GetAllProjects@Collaboration.Forge.Hub",
+      "Id": "19e3cd25e05045a6b82d0e71a6549a27",
+      "Inputs": [
+        {
+          "Id": "5989129828c84fb290f1e4e30eab3452",
+          "Name": "Hub",
+          "Description": "The Hub.\n\nHub",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d55f6e2fa67342de90bffe3325a335ad",
+          "Name": "Project[]",
+          "Description": "The List of Projects.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns a collection of accessible projects for this Hub. A project represents a BIM 360 Team project, a Fusion Team project, a BIM 360 Docs project, or an A360 Personal project.\n\nProject.GetAllProjects (Hub: Hub): Project[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "proj = list[0][6];",
+      "Id": "d9d2d005ebd24a358f59d03e97576e90",
+      "Inputs": [
+        {
+          "Id": "349d963402ee4de681be8da1fb0d4741",
+          "Name": "list",
+          "Description": "list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "928e2f98e07242d1b23a585fdf147486",
+          "Name": "",
+          "Description": "proj",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Project.Name",
+      "Id": "ed2c1d8fc58b4c1fbe3b16482251dcaf",
+      "Inputs": [
+        {
+          "Id": "7c6d60bba6dc4ffb8fcd4014a1a1d3f0",
+          "Name": "project",
+          "Description": "Collaboration.Forge.Project",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bc9d8f01f4b143d7ad3d4587de911d76",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the Name of the Project.\n\nProject.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Project.Name",
+      "Id": "0fb5b124a7664d1cbfe3888322de498d",
+      "Inputs": [
+        {
+          "Id": "19bad18fd6eb4a39bf3b81c8e5c9d1bf",
+          "Name": "project",
+          "Description": "Collaboration.Forge.Project",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "338dc21b86524c758d004d9fe6e45e36",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Returns the Name of the Project.\n\nProject.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Folder.GetTopFolders@Collaboration.Forge.Project",
+      "Id": "d8cffb4eb61a4c94af12de58ab511ba0",
+      "Inputs": [
+        {
+          "Id": "ef3e3fa6b2f5465a9acaf501db823918",
+          "Name": "Project",
+          "Description": "Project",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "da5a6ece21404e0aab68c078e7857685",
+          "Name": "Folder[]",
+          "Description": "Folder[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Gets the Top Folder\n\nFolder.GetTopFolders (Project: Project): Folder[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Collaboration.Forge.Folder.Name",
+      "Id": "0a11b09a24db436eb442fb7bc023d2b9",
+      "Inputs": [
+        {
+          "Id": "100d555c0c4d400292e9f73319ac5692",
+          "Name": "folder",
+          "Description": "Collaboration.Forge.Folder",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "42664b1b6a3641b18e98f65b7e8000b6",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Folder.Name: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "item = list[8];",
+      "Id": "a06f2f22cdb3430fabf1b3a14b4841a5",
+      "Inputs": [
+        {
+          "Id": "384d0a34f4f94d9f9090459deabd8ccb",
+          "Name": "list",
+          "Description": "list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "22ec21ee9cc343a18dbaa3cb3e9a1ceb",
+          "Name": "",
+          "Description": "item",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Ermöglicht die direkte Erstellung von DesignScript-Code."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "da46680244a24bcaa9aec42440061359",
+      "End": "23fc685c34ad4480bf1563a199a68c60",
+      "Id": "44cc7cfb6e2640af88b759cc6c8f802e"
+    },
+    {
+      "Start": "b0191998f8a341bc95c943c9549a7a28",
+      "End": "5989129828c84fb290f1e4e30eab3452",
+      "Id": "8089eb3a29ba40d99c76786695f237d8"
+    },
+    {
+      "Start": "6b9243ed8c0147da8d05710d3ae763a5",
+      "End": "092c787a956c4be2bec8b4ca099d9442",
+      "Id": "992970ee1e8d4dbaade49f151c95a0ad"
+    },
+    {
+      "Start": "969e29f28bac4810afb186c5402d6c72",
+      "End": "cb98d3c3f3054f68a2d3f7c10fe10e62",
+      "Id": "4f75e71db2d2443da907ef1af88055ef"
+    },
+    {
+      "Start": "548b40e75a6a4663b1fd61f5a5b54470",
+      "End": "bf2197578181496e824007318a2788cc",
+      "Id": "929cd1556468454fa4b64d2cecb0e006"
+    },
+    {
+      "Start": "d55f6e2fa67342de90bffe3325a335ad",
+      "End": "7c6d60bba6dc4ffb8fcd4014a1a1d3f0",
+      "Id": "bdc502adfcf2427095be97686fe1ae26"
+    },
+    {
+      "Start": "d55f6e2fa67342de90bffe3325a335ad",
+      "End": "349d963402ee4de681be8da1fb0d4741",
+      "Id": "13e2f8420e1b4cb18882e37b44d505ff"
+    },
+    {
+      "Start": "928e2f98e07242d1b23a585fdf147486",
+      "End": "19bad18fd6eb4a39bf3b81c8e5c9d1bf",
+      "Id": "51f14b0e4c774195a97aa2ab74a81503"
+    },
+    {
+      "Start": "928e2f98e07242d1b23a585fdf147486",
+      "End": "ef3e3fa6b2f5465a9acaf501db823918",
+      "Id": "06d77b3d23ee4a3b9bbc8e589f61e60b"
+    },
+    {
+      "Start": "da5a6ece21404e0aab68c078e7857685",
+      "End": "100d555c0c4d400292e9f73319ac5692",
+      "Id": "74d61490169744ec813565bb7d8b9e3b"
+    },
+    {
+      "Start": "da5a6ece21404e0aab68c078e7857685",
+      "End": "384d0a34f4f94d9f9090459deabd8ccb",
+      "Id": "410bc64fece64315822f685cca22256e"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Civil3DToolkit",
+      "Version": "1.1.6",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "d53131cc57a8403e8cfe104705ff893c",
+        "17e59242904a40f5beab308a4b62d25c",
+        "b7e44acffb6c46859a8725798402f23c",
+        "19e3cd25e05045a6b82d0e71a6549a27",
+        "ed2c1d8fc58b4c1fbe3b16482251dcaf",
+        "0fb5b124a7664d1cbfe3888322de498d",
+        "d8cffb4eb61a4c94af12de58ab511ba0",
+        "0a11b09a24db436eb442fb7bc023d2b9"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.5.2.7915",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Hintergrundvorschau",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Token.ByClientIdAndSecret",
+        "Id": "d53131cc57a8403e8cfe104705ff893c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 546.14285714285711,
+        "Y": 418.85714285714289
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Hub.GetAllHubs",
+        "Id": "17e59242904a40f5beab308a4b62d25c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1184.1060230328667,
+        "Y": 413.70691548560353
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "09cfef8db52f414485de7e01ed84619c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 37.0,
+        "Y": 427.28380952380951
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Token.AccesToken",
+        "Id": "b7e44acffb6c46859a8725798402f23c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 875.28571428571433,
+        "Y": 473.85714285714289
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Project.GetAllProjects",
+        "Id": "19e3cd25e05045a6b82d0e71a6549a27",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1389.1060230328667,
+        "Y": 665.27834405703209
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "d9d2d005ebd24a358f59d03e97576e90",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2030.0377329920102,
+        "Y": 410.25435510410614
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Project.Name",
+        "Id": "ed2c1d8fc58b4c1fbe3b16482251dcaf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1712.5345944614382,
+        "Y": 665.278344057032
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Project.Name",
+        "Id": "0fb5b124a7664d1cbfe3888322de498d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2291.8936041238458,
+        "Y": 409.2641049981288
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Folder.GetTopFolders",
+        "Id": "d8cffb4eb61a4c94af12de58ab511ba0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2272.2242527037524,
+        "Y": 561.87114187816326
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Folder.Name",
+        "Id": "0a11b09a24db436eb442fb7bc023d2b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2637.1246342213444,
+        "Y": 558.47987439194014
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a06f2f22cdb3430fabf1b3a14b4841a5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3055.5358614968331,
+        "Y": 356.54078535088559
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "b047c4b28e4846aa99d50ada9132ff7b",
+        "Title": "Get folders of project",
+        "Nodes": [
+          "d9d2d005ebd24a358f59d03e97576e90",
+          "0fb5b124a7664d1cbfe3888322de498d",
+          "d8cffb4eb61a4c94af12de58ab511ba0",
+          "0a11b09a24db436eb442fb7bc023d2b9"
+        ],
+        "Left": 2020.0377329920102,
+        "Top": 355.83553356955736,
+        "Width": 816.80118694362,
+        "Height": 299.32132259432018,
+        "FontSize": 36.0,
+        "InitialTop": 409.2641049981288,
+        "InitialHeight": 297.60703688003446,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "6db32c0d02fa4bf6b6c1cad3aabf6e2f",
+        "Title": "Authenticate",
+        "Nodes": [
+          "d53131cc57a8403e8cfe104705ff893c",
+          "09cfef8db52f414485de7e01ed84619c",
+          "b7e44acffb6c46859a8725798402f23c"
+        ],
+        "Left": 27.0,
+        "Top": 365.42857142857144,
+        "Width": 1046.2857142857142,
+        "Height": 201.71428571428572,
+        "FontSize": 36.0,
+        "InitialTop": 418.85714285714289,
+        "InitialHeight": 200.0,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "1214e772de534179a4802cd96aa9b9d0",
+        "Title": "Get all hubs and containing projects",
+        "Nodes": [
+          "17e59242904a40f5beab308a4b62d25c",
+          "19e3cd25e05045a6b82d0e71a6549a27",
+          "ed2c1d8fc58b4c1fbe3b16482251dcaf"
+        ],
+        "Left": 1174.1060230328667,
+        "Top": 360.27834405703209,
+        "Width": 744.42857142857156,
+        "Height": 398.28571428571428,
+        "FontSize": 36.0,
+        "InitialTop": 413.70691548560353,
+        "InitialHeight": 396.57142857142856,
+        "TextblockHeight": 43.428571428571431,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -130.58458151754121,
+    "Y": -10.588839652265051,
+    "Zoom": 0.52486542792448376
+  }
+}
