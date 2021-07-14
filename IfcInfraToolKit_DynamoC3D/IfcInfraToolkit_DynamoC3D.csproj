@@ -66,6 +66,9 @@
       <HintPath>precompiled_dlls\Autodesk.AutoCAD.Interop.Common.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="DynamoServices">
+      <HintPath>..\..\..\Users\Sebastian Esser\.nuget\packages\dynamovisualprogramming.dynamoservices\2.11.2.5474\lib\net48\DynamoServices.dll</HintPath>
+    </Reference>
     <Reference Include="GeometryGymIFC">
       <HintPath>..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\bin\Debug\GeometryGymIFC.dll</HintPath>
     </Reference>

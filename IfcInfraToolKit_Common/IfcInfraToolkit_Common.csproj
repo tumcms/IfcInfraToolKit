@@ -51,13 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DynamoVisualProgramming.Core">
-      <Version>2.11.1.4675</Version>
+      <Version>2.11.2.5474</Version>
     </PackageReference>
     <PackageReference Include="DynamoVisualProgramming.DynamoServices">
-      <Version>2.11.1.4675</Version>
+      <Version>2.11.2.5474</Version>
     </PackageReference>
     <PackageReference Include="DynamoVisualProgramming.ZeroTouchLibrary">
-      <Version>2.11.1.4675</Version>
+      <Version>2.11.2.5474</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
