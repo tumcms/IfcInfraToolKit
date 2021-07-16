@@ -33,6 +33,7 @@ namespace IfcInfraToolKit_DynamoCore
             // add content to the database
             ProjectSetupService service = new ProjectSetupService();
             container.Database = service.CreateDatabase();
+            var alpha = 2;
             container.Database = service.AddBaseProjectSetup(container.Database, projectName , siteName );
 
             // beautiful return values

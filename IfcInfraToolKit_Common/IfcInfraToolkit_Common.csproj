@@ -59,18 +59,15 @@
     <PackageReference Include="DynamoVisualProgramming.ZeroTouchLibrary">
       <Version>2.11.2.5474</Version>
     </PackageReference>
+    <PackageReference Include="GeometryGymIFC">
+      <Version>0.1.14</Version>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="NUnit">
       <Version>3.13.2</Version>
     </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\GeometryGymIFC.csproj">
-      <Project>{6cd3be38-25bc-4fcf-9426-d15ed4d4657c}</Project>
-      <Name>GeometryGymIFC</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
