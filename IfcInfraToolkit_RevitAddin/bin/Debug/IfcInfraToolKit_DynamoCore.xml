@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IfcInfraToolKit_DynamoCore</name>
+    </assembly>
+    <members>
+        <member name="T:IfcInfraToolKit_DynamoCore.DatabaseContainer">
+            <summary>
+            Central storage item to interact with IFC content
+            </summary>
+        </member>
+        <member name="P:IfcInfraToolKit_DynamoCore.DatabaseContainer.Database">
+            <summary>
+            the IFC model object
+            </summary>
+        </member>
+        <member name="P:IfcInfraToolKit_DynamoCore.DatabaseContainer.ExportPath">
+            <summary>
+            The directory where the model should be stored to
+            </summary>
+        </member>
+        <member name="P:IfcInfraToolKit_DynamoCore.DatabaseContainer.ModelName">
+            <summary>
+            name of the IFC model
+            </summary>
+        </member>
+        <member name="T:IfcInfraToolKit_DynamoCore.DynamoGeometryExporter">
+            <summary>
+            Management of all geometry-related export methods
+            </summary>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.AddSolidGeometryAsBRep(Autodesk.DesignScript.Geometry.Solid,IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String)">
+            <summary> calculates some geometric values of a given Dynamo solid geometry, converts it to a BRep and adds the geometry to a predefined IfcElement in the database container </summary>
+            <param name="solidGeometry">Solid geometry data</param>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="elementGuid">Guid of IfcElement subtype, to which the geometry should be added</param>
+            <search> pointcloud, bb, solid, geometry, add geometry, add, BRep, convert geometry </search>
+            <returns> Updated database container with added geometry, Lists of solid data</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.DynamoGeometryExporter.AddMeshGeometryAsBRep(Autodesk.DesignScript.Geometry.Mesh,IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String)">
+            <summary> calculates some geometric values of a given Dynamo mesh geometry, converts it to a BRep and adds the geometry to a predefined IfcElement in the database container </summary>
+            <param name="meshGeometry">mesh geometry data in dynamo format</param>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="elementGuid">Guid of IfcElement subtype, to which the geometry should be added</param>
+            <search> bb, mesh, geometry, add, BRep </search>
+            <returns> Updated database container with added geometry, Lists of mesh data</returns>
+        </member>
+        <member name="T:IfcInfraToolKit_DynamoCore.ElementDesigner">
+            <summary>
+            Methods to define IfcElement subclass instances
+            </summary>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.AddBuiltElement(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String,System.String)">
+            <summary>
+            Adds an IfcElement of the subclass IfcBuiltElement to the database
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="IfcClass">Desired IfcClass, that should be created</param>
+            <param name="elementName">provide an arbitrary name of the BuiltElement</param>
+            <param name="hostGuid">GlobalId of parent element</param>
+            <search> IfcBuiltElement, Ifc, IfcElement, add, add element, builtElement</search>
+            <returns> Updated database container with added builtElement semantics and the guid of the created IfcElement instance</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.GetAvailableBuiltElementClassNames">
+            <summary>
+            Provides a list with all possible predefined subclasses of IfcBuiltElement
+            </summary>
+            <search> predefined IfcBuiltElement, Ifc, predefined IfcElement, add, add element, builtElement, predefined, list IfcElement </search>
+            <returns> List of possible IfcBuiltElement predefined subclasses</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.AddDistributionElement(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String,System.String)">
+            <summary>
+            Adds an IfcElement of the subclass IfcDistributionElement to the database
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="IfcClass">Desired IfcClass, that should be created (A subclass of IfcDistributionElement)</param>
+            <param name="elementName">provide an arbitrary name of the Distribution Element</param>
+            <param name="hostGuid">GlobalId of parent element</param>
+            <search> IfcDistributionElement, Ifc, IfcElement, add, add element, distributionElement</search>
+            <returns> Updated database container with added distributionElement semantics and the guid of the created IfcElement instance</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.GetAvailableDistributionElementClassNames">
+            <summary>
+            Provides a list with all possible predefined subclasses of IfcDistributionElement
+            </summary>
+            <search> predefined IfcDistributionElement, Ifc, predefined IfcElement, add, add element, distributionElement, predefined, list IfcElement </search>
+            <returns> List of possible IfcDistributionElement predefined subclasses as string</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.AddElementComponent(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String,System.String)">
+            <summary>
+            Adds an IfcElement of the subclass IfcElementComponent to the database
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="IfcClass">Desired IfcClass, that should be created (A subclass of IfcElementComponent)</param>
+            <param name="elementName">provide an arbitrary name of the Element component</param>
+            <param name="hostGuid">GlobalId of parent element</param>
+            <search> IfcElementComponent, Ifc, IfcElementComponent, add, add element, elementComponent</search>
+            <returns> Updated database container with added ElementComponent semantics and the guid of the created IfcElement instance</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.GetAvailableElementComponentClassNames">
+            <summary>
+            Provides a list with all possible predefined subclasses of IfcElementComponent as input for IfcClass in function AddElementComponent()
+            </summary>
+            <search> predefined IfcElementComponent, Ifc, predefined IfcElement, add, add element, elementComponent, predefined, list IfcElement </search>
+            <returns> List of possible IfcElementComponent predefined subclasses as string</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.AddOtherElement(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String,System.String)">
+            <summary>
+            Adds an IfcElement of a subclass other then IfcBuiltElement, IfcDistributionElement or IfcElementComponent to the database
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="IfcClass">Desired IfcClass, that should be created, choose from GetAvailableOtherElementClassNames() </param>
+            <param name="elementName">provide an arbitrary name of the Element component</param>
+            <param name="hostGuid">GlobalId of parent element</param>
+            <search> IfcElement, Ifc, other IfcElement, add, add element, other element</search>
+            <returns> Updated database container with added subclass of IfcElement semantics and the guid of the created IfcElement instance</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.ElementDesigner.GetAvailableOtherElementClassNames">
+            <summary>
+            Provides a list with all possible predefined subclasses other then
+            IfcBuiltElement, IfcDistributionElement or IfcElementComponent as input for IfcClass in function AddOtherElement()
+            </summary>
+            <search> predefined other IfcElement, Ifc, predefined IfcElement, add, add element, other element, predefined, list IfcElement </search>
+            <returns> List of possible other IfcElement predefined subclasses as string</returns>
+        </member>
+        <member name="T:IfcInfraToolKit_DynamoCore.IfcModelSetup">
+            <summary>
+            Provides basic methods to create an IFC model and add some spatial structure stuff
+            </summary>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcModelSetup.CreateIfcModel(System.String,System.String)">
+            <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+            <param name="projectName"></param>
+            <param name="siteName"></param>
+            <search> init, create, IFC, create model, ifc model </search>
+            <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcModelSetup.SaveIfcModel(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String)">
+            <summary> Stores a DatabaseIfc instance into a *.ifc Model </summary>
+            <param name="databaseContainer">IFC container</param>
+            <param name="path">folder to store the resulting model</param>
+            <param name="modelName">file name without *.ifc label</param>
+            <search> store, save, IFC </search>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcModelSetup.OpenIfcModel(System.String)">
+            <summary> Creates a new DatabaseIfc instance that acts as a central container for the IFC content. </summary>
+            <param name="path">folder and model name for opening the ifc model</param>
+            <search> init, create, IFC, open model, existing model, open </search>
+            <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc </returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcModelSetup.WatchIFC(IfcInfraToolKit_DynamoCore.DatabaseContainer)">
+            <summary>
+            Watch node for Ifc content in the database
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <search> watch, IFC, database content, model content, content </search>
+            <returns></returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcModelSetup.GetObjectDefinitionItems(IfcInfraToolKit_DynamoCore.DatabaseContainer)">
+            <summary> Lists attributes of all IfcObjectDefinition items in the database</summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <search> IfcObjectDefinition, IFC, get, object definition, get object </search>
+            <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcObjectDefinition items in this database </returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcModelSetup.GetSpatialStructureItems(IfcInfraToolKit_DynamoCore.DatabaseContainer)">
+            <summary> Lists attributes of all IfcSpatialElements from the database. </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <search> IFC, spatial structure, get, spatial, IfcSpatialElement </search>
+            <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcSpatialElements in this database </returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcModelSetup.GetElementItems(IfcInfraToolKit_DynamoCore.DatabaseContainer)">
+            <summary> Lists attributes of all IfcElements in the database. </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <search> IFC, find, get, IfcElement, elements, get elements </search>
+            <returns> DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcElements in this database </returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcPropertyManager.AppendPropertySet(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String,System.Collections.Generic.List{GeometryGym.Ifc.IfcProperty})">
+            <summary>
+            Adds a list of IfcProperties to an Ifc Instance with a specific hostGuid
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="hostGuid">GlobalId of host item</param>
+            <param name="pSetName">arbitrary name of the property set</param>
+            <param name="ifcProperties">List of IfcProperty with the properties that should be added</param>
+            <returns>Returns the updated database container including the added property set</returns>
+            <search> IFC, add, append, IfcProperty, list IfcProperty, append property, property, set of properties, property set </search>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcPropertyManager.AppendPropertySetByElementName(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String,System.Collections.Generic.List{GeometryGym.Ifc.IfcProperty})">
+            <summary>
+            Adds a list of IfcProperties to an Ifc Instance having the specified hostElementName
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="hostElementName">arbitrarily defined name of host item</param>
+            <param name="pSetName">arbitrary name of the property set</param>
+            <param name="ifcProperties">List of IfcProperty with the properties that should be added</param>
+            <returns>Returns the updated database container including the added property set</returns>
+            <search> IFC, add, append, IfcProperty, list IfcProperty, append property, property, set of properties, property set, append property by elementName  </search>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.IfcPropertyManager.CreateIfcTextProperty(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String)">
+            <summary>
+            Adds an IfcPropertySingleValue as text property to the database
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="pName">arbitrary name of the property set</param>
+            <param name="pValue">IfcValue as string, that should be added</param>
+            <returns>Returns the updated database container including the added Property</returns>
+            <search> IFC, add, IfcValue, append property, property, value, append value, append property as text </search>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.AddFacility(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String)">
+            <summary>
+            Adds a facility to the Ifc database
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="facilityName">Enter an arbitrary name of the Facility</param>
+            <param name="hostGuid">GlobalId of parent element</param>
+            <returns>Returns the updated database container including the added Facility and the Guid of the facility</returns>
+            <search> IFC, add, facility, IfcFacility, add IfcFacility, add facility</search>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.AddFacilityPart(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a facility Part, which either belongs to an IfcFacility or to another IfcFacilityPart depending on hostGuid
+            </summary>
+            <search> FacilityPart, IfcFacilityPart, Add </search>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the program stops</param>
+            <param name="name">user defined name of the IfcFacilityPart</param>
+            <param name="facilityType">Type of the facility (e.g. IfcBridgePartTypeEnum), case sensitive, use GetAvailableFacilityPartTypes()</param>
+            <param name="facilityPartType">Predefined FacilityPartType according to the Facility Type, e.g. PIER, case sensitive, use GetPredefinedType(facilityType)</param>
+            <param name="usageType">Predefined usage type of the facility part, use GetPredefinedFacilityPartUsage()</param>
+            <returns>The updated databaseContainer including the added facility Part and also returns the guid of the new created facility Part</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.AddBridge(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String)">
+            <summary>
+            Adds an IfcBridge entity to the spatial structure
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the uppermost IfcSite item is taken. </param>
+            <param name="bridgeName">The bridge's name</param>
+            <search> Bridge, IfcBridge, Add, add bridge, add IfcBridge </search>
+            <returns>The updated databaseContainer including the added Bridge and also returns the guid of the new created IfcBridge</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.AddRoad(IfcInfraToolKit_DynamoCore.DatabaseContainer,System.String,System.String)">
+            <summary>
+            Adds an IfcRoad entity to the spatial structure
+            </summary>
+            <param name="databaseContainer">IFC container including all Ifc content</param>
+            <param name="hostGuid">GUID of the parent item in the spatial structure. If "null", the uppermost IfcSite item is taken. </param>
+            <param name="roadName">The road's name (arbitrary)</param>
+            <search> road, IfcRoad, Add, add road, add IfcRoad </search>
+            <returns>The updated databaseContainer including the added Road and also returns the guid of the new created IfcRoad</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.GetAvailableFacilityPartTypes">
+            <summary>
+            Returns a list of possible Facility types. Choose between Railway, Bridge, Marine, Road and CommonType
+            </summary>
+            <search> FacilityPartType, facility part, list, choose facility type, facility type </search>
+            <returns>List with all IfcFacility Types</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.GetPredefinedType(System.String)">
+            <summary>
+            Returns a list of the matching predefined FacilityPartTypes depending on the input of the facility type.
+            </summary>
+            <param name="facilityPartEnum">Choose between IfcRailwayPartTypeEnum, IfcBridgePartTypeEnum, IfcMarinePartTypeEnum, IfcRoadPartTypeEnum and IfcFacilityPartCommonTypeEnum (=Default), Choose from GetAvailableFacilityPartTypes()</param>
+            <search> FacilityPartType, facility part predefined, predefined, choose facility part type, facility type, IfcFacilityPartTypeEnum  </search>
+            <returns>List with all Predefined Types for a facility type as string</returns>
+        </member>
+        <member name="M:IfcInfraToolKit_DynamoCore.SpatialStructureDesigner.GetPredefinedFacilityPartUsage">
+            <summary>
+            Returns a list of all predefined usage types of IfcFacilityParts (IfcFacilityPartUsageEnum).
+            </summary>
+            <search> IfcFacilityUsageEnum, usage enum, FacilityPartTypeUsage, facility part predefined usage, predefined usage, choose facility part type usage, facility type usage, IfcFacilityPartTypeEnum </search>
+            <returns>A list with all facility usage predefined types </returns>
+        </member>
+    </members>
+</doc>

@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off_GeomLibrary", "utilServ
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alignment_ImportService", "Alignment_ImportService\Alignment_ImportService.csproj", "{B9244428-B5FA-4C74-951A-AB584731D4F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_RevitAddin", "IfcInfraToolkit_RevitAddin\IfcInfraToolkit_RevitAddin.csproj", "{4D0C3926-5C93-453B-A0C0-35D3768DFD41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -94,6 +96,14 @@ Global
 		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Release|x64.ActiveCfg = Release|Any CPU
 		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Release|x64.Build.0 = Release|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|x64.Build.0 = Debug|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|x64.ActiveCfg = Release|Any CPU
+		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
