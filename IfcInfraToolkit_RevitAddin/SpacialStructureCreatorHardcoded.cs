@@ -11,7 +11,7 @@ using Autodesk.Revit.Attributes;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
 using GeometryGym.Ifc;
-using IfcInfraToolKit_DynamoCore;
+using IfcInfraToolkit_Common;
 
 namespace IfcInfraToolkit_RevitAddin
 {
@@ -33,23 +33,25 @@ namespace IfcInfraToolkit_RevitAddin
         /// </summary>
             public static void CreateSpacialStructurePDT() //Application rvtApp, Document doc)
             {
-                // Init IFC model by creating a database container to store all Ifc data inside
-               Dictionary<string,object> databaseContainer =
-                    IfcModelSetup.CreateIfcModel("SemanticCheck", "SemanticSampleSite");
-                
-               // Add facility to database
-                databaseContainer = SpatialStructureDesigner.AddFacility(databaseContainer["DatabaseContainer"] as DatabaseContainer, null,
-                    "SampleFacility");
+            // Init IFC model by creating a database container to store all Ifc data inside
+            ProjectSetupService psservice = new ProjectSetupService();
+            var database = psservice.CreateDatabase();
+            database = psservice.AddBaseProjectSetup(database, "Sample Ifc Project for semantics", "semantics site sample");
 
-                // Add FacilityPartType
-                databaseContainer = SpatialStructureDesigner.AddFacilityPart(databaseContainer["DatabaseContainer"] as DatabaseContainer,
-                    databaseContainer["FacilityGUID"] as string, "Section1", "IfcRoadPartTypeEnum", "ROUNDABOUT",
-                    "LATERAL");
+            // Add facility to database
+            SpatialStructureService ssservice = new SpatialStructureService();
+            Guid facilityGuid = ssservice.AddFacility(ref database, "sample semantic facility", null);
 
-                //4. Save Ifc model
-                IfcModelSetup.SaveIfcModel(databaseContainer["DatabaseContainer"] as DatabaseContainer, "C:/Users/janin/OneDrive/Dokumente/HiwiCMS/IfcInfraToolkit/RevitTests/AppBundleTests", "IfcResult");
+            // Add FacilityPartType
+            IfcSpatialStructureElement host = database.Project.Extract<IfcFacility>()
+                .FirstOrDefault(a => a.Guid == facilityGuid);
+            Guid facilityPartGuid = ssservice.AddFacilityPart(ref database, "IfcRoadPartTypeEnum",
+                "SampleSemanticFacilityPart", "ROUNDABOUT", "LATERAL", host);
 
-                //if (rvtApp == null) throw new InvalidDataException(nameof(rvtApp));
+            //4. Save Ifc model
+            //ToDo: Take relative path!!!
+            database.WriteFile("C:/Users/janin/OneDrive/Dokumente/HiwiCMS/IfcInfraToolkit/RevitTests/AppBundleTests" + "/" + "IfcResult" + ".ifc");
+            //if (rvtApp == null) throw new InvalidDataException(nameof(rvtApp));
                 //
                 //if (doc == null) throw new InvalidOperationException("Could not open document.");
                 //
