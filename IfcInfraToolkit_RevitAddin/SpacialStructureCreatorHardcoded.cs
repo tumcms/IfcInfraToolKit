@@ -49,8 +49,11 @@ namespace IfcInfraToolkit_RevitAddin
                 "SampleSemanticFacilityPart", "ROUNDABOUT", "LATERAL", host);
 
             //4. Save Ifc model
-            //ToDo: Take relative path!!!
-            database.WriteFile("C:/Users/janin/OneDrive/Dokumente/HiwiCMS/IfcInfraToolkit/RevitTests/AppBundleTests" + "/" + "IfcResult" + ".ifc");
+            //ToDo: Take a relative path!!!
+            //relative path
+            string imagesDirectory = Path.Combine(Environment.CurrentDirectory, "IfcResult" + ".ifc");
+            //absolute path
+            //database.WriteFile("C:/Users/janin/OneDrive/Dokumente/HiwiCMS/IfcInfraToolkit/RevitTests/AppBundleTests" + "/" + "IfcResult" + ".ifc");
             //if (rvtApp == null) throw new InvalidDataException(nameof(rvtApp));
                 //
                 //if (doc == null) throw new InvalidOperationException("Could not open document.");
