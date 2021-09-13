@@ -60,6 +60,7 @@ namespace IfcInfraToolkit_DesignAutomationAddin
             //absolute path
             //database.WriteFile("C:/Users/janin/OneDrive/Dokumente/HiwiCMS/IfcInfraToolkit/RevitTests/AppBundleTests" + "/" + "resultSpacialStructurePDT" + ".ifc");
             //Path inside DesignAutomation
+            //When setting the output parameter inside Postman/Node.js .... this name must match the result name inside Design Automation completely!
             database.WriteFile("resultSpacialStructurePDT.ifc");
         }
     }
