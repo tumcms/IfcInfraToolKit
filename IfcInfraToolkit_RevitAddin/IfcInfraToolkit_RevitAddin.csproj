@@ -37,15 +37,13 @@
     <Reference Include="IfcInfraToolkit_Common">
       <HintPath>..\IfcInfraToolKit_Common\bin\Debug\IfcInfraToolkit_Common.dll</HintPath>
     </Reference>
-    <Reference Include="IfcInfraToolKit_DynamoCore">
-      <HintPath>..\IfcInfraToolKit_DynamoCore\bin\Debug\IfcInfraToolKit_DynamoCore.dll</HintPath>
-    </Reference>
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
       <HintPath>..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
