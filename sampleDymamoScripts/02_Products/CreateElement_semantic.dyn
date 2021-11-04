@@ -38,7 +38,7 @@
         {
           "Id": "e399e6842b0b497c865a280d4389ffa6",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -46,7 +46,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
+      "Description": "Creates a new DatabaseIfc instance that acts as a central container for the IFC content.\n\nIfcModelSetup.CreateIfcModel (projectName: string = \"sampleProject\", siteName: string = \"sampleSite\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -57,7 +57,7 @@
         {
           "Id": "a1307cc8989744c4b9b65b3e289a10a6",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -66,7 +66,7 @@
         {
           "Id": "865f8b60b1824fcfbcc2de9f461e505a",
           "Name": "hostGuid",
-          "Description": "string\nVorgabewert : \"null\"",
+          "Description": "GlobalId of parent element\n\nstring\nVorgabewert : \"null\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -75,7 +75,7 @@
         {
           "Id": "f50ce53e8f6e49e486172748e5a987be",
           "Name": "facilityName",
-          "Description": "string\nVorgabewert : \"DefaultFacility\"",
+          "Description": "Enter an arbitrary name of the Facility\n\nstring\nVorgabewert : \"DefaultFacility\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -86,7 +86,7 @@
         {
           "Id": "7a7ddd3a458b46d586712401d625cbdb",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Returns the updated database container including the added Facility and the Guid of the facility",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -103,17 +103,17 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "SpatialStructureDesigner.AddFacility (databaseContainer: DatabaseContainer, hostGuid: string = \"null\", facilityName: string = \"DefaultFacility\"): var[]..[]"
+      "Description": "Adds a facility to the Ifc database\n\nSpatialStructureDesigner.AddFacility (databaseContainer: DatabaseContainer, hostGuid: string = \"null\", facilityName: string = \"DefaultFacility\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"my custom element Name\";",
+      "Code": "\"road pavement\";",
       "Id": "bfa06fd38e214d0eabcce682256b4d95",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "ec6503bb07af4c038d407492339fd39d",
+          "Id": "f57959a47ff8409c99181bd8ef9a970b",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -128,12 +128,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"null\";\n\"testFacility\";",
+      "Code": "\"myIFCmodel\";\n\"testFacility\";",
       "Id": "20a45aab7d8c4d77a3b07323dadb49d9",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "428b94dd57f543de93e6c675d086159e",
+          "Id": "2f7bcf01c2f44bc88b6b9f5960ba94d4",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -142,7 +142,7 @@
           "KeepListStructure": false
         },
         {
-          "Id": "a06ae06f41c749b28c6da845422b23b4",
+          "Id": "4be7a8d8146244b898dbd930e3145b5f",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 2",
           "UsingDefaultValue": false,
@@ -163,7 +163,7 @@
         {
           "Id": "2d3254bf5d20487ebdd608c084eb9227",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -174,7 +174,7 @@
         {
           "Id": "05c8e6725e1d43428554194b0e836197",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "DatabaseContainer that owns the DatabaseIfc object of GeometryGymIfc, List of specific attributes of all IfcElements in this database",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -218,7 +218,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "IfcModelSetup.GetElementItems (databaseContainer: DatabaseContainer): var[]..[]"
+      "Description": "Lists attributes of all IfcElements in the database.\n\nIfcModelSetup.GetElementItems (databaseContainer: DatabaseContainer): var[]..[]"
     },
     {
       "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
@@ -287,7 +287,7 @@
         {
           "Id": "f30804d0e3e84577a926fd2c23d09237",
           "Name": "databaseContainer",
-          "Description": "DatabaseContainer",
+          "Description": "IFC container including all Ifc content\n\nDatabaseContainer",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -296,7 +296,7 @@
         {
           "Id": "ea1c7bdfd6284582893647b5f7f48710",
           "Name": "IfcClass",
-          "Description": "string\nVorgabewert : \"IfcBuildingElementProxy\"",
+          "Description": "Desired IfcClass, that should be created\n\nstring\nVorgabewert : \"IfcBuildingElementProxy\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -305,7 +305,7 @@
         {
           "Id": "de4bf4bf218b44ef92ec3f96e155c6dd",
           "Name": "elementName",
-          "Description": "string\nVorgabewert : \"DefaultElement\"",
+          "Description": "provide an arbitrary name of the BuiltElement\n\nstring\nVorgabewert : \"DefaultElement\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -314,7 +314,7 @@
         {
           "Id": "60c8d2da9e02462aa1374ff65e4149ad",
           "Name": "hostGuid",
-          "Description": "string\nVorgabewert : \"null\"",
+          "Description": "GlobalId of parent element\n\nstring\nVorgabewert : \"null\"",
           "UsingDefaultValue": true,
           "Level": 2,
           "UseLevels": false,
@@ -325,7 +325,7 @@
         {
           "Id": "1a49ae31d89446eab867232610098520",
           "Name": "DatabaseContainer",
-          "Description": "var",
+          "Description": "Updated database container with added builtElement semantics and the guid of the created IfcElement instance",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -342,7 +342,7 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
+      "Description": "Adds an IfcElement of the subclass IfcBuiltElement to the database\n\nElementDesigner.AddBuiltElement (databaseContainer: DatabaseContainer, IfcClass: string = \"IfcBuildingElementProxy\", elementName: string = \"DefaultElement\", hostGuid: string = \"null\"): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
@@ -354,7 +354,7 @@
         {
           "Id": "289c63af896144a7afb0414b3b94eb5e",
           "Name": "PredefinedBuiltElement",
-          "Description": "var",
+          "Description": "List of possible IfcBuiltElement predefined subclasses",
           "UsingDefaultValue": false,
           "Level": 2,
           "UseLevels": false,
@@ -362,16 +362,16 @@
         }
       ],
       "Replication": "Auto",
-      "Description": "ElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
+      "Description": "Provides a list with all possible predefined subclasses of IfcBuiltElement\n\nElementDesigner.GetAvailableBuiltElementClassNames ( ): var[]..[]"
     },
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "item = list[10];",
+      "Code": "item = list[16];",
       "Id": "a759cbac4dc24564acd93aa7d387ad98",
       "Inputs": [
         {
-          "Id": "2d6f96cd2b99414cb92360a6eb962311",
+          "Id": "09b5da3e42cb4e96b558c35a38ca7ecc",
           "Name": "list",
           "Description": "list",
           "UsingDefaultValue": false,
@@ -382,7 +382,7 @@
       ],
       "Outputs": [
         {
-          "Id": "c8f546116f5c411ea64bd267a599cac0",
+          "Id": "b0d732e2ae10486e82261b920df8a237",
           "Name": "",
           "Description": "item",
           "UsingDefaultValue": false,
@@ -441,29 +441,29 @@
       "Id": "e0cfab3ab1834bef8038d03c8becc6f1"
     },
     {
-      "Start": "ec6503bb07af4c038d407492339fd39d",
+      "Start": "f57959a47ff8409c99181bd8ef9a970b",
       "End": "de4bf4bf218b44ef92ec3f96e155c6dd",
-      "Id": "9bb2c50c83d54fd6aa0dfebad1c44ac6"
+      "Id": "434ff0faa6ee417e9820d58162208667"
     },
     {
-      "Start": "428b94dd57f543de93e6c675d086159e",
+      "Start": "2f7bcf01c2f44bc88b6b9f5960ba94d4",
       "End": "865f8b60b1824fcfbcc2de9f461e505a",
-      "Id": "b0c58ed6d83f4ad280f6fd954db64f03"
+      "Id": "9d7ed26d341a498fbb18288cf798d07c"
     },
     {
-      "Start": "428b94dd57f543de93e6c675d086159e",
+      "Start": "2f7bcf01c2f44bc88b6b9f5960ba94d4",
       "End": "11055788acf44243a7b155344354968f",
-      "Id": "6846b81e3c97480f912296f5e4658a49"
+      "Id": "0e75426b1a7041b1a05f0d68c60bf1c2"
     },
     {
-      "Start": "428b94dd57f543de93e6c675d086159e",
+      "Start": "2f7bcf01c2f44bc88b6b9f5960ba94d4",
       "End": "4c838869444d47a88badf4197911a216",
-      "Id": "76377926095546cbb5b2f26c9e7013a0"
+      "Id": "bbcb2e75f91d4c44aca7c341b0012005"
     },
     {
-      "Start": "a06ae06f41c749b28c6da845422b23b4",
+      "Start": "4be7a8d8146244b898dbd930e3145b5f",
       "End": "f50ce53e8f6e49e486172748e5a987be",
-      "Id": "d30ca5da02664d2f8822df1344e4c0d6"
+      "Id": "c3d6350bf30d4eb9839c7c1a0e5549ac"
     },
     {
       "Start": "b6d64ec48dff4244a0d330c5ea4f8d5a",
@@ -486,14 +486,14 @@
       "Id": "48d92b79a1f149b79b798a5780369e91"
     },
     {
-      "Start": "c8f546116f5c411ea64bd267a599cac0",
+      "Start": "b0d732e2ae10486e82261b920df8a237",
       "End": "ea1c7bdfd6284582893647b5f7f48710",
-      "Id": "735a1863d19e43ebae7b4fe4553158a7"
+      "Id": "c9615012050a45b1a9610ced99716341"
     },
     {
       "Start": "4d2c22df2ea147f4865e15784b626f1e",
-      "End": "2d6f96cd2b99414cb92360a6eb962311",
-      "Id": "26b8a8cb63834c27aefceb6710238cee"
+      "End": "09b5da3e42cb4e96b558c35a38ca7ecc",
+      "Id": "17c0f1a297c8430181520cc3fe0a4633"
     }
   ],
   "Dependencies": [],
@@ -559,8 +559,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 406.87064211792381,
-        "Y": 484.89648862162994
+        "X": 450.175689983426,
+        "Y": 595.015038908193
       },
       {
         "ShowGeometry": true,
@@ -569,8 +569,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2051.1354817122369,
-        "Y": 479.13897374523259
+        "X": 1950.9152280806456,
+        "Y": 519.96944744699181
       },
       {
         "ShowGeometry": true,
@@ -579,8 +579,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2553.777804509813,
-        "Y": 420.49989010607726
+        "X": 2453.5575508782217,
+        "Y": 461.33036380783653
       },
       {
         "ShowGeometry": true,
@@ -589,8 +589,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 2584.6152595418584,
-        "Y": 731.8591748349462
+        "X": 2484.3950059102672,
+        "Y": 772.68964853670548
       },
       {
         "ShowGeometry": true,
@@ -599,8 +599,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1502.9397124317402,
-        "Y": 481.07560669295503
+        "X": 1495.5159899405112,
+        "Y": 320.22828604966082
       },
       {
         "ShowGeometry": true,
@@ -643,30 +643,30 @@
           "3c32ba56249549a9b0568ee6569adcd6"
         ],
         "Left": 473.32725806525309,
-        "Top": 817.36636692815568,
-        "Width": 927.11670484170463,
-        "Height": 331.85714285714289,
+        "Top": 817.79493835672713,
+        "Width": 925.97384769884752,
+        "Height": 330.99999999999989,
         "FontSize": 36.0,
         "InitialTop": 870.79493835672713,
         "InitialHeight": 146.43334766798023,
-        "TextblockHeight": 43.428571428571431,
+        "TextblockHeight": 43.0,
         "Background": "#FFFFC999"
       },
       {
         "Id": "6502d8a33b80406eb06618af91c98205",
-        "Title": "Add element",
+        "Title": "Add element to model",
         "Nodes": [
           "6cf12384b30249ef8bcdbe37b8c4235c",
           "b30f766a56ba459ba5d0f7f7c86b9958"
         ],
-        "Left": 1492.9397124317402,
-        "Top": 377.34350560735766,
-        "Width": 372.0,
-        "Height": 275.87495822845449,
+        "Left": 1485.5159899405112,
+        "Top": 216.92475639263489,
+        "Width": 371.0,
+        "Height": 274.30352965702593,
         "FontSize": 36.0,
-        "InitialTop": 430.7720770359291,
+        "InitialTop": 269.92475639263489,
         "InitialHeight": 195.30352965702593,
-        "TextblockHeight": 43.428571428571431,
+        "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
       {
@@ -677,22 +677,39 @@
           "ba6ecaaacc2e41eb9cfad9325f90a2eb",
           "d1b17ce20fbf4205a38fb668926cd5de"
         ],
-        "Left": 2041.1354817122369,
-        "Top": 367.07131867750581,
-        "Width": 763.76549211533575,
-        "Height": 643.21642758601183,
+        "Left": 1940.9152280806456,
+        "Top": 408.33036380783653,
+        "Width": 763.47977782962153,
+        "Height": 642.359284728869,
         "FontSize": 36.0,
-        "InitialTop": 420.49989010607726,
+        "InitialTop": 461.33036380783653,
         "InitialHeight": 456.35928472886894,
-        "TextblockHeight": 43.428571428571431,
+        "TextblockHeight": 43.0,
+        "Background": "#FFFFB8D8"
+      },
+      {
+        "Id": "bc8c3348e08e4fb1abb826ff8b4b411a",
+        "Title": "Define base model skeleton ",
+        "Nodes": [
+          "be4bd2c461e044af9c1d3b70704aebe4",
+          "34925267f74b4f779192e385fcbccd78"
+        ],
+        "Left": 583.778049580095,
+        "Top": 212.0886712518809,
+        "Width": 794.911531224352,
+        "Height": 198.0,
+        "FontSize": 36.0,
+        "InitialTop": 265.0886712518809,
+        "InitialHeight": 175.0,
+        "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
       {
         "Id": "b30f766a56ba459ba5d0f7f7c86b9958",
         "Title": "Add semantic element to IFC model",
         "Nodes": [],
-        "Left": 1601.96020402006,
-        "Top": 430.7720770359291,
+        "Left": 1594.536481528831,
+        "Top": 269.92475639263489,
         "Width": 0.0,
         "Height": 0.0,
         "FontSize": 36.0,
@@ -702,8 +719,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": -229.07222044460536,
-    "Y": -34.770124808131413,
-    "Zoom": 0.69561644130111477
+    "X": -406.49134220172095,
+    "Y": -54.180317071907893,
+    "Zoom": 0.96960220623595006
   }
 }

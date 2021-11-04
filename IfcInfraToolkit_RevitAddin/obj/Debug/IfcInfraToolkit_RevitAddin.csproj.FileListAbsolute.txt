@@ -1,0 +1,12 @@
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\obj\Debug\IfcInfraToolkit_RevitAddin.csproj.CoreCompileInputs.cache
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\IfcInfraToolkit_RevitAddin.dll
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\IfcInfraToolkit_RevitAddin.pdb
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\obj\Debug\IfcInfraToolkit_RevitAddin.csproj.CopyComplete
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\obj\Debug\IfcInfraToolkit_RevitAddin.dll
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\obj\Debug\IfcInfraToolkit_RevitAddin.pdb
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\GeometryGymIFC.dll
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\IfcInfraToolkit_Common.dll
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\GeometryGymIFC.pdb
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\IfcInfraToolkit_Common.pdb
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\Newtonsoft.Json.dll
+C:\Users\janin\OneDrive\Dokumente\HiwiCMS\IfcInfraToolkit\ifcinfratoolkit\IfcInfraToolkit_RevitAddin\bin\Debug\Newtonsoft.Json.xml

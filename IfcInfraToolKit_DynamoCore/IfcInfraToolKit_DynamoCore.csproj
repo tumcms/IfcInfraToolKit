@@ -17,7 +17,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -58,8 +58,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Autodesk.Forge.DesignAutomation.Revit">
+      <Version>2021.0.1</Version>
+    </PackageReference>
     <PackageReference Include="DynamoVisualProgramming.Core">
-      <Version>2.11.2.5474</Version>
+      <Version>2.12.0.5650</Version>
     </PackageReference>
     <PackageReference Include="DynamoVisualProgramming.DynamoServices">
       <Version>2.12.0.5650</Version>
