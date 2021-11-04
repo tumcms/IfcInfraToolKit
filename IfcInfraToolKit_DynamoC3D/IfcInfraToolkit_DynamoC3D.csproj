@@ -69,8 +69,8 @@
     <Reference Include="DynamoServices">
       <HintPath>..\..\..\Users\Sebastian Esser\.nuget\packages\dynamovisualprogramming.dynamoservices\2.11.2.5474\lib\net48\DynamoServices.dll</HintPath>
     </Reference>
-    <Reference Include="GeometryGymIFC">
-      <HintPath>..\submodules\geometrygymifc\DLL Projects\GeometryGymIFC\bin\Debug\GeometryGymIFC.dll</HintPath>
+    <Reference Include="GeometryGymIFC, Version=0.1.16.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeometryGymIFC.0.1.16\lib\net45\GeometryGymIFC.dll</HintPath>
     </Reference>
     <Reference Include="IfcInfraToolkit_Common">
       <HintPath>..\IfcInfraToolKit_Common\bin\Debug\IfcInfraToolkit_Common.dll</HintPath>

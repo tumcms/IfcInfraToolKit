@@ -610,15 +610,15 @@
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.11.0.4533",
+      "Version": "2.11.1.4675",
       "RunType": "Automatic",
       "RunPeriod": "1000"
     },
     "Camera": {
       "Name": "Hintergrundvorschau",
-      "EyeX": 39.185131072998047,
-      "EyeY": 29.412467956542969,
-      "EyeZ": 30.59979248046875,
+      "EyeX": 31.448225021362305,
+      "EyeY": 33.8266658782959,
+      "EyeZ": 44.900026321411133,
       "LookX": -53.777496337890625,
       "LookY": -11.519355773925781,
       "LookZ": -25.539714813232422,
@@ -768,7 +768,7 @@
         "Y": 868.11568287239254
       },
       {
-        "ShowGeometry": false,
+        "ShowGeometry": true,
         "Name": "Solid.ByLoft",
         "Id": "a5e35877e7bd4b258a14b6fafa3bdd00",
         "IsSetAsInput": false,
@@ -789,8 +789,8 @@
       }
     ],
     "Annotations": [],
-    "X": 195.2882455266743,
-    "Y": -140.96855893737688,
-    "Zoom": 0.658674852158215
+    "X": 147.390066556007,
+    "Y": -241.10797644225579,
+    "Zoom": 0.98264231136796543
   }
 }
