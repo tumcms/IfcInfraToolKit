@@ -127,8 +127,8 @@
     },
     {
       "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
-      "HintPath": "C:\\dev",
-      "InputValue": "C:\\dev",
+      "HintPath": "C:\\Users\\ga38hep\\Desktop",
+      "InputValue": "C:\\Users\\ga38hep\\Desktop",
       "NodeType": "ExtensionNode",
       "Id": "e57186de91974105b971e064e9433e24",
       "Inputs": [],
@@ -149,12 +149,12 @@
     {
       "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
       "NodeType": "CodeBlockNode",
-      "Code": "\"CreateSpatialStructure\";",
+      "Code": "\"CreateSpatialStructure-sandbox\";",
       "Id": "bfe02770a59c474eb8761eb17bf1d2a1",
       "Inputs": [],
       "Outputs": [
         {
-          "Id": "95af8d60c93a4d8c84f90ef9b4df0ace",
+          "Id": "95a4f8ca07404984bec03d2e91e40d6a",
           "Name": "",
           "Description": "Wert des Ausdrucks in Zeile 1",
           "UsingDefaultValue": false,
@@ -803,9 +803,9 @@
       "Id": "979d69198173446c9439028d2e423e41"
     },
     {
-      "Start": "95af8d60c93a4d8c84f90ef9b4df0ace",
+      "Start": "95a4f8ca07404984bec03d2e91e40d6a",
       "End": "181802327d9d4929872ed16ff2ee478a",
-      "Id": "968c8d3d52ae40a98c1249f909e1bd8c"
+      "Id": "7bb6ab044b5043c6b3bd940155051822"
     },
     {
       "Start": "1a837479578447ffba58d1f73a0d6ca5",
@@ -915,14 +915,30 @@
   ],
   "Dependencies": [],
   "NodeLibraryDependencies": [],
-  "ExtensionWorkspaceData": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.13",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Keine",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
   "Bindings": [],
   "View": {
     "Dynamo": {
       "ScaleFactor": 1.0,
       "HasRunWithoutCrash": true,
       "IsVisibleInDynamoLibrary": true,
-      "Version": "2.11.0.4533",
+      "Version": "2.12.0.5650",
       "RunType": "Manual",
       "RunPeriod": "1000"
     },
@@ -986,8 +1002,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 1446.4461532916598,
-        "Y": 765.26267254792469
+        "X": 1584.2356597875287,
+        "Y": 875.28862176477526
       },
       {
         "ShowGeometry": true,
@@ -1056,8 +1072,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -331.01403677933365,
-        "Y": 1295.014425203186
+        "X": -405.65343715044,
+        "Y": 1449.6246116861921
       },
       {
         "ShowGeometry": true,
@@ -1086,8 +1102,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": -407.75479900922892,
-        "Y": 1007.3046243383039
+        "X": -546.37082826985511,
+        "Y": 1041.0700673633282
       },
       {
         "ShowGeometry": true,
@@ -1096,8 +1112,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 27.883043260011391,
-        "Y": 955.44460781149678
+        "X": -110.7329860006148,
+        "Y": 989.21005083652108
       },
       {
         "ShowGeometry": true,
@@ -1106,8 +1122,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 309.66360255163215,
-        "Y": 958.07235759714149
+        "X": 171.04757329100596,
+        "Y": 991.83780062216579
       },
       {
         "ShowGeometry": true,
@@ -1116,8 +1132,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 640.25260042423747,
-        "Y": 950.01588909719726
+        "X": 501.63657116361128,
+        "Y": 983.78133212222156
       },
       {
         "ShowGeometry": true,
@@ -1126,8 +1142,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 107.31119540925954,
-        "Y": 1294.0619978420341
+        "X": 32.671795038153164,
+        "Y": 1448.6721843250402
       },
       {
         "ShowGeometry": true,
@@ -1136,8 +1152,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 420.15923748307466,
-        "Y": 1316.6007062551448
+        "X": 345.51983711196829,
+        "Y": 1471.210892738151
       },
       {
         "ShowGeometry": true,
@@ -1146,8 +1162,8 @@
         "IsSetAsInput": false,
         "IsSetAsOutput": false,
         "Excluded": false,
-        "X": 727.73351130570734,
-        "Y": 1310.7242085375153
+        "X": 653.094110934601,
+        "Y": 1465.3343950205215
       },
       {
         "ShowGeometry": true,
@@ -1199,11 +1215,11 @@
         ],
         "Left": 180.01758186308848,
         "Top": 587.08457730982923,
-        "Width": 1533.4285714285713,
-        "Height": 271.17809523809547,
+        "Width": 1737.2180779244402,
+        "Height": 381.20404445494603,
         "FontSize": 36.0,
         "InitialTop": 640.08457730982923,
-        "InitialHeight": 270.17809523809547,
+        "InitialHeight": 380.20404445494603,
         "TextblockHeight": 43.0,
         "Background": "#FFC1D676"
       },
@@ -1234,13 +1250,13 @@
           "9fd58fa3ae1a4d299d235f5767f7fd29",
           "7281f4759d2a4fa89b821695437ee805"
         ],
-        "Left": -417.75479900922892,
-        "Top": 897.01588909719726,
+        "Left": -556.37082826985511,
+        "Top": 930.78133212222156,
         "Width": 1278.0073994334664,
         "Height": 336.42871871429952,
         "FontSize": 36.0,
-        "InitialTop": 950.01588909719726,
-        "InitialHeight": 153.05646849994423,
+        "InitialTop": 983.78133212222156,
+        "InitialHeight": 202.28873524110668,
         "TextblockHeight": 43.0,
         "Background": "#FFFFAA45"
       },
@@ -1253,12 +1269,12 @@
           "6dd7eff09bf74be1a7660446aba59f39",
           "05870fba148b41c4a2368fc32d6bf3b1"
         ],
-        "Left": -341.01403677933365,
-        "Top": 1241.0619978420341,
+        "Left": -415.65343715044,
+        "Top": 1395.6721843250402,
         "Width": 1288.747548085041,
         "Height": 347.66221069548124,
         "FontSize": 36.0,
-        "InitialTop": 1294.0619978420341,
+        "InitialTop": 1448.6721843250402,
         "InitialHeight": 167.53870841311073,
         "TextblockHeight": 43.0,
         "Background": "#FFB9F9E1"
@@ -1325,8 +1341,8 @@
         "Background": "#FFC1D676"
       }
     ],
-    "X": 316.99504853223561,
-    "Y": 183.50958910011661,
-    "Zoom": 0.651659065413289
+    "X": 245.32419315266264,
+    "Y": 129.8789973261749,
+    "Zoom": 0.32946376971142277
   }
 }

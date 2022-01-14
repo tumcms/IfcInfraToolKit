@@ -20,8 +20,9 @@ namespace IfcInfraToolkit_Common
         /// <returns></returns>
         public DatabaseIfc CreateDatabase()
         {
-            var database = new DatabaseIfc(); //ReleaseVersion.IFC4X3_RC4           
+            var database = new DatabaseIfc(ModelView.Ifc4X3NotAssigned); //ReleaseVersion.IFC4X3_RC4           
             return database;
+
         }
 
         /// <summary>

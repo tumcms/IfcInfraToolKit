@@ -124,6 +124,7 @@ namespace IfcInfraToolKit_DynamoCore
 
             };
             return d;
+
         }
 
         /// <summary> Lists attributes of all IfcSpatialElements from the database. </summary>
