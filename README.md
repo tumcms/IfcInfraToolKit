@@ -10,7 +10,7 @@ The provided toolkits are prototypes to test specific concepts of recent IFC ext
 ## Build the project
 
 After cloning the code, you find a `*.sln` file. 
-Please re-install all referenced nuget packages and clone the `GeometryGymIfc` submodule (alternatively use NuGet to get a suitable copy). 
+Please re-install all referenced nuget packages. 
 
 Build `InfraToolKit_Common` first as the Dynamo-specific libs reference the build result of the `_Common` library.
 
@@ -23,15 +23,15 @@ Build `InfraToolKit_Common` first as the Dynamo-specific libs reference the buil
 
 # TroubleShooting
 
-We have experienced issues with an outdated GeometryGymIFC version shipped in Revit 2021 and 2022. 
+We have experienced issues with an outdated version of GeometryGymIFC library shipped in Revit 2021 and 2022. 
 Please perform the following steps to figure out if your Revit installation is affected by this issue: 
 
 - Open Revit
-- Within Revit, open Dynamo
-- Import the Library `IfcInfraToolKit_DynamoCore.dll`, which is the result of building `IfcInfraToolKit_DynamoCore` of this solution
-- Create a simple Dynamo flow with `CreateIfcModel` and `SaveIfcModel`
+- In Revit, open Dynamo
+- Import the built result `IfcInfraToolKit_DynamoCore.dll`, which is the result of building `IfcInfraToolKit_DynamoCore` of this solution
+- Create a simple Dynamo flow consisting of `CreateIfcModel` and `SaveIfcModel` nodes
 - open the result in a text editor and see the version given in the header of the IFC file
 
 If it states `v0.0.20`, please go into `C:\Program Files\Autodesk\Revit 2022` and replace `GeometryGymIFC.dll` with a more recent version of this dll. 
 You can find a suitable dll named similar in the build results located in `ifcinfratoolkit\IfcInfraToolKit_DynamoCore\bin\Debug` or `Release`
-<!--  -->
+
