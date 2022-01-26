@@ -2,7 +2,9 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Create and modify IFC4x3 models in the scope of bSI InfraDeployment 
+Create and modify IFC4x3 models using Dynamo nodes. 
+
+![00_Overview](https://user-images.githubusercontent.com/56266373/151181167-f33f0f92-f49e-4309-83ff-c6bc7fd500de.PNG)
 
 ## Content 
 
@@ -15,6 +17,11 @@ After cloning the code, you find a `*.sln` file.
 Please re-install all referenced nuget packages. 
 
 Build `InfraToolKit_Common` first as the Dynamo-specific libs reference the build result of the `_Common` library.
+
+## Sample scripts
+
+Please refer to the `\sampleDymamoScripts` folder for a comprehensive overview of examples. 
+
 
 ## Frameworks
 - GeometryGymIFC: https://github.com/GeometryGym/GeometryGymIFC MIT Licence
