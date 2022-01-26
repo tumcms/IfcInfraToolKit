@@ -1,38 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30503.244
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_Common", "IfcInfraToolKit_Common\IfcInfraToolkit_Common.csproj", "{84741775-5CC9-46EB-A297-EEA4410D0A5B}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_DynamoC3D", "IfcInfraToolKit_DynamoC3D\IfcInfraToolkit_DynamoC3D.csproj", "{A17252B7-6231-4BAD-B82F-0D42A9819058}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolKit_DynamoRevit", "IfcInfraToolKit_DynamoRevit\IfcInfraToolKit_DynamoRevit.csproj", "{9C1E2113-EAA2-47E6-80ED-3577A2017BE9}"
 	ProjectSection(ProjectDependencies) = postProject
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
 		{84741775-5CC9-46EB-A297-EEA4410D0A5B} = {84741775-5CC9-46EB-A297-EEA4410D0A5B}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolKit_DynamoCore", "IfcInfraToolKit_DynamoCore\IfcInfraToolKit_DynamoCore.csproj", "{D0F227C9-2437-4CE5-9024-1596A42E34A1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C} = {6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryGymIFC", "submodules\geometrygymifc\DLL Projects\GeometryGymIFC\GeometryGymIFC.csproj", "{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Off_GeomLibrary", "utilServices\Off_GeomLibrary\Off_GeomLibrary.csproj", "{0752CB64-500D-4D1F-B92E-B036157BAB25}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alignment_ImportService", "Alignment_ImportService\Alignment_ImportService.csproj", "{B9244428-B5FA-4C74-951A-AB584731D4F8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_RevitAddin", "IfcInfraToolkit_RevitAddin\IfcInfraToolkit_RevitAddin.csproj", "{4D0C3926-5C93-453B-A0C0-35D3768DFD41}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IfcInfraToolkit_DesignAutomationAddin", "IfcInfraToolkit_DesignAutomationAddin\IfcInfraToolkit_DesignAutomationAddin.csproj", "{76071A07-C89E-4973-8D2E-D9F569629071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,46 +54,6 @@ Global
 		{D0F227C9-2437-4CE5-9024-1596A42E34A1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0F227C9-2437-4CE5-9024-1596A42E34A1}.Release|x64.ActiveCfg = Release|Any CPU
 		{D0F227C9-2437-4CE5-9024-1596A42E34A1}.Release|x64.Build.0 = Release|Any CPU
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|x64.ActiveCfg = Debug|x64
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Debug|x64.Build.0 = Debug|x64
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|x64.ActiveCfg = Release|x64
-		{6CD3BE38-25BC-4FCF-9426-D15ED4D4657C}.Release|x64.Build.0 = Release|x64
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Debug|x64.Build.0 = Debug|Any CPU
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|x64.ActiveCfg = Release|Any CPU
-		{0752CB64-500D-4D1F-B92E-B036157BAB25}.Release|x64.Build.0 = Release|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Debug|x64.Build.0 = Debug|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Release|x64.ActiveCfg = Release|Any CPU
-		{B9244428-B5FA-4C74-951A-AB584731D4F8}.Release|x64.Build.0 = Release|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Debug|x64.Build.0 = Debug|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|x64.ActiveCfg = Release|Any CPU
-		{4D0C3926-5C93-453B-A0C0-35D3768DFD41}.Release|x64.Build.0 = Release|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Debug|x64.Build.0 = Debug|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Release|Any CPU.Build.0 = Release|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Release|x64.ActiveCfg = Release|Any CPU
-		{76071A07-C89E-4973-8D2E-D9F569629071}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
