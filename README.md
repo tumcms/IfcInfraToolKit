@@ -1,5 +1,7 @@
 # IfcInfraToolkit
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Create and modify IFC4x3 models in the scope of bSI InfraDeployment 
 
 ## Content 
